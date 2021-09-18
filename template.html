@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Materials</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Supplementary Materials</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Summary</a>
+    <a href="#data" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Datasets</a>
+    <a href="#software" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Software</a>
+  <!--  <a href="#docker" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Container Image</a>
+    <a href="#prov" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Provenance Traces</a>-->
+  <a href="#bib" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Bibliography</a>
+  <a href="#authors" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About the authors</a>
+
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-green w3-margin-right" onclick="w3_open()">☰</a>
+  <!--<span>Company Name</span>-->
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="showcase">
+    <h1><b> Dummy title </b></h1>
+    <!--<h2 class="w3-text-green"><b></b></h2>
+    <hr style="width:50px;border:5px solid green" class="w3-round">-->
+  </div>
+
+
+  <div class="w3-container" id="summary" style="margin-top:15px">
+    <!--<h1 class="w3-xxxlarge w3-text-green"><b>Services.</b></h1>-->
+    <hr style="width:50px;border:5px solid green" class="w3-round">
+    <p>This page provides pointers to the materials (datasets, software and notebooks) used in a paper currently <strong>under review</strong> </p>
+
+    <p id="summary-content"><strong>Summary</strong>: Application developers today have three choices for exploiting the knowledge present in Wikidata <a href="#wd">[1]</a> : they can download the Wikidata dumps in JSON or RDF format, they can use the Wikidata API to get data about individual entities, or they can use the Wikidata SPARQL endpoint. None of these methods can support complex, yet common, query use cases, such as retrieval of large amounts of data or aggregations over large fractions of Wikidata.
+This paper introduces KGTK Kypher, a query language and processor that allows users creating personalized variants of Wikidata on a laptop. We present several use cases that illustrate the types of analyses that Kypher enables users to run on the full Wikidata KG on a laptop, combining data from external resources such as DBpedia. The Kypher queries for these use cases run much faster on a laptop than the equivalent SPARQL queries on a Wikidata clone running on a powerful server with 24h time-out limits.
+    </p>
+
+  </div>
+
+
+  <div class="w3-container" id="data" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-green"><b>Datasets.</b></h1>
+    <hr style="width:50px;border:5px solid green" class="w3-round">
+    <h3>Input Datasets</h3>
+    We used the following datasets for our paper, available in Zenodo under DOI <a href="https://doi.org/10.5281/zenodo.5139550">https://doi.org/10.5281/zenodo.5139550</a>:
+    <ul id="datasets-list">
+
+    </ul>
+
+    <p>The cache (sqlite) used to store the queries is available in the following DOI: <a href="https://doi.org/10.5281/zenodo.5146407">https://doi.org/10.5281/zenodo.5146407</a></p>
+
+    <p>The results of the analyis are the times comparing KGTK and SPARQL, as reported in the paper.</p>
+
+
+  </div>
+
+  <div class="w3-container" id="software" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-green"><b>Software and Notebooks.</b></h1>
+    <hr style="width:50px;border:5px solid green" class="w3-round">
+    The pointers for the main software used can be found below:
+    <ul id="software-list">
+      
+    </ul>
+
+  </div>
+
+  <div class="w3-container" id="bib" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-green"><b>Bibliography.</b></h1>
+    <hr style="width:50px;border:5px solid green" class="w3-round">
+    <ol id="bibliography-list">
+      
+    </ol>
+  </div>
+
+  <!-- The Team -->
+  <div class="w3-container" id="authors" style="margin-top:75px">
+  <h1 class="w3-xxxlarge w3-text-green"><b>About the authors.</b></h1>
+  <hr style="width:50px;border:5px solid green" class="w3-round">
+  <div class="w3-row-padding">
+
+      <div class="w3-col m4 w3-margin-bottom">
+        <div class="w3-light-grey">
+          <img src="images/hans.jpg" alt="Hans Chalupsky" style="width:100px;padding-top: 10px;">
+          <div class="w3-container">
+            <h3>Hans Chalupsky</h3>
+            <p class="w3-opacity"> Research Lead</p>
+            <p>Research Lead at the Information Sciences Institute, University of Southern California.</p>
+          </div>
+        </div>
+      </div>
+
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="images/pedro.jpg" alt="Pedro Szekely" style="width:100px;padding-top: 10px;">
+        <div class="w3-container">
+          <h3>Pedro Szekely</h3>
+          <p class="w3-opacity">Research Director</p>
+          <p>Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="images/filip.jpeg" alt="Filip Ilievski" style="width:100px;padding-top: 10px;">
+        <div class="w3-container">
+          <h3>Filip Ilievski</h3>
+          <p class="w3-opacity">Research Scientist</p>
+          <p>Researcher at the Information Sciences Institute, University of Southern California.</p>
+        </div>
+      </div>
+    </div>
+
+</div>
+<div class="w3-row-padding">
+
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+        <img src="images/dani.png" alt="Daniel Garijo" style="width:100px;padding-top: 10px;">
+        <div class="w3-container">
+          <h3><a href="https://dgarijo.com">Daniel Garijo</a></h3>
+          <p class="w3-opacity">Distinguished Researcher</p>
+          <p>Researcher at the Universidad Politécnica de Madrid.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="w3-col m4 w3-margin-bottom">
+      <div class="w3-light-grey">
+          <img src="images/kartik.jpeg" alt="Kartik Shenoy" style="width:100px;padding-top: 10px;">
+        <div class="w3-container">
+          <h3>Kartik Shenoy</h3>
+          <p class="w3-opacity">Student worker</p>
+          <p>Master student at the University of Southern California. </p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  </div>
+
+
+
+  </div>
+
+
+
+  </div>
+
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Designed deived from <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+---
+ title: "This is a dummy title"
+ summary: "This is the summary"
+ datasets: 
+   - www.linkD1.com 
+   - www.linkD2.com 
+   - www.linkD3.com 
+ software: 
+   - www.linkS1.com 
+   - www.linkS2.com 
+ bibliography: 
+   - "Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)"
+ 
