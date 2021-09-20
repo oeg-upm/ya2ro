@@ -2,12 +2,26 @@
  title: "This is a dummy title"
  summary: "This is the summary"
  datasets: 
-   - www.linkD1.com 
-   - www.linkD2.com 
-   - www.linkD3.com 
+   - "www.linkD1.com; nameLink1; description dataset 1"
+   - "www.linkD2.com; nameLink2; description dataset 2"
+   - "www.linkD3.com; nameLink3; description dataset 3"
  software: 
-   - www.linkS1.com 
-   - www.linkS2.com 
+   - "www.linkS1.com; nameLink1; description software 1"
+   - "www.linkS2.com; nameLink2; description software 2"
  bibliography: 
    - "Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)"
+
+ authors: 
+   - 
+      name: "Hans Chalupsky"
+      photo_path: link
+      position: "Research Lead"
+      description: "Research Lead at the Information Sciences Institute, University of Southern California."
+
+   - 
+      name: "Pedro Szekely"
+      photo_path: link
+      position: "Research Director"
+      description: "Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California."
+
  
