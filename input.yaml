@@ -14,13 +14,13 @@
  authors: 
    - 
       name: "Hans Chalupsky"
-      photo_path: link
+      photo_path: "images/hans.jpg"
       position: "Research Lead"
       description: "Research Lead at the Information Sciences Institute, University of Southern California."
 
    - 
       name: "Pedro Szekely"
-      photo_path: link
+      photo_path: "images/pedro.jpg"
       position: "Research Director"
       description: "Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California."
 

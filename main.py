@@ -19,6 +19,41 @@ def append_items_link(category, ul_list):
         li_new_tag.a.insert_after(": " + link_and_description[2])
         ul_list.append(li_new_tag)
 
+def create_about_authors(about_authors):
+    num_authors = 0
+    html_author = ""
+
+    for author in data["authors"]:
+
+        num_authors += 1
+
+        if((num_authors-1) %3 == 0):
+            html_author += """<div class="w3-row-padding">"""
+
+        name = author["name"]
+        photo_path = author["photo_path"]
+        position = author["position"]
+        description = author["description"]
+
+        html_author += f"""       <div class="w3-col m4 w3-margin-bottom">
+            <div class="w3-light-grey">
+            <img src="{photo_path}" alt="{name}" style="width:100px;padding-top: 10px;">
+            <div class="w3-container">
+                <h3>{name}</h3> 
+                <p class="w3-opacity"> {position}</p>
+                <p>{description}</p>
+            </div>
+            </div>
+        </div> """ 
+
+        if(num_authors !=0 and num_authors %3 == 0):
+            html_author += "</div>"
+        
+    if(not(num_authors !=0 and num_authors %3 == 0)):
+        html_author += "</div>"
+
+    author_bs = BeautifulSoup(html_author, 'html.parser')
+    about_authors.append(author_bs)
 
 if __name__ == "__main__":
 
@@ -54,9 +89,9 @@ if __name__ == "__main__":
 
     # create authors
     about_authors = soup.find(id="about_authors")
-    
-        
-    # to save the changes
+    create_about_authors(about_authors)
+
+    # dump changes into index.html
     with open("index.html", "w") as file:
         file.write(str(soup))
 
