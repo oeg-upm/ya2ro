@@ -3,20 +3,15 @@ import yaml
 from yaml.loader import SafeLoader
 # import BeautifulSoup
 from bs4 import BeautifulSoup
-# import RegEx
-import re
 
 def append_items_link(category, ul_list):
     for entry in data[category]:
         li_new_tag = soup.new_tag('li')
         a_new_tag = soup.new_tag('a')
-
-        link_and_description = entry.split(';', 2) 
-        # 0: link, 1: link name, 2: description
-        a_new_tag['href'] = link_and_description[0]
-        a_new_tag.string = link_and_description[1]
+        a_new_tag['href'] = entry["link"]
+        a_new_tag.string = entry["name_link"]
         li_new_tag.append(a_new_tag)
-        li_new_tag.a.insert_after(": " + link_and_description[2])
+        li_new_tag.a.insert_after(": " + entry["description"])
         ul_list.append(li_new_tag)
 
 def create_about_authors(about_authors):
