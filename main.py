@@ -8,27 +8,27 @@ def append_items_link(category, ul_list):
     for entry in data[category]:
         li_new_tag = soup.new_tag('li')
         a_new_tag = soup.new_tag('a')
-        a_new_tag['href'] = entry["link"]
-        a_new_tag.string = entry["name_link"]
+        a_new_tag['href'] = entry[vocabulary["link"]]
+        a_new_tag.string = entry[vocabulary["name"]]
         li_new_tag.append(a_new_tag)
-        li_new_tag.a.insert_after(": " + entry["description"])
+        li_new_tag.a.insert_after(": " + entry[vocabulary["description"]])
         ul_list.append(li_new_tag)
 
 def create_about_authors(about_authors):
     num_authors = 0
     html_author = ""
 
-    for author in data["authors"]:
+    for author in data[vocabulary["authors"]]:
 
         num_authors += 1
 
         if((num_authors-1) %3 == 0):
             html_author += """<div class="w3-row-padding">"""
 
-        name = author["name"]
-        photo_path = author["photo_path"]
-        position = author["position"]
-        description = author["description"]
+        name = author[vocabulary["name"]]
+        photo_path = author[vocabulary["photo"]]
+        position = author[vocabulary["position"]]
+        description = author[vocabulary["description"]]
 
         html_author += f"""       <div class="w3-col m4 w3-margin-bottom">
             <div class="w3-light-grey">
@@ -53,31 +53,37 @@ def create_about_authors(about_authors):
 if __name__ == "__main__":
 
     # open the file and load the file
-    with open('input.yaml') as file:
+    with open('properties.yaml') as file:
+        properties = yaml.load(file, Loader=SafeLoader)
+
+    with open(properties["input_yaml"]) as file:
         data = yaml.load(file, Loader=SafeLoader)
+    
+    with open(properties["vocabulary_yaml"]) as file:
+        vocabulary = yaml.load(file, Loader=SafeLoader)
 
     # read and parse the template
-    soup = BeautifulSoup(open('template.html'), 'html.parser')
+    soup = BeautifulSoup(open(properties["template_html"]), 'html.parser')
 
     # create the title
-    soup.find(id = "showcase").h1.string = data["title"]
+    soup.find(id = "showcase").h1.string = data[vocabulary["title"]]
 
     # create the summary
     summary_content = soup.find(id = "summary-content")
-    summary_content.string = "Summary: " + data["summary"]
+    summary_content.string = "Summary: " + data[vocabulary["summary"]]
 
     # create the datasets
     datasets_list = soup.find(id="datasets-list")
-    append_items_link("datasets", datasets_list)
+    append_items_link(vocabulary["datasets"], datasets_list)
 
     # create software
     software_list = soup.find(id="software-list")
-    append_items_link("software", software_list)
+    append_items_link(vocabulary["software"], software_list)
         
     # create bibliography
     bibliography_list = soup.find(id="bibliography-list")
 
-    for entry in data["bibliography"]:
+    for entry in data[vocabulary["bibliography"]]:
         li_new_tag = soup.new_tag('li')
         li_new_tag.string = entry
         bibliography_list.append(li_new_tag)
@@ -87,6 +93,6 @@ if __name__ == "__main__":
     create_about_authors(about_authors)
 
     # dump changes into index.html
-    with open("index.html", "w") as file:
+    with open(properties["output_html"], "w") as file:
         file.write(str(soup))
 

@@ -4,39 +4,59 @@
  datasets: 
    - 
       link: "www.linkD1.com" 
-      name_link: "name dataset 1"
+      name: "name dataset 1"
       description: "description dataset 1"
    - 
       link: "www.linkD2.com" 
-      name_link: "name dataset 2"
+      name: "name dataset 2"
       description: "description dataset 2"
    - 
       link: "www.linkD3.com" 
-      name_link: "name dataset 3"
+      name: "name dataset 3"
       description: "description dataset 3"
   
  software: 
    - 
       link: "www.linkS1.com" 
-      name_link: "name link 1"
+      name: "name link 1"
       description: "description software 1"
    - 
       link: "www.linkS2.com" 
-      name_link: "name link 2"
+      name: "name link 2"
       description: "description software 2"
 
  bibliography: 
    - "Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)"
 
- authors: 
+ authors:  
    - 
       name: "Hans Chalupsky"
-      photo_path: "images/hans.jpg"
+      photo: "images/hans.jpg"
       position: "Research Lead"
       description: "Research Lead at the Information Sciences Institute, University of Southern California."
    - 
       name: "Pedro Szekely"
-      photo_path: "images/pedro.jpg"
+      photo: "images/pedro.jpg"
+      position: "Research Director"
+      description: "Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California."
+   - 
+      name: "Hans Chalupsky"
+      photo: "images/hans.jpg"
+      position: "Research Lead"
+      description: "Research Lead at the Information Sciences Institute, University of Southern California."
+   - 
+      name: "Pedro Szekely"
+      photo: "images/pedro.jpg"
+      position: "Research Director"
+      description: "Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California."
+   - 
+      name: "Hans Chalupsky"
+      photo: "images/hans.jpg"
+      position: "Research Lead"
+      description: "Research Lead at the Information Sciences Institute, University of Southern California."
+   - 
+      name: "Pedro Szekely"
+      photo: "images/pedro.jpg"
       position: "Research Director"
       description: "Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California."
 
