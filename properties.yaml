@@ -3,3 +3,4 @@
   vocabulary_yaml: "vocabulary.yaml"
   template_html: "template.html"
   output_html: "output.html"
+  output_jsondl: "ro-crate.json"

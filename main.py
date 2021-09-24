@@ -3,8 +3,11 @@ import yaml
 from yaml.loader import SafeLoader
 # import BeautifulSoup
 from bs4 import BeautifulSoup
+# import json lib
+import json
 
-def append_items_link(category, ul_list):
+
+def append_items_link(soup, category, ul_list):
     for entry in data[category]:
         li_new_tag = soup.new_tag('li')
         a_new_tag = soup.new_tag('a')
@@ -50,18 +53,7 @@ def create_about_authors(about_authors):
     author_bs = BeautifulSoup(html_author, 'html.parser')
     about_authors.append(author_bs)
 
-if __name__ == "__main__":
-
-    # open the file and load the file
-    with open('properties.yaml') as file:
-        properties = yaml.load(file, Loader=SafeLoader)
-
-    with open(properties["input_yaml"]) as file:
-        data = yaml.load(file, Loader=SafeLoader)
-    
-    with open(properties["vocabulary_yaml"]) as file:
-        vocabulary = yaml.load(file, Loader=SafeLoader)
-
+def create_html_from_yalm():
     # read and parse the template
     soup = BeautifulSoup(open(properties["template_html"]), 'html.parser')
 
@@ -74,11 +66,11 @@ if __name__ == "__main__":
 
     # create the datasets
     datasets_list = soup.find(id="datasets-list")
-    append_items_link(vocabulary["datasets"], datasets_list)
+    append_items_link(soup, vocabulary["datasets"], datasets_list)
 
     # create software
     software_list = soup.find(id="software-list")
-    append_items_link(vocabulary["software"], software_list)
+    append_items_link(soup, vocabulary["software"], software_list)
         
     # create bibliography
     bibliography_list = soup.find(id="bibliography-list")
@@ -95,4 +87,118 @@ if __name__ == "__main__":
     # dump changes into index.html
     with open(properties["output_html"], "w") as file:
         file.write(str(soup))
+
+def graph_add_authors(authors, graph):
+
+    graph[1]["author"] = []
+
+    for author in authors:
+
+        graph[1]["author"].append(author[vocabulary["name"]])
+
+        graph.append({
+        "@id": "#"+author[vocabulary["name"]],
+        "@type": "Person",
+        "name": author[vocabulary["name"]],
+        "position": author[vocabulary["position"]],
+        "description": author[vocabulary["description"]]
+      })
+
+def graph_add_softwares(softwares, graph):
+
+    software_node = {
+        "@id": "#softwares",
+        "@type": "SoftwareApplication",
+        "hasPart": []
+      }
+    
+    for software in softwares:
+
+        software_node["hasPart"].append(software[vocabulary["name"]])
+
+        graph.append({
+        "@id": software[vocabulary["name"]],
+        "installUrl": software[vocabulary["link"]],
+        "@type": "SoftwareApplication",
+        "description": software[vocabulary["description"]]
+      })
+
+    graph.insert(-len(softwares),software_node)
+
+def graph_add_datasets(datasets, graph):
+
+    dataset_node = {
+        "@id": "#datasets",
+        "@type": "Dataset",
+        "hasPart": []
+      }
+    
+    for dataset in datasets:
+        dataset_node["hasPart"].append(dataset[vocabulary["name"]])
+
+        graph.append({
+            "@id": dataset[vocabulary["name"]],
+            "@type": "Dataset",
+            "name": dataset[vocabulary["name"]],
+            "description": dataset[vocabulary["description"]],
+            "distribution": {"@id": dataset[vocabulary["link"]]}
+        })
+
+        graph.append({
+            "@id": dataset[vocabulary["link"]],
+            "@type": "DataDownload",
+            "encodingFormat": "application/zip"
+        })
+
+    graph.insert(-len(datasets)*2, dataset_node)
+
+def create_jsondl_from_yalm():
+    
+    jsonld = {}
+    jsonld["@context"] = "https://w3id.org/ro/crate/1.1/context"
+    graph = [
+        {
+            "@type": "CreativeWork",
+            "@id": "ro-crate-metadata.json",
+            "conformsTo": {"@id": "https://w3id.org/ro/crate/1.1"},
+            "about": {"@id": "./"},
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+          "@id": "./",
+          "@type": "Paper",
+          "name": data[vocabulary["title"]],
+          "description": data[vocabulary["summary"]],
+          "author": [],
+          "hasPart": [
+            {"@id": "#softwares"},
+            {"@id": "#datasets"}
+          ]
+      }
+    ]
+
+    graph_add_authors(data[vocabulary["authors"]], graph)
+    graph_add_softwares(data[vocabulary["software"]], graph)
+    graph_add_datasets(data[vocabulary["datasets"]], graph)
+
+    jsonld["@graph"] = graph
+
+    # dump changes into jsondl
+    with open(properties["output_jsondl"], "w") as file:
+        file.write(json.dumps(jsonld, indent=4, sort_keys=True))
+
+if __name__ == "__main__":
+
+    # open the file and load the file
+    with open('properties.yaml') as file:
+        properties = yaml.load(file, Loader=SafeLoader)
+
+    with open(properties["input_yaml"]) as file:
+        data = yaml.load(file, Loader=SafeLoader)
+    
+    with open(properties["vocabulary_yaml"]) as file:
+        vocabulary = yaml.load(file, Loader=SafeLoader)
+
+    create_html_from_yalm()
+    create_jsondl_from_yalm()
 

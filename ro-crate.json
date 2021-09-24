@@ -1,0 +1,151 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Paper",
+            "author": [
+                "Hans Chalupsky",
+                "Pedro Szekely",
+                "Hans Chalupsky",
+                "Pedro Szekely",
+                "Hans Chalupsky",
+                "Pedro Szekely"
+            ],
+            "description": "This is the summary",
+            "hasPart": [
+                {
+                    "@id": "#softwares"
+                },
+                {
+                    "@id": "#datasets"
+                }
+            ],
+            "name": "This is a dummy title"
+        },
+        {
+            "@id": "#Hans Chalupsky",
+            "@type": "Person",
+            "description": "Research Lead at the Information Sciences Institute, University of Southern California.",
+            "name": "Hans Chalupsky",
+            "position": "Research Lead"
+        },
+        {
+            "@id": "#Pedro Szekely",
+            "@type": "Person",
+            "description": "Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California.",
+            "name": "Pedro Szekely",
+            "position": "Research Director"
+        },
+        {
+            "@id": "#Hans Chalupsky",
+            "@type": "Person",
+            "description": "Research Lead at the Information Sciences Institute, University of Southern California.",
+            "name": "Hans Chalupsky",
+            "position": "Research Lead"
+        },
+        {
+            "@id": "#Pedro Szekely",
+            "@type": "Person",
+            "description": "Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California.",
+            "name": "Pedro Szekely",
+            "position": "Research Director"
+        },
+        {
+            "@id": "#Hans Chalupsky",
+            "@type": "Person",
+            "description": "Research Lead at the Information Sciences Institute, University of Southern California.",
+            "name": "Hans Chalupsky",
+            "position": "Research Lead"
+        },
+        {
+            "@id": "#Pedro Szekely",
+            "@type": "Person",
+            "description": "Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California.",
+            "name": "Pedro Szekely",
+            "position": "Research Director"
+        },
+        {
+            "@id": "#softwares",
+            "@type": "SoftwareApplication",
+            "hasPart": [
+                "name link 1",
+                "name link 2"
+            ]
+        },
+        {
+            "@id": "name link 1",
+            "@type": "SoftwareApplication",
+            "description": "description software 1",
+            "installUrl": "www.linkS1.com"
+        },
+        {
+            "@id": "name link 2",
+            "@type": "SoftwareApplication",
+            "description": "description software 2",
+            "installUrl": "www.linkS2.com"
+        },
+        {
+            "@id": "#datasets",
+            "@type": "Dataset",
+            "hasPart": [
+                "name dataset 1",
+                "name dataset 2",
+                "name dataset 3"
+            ]
+        },
+        {
+            "@id": "name dataset 1",
+            "@type": "Dataset",
+            "description": "description dataset 1",
+            "distribution": {
+                "@id": "www.linkD1.com"
+            },
+            "name": "name dataset 1"
+        },
+        {
+            "@id": "www.linkD1.com",
+            "@type": "DataDownload",
+            "encodingFormat": "application/zip"
+        },
+        {
+            "@id": "name dataset 2",
+            "@type": "Dataset",
+            "description": "description dataset 2",
+            "distribution": {
+                "@id": "www.linkD2.com"
+            },
+            "name": "name dataset 2"
+        },
+        {
+            "@id": "www.linkD2.com",
+            "@type": "DataDownload",
+            "encodingFormat": "application/zip"
+        },
+        {
+            "@id": "name dataset 3",
+            "@type": "Dataset",
+            "description": "description dataset 3",
+            "distribution": {
+                "@id": "www.linkD3.com"
+            },
+            "name": "name dataset 3"
+        },
+        {
+            "@id": "www.linkD3.com",
+            "@type": "DataDownload",
+            "encodingFormat": "application/zip"
+        }
+    ]
+}
