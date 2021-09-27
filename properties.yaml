@@ -1,6 +1,9 @@
 ---
+#-----------------------------
+# file_descriptor: "file_name"
+#-----------------------------
   input_yaml: "input.yaml"
-  vocabulary_yaml: "vocabulary.yaml"
+  input_to_vocab_yaml: "input_to_vocab.yaml"
   template_html: "template.html"
-  output_html: "output.html"
-  output_jsondl: "ro-crate.json"
+  output_html: "index.html"
+  output_jsonld: "ro-crate.json"
