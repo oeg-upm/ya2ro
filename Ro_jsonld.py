@@ -100,6 +100,6 @@ class Ro_jsonld(object):
 
     def createJSONLD_file(self):
         # dump changes into self.jsonld
-        with open(prop.properties["output_jsonld"], "w") as file:
+        with open(prop.properties["output_jsonld"], "w+") as file:
             file.write(json.dumps(self.jsonld, indent=4, sort_keys=True))
 

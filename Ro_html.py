@@ -39,7 +39,7 @@ class Ro_html(object):
 
     def createHTML_file(self):
         # dump changes into index.html
-        with open(Properties.properties["output_html"], "w") as file:
+        with open(Properties.properties["output_html"], "w+") as file:
             file.write(str(self.soup))
 
     def __append_items_link(self, category, ul_list):

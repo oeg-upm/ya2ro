@@ -2,8 +2,7 @@
 #-----------------------------
 # file_descriptor: "file_name"
 #-----------------------------
-  input_yaml: "input.yaml"
   input_to_vocab_yaml: "resources/input_to_vocab.yaml"
   template_html: "resources/template.html"
-  output_html: "output/index.html"
-  output_jsonld: "output/ro-crate.json"
+  output_html: "index.html"
+  output_jsonld: "ro-crate.json"
