@@ -1,9 +1,0 @@
----
-#-----------------------------
-# file_descriptor: "file_name"
-#-----------------------------
-  input_yaml: "input.yaml"
-  input_to_vocab_yaml: "input_to_vocab.yaml"
-  template_html: "template.html"
-  output_html: "index.html"
-  output_jsonld: "ro-crate.json"

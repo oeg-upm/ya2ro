@@ -2,7 +2,7 @@
 import yaml 
 from yaml.loader import SafeLoader
     
-with open('properties.yaml') as file:
+with open('resources/properties.yaml') as file:
     properties = yaml.load(file, Loader=SafeLoader)
 
 with open(properties["input_yaml"]) as file:
