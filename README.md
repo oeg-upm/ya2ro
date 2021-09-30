@@ -30,7 +30,7 @@ Optional arguments:
 
 ## Example of use
 
-Simple exeution:
+Simple execution:
 
 `python3 main.py input.yaml`
 
