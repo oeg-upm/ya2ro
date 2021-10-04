@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<title>Materials</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+<body>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" id="mySidebar" style="z-index:3;width:300px;font-weight:bold;"><br/>
+<a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()" style="width:100%;font-size:22px">Close Menu</a>
+<div class="w3-container">
+<h3 class="w3-padding-64"><b>Supplementary Materials</b></h3>
+</div>
+<div class="w3-bar-block">
+<a class="w3-bar-item w3-button w3-hover-white" href="#" onclick="w3_close()">Summary</a>
+<a class="w3-bar-item w3-button w3-hover-white" href="#data" onclick="w3_close()">Datasets</a>
+<a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a>
+<!--  <a href="#docker" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Container Image</a>
+    <a href="#prov" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Provenance Traces</a>-->
+<a class="w3-bar-item w3-button w3-hover-white" href="#bib" onclick="w3_close()">Bibliography</a>
+<a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a>
+</div>
+</nav>
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
+<a class="w3-button w3-green w3-margin-right" href="javascript:void(0)" onclick="w3_open()">☰</a>
+<!--<span>Company Name</span>-->
+</header>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+<!-- Header -->
+<div class="w3-container" id="showcase" style="margin-top:80px">
+<h1>This is a dummy title</h1>
+<!--<h2 class="w3-text-green"><b></b></h2>
+    <hr style="width:50px;border:5px solid green" class="w3-round">-->
+</div>
+<div class="w3-container" id="summary" style="margin-top:15px">
+<!--<h1 class="w3-xxxlarge w3-text-green"><b>Services.</b></h1>-->
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<p>This page provides pointers to the materials (datasets, software and notebooks) used in a paper currently <strong>under review</strong> </p>
+<p id="summary-content">Summary: This is the summary</p>
+</div>
+<div class="w3-container" id="data" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Datasets.</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<h3>Input Datasets</h3>
+    We used the following datasets for our paper:
+    <ul id="datasets-list">
+<li><a href="www.linkD1.com">name dataset 1</a>: description dataset 1</li><li><a href="www.linkD2.com">name dataset 2</a>: description dataset 2</li><li><a href="www.linkD3.com">name dataset 3</a>: description dataset 3</li></ul>
+</div>
+<div class="w3-container" id="software" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Software and Notebooks.</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+    The pointers for the main software used can be found below:
+    <ul id="software-list">
+<li><a href="www.linkS1.com">name link 1</a>: description software 1</li><li><a href="www.linkS2.com">name link 2</a>: description software 2</li></ul>
+</div>
+<div class="w3-container" id="bib" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography.</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<ol id="bibliography-list">
+<li>Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)</li></ol>
+</div>
+<!-- The Team -->
+<div class="w3-container" id="authors" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>About the authors.</b></h1>
+<hr class="w3-round" id="about_authors" style="width:50px;border:5px solid green"><div class="w3-row-padding"> <div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey">
+<img alt="Dummy Name 1" src="images/default_author.jpg" style="width:100px;padding-top: 10px;"/>
+<div class="w3-container">
+<h3>Dummy Name 1</h3>
+<p class="w3-opacity"> Dummy Position</p>
+<p>Here it goes a more detailed description.</p>
+</div>
+</div>
+</div> <div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey">
+<img alt="Dummy Name 2" src="images/default_author.jpg" style="width:100px;padding-top: 10px;"/>
+<div class="w3-container">
+<h3>Dummy Name 2</h3>
+<p class="w3-opacity"> Dummy Position</p>
+<p>Here it goes a more detailed description.</p>
+</div>
+</div>
+</div> </div></hr>
+</div>
+</div>
+</body></html>
+
+
+<!-- End page content -->
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Designed deived from <a class="w3-hover-opacity" href="https://www.w3schools.com/w3css/default.asp" target="_blank" title="W3.CSS">w3.css</a></p></div>
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+

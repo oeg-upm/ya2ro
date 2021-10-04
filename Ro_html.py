@@ -1,6 +1,9 @@
 # import BeautifulSoup
 import Properties
 from bs4 import BeautifulSoup
+from shutil import copyfile
+from pathlib import Path
+
 
 class Ro_html(object):
 
@@ -41,6 +44,15 @@ class Ro_html(object):
         # dump changes into index.html
         with open(Properties.properties["output_html"], "w+") as file:
             file.write(str(self.soup))
+
+        # copy images to output/images directory
+
+        for author in Properties.data["authors"]:
+
+            src = Path(author[Properties.input_to_vocab["photo"]])
+            dst = Path(Properties.output_directory + "/" + author[Properties.input_to_vocab["photo"]])
+            
+            copyfile(src, dst)
 
     def __append_items_link(self, category, ul_list):
         for entry in Properties.data[category]:

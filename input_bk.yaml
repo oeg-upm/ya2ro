@@ -29,7 +29,7 @@
    - "Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)"
 
  authors:  
-   - 
+      - 
       name: "Dummy Name 1"
       photo: "images/default_author.jpg"
       position: "Dummy Position"
@@ -39,5 +39,24 @@
       photo: "images/default_author.jpg"
       position: "Dummy Position"
       description: "Here it goes a more detailed description."
-
- 
+   - 
+      name: "Dummy Name 3"
+      photo: "images/default_author.jpg"
+      position: "Dummy Position"
+      description: "Here it goes a more detailed description."
+   - 
+      name: "Dummy Name 4"
+      photo: "images/default_author.jpg"
+      position: "Dummy Position"
+      description: "Here it goes a more detailed description."
+   - 
+      name: "Dummy Name 5"
+      photo: "images/default_author.jpg"
+      position: "Dummy Position"
+      description: "Here it goes a more detailed description."
+   - 
+      name: "Dummy Name 6"
+      photo: "images/default_author.jpg"
+      position: "Dummy Position"
+      description: "Here it goes a more detailed description."
+   
