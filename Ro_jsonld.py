@@ -17,14 +17,11 @@ class Ro_jsonld(object):
             },
             {
             "@id": "./",
-            "@type": "Paper",
+            "@type": "Dataset",
             "name": prop.data[prop.input_to_vocab["title"]],
             "description": prop.data[prop.input_to_vocab["summary"]],
             "author": [],
-            "hasPart": [
-                {"@id": "#softwares"},
-                {"@id": "#datasets"}
-            ]
+            "hasPart": []
         }
         ]
 
@@ -34,16 +31,29 @@ class Ro_jsonld(object):
 
         self.jsonld["@graph"] = graph
 
-    def graph_add_authors(self, authors, graph):
+    def _normalize_name(self, name):
+        """Normalizes names in order to be used as an ID."""
+        return "#" + str(name).replace(' ', '_').lower()
 
-        graph[1]["author"] = []
+    def _add_id_to_list(self, name, list):
+        """Enters a name with blank spaces or not and appends
+        to the list a id normalized version of the name. List 
+        must be a list of dicts."""
+
+        id_normalized = self._normalize_name(name)
+        list.append({
+            "@id": id_normalized
+        })
+
+    def graph_add_authors(self, authors, graph):
 
         for author in authors:
 
-            graph[1]["author"].append(author[prop.input_to_vocab["name"]])
+            self._add_id_to_list(author[prop.input_to_vocab["name"]],
+                                 graph[1]["author"])
 
             graph.append({
-            "@id": "#"+author[prop.input_to_vocab["name"]],
+            "@id": self._normalize_name(author[prop.input_to_vocab["name"]]),
             "@type": "Person",
             "name": author[prop.input_to_vocab["name"]],
             "position": author[prop.input_to_vocab["position"]],
@@ -52,38 +62,27 @@ class Ro_jsonld(object):
 
     def graph_add_softwares(self, softwares, graph):
 
-        software_node = {
-            "@id": "#softwares",
-            "@type": "SoftwareApplication",
-            "hasPart": []
-        }
-        
         for software in softwares:
 
-            software_node["hasPart"].append(software[prop.input_to_vocab["name"]])
+            self._add_id_to_list(software[prop.input_to_vocab["name"]],
+                                 graph[1]["hasPart"])
 
             graph.append({
-            "@id": software[prop.input_to_vocab["name"]],
+            "@id": self._normalize_name(software[prop.input_to_vocab["name"]]),
             "installUrl": software[prop.input_to_vocab["link"]],
             "@type": "SoftwareApplication",
             "description": software[prop.input_to_vocab["description"]]
         })
 
-        graph.insert(-len(softwares),software_node)
-
     def graph_add_datasets(self, datasets, graph):
-
-        dataset_node = {
-            "@id": "#datasets",
-            "@type": "Dataset",
-            "hasPart": []
-        }
         
         for dataset in datasets:
-            dataset_node["hasPart"].append(dataset[prop.input_to_vocab["name"]])
+
+            self._add_id_to_list(dataset[prop.input_to_vocab["name"]],
+                                 graph[1]["hasPart"])
 
             graph.append({
-                "@id": dataset[prop.input_to_vocab["name"]],
+                "@id": self._normalize_name(dataset[prop.input_to_vocab["name"]]),
                 "@type": "Dataset",
                 "name": dataset[prop.input_to_vocab["name"]],
                 "description": dataset[prop.input_to_vocab["description"]],
@@ -95,8 +94,6 @@ class Ro_jsonld(object):
                 "@type": "DataDownload",
                 "encodingFormat": "application/zip"
             })
-
-        graph.insert(-len(datasets)*2, dataset_node)
 
     def createJSONLD_file(self):
         # dump changes into self.jsonld
