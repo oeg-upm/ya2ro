@@ -82,7 +82,7 @@ class Ro_html(object):
 
             html_author += f"""       <div class="w3-col m4 w3-margin-bottom">
                 <div class="w3-light-grey">
-                <img src="{photo_path}" alt="{name}" style="width:100px;padding-top: 10px;">
+                <img src="{photo_path}" alt="{name}" style="width:90%;padding-top: 10px;">
                 <div class="w3-container">
                     <h3>{name}</h3> 
                     <p class="w3-opacity"> {position}</p>

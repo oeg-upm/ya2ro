@@ -6,24 +6,34 @@
       link: "www.linkD1.com" 
       name: "name dataset 1"
       description: "description dataset 1"
+      doi: "www.doi1.com"
+      citation: "Citation"
    - 
       link: "www.linkD2.com" 
       name: "name dataset 2"
       description: "description dataset 2"
+      doi: "www.doi1.com"
+      citation: "Citation"
    - 
       link: "www.linkD3.com" 
       name: "name dataset 3"
       description: "description dataset 3"
+      doi: "www.doi1.com"
+      citation: "Citation"
   
  software: 
    - 
       link: "www.linkS1.com" 
       name: "name link 1"
       description: "description software 1"
+      doi: "www.doi1.com"
+      citation: "Citation"
    - 
       link: "www.linkS2.com" 
       name: "name link 2"
       description: "description software 2"
+      doi: "www.doi1.com"
+      citation: "Citation"
 
  bibliography: 
    - "Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)"
@@ -39,5 +49,16 @@
       photo: "images/default_author.jpg"
       position: "Dummy Position"
       description: "Here it goes a more detailed description."
+   -
+      name: "Dummy Name 3"
+      photo: "images/default_author.jpg"
+      position: "Dummy Position"
+      description: "Here it goes a more detailed description."
+   - 
+      name: "Dummy Name 4"
+      photo: "images/default_author.jpg"
+      position: "Dummy Position"
+      description: "Here it goes a more detailed description."
+
 
  

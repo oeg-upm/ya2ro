@@ -21,6 +21,12 @@
                 },
                 {
                     "@id": "#dummy_name_2"
+                },
+                {
+                    "@id": "#dummy_name_3"
+                },
+                {
+                    "@id": "#dummy_name_4"
                 }
             ],
             "description": "This is the summary",
@@ -55,6 +61,20 @@
             "@type": "Person",
             "description": "Here it goes a more detailed description.",
             "name": "Dummy Name 2",
+            "position": "Dummy Position"
+        },
+        {
+            "@id": "#dummy_name_3",
+            "@type": "Person",
+            "description": "Here it goes a more detailed description.",
+            "name": "Dummy Name 3",
+            "position": "Dummy Position"
+        },
+        {
+            "@id": "#dummy_name_4",
+            "@type": "Person",
+            "description": "Here it goes a more detailed description.",
+            "name": "Dummy Name 4",
             "position": "Dummy Position"
         },
         {
