@@ -21,12 +21,26 @@ class Ro_html(object):
         summary_content.string = "Summary: " + Properties.data[Properties.input_to_vocab["summary"]]
 
         # create the datasets
+            # Insert DOI link
+        doi_link = Properties.data[Properties.input_to_vocab["datasets"]][Properties.input_to_vocab["doi"]]
+        dataset_doi_string = f"""We used the following datasets for our paper, available in Zenodo under DOI: <a href="{doi_link}">{doi_link}</a>"""
+        doi_html = BeautifulSoup(dataset_doi_string, 'html.parser')
+        datasets = self.soup.find(id="datasets-doi")
+        datasets.append(doi_html)
+
+            # Insert list of datasets
         datasets_list = self.soup.find(id="datasets-list")
-        self.__append_items_link(Properties.input_to_vocab["datasets"], datasets_list)
+        self.__append_items_link(
+            Properties.data[Properties.input_to_vocab["datasets"]][Properties.input_to_vocab["datasets_links"]], 
+            datasets_list
+            )
 
         # create software
         software_list = self.soup.find(id="software-list")
-        self.__append_items_link(Properties.input_to_vocab["software"], software_list)
+        self.__append_items_link(
+            Properties.data[Properties.input_to_vocab["software"]], 
+            software_list
+            )
             
         # create bibliography
         bibliography_list = self.soup.find(id="bibliography-list")
@@ -54,8 +68,8 @@ class Ro_html(object):
             
             copyfile(src, dst)
 
-    def __append_items_link(self, category, ul_list):
-        for entry in Properties.data[category]:
+    def __append_items_link(self, list, ul_list):
+        for entry in list:
             li_new_tag = self.soup.new_tag('li')
             a_new_tag = self.soup.new_tag('a')
             a_new_tag['href'] = entry[Properties.input_to_vocab["link"]]

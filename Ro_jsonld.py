@@ -25,10 +25,12 @@ class Ro_jsonld(object):
         }
         ]
 
+        # Self creates the hardcoded structure
         self.graph_add_authors(prop.data[prop.input_to_vocab["authors"]], graph)
         self.graph_add_softwares(prop.data[prop.input_to_vocab["software"]], graph)
-        self.graph_add_datasets(prop.data[prop.input_to_vocab["datasets"]], graph)
+        self.graph_add_datasets(prop.data[prop.input_to_vocab["datasets"]][prop.input_to_vocab["datasets_links"]], graph)
 
+        # Adds graph to the final structure jsonld
         self.jsonld["@graph"] = graph
 
     def _normalize_name(self, name):
@@ -96,7 +98,7 @@ class Ro_jsonld(object):
             })
 
     def createJSONLD_file(self):
-        # dump changes into self.jsonld
+        # dump changes into output/ro-crate.json
         with open(prop.properties["output_jsonld"], "w+") as file:
             file.write(json.dumps(self.jsonld, indent=4, sort_keys=True))
 

@@ -5,6 +5,7 @@
  title: "title"
  summary: "summary"
  datasets: "datasets"
+ datasets_links: "datasets_links"
  link: "link"
  name: "name"
  description: "description"
