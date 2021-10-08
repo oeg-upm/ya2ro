@@ -1,0 +1,10 @@
+# Turn off MultiViews
+Options -MultiViews
+
+AddType application/ld+json .json
+
+RewriteEngine on
+
+# Rewrite rule to serve JSON-LD content from the vocabulary URI if requested
+RewriteCond %{HTTP_ACCEPT} application/ld\+json
+RewriteRule ^$ http://localhost/ro-crate.json [R=303,L]

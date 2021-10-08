@@ -99,11 +99,6 @@
             "name": "name dataset 1"
         },
         {
-            "@id": "www.linkD1.com",
-            "@type": "DataDownload",
-            "encodingFormat": "application/zip"
-        },
-        {
             "@id": "#name_dataset_2",
             "@type": "Dataset",
             "description": "description dataset 2",
@@ -113,11 +108,6 @@
             "name": "name dataset 2"
         },
         {
-            "@id": "www.linkD2.com",
-            "@type": "DataDownload",
-            "encodingFormat": "application/zip"
-        },
-        {
             "@id": "#name_dataset_3",
             "@type": "Dataset",
             "description": "description dataset 3",
@@ -125,11 +115,6 @@
                 "@id": "www.linkD3.com"
             },
             "name": "name dataset 3"
-        },
-        {
-            "@id": "www.linkD3.com",
-            "@type": "DataDownload",
-            "encodingFormat": "application/zip"
         }
     ]
 }

@@ -6,3 +6,4 @@
   template_html: "resources/template.html"
   output_html: "index.html"
   output_jsonld: "ro-crate.json"
+  htaccess: "resources/.htaccess"
