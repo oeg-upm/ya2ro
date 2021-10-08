@@ -14,14 +14,13 @@ Run the script as follows:
 ---
 
 ```
-usage: main.py [-h] [--output_directory OUTPUT_DIRECTORY] [--properties_file PROPERTIES_FILE] input_yalm
+Usage: main.py [-h] -i INPUT_FILE [--output_directory OUTPUT_DIRECTORY] [--properties_file PROPERTIES_FILE]
 
-Positional arguments:
-  input_yalm            Path of required yalm input, follow the documentation or the example given to see the structure of the
-                        file.
+Human and machine readeable input as a yalm file and create RO-Object in jsonld and/or HTML view.
 
-Optional arguments:
+optional arguments:
   -h, --help            show this help message and exit
+  -i INPUT_FILE         Path of the required yalm input. Follow the documentation or the example given to see the structure of the file.
   --output_directory OUTPUT_DIRECTORY
                         Output diretory.
   --properties_file PROPERTIES_FILE
@@ -32,8 +31,8 @@ Optional arguments:
 
 Simple execution:
 
-`python3 main.py input.yaml`
+`python3 main.py -i input.yaml`
 
 With optional arguments:
 
-`python3 main.py input.yaml --output_directory out --properties_file prop.yaml`
+`python3 main.py -i input.yaml --output_directory out --properties_file prop.yaml`
