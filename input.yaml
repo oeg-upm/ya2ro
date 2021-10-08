@@ -1,5 +1,5 @@
 ---
- title: "This is a dummy title"
+ title: "This is a title"
  summary: "This is the summary"
  datasets: 
    doi: "www.link-doi.com"
@@ -32,24 +32,24 @@
 
  authors:  
    - 
-      name: "Dummy Name 1"
+      name: "Name 1"
       photo: "images/default_author.jpg"
-      position: "Dummy Position"
+      position: "Position"
       description: "Here it goes a more detailed description."
    - 
-      name: "Dummy Name 2"
+      name: "Name 2"
       photo: "images/default_author.jpg"
-      position: "Dummy Position"
+      position: "Position"
       description: "Here it goes a more detailed description."
    -
-      name: "Dummy Name 3"
+      name: "Name 3"
       photo: "images/default_author.jpg"
-      position: "Dummy Position"
+      position: "Position"
       description: "Here it goes a more detailed description."
    - 
-      name: "Dummy Name 4"
+      name: "Name 4"
       photo: "images/default_author.jpg"
-      position: "Dummy Position"
+      position: "Position"
       description: "Here it goes a more detailed description."
 
 

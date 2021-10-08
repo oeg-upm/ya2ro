@@ -17,16 +17,16 @@
             "@type": "Dataset",
             "author": [
                 {
-                    "@id": "#dummy_name_1"
+                    "@id": "#name_1"
                 },
                 {
-                    "@id": "#dummy_name_2"
+                    "@id": "#name_2"
                 },
                 {
-                    "@id": "#dummy_name_3"
+                    "@id": "#name_3"
                 },
                 {
-                    "@id": "#dummy_name_4"
+                    "@id": "#name_4"
                 }
             ],
             "description": "This is the summary",
@@ -47,35 +47,35 @@
                     "@id": "#name_dataset_3"
                 }
             ],
-            "name": "This is a dummy title"
+            "name": "This is a title"
         },
         {
-            "@id": "#dummy_name_1",
+            "@id": "#name_1",
             "@type": "Person",
             "description": "Here it goes a more detailed description.",
-            "name": "Dummy Name 1",
-            "position": "Dummy Position"
+            "name": "Name 1",
+            "position": "Position"
         },
         {
-            "@id": "#dummy_name_2",
+            "@id": "#name_2",
             "@type": "Person",
             "description": "Here it goes a more detailed description.",
-            "name": "Dummy Name 2",
-            "position": "Dummy Position"
+            "name": "Name 2",
+            "position": "Position"
         },
         {
-            "@id": "#dummy_name_3",
+            "@id": "#name_3",
             "@type": "Person",
             "description": "Here it goes a more detailed description.",
-            "name": "Dummy Name 3",
-            "position": "Dummy Position"
+            "name": "Name 3",
+            "position": "Position"
         },
         {
-            "@id": "#dummy_name_4",
+            "@id": "#name_4",
             "@type": "Person",
             "description": "Here it goes a more detailed description.",
-            "name": "Dummy Name 4",
-            "position": "Dummy Position"
+            "name": "Name 4",
+            "position": "Position"
         },
         {
             "@id": "#name_link_1",
