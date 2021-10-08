@@ -91,12 +91,6 @@ class Ro_jsonld(object):
                 "distribution": {"@id": dataset[prop.input_to_vocab["link"]]}
             })
 
-            graph.append({
-                "@id": dataset[prop.input_to_vocab["link"]],
-                "@type": "DataDownload",
-                "encodingFormat": "application/zip"
-            })
-
     def createJSONLD_file(self):
         # dump changes into output/ro-crate.json
         with open(prop.properties["output_jsonld"], "w+") as file:
