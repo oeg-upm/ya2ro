@@ -13,6 +13,9 @@ class Ro_html(object):
         # read and parse the template
         self.soup = BeautifulSoup(open(Properties.properties["template_html"]), 'html.parser')
 
+        # modify web title metadata
+        self.soup.find('title').string = Properties.data[Properties.input_to_vocab["title"]]
+
         # create the title
         self.soup.find(id = "showcase").h1.string = Properties.data[Properties.input_to_vocab["title"]]
 
