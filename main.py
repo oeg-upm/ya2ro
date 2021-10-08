@@ -10,8 +10,8 @@ if __name__ == "__main__":
         description='Human and machine readeable input as a yalm file and create RO-Object in jsonld and/or HTML view.')
 
     # Required positional argument
-    parser.add_argument('input_yalm', type=str,
-        help='Path of required yalm input, follow the documentation or the example given to see the structure of the file.')
+    parser.add_argument('-i', type=str, required=True, metavar='INPUT_FILE',
+        help='Path of the required yalm input. Follow the documentation or the example given to see the structure of the file.')
 
     # Optional argument
     parser.add_argument('--output_directory', type=str, help='Output diretory.')
@@ -24,7 +24,7 @@ if __name__ == "__main__":
     # Default values and yalm_input
     output_directory = "output" if args.output_directory is None else args.output_directory
     properties_file = "resources/properties.yaml" if args.properties_file is None else args.properties_file
-    input_yalm = args.input_yalm
+    input_yalm = args.i
 
     #----------------------------------------------------------------------------------
     # Create RO objects and dump results
