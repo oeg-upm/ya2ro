@@ -1,5 +1,7 @@
 import Properties as prop
 import json
+from Orcid_req import Orcid_req
+
 
 class Ro_jsonld(object):
 
@@ -51,14 +53,22 @@ class Ro_jsonld(object):
 
         for author in authors:
 
-            self._add_id_to_list(author[prop.input_to_vocab["name"]],
-                                 graph[1]["author"])
+            if prop.input_to_vocab["orcid"] in author:
+                orcid = Orcid_req(author[prop.input_to_vocab["orcid"]])
+                name = orcid.get_full_name()
+                position = " | ".join(orcid.get_affiliation())
+            else:
+                name = author[prop.input_to_vocab["name"]]
+                position = author[prop.input_to_vocab["position"]]
+            
+
+            self._add_id_to_list(name, graph[1]["author"])
 
             graph.append({
-            "@id": self._normalize_name(author[prop.input_to_vocab["name"]]),
+            "@id": self._normalize_name(name),
             "@type": "Person",
-            "name": author[prop.input_to_vocab["name"]],
-            "position": author[prop.input_to_vocab["position"]],
+            "name": name,
+            "position": position,
             "description": author[prop.input_to_vocab["description"]]
         })
 

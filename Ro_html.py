@@ -1,4 +1,5 @@
 # import BeautifulSoup
+from Orcid_req import Orcid_req
 import Properties
 from bs4 import BeautifulSoup
 from shutil import copyfile
@@ -97,9 +98,17 @@ class Ro_html(object):
             if((num_authors-1) %3 == 0):
                 html_author += """<div class="w3-row-padding">"""
 
-            name = author[Properties.input_to_vocab["name"]]
+            if Properties.input_to_vocab["orcid"] in author:
+                orcid = Orcid_req(author[Properties.input_to_vocab["orcid"]])
+                name = orcid.get_full_name()
+                position = "\n".join(orcid.get_affiliation())
+                web = orcid.get_webs()[-1]
+            else:
+                name = author[Properties.input_to_vocab["name"]]
+                position = author[Properties.input_to_vocab["position"]]
+                web = author[Properties.input_to_vocab["web"]]
+
             photo_path = author[Properties.input_to_vocab["photo"]]
-            position = author[Properties.input_to_vocab["position"]]
             description = author[Properties.input_to_vocab["description"]]
 
             html_author += f"""       <div class="w3-col m4 w3-margin-bottom">
@@ -108,7 +117,9 @@ class Ro_html(object):
                 <div class="w3-container">
                     <h3>{name}</h3> 
                     <p class="w3-opacity"> {position}</p>
+                    <a href="{web}">{web}</a>
                     <p>{description}</p>
+                    
                 </div>
                 </div>
             </div> """ 

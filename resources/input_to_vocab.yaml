@@ -17,6 +17,8 @@
  images: "images"
  doi: "doi"
  citation: "citation"
+ orcid: "orcid"
+ web: "web"
 
 
   
