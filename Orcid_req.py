@@ -28,9 +28,3 @@ class Orcid_req(object):
             affiliations.add(aff["name"])
         
         return list(affiliations)
-        
-
-"""orcid = Orcid_req("https://orcid.org/0000-0003-0454-7145")
-print(orcid.get_full_name())
-print(orcid.get_webs())
-print(orcid.get_affiliation())"""
