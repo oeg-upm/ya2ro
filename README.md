@@ -2,9 +2,7 @@
 
 ## Install dependencies
 
-* pip install pyyaml
-* pip install bs4
-* pip install json 
+* pip install -r requirements.txt 
 
 ## How to use 
 
