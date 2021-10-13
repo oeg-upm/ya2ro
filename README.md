@@ -36,5 +36,5 @@ Simple execution:
 
 With optional arguments:
 
-`python3 main.py -input input.yaml --output_directory out --properties_file prop.yaml`
+`python3 main.py -input input.yaml --output_directory out --properties_file prop.yaml`   
 `python3 main.py -i input.yaml -o out -p prop.yaml`
