@@ -4,6 +4,6 @@
 #-----------------------------
   input_to_vocab_yaml: "resources/input_to_vocab.yaml"
   template_html: "resources/template.html"
-  output_html: "index.html"
+  output_html: "index-en.html"
   output_jsonld: "ro-crate.json"
   htaccess: "resources/.htaccess"
