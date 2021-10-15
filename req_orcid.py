@@ -1,10 +1,11 @@
 import requests as req
 import json
 
-class orcid_req(object):
+class orcid(object):
 
     def __init__(self, orcid_link):
         self.json = json.loads(req.get(orcid_link, headers={"Accept":"application/ld+json"}).text)
+        self.json_bio = json.loads(req.get(orcid_link, headers={"Accept":"application/orcid+json"}).text)
 
     def get_full_name(self)-> str:
         return self.json["givenName"]+" "+self.json["familyName"]
@@ -28,3 +29,7 @@ class orcid_req(object):
             affiliations.add(aff["name"])
         
         return list(affiliations)
+    
+    def get_bio(self):
+        # person biography content
+        return self.json_bio["person"]["biography"]["content"]

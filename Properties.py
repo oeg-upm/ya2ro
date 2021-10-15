@@ -3,7 +3,8 @@ from yaml.loader import SafeLoader
 from pathlib import Path
 import os
 import data_wrapper
-import orcid_req
+import req_orcid
+import req_doi
 
 def init(properties_file, input_yalm, output_directory_param):
     global properties, input_to_vocab, output_directory, paper
@@ -32,12 +33,12 @@ def init(properties_file, input_yalm, output_directory_param):
     # Open input.yalm and parse it
     with open(Path(input_yalm)) as file:
         data = yaml.load(file, Loader=SafeLoader)
-    
+
     paper = data_wrapper.Paper(
-        title = data[input_to_vocab["title"]],
-        summary = data[input_to_vocab["summary"]],
+        title = _safe(input_to_vocab["title"], data),
+        summary = _safe(input_to_vocab["summary"], data),
         datasets = [data_wrapper.Dataset() for _ in range(len(data[input_to_vocab["datasets"]][input_to_vocab["datasets_links"]]))],
-        doi_datasets = data[input_to_vocab["datasets"]][input_to_vocab["doi_datasets"]],
+        doi_datasets = _safe(input_to_vocab["doi_datasets"], data[input_to_vocab["datasets"]]),
         software = [data_wrapper.Software() for _ in range(len(data[input_to_vocab["software"]]))],
         bibliography = [data_wrapper.Bibliography_entry() for _ in range(len(data[input_to_vocab["bibliography"]]))],
         authors = [data_wrapper.Author() for _ in range(len(data[input_to_vocab["authors"]]))]
@@ -98,11 +99,12 @@ def init(properties_file, input_yalm, output_directory_param):
 
         orcid_link = _safe(input_to_vocab["orcid"], author)
         if orcid_link is not None:
-            orcid = orcid_req.orcid_req(orcid_link)
+            orcid = req_orcid.orcid(orcid_link)
             paper.authors[i].orcid = orcid_link
             paper.authors[i].name = orcid.get_full_name()
             paper.authors[i].position = "\n".join(orcid.get_affiliation())
             paper.authors[i].web = orcid.get_webs()[-1]
+            paper.authors[i].description = orcid.get_bio()
 
         name = _safe(input_to_vocab["name"], author)
         if name is not None:
@@ -127,6 +129,20 @@ def init(properties_file, input_yalm, output_directory_param):
             paper.authors[i].web = web
         
         i += 1
+    
+    # DOI Paper, get bib
+    doi_paper_link = _safe(input_to_vocab["doi_paper"], data)
+    if doi_paper_link is not None:
+        paper_bib = req_doi.bib(doi_paper_link)
+
+        if paper.title is None:
+            paper.title = paper_bib.get_title()
+        
+        if paper.summary is None:
+            paper.summary = paper_bib.get_summary()
+
+        # TODO: Add authors with bib
+        
 
 def _safe(key, dic):
     """Safe call to a dictionary. Returns value or None if key does not exist"""
