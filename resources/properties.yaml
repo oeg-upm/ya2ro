@@ -7,3 +7,4 @@
   output_html: "index-en.html"
   output_jsonld: "ro-crate.json"
   htaccess: "resources/.htaccess"
+  default_author_img: /default_author.jpg

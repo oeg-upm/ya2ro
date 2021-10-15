@@ -1,7 +1,7 @@
 import requests as req
 import json
 
-class Orcid_req(object):
+class orcid_req(object):
 
     def __init__(self, orcid_link):
         self.json = json.loads(req.get(orcid_link, headers={"Accept":"application/ld+json"}).text)

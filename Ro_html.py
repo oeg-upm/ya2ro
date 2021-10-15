@@ -1,5 +1,3 @@
-# import BeautifulSoup
-from Orcid_req import Orcid_req
 import Properties as p
 from bs4 import BeautifulSoup
 from shutil import copyfile

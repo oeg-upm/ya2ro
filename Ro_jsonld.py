@@ -1,7 +1,5 @@
 import Properties as p
 import json
-from Orcid_req import Orcid_req
-
 
 class Ro_jsonld(object):
 

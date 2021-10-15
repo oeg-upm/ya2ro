@@ -3,6 +3,7 @@ from yaml.loader import SafeLoader
 from pathlib import Path
 import os
 import data_wrapper
+import orcid_req
 
 def init(properties_file, input_yalm, output_directory_param):
     global properties, input_to_vocab, output_directory, paper
@@ -35,58 +36,104 @@ def init(properties_file, input_yalm, output_directory_param):
     paper = data_wrapper.Paper(
         title = data[input_to_vocab["title"]],
         summary = data[input_to_vocab["summary"]],
-        datasets = [],
+        datasets = [data_wrapper.Dataset() for _ in range(len(data[input_to_vocab["datasets"]][input_to_vocab["datasets_links"]]))],
         doi_datasets = data[input_to_vocab["datasets"]][input_to_vocab["doi_datasets"]],
-        software = [],
-        bibliography = [],
-        authors = []
+        software = [data_wrapper.Software() for _ in range(len(data[input_to_vocab["software"]]))],
+        bibliography = [data_wrapper.Bibliography_entry() for _ in range(len(data[input_to_vocab["bibliography"]]))],
+        authors = [data_wrapper.Author() for _ in range(len(data[input_to_vocab["authors"]]))]
     )
 
-    # First use automated info from doi and orcid
-    # TODO
-
-    # Second use information provided by the user (ovrwrite any existing info)
-
     # Datasets
+    i = 0
     for dataset in data[input_to_vocab["datasets"]][input_to_vocab["datasets_links"]]:
-        paper.datasets.append(
-            data_wrapper.Dataset(
-                doi_dataset = dataset[input_to_vocab["doi_dataset"]],
-                link = dataset[input_to_vocab["link"]],
-                name = dataset[input_to_vocab["name"]],
-                description = dataset[input_to_vocab["description"]]
-            )
-        )
-    
+
+        doi_dataset = _safe(input_to_vocab["doi_dataset"], dataset)
+        if doi_dataset is not None:
+            paper.datasets[i].doi_dataset = doi_dataset
+            
+        link = _safe(input_to_vocab["link"], dataset)
+        if link is not None:
+            paper.datasets[i].link = link
+
+        name = _safe(input_to_vocab["name"], dataset)
+        if name is not None:
+            paper.datasets[i].name = name 
+        
+        descripton = _safe(input_to_vocab["description"], dataset)
+        if descripton is not None:
+            paper.datasets[i].description = descripton
+
+        i += 1
+
     # Software
+    i = 0
     for software in data[input_to_vocab["software"]]:
-        paper.software.append(
-            data_wrapper.Software(
-                link = software[input_to_vocab["link"]],
-                name = software[input_to_vocab["name"]],
-                description = software[input_to_vocab["description"]]
-            )
-        )
+
+        link = _safe(input_to_vocab["link"], software)
+        if link is not None:
+            paper.software[i].link = link
+        
+        name = _safe(input_to_vocab["name"], software)
+        if name is not None:
+            paper.software[i].name = name
+        
+        description = _safe(input_to_vocab["description"], software)
+        if description is not None:
+            paper.software[i].description = description
+
+        i += 1
 
     # Bibliography
+    i = 0
     for entry in data[input_to_vocab["bibliography"]]:
-        paper.bibliography.append(
-            data_wrapper.Bibliography_entry(
-                entry = entry
-            )
-        )
+
+        paper.bibliography[i].entry = entry
+
+        i += 1
+        
     
     # Authors
+    i = 0
     for author in data[input_to_vocab["authors"]]:
-        paper.authors.append(
-            data_wrapper.Author(
-                name = author[input_to_vocab["name"]],
-                photo = author[input_to_vocab["photo"]],
-                position = author[input_to_vocab["position"]],
-                description = author[input_to_vocab["description"]],
-                web = author[input_to_vocab["web"]]
-            )
-        )
+
+        orcid_link = _safe(input_to_vocab["orcid"], author)
+        if orcid_link is not None:
+            orcid = orcid_req.orcid_req(orcid_link)
+            paper.authors[i].orcid = orcid_link
+            paper.authors[i].name = orcid.get_full_name()
+            paper.authors[i].position = "\n".join(orcid.get_affiliation())
+            paper.authors[i].web = orcid.get_webs()[-1]
+
+        name = _safe(input_to_vocab["name"], author)
+        if name is not None:
+            paper.authors[i].name = name
+        
+        photo = _safe(input_to_vocab["photo"], author)
+        if photo is not None:
+            paper.authors[i].photo = photo
+        else:
+            paper.authors[i].photo = input_to_vocab["images"] + "/" + properties["default_author_img"]
+        
+        position = _safe(input_to_vocab["position"], author)
+        if position is not None:
+            paper.authors[i].position = position
+        
+        description = _safe(input_to_vocab["description"], author)
+        if description is not None:
+            paper.authors[i].description = description
+        
+        web = _safe(input_to_vocab["web"], author)
+        if web is not None:
+            paper.authors[i].web = web
+        
+        i += 1
+
+def _safe(key, dic):
+    """Safe call to a dictionary. Returns value or None if key does not exist"""
+    if key in dic:
+        return dic[key]
+    else:
+        return None
     
 
 
