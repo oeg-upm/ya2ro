@@ -1,4 +1,4 @@
-import Properties as prop
+import Properties as p
 import json
 from Orcid_req import Orcid_req
 
@@ -20,17 +20,17 @@ class Ro_jsonld(object):
             {
             "@id": "./",
             "@type": "Dataset",
-            "name": prop.data[prop.input_to_vocab["title"]],
-            "description": prop.data[prop.input_to_vocab["summary"]],
+            "name": p.paper.title,
+            "description": p.paper.summary,
             "author": [],
             "hasPart": []
         }
         ]
 
         # Self creates the hardcoded structure
-        self.graph_add_authors(prop.data[prop.input_to_vocab["authors"]], graph)
-        self.graph_add_softwares(prop.data[prop.input_to_vocab["software"]], graph)
-        self.graph_add_datasets(prop.data[prop.input_to_vocab["datasets"]][prop.input_to_vocab["datasets_links"]], graph)
+        self.graph_add_authors(p.paper.authors, graph)
+        self.graph_add_softwares(p.paper.software, graph)
+        self.graph_add_datasets(p.paper.datasets, graph)
 
         # Adds graph to the final structure jsonld
         self.jsonld["@graph"] = graph
@@ -53,56 +53,45 @@ class Ro_jsonld(object):
 
         for author in authors:
 
-            if prop.input_to_vocab["orcid"] in author:
-                orcid = Orcid_req(author[prop.input_to_vocab["orcid"]])
-                name = orcid.get_full_name()
-                position = " | ".join(orcid.get_affiliation())
-            else:
-                name = author[prop.input_to_vocab["name"]]
-                position = author[prop.input_to_vocab["position"]]
-            
-
-            self._add_id_to_list(name, graph[1]["author"])
+            self._add_id_to_list(author.name, graph[1]["author"])
 
             graph.append({
-            "@id": self._normalize_name(name),
+            "@id": self._normalize_name(author.name),
             "@type": "Person",
-            "name": name,
-            "position": position,
-            "description": author[prop.input_to_vocab["description"]]
+            "name": author.name,
+            "position": author.position,
+            "description": author.description
         })
 
     def graph_add_softwares(self, softwares, graph):
 
         for software in softwares:
 
-            self._add_id_to_list(software[prop.input_to_vocab["name"]],
-                                 graph[1]["hasPart"])
+            self._add_id_to_list(software.name, graph[1]["hasPart"])
 
             graph.append({
-            "@id": self._normalize_name(software[prop.input_to_vocab["name"]]),
-            "installUrl": software[prop.input_to_vocab["link"]],
+            "@id": self._normalize_name(software.name),
+            "installUrl": software.link,
             "@type": "SoftwareApplication",
-            "description": software[prop.input_to_vocab["description"]]
+            "description": software.description
         })
 
     def graph_add_datasets(self, datasets, graph):
         
         for dataset in datasets:
 
-            self._add_id_to_list(dataset[prop.input_to_vocab["name"]],
-                                 graph[1]["hasPart"])
+            self._add_id_to_list(dataset.name, graph[1]["hasPart"])
 
             graph.append({
-                "@id": self._normalize_name(dataset[prop.input_to_vocab["name"]]),
+                "@id": self._normalize_name(dataset.name),
                 "@type": "Dataset",
-                "name": dataset[prop.input_to_vocab["name"]],
-                "description": dataset[prop.input_to_vocab["description"]],
-                "distribution": {"@id": dataset[prop.input_to_vocab["link"]]}
+                "name": dataset.name,
+                "description": dataset.description,
+                "distribution": {"@id": dataset.link}
             })
 
     def createJSONLD_file(self):
         # dump changes into output/ro-crate.json
-        with open(prop.properties["output_jsonld"], "w+") as file:
+        with open(p.properties["output_jsonld"], "w+") as file:
             file.write(json.dumps(self.jsonld, indent=4, sort_keys=True))
 

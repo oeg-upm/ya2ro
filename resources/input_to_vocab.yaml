@@ -15,10 +15,9 @@
  photo: "photo"
  position: "position"
  images: "images"
- doi: "doi"
+ doi_datasets: "doi_datasets"
+ doi_dataset: "doi_dataset"
+ doi_paper: "doi_paper"
  citation: "citation"
  orcid: "orcid"
  web: "web"
-
-
-  

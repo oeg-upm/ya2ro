@@ -17,9 +17,6 @@
             "@type": "Dataset",
             "author": [
                 {
-                    "@id": "#daniel_garijo"
-                },
-                {
                     "@id": "#name_1"
                 },
                 {
@@ -51,13 +48,6 @@
                 }
             ],
             "name": "This is a title"
-        },
-        {
-            "@id": "#daniel_garijo",
-            "@type": "Person",
-            "description": "This is a description",
-            "name": "Daniel Garijo",
-            "position": "Universidad Polit\u00e9cnica de Madrid | University of Southern California"
         },
         {
             "@id": "#name_1",

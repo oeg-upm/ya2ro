@@ -1,21 +1,25 @@
 ---
+ doi_paper: https://doi.org/10.1109/WI.2018.00-93
  title: "This is a title"
  summary: "This is the summary"
  datasets: 
-   doi: "www.link-doi.com"
+   doi_datasets: "www.link-doi.com"
    datasets_links:   
       - 
          link: "www.linkD1.com" 
          name: "name dataset 1"
          description: "description dataset 1"
+         doi_dataset: "www.link-doi-1.com"
       - 
          link: "www.linkD2.com" 
          name: "name dataset 2"
          description: "description dataset 2"
+         doi_dataset: "www.link-doi-2.com"
       - 
          link: "www.linkD3.com" 
          name: "name dataset 3"
          description: "description dataset 3"
+         doi_dataset: "www.link-doi-3.com"
   
  software: 
    - 
@@ -31,10 +35,6 @@
    - "Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)"
 
  authors:  
-   -
-      orcid: "https://orcid.org/0000-0003-0454-7145"
-      photo: "images/default_author.jpg"
-      description: "This is a description"
    -    
       name: "Name 1"
       photo: "images/default_author.jpg"
