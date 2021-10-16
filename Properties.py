@@ -7,7 +7,7 @@ import req_orcid
 import req_doi
 
 def init(properties_file, input_yalm, output_directory_param):
-    global properties, input_to_vocab, output_directory, paper
+    global properties, output_directory, paper
 
     # Make visible output directoty to all modules
     output_directory = output_directory_param
@@ -20,6 +20,7 @@ def init(properties_file, input_yalm, output_directory_param):
 
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
+        print(f"Creating output diretory {output_directory}")
 
     # Load vocab used in the input.yalm
     with open(Path(properties["input_to_vocab_yaml"])) as file:
@@ -29,11 +30,15 @@ def init(properties_file, input_yalm, output_directory_param):
     images_output_path = Path(output_directory + "/" + input_to_vocab["images"])
     if not os.path.exists(images_output_path):
         os.makedirs(images_output_path)
+        print(f"Creating images diretory {output_directory}")
 
     # Open input.yalm and parse it
     with open(Path(input_yalm)) as file:
         data = yaml.load(file, Loader=SafeLoader)
+    print(f"Parsing and fetching info from {input_yalm}...")
+    
 
+    # Create paper objetc and pupulate the lists with empty instances
     paper = data_wrapper.Paper(
         title = _safe(input_to_vocab["title"], data),
         summary = _safe(input_to_vocab["summary"], data),
@@ -65,6 +70,7 @@ def init(properties_file, input_yalm, output_directory_param):
             paper.datasets[i].description = descripton
 
         i += 1
+    print("    - Datasets: Done.")
 
     # Software
     i = 0
@@ -83,6 +89,8 @@ def init(properties_file, input_yalm, output_directory_param):
             paper.software[i].description = description
 
         i += 1
+    print("    - Software: Done.")
+    
 
     # Bibliography
     i = 0
@@ -91,22 +99,29 @@ def init(properties_file, input_yalm, output_directory_param):
         paper.bibliography[i].entry = entry
 
         i += 1
+    print("    - Bibliography: Done.")
+    
         
     
     # Authors
     i = 0
     for author in data[input_to_vocab["authors"]]:
 
+        name = None
+        # Orcid implementation
         orcid_link = _safe(input_to_vocab["orcid"], author)
         if orcid_link is not None:
+            print(f"        + Fetching author data fom {orcid_link}.")
             orcid = req_orcid.orcid(orcid_link)
             paper.authors[i].orcid = orcid_link
-            paper.authors[i].name = orcid.get_full_name()
-            paper.authors[i].position = "\n".join(orcid.get_affiliation())
+            name = orcid.get_full_name()
+            paper.authors[i].name = name
+            paper.authors[i].position = ", ".join(orcid.get_affiliation())
             paper.authors[i].web = orcid.get_webs()[-1]
             paper.authors[i].description = orcid.get_bio()
-
-        name = _safe(input_to_vocab["name"], author)
+        
+        aux = _safe(input_to_vocab["name"], author)
+        name =  aux if aux is not None else name
         if name is not None:
             paper.authors[i].name = name
         
@@ -114,6 +129,7 @@ def init(properties_file, input_yalm, output_directory_param):
         if photo is not None:
             paper.authors[i].photo = photo
         else:
+            print(f"        + Using default photo for {name}.")
             paper.authors[i].photo = input_to_vocab["images"] + "/" + properties["default_author_img"]
         
         position = _safe(input_to_vocab["position"], author)
@@ -129,19 +145,25 @@ def init(properties_file, input_yalm, output_directory_param):
             paper.authors[i].web = web
         
         i += 1
+    print("    - Authors: Done.")
+    
     
     # DOI Paper, get bib
     doi_paper_link = _safe(input_to_vocab["doi_paper"], data)
     if doi_paper_link is not None:
+        print(f"    - Fetching data fom {doi_paper_link}.")
         paper_bib = req_doi.bib(doi_paper_link)
 
         if paper.title is None:
+            print(f"        + Fetching title fom {doi_paper_link}.")
             paper.title = paper_bib.get_title()
         
         if paper.summary is None:
+            print(f"        + Fetching summary fom {doi_paper_link}.")
             paper.summary = paper_bib.get_summary()
 
         # TODO: Add authors with bib
+    
         
 
 def _safe(key, dic):

@@ -57,7 +57,7 @@ class Ro_jsonld(object):
             "@id": self._normalize_name(author.name),
             "@type": "Person",
             "name": author.name,
-            "position": author.position,
+            "position": author.position.split(", "),
             "description": author.description
         })
 
@@ -92,4 +92,6 @@ class Ro_jsonld(object):
         # dump changes into output/ro-crate.json
         with open(p.properties["output_jsonld"], "w+") as file:
             file.write(json.dumps(self.jsonld, indent=4, sort_keys=True))
+        print(f"JSON-LD file created at {p.properties['output_jsonld']}")
+        
 

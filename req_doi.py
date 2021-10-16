@@ -9,22 +9,27 @@ class bib(object):
         bib_json = req.get(doi_link, headers={"Accept":"application/citeproc+json"}).text
         bib_html = req.get(doi_link).text
 
+        self.doi_link = doi_link
         self.html = BeautifulSoup(bib_html, 'html.parser')
         self.bib = json.loads(bib_json)
 
     def get_title(self):
-        return self.bib["title"]
+        try:
+            return self.bib["title"]
+        except:
+            print(f"Error: fetching title from {self.doi_link}.")
     
     def get_authors(self):
-        authors = []
-        for entry in self.bib["author"]:
-            authors.append(entry["given"] + " " + entry["family"])
-        return authors
+        try:
+            authors = []
+            for entry in self.bib["author"]:
+                authors.append(entry["given"] + " " + entry["family"])
+            return authors
+        except:
+            print(f"Error: fetching authors from {self.doi_link}.") 
 
     def get_summary(self):
-        return self.html.find("meta", property="og:description").get("content", None)
-
-#doi = bib("https://doi.org/10.1109/WI.2018.00-93")
-#print(doi.get_title())
-#print(doi.get_authors())
-#print(doi.get_summary())
+        try:
+            return self.html.find("meta", property="og:description").get("content", None)
+        except:
+            print(f"Error: Unable to retrieve the summary, check if {self.doi_link} is up.")

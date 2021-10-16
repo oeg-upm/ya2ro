@@ -55,6 +55,8 @@ class Ro_html(object):
         # dump changes into index.html
         with open(p.properties["output_html"], "w+") as file:
             file.write(str(self.soup))
+        print(f"HTML website file created at {p.properties['output_html']}")
+        
 
         # copy images to output/images directory
 

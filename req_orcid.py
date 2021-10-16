@@ -31,5 +31,4 @@ class orcid(object):
         return list(affiliations)
     
     def get_bio(self):
-        # person biography content
         return self.json_bio["person"]["biography"]["content"]
