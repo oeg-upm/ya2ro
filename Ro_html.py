@@ -90,18 +90,20 @@ class Ro_html(object):
             if((num_authors-1) %3 == 0):
                 html_author += """<div class="w3-row-padding">"""
 
-            html_author += f"""       <div class="w3-col m4 w3-margin-bottom">
+            html_author += f"""
+            <div class="w3-col m4 w3-margin-bottom">
                 <div class="w3-light-grey">
                 <img src="{author.photo}" alt="{author.name}" style="width:90%;padding-top: 10px;">
                 <div class="w3-container">
-                    <h3>{author.name}</h3> 
+                    <h3><a href="{author.orcid if author.orcid is not None else author.web}">{author.name}</a></h3>
                     <p class="w3-opacity"> {author.position}</p>
                     <a href="{author.web}">{author.web}</a>
                     <p>{author.description}</p>
                     
                 </div>
                 </div>
-            </div> """ 
+            </div> 
+            """
 
             if(num_authors !=0 and num_authors %3 == 0):
                 html_author += "</div>"
