@@ -24,7 +24,7 @@ def init(properties_file, input_yalm, output_directory_param):
 
     # Create htaccess file
     import htaccess
-    htaccess.create_htaccess(output_directory)
+    htaccess.create_htaccess()
 
     # Load vocab used in the input.yalm
     with open(Path(properties["input_to_vocab_yaml"])) as file:
