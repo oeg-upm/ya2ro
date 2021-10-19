@@ -51,10 +51,11 @@ class Ro_html(object):
         self.__create_about_authors(about_authors)
 
     def createHTML_file(self):
-        """Dupms index.html and dependencies into specified folder. Including .htacces"""
+        """Dupms index.html and dependencies into specified folder."""
         # dump changes into index.html
         with open(p.properties["output_html"], "w+") as file:
             file.write(str(self.soup))
+        
         print(f"HTML website file created at {p.properties['output_html']}")
         
 
@@ -66,9 +67,6 @@ class Ro_html(object):
             dst = Path(p.output_directory + "/" + author.photo)
             
             copyfile(src, dst)
-
-        # Copy .htaccess to output folder
-        copyfile(p.properties["htaccess"],Path(p.output_directory+"/.htaccess"))
 
 
     def __append_items_link(self, list, ul_list):

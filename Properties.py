@@ -22,6 +22,10 @@ def init(properties_file, input_yalm, output_directory_param):
         os.makedirs(output_directory)
         print(f"Creating output diretory {output_directory}")
 
+    # Create htaccess file
+    import htaccess
+    htaccess.create_htaccess(output_directory)
+
     # Load vocab used in the input.yalm
     with open(Path(properties["input_to_vocab_yaml"])) as file:
         input_to_vocab = yaml.load(file, Loader=SafeLoader)
