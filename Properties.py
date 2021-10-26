@@ -7,7 +7,7 @@ import req_orcid
 import req_doi
 
 def init(properties_file, input_yalm, output_directory_param):
-    global properties, output_directory, data
+    global properties, output_directory, data, style
 
     # Make visible output directoty to all modules
     output_directory = output_directory_param
@@ -40,8 +40,12 @@ def init(properties_file, input_yalm, output_directory_param):
     # Open input.yalm and parse it
     with open(Path(input_yalm)) as file:
         data = yaml.load(file, Loader=SafeLoader)
-
+    
     print(f"Parsing and fetching info from {input_yalm}...")
+
+    # Style selector
+    style = _safe(input_to_vocab["style"], data)
+    style = style if style else "default"
 
     type = _safe(input_to_vocab["type"], data)
      

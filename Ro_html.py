@@ -28,6 +28,20 @@ class Ro_html(object):
 
         }
 
+        if p.style == "dark":
+
+            # TODO: Make a function out of this 
+            style_component = """
+            h1,h1 b{color:#fff!important}
+            .w3-light-grey{background-color:#ddd!important;color:#222831!important}
+            .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
+            body{background-color:#222831!important;color:#fff!important}
+            """
+            self.__append_component("style", style_component)
+            
+            
+        
+
     def load_data(self):
 
         # Iterate attr from data and call correct init function for that attr
