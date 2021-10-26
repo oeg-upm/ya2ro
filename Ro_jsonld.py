@@ -18,17 +18,17 @@ class Ro_jsonld(object):
             {
             "@id": "./",
             "@type": "Dataset",
-            "name": p.paper.title,
-            "description": p.paper.summary,
+            "name": p.data.title,
+            "description": p.data.summary,
             "author": [],
             "hasPart": []
         }
         ]
 
         # Self creates the hardcoded structure
-        self.graph_add_authors(p.paper.authors, graph)
-        self.graph_add_softwares(p.paper.software, graph)
-        self.graph_add_datasets(p.paper.datasets, graph)
+        self.graph_add_authors(p.data.authors, graph)
+        self.graph_add_softwares(p.data.software, graph)
+        self.graph_add_datasets(p.data.datasets, graph)
 
         # Adds graph to the final structure jsonld
         self.jsonld["@graph"] = graph

@@ -6,49 +6,34 @@ from pathlib import Path
 
 class Ro_html(object):
 
-    # The class "constructor" - It's actually an initializer 
     def __init__(self):
 
         # read and parse the template
         self.soup = BeautifulSoup(open(p.properties["template_html"]), 'html.parser')
 
-        # modify web title metadata
-        self.soup.find('title').string = p.paper.title
+        self.func_attr_init = {
 
-        # create the title
-        self.soup.find(id = "showcase").h1.string = p.paper.title
+            "title": self.init_title,
+            "summary": self.init_summary,
+            "doi_datasets": self.init_doi_datasets,
+            "datasets": self.init_datasets,
+            "software": self.init_software,
+            "bibliography": self.init_bibliography,
+            "authors": self.init_authors
 
-        # create the summary
-        summary_content = self.soup.find(id = "summary-content")
-        summary_content.string = "Summary: " + p.paper.summary
+        }
 
-        # create the datasets
-            # Insert DOI link
-        doi_link = p.paper.doi_datasets
-        dataset_doi_string = f"""We used the following datasets for our paper, available in Zenodo under DOI: <a href="{doi_link}">{doi_link}</a>"""
-        doi_html = BeautifulSoup(dataset_doi_string, 'html.parser')
-        datasets = self.soup.find(id="datasets-doi")
-        datasets.append(doi_html)
+    def load_data(self):
 
-            # Insert list of datasets
-        datasets_list = self.soup.find(id="datasets-list")
-        self.__append_items_link(p.paper.datasets, datasets_list)
+        # Iterate attr from data and call correct init function for that attr
+        for attr_name in p.data:
 
-        # create software
-        software_list = self.soup.find(id="software-list")
-        self.__append_items_link(p.paper.software, software_list)
-            
-        # create bibliography
-        bibliography_list = self.soup.find(id="bibliography-list")
+            attr_val = getattr(p.data, attr_name)
+            #print("Attr name: ", attr_name)
+            #print("Attr val: ", attr_val)
 
-        for entry in p.paper.bibliography:
-            li_new_tag = self.soup.new_tag('li')
-            li_new_tag.string = entry.entry
-            bibliography_list.append(li_new_tag)
-
-        # create authors
-        about_authors = self.soup.find(id="about_authors")
-        self.__create_about_authors(about_authors)
+            if attr_val and attr_name in self.func_attr_init:
+                self.func_attr_init[attr_name](attr_val)
 
     def createHTML_file(self):
         """Dupms index.html and dependencies into specified folder."""
@@ -57,17 +42,57 @@ class Ro_html(object):
             file.write(str(self.soup))
         
         print(f"HTML website file created at {p.properties['output_html']}")
-        
+
+    def init_title(self, title):
+        # modify web title metadata
+        self.soup.find('title').string = title
+        # create the title
+        self.soup.find(id = "showcase").h1.string = title
+    
+    def init_summary(self, summary):
+        # create the summary
+        summary_content = self.soup.find(id = "summary-content")
+        summary_content.string = "Summary: " + summary
+    
+    def init_doi_datasets(self, doi_dataset):
+        # Insert DOI link
+        doi_link = doi_dataset
+        dataset_doi_string = f"""We used the following datasets for our data, available in Zenodo under DOI: <a href="{doi_link}">{doi_link}</a>"""
+        doi_html = BeautifulSoup(dataset_doi_string, 'html.parser')
+        datasets = self.soup.find(id="datasets-doi")
+        datasets.append(doi_html)
+    
+    def init_datasets(self, datasets):
+        # Insert list of datasets
+        datasets_list = self.soup.find(id="datasets-list")
+        self.__append_items_link(datasets, datasets_list)
+    
+    def init_software(self, software):
+        # create software
+        software_list = self.soup.find(id="software-list")
+        self.__append_items_link(software, software_list)
+    
+    def init_bibliography(self, bibliography):
+        # create bibliography
+        bibliography_list = self.soup.find(id="bibliography-list")
+        for entry in bibliography:
+            li_new_tag = self.soup.new_tag('li')
+            li_new_tag.string = entry.entry
+            bibliography_list.append(li_new_tag)
+
+    def init_authors(self, authors):
+        # create authors
+        about_authors = self.soup.find(id="about_authors")
+        self.__create_about_authors(authors, about_authors)
 
         # copy images to output/images directory
-
-        for author in p.paper.authors:
+        for author in p.data.authors:
 
             src = Path(author.photo)
             dst = Path(p.output_directory + "/" + author.photo)
             
             copyfile(src, dst)
-
+    
 
     def __append_items_link(self, list, ul_list):
         for entry in list:
@@ -79,11 +104,11 @@ class Ro_html(object):
             li_new_tag.a.insert_after(": " + entry.description)
             ul_list.append(li_new_tag)
     
-    def __create_about_authors(self, about_authors):
+    def __create_about_authors(self, authors, about_authors):
         num_authors = 0
         html_author = ""
 
-        for author in p.paper.authors:
+        for author in authors:
 
             num_authors += 1
 

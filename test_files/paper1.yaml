@@ -1,6 +1,5 @@
----
- title: "This is a title"
- summary: "This is the summary"
+ type: "paper"
+ doi_paper: "https://doi.org/10.1109/WI.2018.00-93"
  datasets: 
    doi_datasets: "www.link-doi.com"
    datasets_links:   
@@ -36,7 +35,6 @@
  authors:  
    -
       orcid: "https://orcid.org/0000-0003-0454-7145"
-      description: "This is a description"
    -    
       name: "Name 1"
       position: "Position"

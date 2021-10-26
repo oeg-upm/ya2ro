@@ -37,6 +37,7 @@ if __name__ == "__main__":
     from Ro_html import Ro_html
 
     ro_html = Ro_html()
+    ro_html.load_data()
     ro_html.createHTML_file()
 
     from Ro_jsonld import Ro_jsonld

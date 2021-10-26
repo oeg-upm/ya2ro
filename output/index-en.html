@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<title>PSM-Flow: Probabilistic Subgraph Mining for Discovering Reusable Fragments in Workflows</title>
+<title>This is a title</title>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
@@ -13,9 +13,9 @@ body {font-size:16px;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .w3-half img:hover{opacity:1}
 img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
 }
 </style>
 <body>
@@ -25,6 +25,7 @@ img {
 <div class="w3-container">
 <h3 class="w3-padding-64"><b>Supplementary Materials</b></h3>
 </div>
+<span id="sidebar"></span>
 <div class="w3-bar-block">
 <a class="w3-bar-item w3-button w3-hover-white" href="#" onclick="w3_close()">Summary</a>
 <a class="w3-bar-item w3-button w3-hover-white" href="#data" onclick="w3_close()">Datasets</a>
@@ -36,7 +37,6 @@ img {
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
 <a class="w3-button w3-green w3-margin-right" href="javascript:void(0)" onclick="w3_open()">☰</a>
-<!--<span>Company Name</span>-->
 </header>
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
@@ -44,38 +44,41 @@ img {
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 <!-- Header -->
 <div class="w3-container" id="showcase" style="margin-top:80px">
-<h1>PSM-Flow: Probabilistic Subgraph Mining for Discovering Reusable Fragments in Workflows</h1>
-<!--<h2 class="w3-text-green"><b></b></h2>
-    <hr style="width:50px;border:5px solid green" class="w3-round">-->
+<h1>This is a title</h1>
 </div>
+<!-- Summary -->
+<span id="summary"></span>
 <div class="w3-container" id="summary" style="margin-top:15px">
 <!--<h1 class="w3-xxxlarge w3-text-green"><b>Services.</b></h1>-->
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<p>This page provides pointers to the materials (datasets, software and notebooks) used in a paper currently <strong>under review</strong> </p>
-<p id="summary-content">Summary: Scientific workflows define computational processes needed for carrying out scientific experiments. Existing workflow repositories contain hundreds of scientific workflows, where scientists can find materials and knowledge to facilitate workflow design for running related experiments. Identifying reusable fragments in growing workflow repositories has become increasingly important. In this paper, we present PSM-Flow, a probabilistic subgraph mining algorithm designed to discover commonly occurring fragments in a workflow corpus using a modified version of the Latent Dirichlet Allocation algorithm. The proposed model encodes the geodesic distance between workflow steps into the model for implicitly modeling fragments. PSM-Flow captures variations of frequent fragments while maintaining its space complexity bounded polynomially, as it requires no candidate generation. We applied PSM-Flow to three real-world scientific workflow datasets containing more than 750 workflows for neuroimaging analysis. Our results show that PSM-Flow outperforms three state of the art frequent subgraph mining techniques. We also discuss other potential future improvements of the proposed method.</p>
+<p id="summary-content">Summary: This is the summary</p>
 </div>
+<!-- datasets -->
+<span id="datasets"></span>
 <div class="w3-container" id="data" style="margin-top:75px">
 <h1 class="w3-xxxlarge w3-text-green"><b>Datasets.</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
 <h3>Input Datasets</h3>
-<p id="datasets-doi">We used the following datasets for our paper, available in Zenodo under DOI: <a href="www.link-doi.com">www.link-doi.com</a></p>
-<ul id="datasets-list">
-<li><a href="www.linkD1.com">name dataset 1</a>: description dataset 1</li><li><a href="www.linkD2.com">name dataset 2</a>: description dataset 2</li><li><a href="www.linkD3.com">name dataset 3</a>: description dataset 3</li></ul>
+<p id="datasets-doi">We used the following datasets for our data, available in Zenodo under DOI: <a href="www.link-doi.com">www.link-doi.com</a></p>
+<ul id="datasets-list"><li><a href="www.linkD1.com">name dataset 1</a>: description dataset 1</li><li><a href="www.linkD2.com">name dataset 2</a>: description dataset 2</li><li><a href="www.linkD3.com">name dataset 3</a>: description dataset 3</li></ul>
 </div>
+<!-- Software -->
+<span id="software"></span>
 <div class="w3-container" id="software" style="margin-top:75px">
 <h1 class="w3-xxxlarge w3-text-green"><b>Software and Notebooks.</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-    The pointers for the main software used can be found below:
-    <ul id="software-list">
-<li><a href="www.linkS1.com">name link 1</a>: description software 1</li><li><a href="www.linkS2.com">name link 2</a>: description software 2</li></ul>
+		The pointers for the main software used can be found below:
+		<ul id="software-list"><li><a href="www.linkS1.com">name link 1</a>: description software 1</li><li><a href="www.linkS2.com">name link 2</a>: description software 2</li></ul>
 </div>
+<!-- Bibliography -->
+<span id="bibliography"></span>
 <div class="w3-container" id="bib" style="margin-top:75px">
 <h1 class="w3-xxxlarge w3-text-green"><b>Bibliography.</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ol id="bibliography-list">
-<li>Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)</li></ol>
+<ol id="bibliography-list"><li>Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)</li></ol>
 </div>
-<!-- The Team -->
+<!-- Authors -->
+<span id="authors"></span>
 <div class="w3-container" id="authors" style="margin-top:75px">
 <h1 class="w3-xxxlarge w3-text-green"><b>About the authors.</b></h1>
 <hr class="w3-round" id="about_authors" style="width:50px;border:5px solid green"><div class="w3-row-padding">
@@ -84,9 +87,9 @@ img {
 <img alt="Daniel Garijo" src="images//default_author.jpg" style="width:90%;padding-top: 10px;"/>
 <div class="w3-container">
 <h3><a href="https://orcid.org/0000-0003-0454-7145">Daniel Garijo</a></h3>
-<p class="w3-opacity"> University of Southern California, Universidad Politécnica de Madrid</p>
+<p class="w3-opacity"> Universidad Politécnica de Madrid, University of Southern California</p>
 <a href="http://w3id.org/people/dgarijo">http://w3id.org/people/dgarijo</a>
-<p>I am a researcher at Universidad Politécnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.</p>
+<p>This is a description</p>
 </div>
 </div>
 </div>
@@ -148,21 +151,21 @@ img {
 <script>
 // Script to open and close sidebar
 function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-  document.getElementById("myOverlay").style.display = "block";
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("myOverlay").style.display = "block";
 }
 
 function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-  document.getElementById("myOverlay").style.display = "none";
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("myOverlay").style.display = "none";
 }
 
 // Modal Image Gallery
 function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-  var captionText = document.getElementById("caption");
-  captionText.innerHTML = element.alt;
+	document.getElementById("img01").src = element.src;
+	document.getElementById("modal01").style.display = "block";
+	var captionText = document.getElementById("caption");
+	captionText.innerHTML = element.alt;
 }
 </script>
 
