@@ -1,12 +1,12 @@
  type: "project"
- title: "EELISA Project"
- goal: "EELISA Project: Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object."
- social_motivation: "[INSERT MOTIVATION]"
- sketch: "imgages/Sketch.png"
+ title: "EELISA Project - ya2ro"
+ goal: "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object."
+ social_motivation: "[INSERT MOTIVATION] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis neque quam. Cras porttitor ipsum sit amet risus feugiat, ut cursus sapien suscipit. Sed vitae vehicula ante. Fusce luctus ornare risus, eget porta libero laoreet at. Etiam nec erat tellus. Duis convallis mauris erat, et pellentesque nunc ornare sed. Mauris feugiat lectus sit amet neque malesuada mollis. Aenean in felis posuere, aliquet odio sed, malesuada massa. Cras a sapien ac elit maximus condimentum eu et libero. Donec quis tincidunt mi. Praesent id odio at augue tincidunt hendrerit. Suspendisse neque mi, porta in efficitur eget, dictum vitae eros. Donec et erat non lorem lobortis pharetra. Maecenas euismod varius justo, sit amet elementum ipsum suscipit eu. Nunc bibendum nunc quis congue fermentum. Integer tincidunt sed enim nec elementum."
+ sketch: "images/sketch_ya2ro.jpg"
  #involved_institutions: "(maybe can be automatically gathered from participants)"
  areas: 
-   - "Programming"
-   - "Research"
+   - "Programming: Some description."
+   - "Research: Some description."
  demo: "https://oeg-upm.github.io/EELISA-research-object/output/index-en.html"
  datasets: 
    doi_datasets: "www.link-doi.com"
@@ -26,14 +26,10 @@
    - 
       link: "https://github.com/oeg-upm/EELISA-research-object" 
       name: "EELISA-research-object"
-      description: "description software 1"
-   - 
-      link: "www.linkS2.com" 
-      name: "name link 2"
       description: "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object."
 
  bibliography: 
-   - "Work in progress..."
+   - "Here it goes the bibliography"
 
  participants:  
    -

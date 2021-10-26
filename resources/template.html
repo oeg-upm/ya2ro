@@ -9,7 +9,7 @@
 <style>
 
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-body {font-size:16px;}
+body {font-size:16px; text-align: justify;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .w3-half img:hover{opacity:1}
 img {
@@ -28,14 +28,10 @@ img {
 		<h3 class="w3-padding-64"><b>Supplementary Materials</b></h3>
 	</div>
 
-	<span id=sidebar></span>
-
+	
 	<div class="w3-bar-block">
-		<a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Summary</a>
-		<a href="#data" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Datasets</a>
-		<a href="#software" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Software</a>
-		<a href="#bib" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Bibliography</a>
-		<a href="#authors" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About the authors</a>
+		<span id="sidebar"></span>
+
 	</div>
 	
 </nav>
@@ -58,11 +54,9 @@ img {
 
 	<!-- Summary -->
 	<span id=summary></span>
-	<div class="w3-container" id="summary" style="margin-top:15px">
-		<!--<h1 class="w3-xxxlarge w3-text-green"><b>Services.</b></h1>-->
-		<hr style="width:50px;border:5px solid green" class="w3-round">
-		<p id="summary-content"><strong>Summary</strong>:</p>
-	</div>
+
+	<!-- Goal -->
+	<span id=goal></span>
 
 	<!-- Social Motivation -->
 	<span id=social_motivation></span>
@@ -79,7 +73,7 @@ img {
 	<!-- datasets -->
 	<span id=datasets></span>
 	<div class="w3-container" id="data" style="margin-top:75px">
-		<h1 class="w3-xxxlarge w3-text-green"><b>Datasets.</b></h1>
+		<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
 		<hr style="width:50px;border:5px solid green" class="w3-round">
 		<h3>Input Datasets</h3>
 		<p id="datasets-doi"></p>
@@ -89,7 +83,7 @@ img {
 	<!-- Software -->
 	<span id=software></span>
 	<div class="w3-container" id="software" style="margin-top:75px">
-		<h1 class="w3-xxxlarge w3-text-green"><b>Software and Notebooks.</b></h1>
+		<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
 		<hr style="width:50px;border:5px solid green" class="w3-round">
 		The pointers for the main software used can be found below:
 		<ul id="software-list"></ul>
@@ -98,7 +92,7 @@ img {
 	<!-- Bibliography -->
 	<span id=bibliography></span>
 	<div class="w3-container" id="bib" style="margin-top:75px">
-		<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography.</b></h1>
+		<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
 		<hr style="width:50px;border:5px solid green" class="w3-round">
 		<ol id="bibliography-list"></ol>
 	</div>
@@ -106,7 +100,7 @@ img {
 	<!-- Authors -->
 	<span id=authors></span>
 	<div class="w3-container" id="authors" style="margin-top:75px">
-	<h1 class="w3-xxxlarge w3-text-green"><b>About the authors.</b></h1>
+	<h1 class="w3-xxxlarge w3-text-green"><b>About the authors</b></h1>
 	<hr style="width:50px;border:5px solid green" class="w3-round" id="about_authors">
 
 	</div>

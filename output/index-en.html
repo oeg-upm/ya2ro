@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<title>EELISA Project</title>
+<title>EELISA Project - ya2ro</title>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
@@ -9,7 +9,7 @@
 <style>
 
 body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
-body {font-size:16px;}
+body {font-size:16px; text-align: justify;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .w3-half img:hover{opacity:1}
 img {
@@ -25,13 +25,8 @@ img {
 <div class="w3-container">
 <h3 class="w3-padding-64"><b>Supplementary Materials</b></h3>
 </div>
-<span id="sidebar"></span>
 <div class="w3-bar-block">
-<a class="w3-bar-item w3-button w3-hover-white" href="#" onclick="w3_close()">Summary</a>
-<a class="w3-bar-item w3-button w3-hover-white" href="#data" onclick="w3_close()">Datasets</a>
-<a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a>
-<a class="w3-bar-item w3-button w3-hover-white" href="#bib" onclick="w3_close()">Bibliography</a>
-<a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a>
+<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#goal" onclick="w3_close()">Goal</a><a class="w3-bar-item w3-button w3-hover-white" href="#social_motivation" onclick="w3_close()">Social mtivation</a><a class="w3-bar-item w3-button w3-hover-white" href="#sketch" onclick="w3_close()">Sketch</a><a class="w3-bar-item w3-button w3-hover-white" href="#areas" onclick="w3_close()">Areas</a><a class="w3-bar-item w3-button w3-hover-white" href="#demo" onclick="w3_close()">Demo</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
 </div>
 </nav>
 <!-- Top menu on small screens -->
@@ -44,31 +39,44 @@ img {
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 <!-- Header -->
 <div class="w3-container" id="showcase" style="margin-top:80px">
-<h1>EELISA Project</h1>
+<h1>EELISA Project - ya2ro</h1>
 </div>
 <!-- Summary -->
 <span id="summary"></span>
-<div class="w3-container" id="summary" style="margin-top:15px">
-<!--<h1 class="w3-xxxlarge w3-text-green"><b>Services.</b></h1>-->
+<!-- Goal -->
+<span id="goal"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Goal</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<p id="summary-content">Goal: EELISA Project: Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.</p>
-</div>
+<p>Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.</p>
+</div></span>
 <!-- Social Motivation -->
 <span id="social_motivation"><div class="w3-container" style="margin-top:15px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Social Motivation.</b></h1>
+<h1 class="w3-xxxlarge w3-text-green"><b>Social Motivation</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<p>[INSERT MOTIVATION]</p>
+<p>[INSERT MOTIVATION] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis neque quam. Cras porttitor ipsum sit amet risus feugiat, ut cursus sapien suscipit. Sed vitae vehicula ante. Fusce luctus ornare risus, eget porta libero laoreet at. Etiam nec erat tellus. Duis convallis mauris erat, et pellentesque nunc ornare sed. Mauris feugiat lectus sit amet neque malesuada mollis. Aenean in felis posuere, aliquet odio sed, malesuada massa. Cras a sapien ac elit maximus condimentum eu et libero. Donec quis tincidunt mi. Praesent id odio at augue tincidunt hendrerit. Suspendisse neque mi, porta in efficitur eget, dictum vitae eros. Donec et erat non lorem lobortis pharetra. Maecenas euismod varius justo, sit amet elementum ipsum suscipit eu. Nunc bibendum nunc quis congue fermentum. Integer tincidunt sed enim nec elementum.</p>
 </div></span>
 <!-- Areas -->
-<span id="areas"><p>[This is a list of areas: ['Programming', 'Research']</p></span>
+<span id="areas"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Areas</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<ul><li>Programming: Some description.</li><li>Research: Some description.</li></ul>
+</div></span>
 <!-- Sketch -->
-<span id="sketch"><p>[This is a sketch: imgages/Sketch.png]</p></span>
+<span id="sketch"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Sketch</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<img alt="Sketch of the project" src="images/sketch_ya2ro.jpg"/>
+</div></span>
 <!-- Demo -->
-<span id="demo"><p>[This is a link to a demo: https://oeg-upm.github.io/EELISA-research-object/output/index-en.html</p></span>
+<span id="demo"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Demo</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<p><a href="https://oeg-upm.github.io/EELISA-research-object/output/index-en.html">https://oeg-upm.github.io/EELISA-research-object/output/index-en.html</a></p>
+</div></span>
 <!-- datasets -->
 <span id="datasets"></span>
 <div class="w3-container" id="data" style="margin-top:75px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Datasets.</b></h1>
+<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
 <h3>Input Datasets</h3>
 <p id="datasets-doi">We used the following datasets for our data, available in Zenodo under DOI: <a href="www.link-doi.com">www.link-doi.com</a></p>
@@ -77,29 +85,29 @@ img {
 <!-- Software -->
 <span id="software"></span>
 <div class="w3-container" id="software" style="margin-top:75px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Software and Notebooks.</b></h1>
+<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
 		The pointers for the main software used can be found below:
-		<ul id="software-list"><li><a href="https://github.com/oeg-upm/EELISA-research-object">EELISA-research-object</a>: description software 1</li><li><a href="www.linkS2.com">name link 2</a>: Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.</li></ul>
+		<ul id="software-list"><li><a href="https://github.com/oeg-upm/EELISA-research-object">EELISA-research-object</a>: Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.</li></ul>
 </div>
 <!-- Bibliography -->
 <span id="bibliography"></span>
 <div class="w3-container" id="bib" style="margin-top:75px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography.</b></h1>
+<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ol id="bibliography-list"><li>Work in progress...</li></ol>
+<ol id="bibliography-list"><li>Here it goes the bibliography</li></ol>
 </div>
 <!-- Authors -->
 <span id="authors"></span>
 <div class="w3-container" id="authors" style="margin-top:75px">
-<h1 class="w3-xxxlarge w3-text-green"><b>About the authors.</b></h1>
+<h1 class="w3-xxxlarge w3-text-green"><b>About the authors</b></h1>
 <hr class="w3-round" id="about_authors" style="width:50px;border:5px solid green"><div class="w3-row-padding">
 <div class="w3-col m4 w3-margin-bottom">
 <div class="w3-light-grey">
 <img alt="Daniel Garijo" src="images//default_author.jpg" style="width:90%;padding-top: 10px;"/>
 <div class="w3-container">
 <h3><a href="https://orcid.org/0000-0003-0454-7145">Daniel Garijo</a></h3>
-<p class="w3-opacity"> University of Southern California, Universidad Politécnica de Madrid</p>
+<p class="w3-opacity"> Universidad Politécnica de Madrid, University of Southern California</p>
 <a href="http://w3id.org/people/dgarijo">http://w3id.org/people/dgarijo</a>
 <p>I am a researcher at Universidad Politécnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.</p>
 </div>
