@@ -211,7 +211,7 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
         
         photo = _safe(input_to_vocab["photo"], author)
         if photo is not None:
-            object.authors[i].photo = photo
+            object.authors[i].photo = input_to_vocab["images"] + "/" + photo
         else:
             print(f"        + Using default photo for {name}.")
             object.authors[i].photo = input_to_vocab["images"] + "/" + properties["default_author_img"]

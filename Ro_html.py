@@ -19,7 +19,12 @@ class Ro_html(object):
             "datasets": self.init_datasets,
             "software": self.init_software,
             "bibliography": self.init_bibliography,
-            "authors": self.init_authors
+            "authors": self.init_authors,
+            "goal": self.init_goal,
+            "social_motivation": self.init_social_motivation,
+            "sketch": self.init_sketch,
+            "areas": self.init_areas,
+            "demo": self.init_demo
 
         }
 
@@ -34,14 +39,37 @@ class Ro_html(object):
 
             if attr_val and attr_name in self.func_attr_init:
                 self.func_attr_init[attr_name](attr_val)
+    
+    def init_social_motivation(self, social_motivation):
 
-    def createHTML_file(self):
-        """Dupms index.html and dependencies into specified folder."""
-        # dump changes into index.html
-        with open(p.properties["output_html"], "w+") as file:
-            file.write(str(self.soup))
+        sc_component = f"""<div class="w3-container" style="margin-top:15px">
+		<h1 class="w3-xxxlarge w3-text-green"><b>Social Motivation.</b></h1>
+        <hr style="width:50px;border:5px solid green" class="w3-round">
+		<p>{social_motivation}</p>
+	    </div>"""
+
+        self.__append_component("social_motivation", sc_component)
+    
+    def init_sketch(self, sketch):
         
-        print(f"HTML website file created at {p.properties['output_html']}")
+        sketch_component = f"<p>[This is a sketch: {sketch}]</p>"
+        self.__append_component("sketch", sketch_component)
+    
+    def init_areas(self, areas):
+
+        areas_component = f"<p>[This is a list of areas: {areas}</p>"
+        self.__append_component("areas", areas_component)
+    
+    def init_demo(self, demo):
+        
+        demo_component = f"<p>[This is a link to a demo: {demo}</p>"
+        self.__append_component("demo", demo_component)
+
+
+    def init_goal(self, goal):
+        # create the goal
+        summary_content = self.soup.find(id = "summary-content")
+        summary_content.string = "Goal: " + goal
 
     def init_title(self, title):
         # modify web title metadata
@@ -139,4 +167,15 @@ class Ro_html(object):
         author_bs = BeautifulSoup(html_author, 'html.parser')
         about_authors.append(author_bs)
 
+    def createHTML_file(self):
+        """Dupms index.html and dependencies into specified folder."""
+        # dump changes into index.html
+        with open(p.properties["output_html"], "w+") as file:
+            file.write(str(self.soup))
+        
+        print(f"HTML website file created at {p.properties['output_html']}")   
 
+    def __append_component(self, location_id, str_component):
+        loc = self.soup.find(id=location_id)
+        html_component = BeautifulSoup(str_component, 'html.parser')
+        loc.append(html_component)
