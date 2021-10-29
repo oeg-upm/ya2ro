@@ -3,7 +3,7 @@ import properties as p
 from bs4 import BeautifulSoup
 from shutil import copyfile
 from pathlib import Path
-
+import ntpath
 
 class ro_html(object):
 
@@ -29,9 +29,9 @@ class ro_html(object):
 
         }
 
-        # HREF SVG JSONLD
+        # HREF SVG JSONLD            
         jsonld_svg = self.soup.find(id="jsonld_svg")
-        jsonld_svg['href'] = "/" + str(p.properties["output_jsonld"])
+        jsonld_svg['href'] = ntpath.basename(p.properties["output_jsonld"])
 
         if p.style == "dark":
 
