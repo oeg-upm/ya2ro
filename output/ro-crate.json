@@ -79,6 +79,22 @@
                 "@id": "www.linkD2.com"
             },
             "name": "name dataset 2"
+        },
+        {
+            "workExample": [
+                {
+                    "@type": "Demo",
+                    "description": "This is a description for a demo for the ya2ro EELISA project.",
+                    "link": "https://oeg-upm.github.io/EELISA-research-object/output/index-en.html",
+                    "name": null
+                },
+                {
+                    "@type": "Demo",
+                    "description": "This is a SECOND description for a demo for the ya2ro EELISA project but with name.",
+                    "link": "https://oeg-upm.github.io/EELISA-research-object/output/index-en.html",
+                    "name": "GitHub Pages demo"
+                }
+            ]
         }
     ]
 }

@@ -43,6 +43,7 @@ class ro_jsonld(object):
             self.graph_add_authors(p.data.authors)
             self.graph_add_softwares(p.data.software)
             self.graph_add_datasets(p.data.datasets)
+            self.graph_add_demo(p.data.demo)
 
         # Adds graph to the final structure jsonld
         self.jsonld["@graph"] = self.graph
@@ -64,12 +65,31 @@ class ro_jsonld(object):
         })
 
 
-    def graph_add_description(self, summary):
+    def graph_add_demo(self, demo):
 
-        if summary is None:
+        if demo is None:
+            return None
+
+        workExample_list = []
+        for d in demo:
+            workExample_list.append(
+                {
+                    "@type": "Demo",
+                    "link": d.link,
+                    "name": d.name,
+                    "description": d.description
+
+                })
+        self.graph.append({ "workExample": workExample_list })
+            
+
+
+    def graph_add_description(self, description):
+
+        if description is None:
             return
 
-        self.graph[1]["description"] = summary
+        self.graph[1]["description"] = description
 
 
     def graph_add_authors(self, authors):
