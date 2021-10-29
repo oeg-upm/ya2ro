@@ -43,5 +43,6 @@ if __name__ == "__main__":
     from ro_jsonld import ro_jsonld
 
     ro_jsonld = ro_jsonld()
+    ro_jsonld.load_data()
     ro_jsonld.createJSONLD_file()
 

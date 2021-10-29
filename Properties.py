@@ -60,7 +60,8 @@ def init(properties_file, input_yalm, output_directory_param):
         
     if type == "project":
         data = init_project(input_to_vocab, data)
-    
+
+
 def init_project(input_to_vocab, data):
 
     project = data_wrapper.Project(
@@ -69,14 +70,14 @@ def init_project(input_to_vocab, data):
         social_motivation = _safe(input_to_vocab["social_motivation"], data),
         sketch = _safe(input_to_vocab["sketch"], data),
         areas = _safe(input_to_vocab["areas"], data),
-        demo = [data_wrapper.Demo() for _ in range(len(data[input_to_vocab["demo"]]))],
-        datasets = [data_wrapper.Dataset() for _ in range(len(data[input_to_vocab["datasets"]][input_to_vocab["datasets_links"]]))],
-        doi_datasets = _safe(input_to_vocab["doi_datasets"], data[input_to_vocab["datasets"]]),
-        software = [data_wrapper.Software() for _ in range(len(data[input_to_vocab["software"]]))],
-        bibliography = [data_wrapper.Bibliography_entry() for _ in range(len(data[input_to_vocab["bibliography"]]))],
-        authors = [data_wrapper.Author() for _ in range(len(data[input_to_vocab["participants"]]))]
+        demo = _list_empty_instances(data_wrapper.Demo, input_to_vocab["demo"], data),
+        datasets = _list_empty_instances(data_wrapper.Dataset, input_to_vocab["datasets_links"], _safe(input_to_vocab["datasets"], data)),
+        doi_datasets = _safe(input_to_vocab["doi_datasets"], _safe(input_to_vocab["datasets"], data)),
+        software = _list_empty_instances(data_wrapper.Software, input_to_vocab["software"], data),
+        bibliography = _list_empty_instances(data_wrapper.Bibliography_entry, input_to_vocab["bibliography"], data),
+        authors = _list_empty_instances(data_wrapper.Author, input_to_vocab["participants"], data),
     )
-    
+
     # Demo
     populate_demo(project, input_to_vocab, data)
 
@@ -97,15 +98,15 @@ def init_project(input_to_vocab, data):
 
 def init_paper(input_to_vocab, data):
 
-    # Create paper objetc and pupulate the lists with empty instances
+    # Create paper object and pupulate the lists with empty instances
     paper = data_wrapper.Paper(
         title = _safe(input_to_vocab["title"], data),
         summary = _safe(input_to_vocab["summary"], data),
-        datasets = [data_wrapper.Dataset() for _ in range(len(data[input_to_vocab["datasets"]][input_to_vocab["datasets_links"]]))],
-        doi_datasets = _safe(input_to_vocab["doi_datasets"], data[input_to_vocab["datasets"]]),
-        software = [data_wrapper.Software() for _ in range(len(data[input_to_vocab["software"]]))],
-        bibliography = [data_wrapper.Bibliography_entry() for _ in range(len(data[input_to_vocab["bibliography"]]))],
-        authors = [data_wrapper.Author() for _ in range(len(data[input_to_vocab["authors"]]))]
+        datasets = _list_empty_instances(data_wrapper.Dataset, input_to_vocab["datasets_links"], _safe(input_to_vocab["datasets"], data)),
+        doi_datasets = _safe(input_to_vocab["doi_datasets"], _safe(input_to_vocab["datasets"], data)),
+        software = _list_empty_instances(data_wrapper.Software, input_to_vocab["software"], data),
+        bibliography = _list_empty_instances(data_wrapper.Bibliography_entry, input_to_vocab["bibliography"], data),
+        authors = _list_empty_instances(data_wrapper.Author, input_to_vocab["authors"], data),
     )
 
     # Datasets
@@ -139,14 +140,26 @@ def init_paper(input_to_vocab, data):
     return paper
     
 
+def _list_empty_instances(class_to_insatnce, key, dict):
+
+    list_data = _safe(key, dict) 
+    if list_data is None:
+        return None
+
+    return [class_to_insatnce() for _ in range(len(list_data))]
+    
 def _safe(key, dic):
-    """Safe call to a dictionary. Returns value or None if key does not exist"""
-    if key in dic:
+    """Safe call to a dictionary. Returns value or None if key or dictionary does not exist"""
+    if dic is not None and key in dic:
         return dic[key]
     else:
         return None
     
 def populate_datasets(object, input_to_vocab, data):
+
+    if object.datasets is None:
+        return
+
     i = 0
     for dataset in data[input_to_vocab["datasets"]][input_to_vocab["datasets_links"]]:
 
@@ -170,6 +183,10 @@ def populate_datasets(object, input_to_vocab, data):
     print("    - Datasets: Done.")
 
 def populate_software(object, input_to_vocab, data):
+
+    if object.software is None:
+        return
+
     i = 0
     for software in data[input_to_vocab["software"]]:
         link = _safe(input_to_vocab["link"], software)
@@ -187,6 +204,10 @@ def populate_software(object, input_to_vocab, data):
     print("    - Software: Done.")
     
 def populate_demo(object, input_to_vocab, data):
+
+    if object.demo is None:
+        return
+
     i = 0
     for demo in data[input_to_vocab["demo"]]:
 
@@ -206,16 +227,24 @@ def populate_demo(object, input_to_vocab, data):
         
     print("    - Demo: Done.")
 
-def populate_bibliography(paper, input_to_vocab, data):
+def populate_bibliography(object, input_to_vocab, data):
+
+    if object.bibliography is None:
+        return None
+
     i = 0
     for entry in data[input_to_vocab["bibliography"]]:
 
-        paper.bibliography[i].entry = entry
+        object.bibliography[i].entry = entry
 
         i += 1
     print("    - Bibliography: Done.")
 
 def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
+
+    if object.authors is None:
+        return None
+
     i = 0
     for author in data[input_to_vocab[field_of_author]]:
 
