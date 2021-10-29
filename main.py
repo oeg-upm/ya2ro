@@ -30,17 +30,17 @@ if __name__ == "__main__":
     # Create RO objects and dump results
     #----------------------------------------------------------------------------------
     
-    import Properties
+    import properties
 
-    Properties.init(properties_file, input_yalm, output_directory)
+    properties.init(properties_file, input_yalm, output_directory)
 
-    from Ro_html import Ro_html
+    from ro_html import ro_html
 
-    ro_html = Ro_html()
+    ro_html = ro_html()
     ro_html.load_data()
     ro_html.createHTML_file()
 
-    """from Ro_jsonld import Ro_jsonld
+    """from ro_jsonld import ro_jsonld
 
     ro_jsonld = Ro_jsonld()
     ro_jsonld.createJSONLD_file()"""

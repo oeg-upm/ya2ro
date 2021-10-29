@@ -50,6 +50,12 @@ class Software:
     link: str = None
     name: str = None
     description: str = None
+    
+@dataclass(unsafe_hash=True)
+class Demo:
+    link: str = None
+    name: str = None
+    description: str = None
 
 @dataclass(unsafe_hash=True)
 class Bibliography_entry:

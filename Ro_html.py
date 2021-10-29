@@ -1,10 +1,10 @@
-import Properties as p
+import properties as p
 from bs4 import BeautifulSoup
 from shutil import copyfile
 from pathlib import Path
 
 
-class Ro_html(object):
+class ro_html(object):
 
     def __init__(self):
 
@@ -39,8 +39,6 @@ class Ro_html(object):
             """
             self.__append_component("style", style_component)
             
-            
-        
 
     def load_data(self):
 
@@ -48,8 +46,6 @@ class Ro_html(object):
         for attr_name in p.data:
 
             attr_val = getattr(p.data, attr_name)
-            #print("Attr name: ", attr_name)
-            #print("Attr val: ", attr_val)
 
             if attr_val and attr_name in self.func_attr_init:
                 self.func_attr_init[attr_name](attr_val)
@@ -65,6 +61,7 @@ class Ro_html(object):
         self.__append_component("social_motivation", social_motivation_component)
         self.__sidebar_append("social_motivation", "Social motivation")
     
+
     def init_sketch(self, sketch):
         
         sketch_component = f"""<div class="w3-container" style="margin-top:15px">
@@ -72,33 +69,38 @@ class Ro_html(object):
         <hr style="width:50px;border:5px solid green" class="w3-round">
 		<img src="{sketch}" alt="Sketch of the project">
 	    </div>"""
+
         self.__append_component("sketch", sketch_component)
         self.__sidebar_append("sketch", "Sketch")
-
 
         # copy image to output/images directory
         src = Path(sketch)
         dst = Path(p.output_directory + "/" + sketch)
         copyfile(src, dst)
     
+
     def init_areas(self, areas):
 
-        areas_list = self.__make_html_ul_component(areas)
+        areas_list = self.__ul_component(areas)
 
         areas_component = f"""<div class="w3-container" style="margin-top:15px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Areas</b></h1>
         <hr style="width:50px;border:5px solid green" class="w3-round">
 		{areas_list}
 	    </div>"""
+
         self.__append_component("areas", areas_component)
         self.__sidebar_append("areas", "Areas")
-    
+
+
     def init_demo(self, demo):
-        
-        demo_component = f"""<div class="w3-container" style="margin-top:15px">
+
+        demo_list_commponent = self.__ul_component([f"""<a href="{d.link}">{d.link if d.name is None else d.name}</a>: {d.description}""" for d in demo])
+
+        demo_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Demo</b></h1>
-        <hr style="width:50px;border:5px solid green" class="w3-round">
-		<p><a href="{demo}">{demo}</a></p>
+		<hr style="width:50px;border:5px solid green" class="w3-round">
+        {demo_list_commponent}
 	    </div>"""
 
         self.__append_component("demo", demo_component)
@@ -118,6 +120,7 @@ class Ro_html(object):
  
 
     def init_title(self, title):
+
         # modify web title metadata
         self.soup.find('title').string = title
         # create the title
@@ -134,40 +137,69 @@ class Ro_html(object):
         self.__append_component("summary", summary_component)
         self.__sidebar_append("summary", "Summary")
     
+
     def init_doi_datasets(self, doi_dataset):
-        # Insert DOI link
-        doi_link = doi_dataset
-        dataset_doi_string = f"""We used the following datasets for our data, available in Zenodo under DOI: <a href="{doi_link}">{doi_link}</a>"""
-        doi_html = BeautifulSoup(dataset_doi_string, 'html.parser')
-        datasets = self.soup.find(id="datasets-doi")
-        datasets.append(doi_html)
+        pass
     
+
     def init_datasets(self, datasets):
-        # Insert list of datasets
-        datasets_list = self.soup.find(id="datasets-list")
-        self.__append_items_link(datasets, datasets_list)
+ 
+        datasets_list_commponent = self.__ul_component([f"""<a href="{d.link}">{d.link if d.name is None else d.name}</a>: {d.description}""" for d in datasets])
+
+        doi_datasets = ""
+        if p.data.doi_datasets is not None:
+            doi_datasets = f"""We used the following datasets for our data, available in Zenodo under DOI: <a href="{p.data.doi_datasets}">{p.data.doi_datasets}</a>"""
+        
+        datasets_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
+		<hr style="width:50px;border:5px solid green" class="w3-round">
+        {doi_datasets}
+        {datasets_list_commponent}
+	    </div>"""
+
         self.__sidebar_append("datasets", "Datasets")
+        self.__append_component("datasets", datasets_component)
     
+
     def init_software(self, software):
-        # create software
-        software_list = self.soup.find(id="software-list")
-        self.__append_items_link(software, software_list)
+
+        software_list_commponent = self.__ul_component([f"""<a href="{s.link}">{s.link if s.name is None else s.name}</a>: {s.description}""" for s in software])
+
+        software_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
+		<hr style="width:50px;border:5px solid green" class="w3-round">
+        The pointers for the main software used can be found below:
+        {software_list_commponent}
+	    </div>"""
+
         self.__sidebar_append("software", "Software")
+        self.__append_component("software", software_component)
     
+
     def init_bibliography(self, bibliography):
-        # create bibliography
-        bibliography_list = self.soup.find(id="bibliography-list")
-        for entry in bibliography:
-            li_new_tag = self.soup.new_tag('li')
-            li_new_tag.string = entry.entry
-            bibliography_list.append(li_new_tag)
+ 
+        bibliography_list = self.__ul_component([b.entry for b in bibliography])
+
+        bibliography_commponent = f"""<div class="w3-container" id="bib" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
+		<hr style="width:50px;border:5px solid green" class="w3-round">
+		{bibliography_list}
+	    </div>"""
+
         self.__sidebar_append("bibliography", "Bibliography")
+        self.__append_component("bibliography", bibliography_commponent)
+
 
     def init_authors(self, authors):
         # create authors
-        about_authors = self.soup.find(id="about_authors")
-        self.__create_about_authors(authors, about_authors)
+        authors_boxes = self.__create_about_authors(authors)
+        authors_commponent = f"""<div class="w3-container" id="authors" style="margin-top:75px">
+        <h1 class="w3-xxxlarge w3-text-green"><b>About the authors</b></h1>
+        <hr style="width:50px;border:5px solid green" class="w3-round">
+        {authors_boxes}"""
+
         self.__sidebar_append("authors", "About the authors")
+        self.__append_component("authors", authors_commponent)
 
         # copy images to output/images directory
         for author in authors:
@@ -176,19 +208,10 @@ class Ro_html(object):
             dst = Path(p.output_directory + "/" + author.photo)
             
             copyfile(src, dst)
-    
 
-    def __append_items_link(self, list, ul_list):
-        for entry in list:
-            li_new_tag = self.soup.new_tag('li')
-            a_new_tag = self.soup.new_tag('a')
-            a_new_tag['href'] = entry.link
-            a_new_tag.string = entry.name
-            li_new_tag.append(a_new_tag)
-            li_new_tag.a.insert_after(": " + entry.description)
-            ul_list.append(li_new_tag)
-    
-    def __create_about_authors(self, authors, about_authors):
+
+    def __create_about_authors(self, authors):
+
         num_authors = 0
         html_author = ""
 
@@ -220,8 +243,8 @@ class Ro_html(object):
         if(not(num_authors !=0 and num_authors %3 == 0)):
             html_author += "</div>"
 
-        author_bs = BeautifulSoup(html_author, 'html.parser')
-        about_authors.append(author_bs)
+        return html_author
+
 
     def createHTML_file(self):
         """Dupms index.html and dependencies into specified folder."""
@@ -231,18 +254,21 @@ class Ro_html(object):
         
         print(f"HTML website file created at {p.properties['output_html']}")   
 
+
     def __append_component(self, location_id, str_component):
         loc = self.soup.find(id=location_id)
         html_component = BeautifulSoup(str_component, 'html.parser')
         loc.append(html_component)
     
+
     def __sidebar_append(self, location_id, item_name):
         item_component = f"""<a href="#{location_id}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">{item_name}</a>"""
         self.__append_component("sidebar", item_component)
 
-    def __make_html_ul_component(self, list):
-        ul_component = """<ul>"""
+
+    def __ul_component(self, list):
+        ul_list = """<ul>"""
         for li in list:
-            ul_component += f"""<li>{li}</li>"""
-        ul_component += """</ul>"""
-        return ul_component
+            ul_list += f"""<li>{li}</li>"""
+        ul_list += """</ul>"""
+        return ul_list

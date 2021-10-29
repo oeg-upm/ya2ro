@@ -69,13 +69,17 @@ def init_project(input_to_vocab, data):
         social_motivation = _safe(input_to_vocab["social_motivation"], data),
         sketch = _safe(input_to_vocab["sketch"], data),
         areas = _safe(input_to_vocab["areas"], data),
-        demo = _safe(input_to_vocab["demo"], data),
+        demo = [data_wrapper.Demo() for _ in range(len(data[input_to_vocab["demo"]]))],
         datasets = [data_wrapper.Dataset() for _ in range(len(data[input_to_vocab["datasets"]][input_to_vocab["datasets_links"]]))],
         doi_datasets = _safe(input_to_vocab["doi_datasets"], data[input_to_vocab["datasets"]]),
         software = [data_wrapper.Software() for _ in range(len(data[input_to_vocab["software"]]))],
         bibliography = [data_wrapper.Bibliography_entry() for _ in range(len(data[input_to_vocab["bibliography"]]))],
         authors = [data_wrapper.Author() for _ in range(len(data[input_to_vocab["participants"]]))]
     )
+    
+    # Demo
+    populate_demo(project, input_to_vocab, data)
+
     # Datasets
     populate_datasets(project, input_to_vocab, data)
 
@@ -181,6 +185,26 @@ def populate_software(object, input_to_vocab, data):
             object.software[i].description = description
         i += 1
     print("    - Software: Done.")
+    
+def populate_demo(object, input_to_vocab, data):
+    i = 0
+    for demo in data[input_to_vocab["demo"]]:
+
+        link = _safe(input_to_vocab["link"], demo)
+        if link is not None:
+            object.demo[i].link = link
+        
+        name = _safe(input_to_vocab["name"], demo)
+        if name is not None:
+            object.demo[i].name = name
+        
+        description = _safe(input_to_vocab["description"], demo)
+        if description is not None:
+            object.demo[i].description = description
+
+        i += 1
+        
+    print("    - Demo: Done.")
 
 def populate_bibliography(paper, input_to_vocab, data):
     i = 0

@@ -1,7 +1,7 @@
-import Properties as p
+import properties as p
 import json
 
-class Ro_jsonld(object):
+class ro_jsonld(object):
 
     def __init__(self):
 
