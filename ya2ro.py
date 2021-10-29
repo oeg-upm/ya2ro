@@ -38,11 +38,11 @@ if __name__ == "__main__":
 
     ro_html = ro_html()
     ro_html.load_data()
-    ro_html.createHTML_file()
+    ro_html.create_HTML_file()
 
     from ro_jsonld import ro_jsonld
 
     ro_jsonld = ro_jsonld()
     ro_jsonld.load_data()
-    ro_jsonld.createJSONLD_file()
+    ro_jsonld.create_JSONLD_file()
 

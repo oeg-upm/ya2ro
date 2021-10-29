@@ -144,7 +144,7 @@ class ro_jsonld(object):
             })
 
 
-    def createJSONLD_file(self):
+    def create_JSONLD_file(self):
         # dump changes into output/ro-crate.json
         with open(p.properties["output_jsonld"], "w+") as file:
             file.write(json.dumps(self.jsonld, indent=4, sort_keys=True))

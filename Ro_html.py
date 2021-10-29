@@ -1,3 +1,4 @@
+import json
 import properties as p
 from bs4 import BeautifulSoup
 from shutil import copyfile
@@ -27,6 +28,10 @@ class ro_html(object):
             "demo": self.init_demo
 
         }
+
+        # HREF SVG JSONLD
+        jsonld_svg = self.soup.find(id="jsonld_svg")
+        jsonld_svg['href'] = "/" + str(p.properties["output_jsonld"])
 
         if p.style == "dark":
 
@@ -246,7 +251,7 @@ class ro_html(object):
         return html_author
 
 
-    def createHTML_file(self):
+    def create_HTML_file(self):
         """Dupms index.html and dependencies into specified folder."""
         # dump changes into index.html
         with open(p.properties["output_html"], "w+") as file:
