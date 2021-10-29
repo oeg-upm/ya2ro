@@ -8,3 +8,4 @@
   output_jsonld: "ro-crate.json"
   htaccess: "resources/.htaccess"
   default_author_img: /default_author.jpg
+  # TODO: (style: "dark") Move implementation here

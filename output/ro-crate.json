@@ -20,42 +20,27 @@
                     "@id": "#daniel_garijo"
                 },
                 {
-                    "@id": "#name_1"
-                },
-                {
-                    "@id": "#name_2"
-                },
-                {
-                    "@id": "#name_3"
-                },
-                {
-                    "@id": "#name_4"
+                    "@id": "#antonia_pavel"
                 }
             ],
-            "description": "This is the summary",
+            "description": "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
             "hasPart": [
                 {
-                    "@id": "#name_link_1"
-                },
-                {
-                    "@id": "#name_link_2"
+                    "@id": "#eelisa-research-object"
                 },
                 {
                     "@id": "#name_dataset_1"
                 },
                 {
                     "@id": "#name_dataset_2"
-                },
-                {
-                    "@id": "#name_dataset_3"
                 }
             ],
-            "name": "This is a title"
+            "name": "EELISA Project - ya2ro"
         },
         {
             "@id": "#daniel_garijo",
             "@type": "Person",
-            "description": "This is a description",
+            "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
                 "Universidad Polit\u00e9cnica de Madrid",
@@ -63,52 +48,19 @@
             ]
         },
         {
-            "@id": "#name_1",
+            "@id": "#antonia_pavel",
             "@type": "Person",
-            "description": "Here it goes a more detailed description.",
-            "name": "Name 1",
+            "description": "Student of the double major in Computer Engineering and Business Administration and Management from Universidad Polit\u00e9cnica de Madrid, Spain.",
+            "name": "Antonia Pavel",
             "position": [
-                "Position"
+                "Research Assistant at Universidad Polit\u00e9cnica de Madrid"
             ]
         },
         {
-            "@id": "#name_2",
-            "@type": "Person",
-            "description": "Here it goes a more detailed description.",
-            "name": "Name 2",
-            "position": [
-                "Position"
-            ]
-        },
-        {
-            "@id": "#name_3",
-            "@type": "Person",
-            "description": "Here it goes a more detailed description.",
-            "name": "Name 3",
-            "position": [
-                "Position"
-            ]
-        },
-        {
-            "@id": "#name_4",
-            "@type": "Person",
-            "description": "Here it goes a more detailed description.",
-            "name": "Name 4",
-            "position": [
-                "Position"
-            ]
-        },
-        {
-            "@id": "#name_link_1",
+            "@id": "#eelisa-research-object",
             "@type": "SoftwareApplication",
-            "description": "description software 1",
-            "installUrl": "www.linkS1.com"
-        },
-        {
-            "@id": "#name_link_2",
-            "@type": "SoftwareApplication",
-            "description": "description software 2",
-            "installUrl": "www.linkS2.com"
+            "description": "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
+            "installUrl": "https://github.com/oeg-upm/EELISA-research-object"
         },
         {
             "@id": "#name_dataset_1",
@@ -127,15 +79,6 @@
                 "@id": "www.linkD2.com"
             },
             "name": "name dataset 2"
-        },
-        {
-            "@id": "#name_dataset_3",
-            "@type": "Dataset",
-            "description": "description dataset 3",
-            "distribution": {
-                "@id": "www.linkD3.com"
-            },
-            "name": "name dataset 3"
         }
     ]
 }

@@ -1,5 +1,7 @@
 import properties as p
 import json
+import data_wrapper
+
 
 class ro_jsonld(object):
 
@@ -16,19 +18,28 @@ class ro_jsonld(object):
                 "description": "RO-Crate Metadata File Descriptor (this file)"
             },
             {
-            "@id": "./",
-            "@type": "Dataset",
-            "name": p.data.title,
-            "description": p.data.summary,
-            "author": [],
-            "hasPart": []
-        }
+                "@id": "./",
+                "@type": "Dataset",
+                "name": p.data.title,
+                "description": "",
+                "author": [],
+                "hasPart": []
+            }
         ]
 
-        # Self creates the hardcoded structure
-        self.graph_add_authors(p.data.authors, graph)
-        self.graph_add_softwares(p.data.software, graph)
-        self.graph_add_datasets(p.data.datasets, graph)
+        # Self creates the hardcoded structure for paper
+        if isinstance(p.data, data_wrapper.Paper):
+            self.graph_add_description(p.data.summary, graph)
+            self.graph_add_authors(p.data.authors, graph)
+            self.graph_add_softwares(p.data.software, graph)
+            self.graph_add_datasets(p.data.datasets, graph)
+        
+        # Self creates the hardcoded structure for project
+        if isinstance(p.data, data_wrapper.Project):
+            self.graph_add_description(p.data.goal, graph)
+            self.graph_add_authors(p.data.authors, graph)
+            self.graph_add_softwares(p.data.software, graph)
+            self.graph_add_datasets(p.data.datasets, graph)
 
         # Adds graph to the final structure jsonld
         self.jsonld["@graph"] = graph
@@ -47,7 +58,17 @@ class ro_jsonld(object):
             "@id": id_normalized
         })
 
+    def graph_add_description(self, summary, graph):
+        
+        if summary is None:
+            return
+
+        graph[1]["description"] = summary
+
     def graph_add_authors(self, authors, graph):
+
+        if authors is None:
+            return
 
         for author in authors:
 
@@ -63,6 +84,9 @@ class ro_jsonld(object):
 
     def graph_add_softwares(self, softwares, graph):
 
+        if softwares is None:
+            return
+
         for software in softwares:
 
             self._add_id_to_list(software.name, graph[1]["hasPart"])
@@ -75,6 +99,9 @@ class ro_jsonld(object):
         })
 
     def graph_add_datasets(self, datasets, graph):
+
+        if datasets is None:
+            return
         
         for dataset in datasets:
 

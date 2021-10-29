@@ -40,8 +40,8 @@ if __name__ == "__main__":
     ro_html.load_data()
     ro_html.createHTML_file()
 
-    """from ro_jsonld import ro_jsonld
+    from ro_jsonld import ro_jsonld
 
-    ro_jsonld = Ro_jsonld()
-    ro_jsonld.createJSONLD_file()"""
+    ro_jsonld = ro_jsonld()
+    ro_jsonld.createJSONLD_file()
 
