@@ -30,9 +30,9 @@ optional arguments:
 
 Simple execution:
 
-`python3 main.py -i input.yaml`
+`python3 ya2ro.py -i input.yaml`
 
 With optional arguments:
 
-`python3 main.py -input input.yaml --output_directory out --properties_file prop.yaml`   
-`python3 main.py -i input.yaml -o out -p prop.yaml`
+`python3 ya2ro.py -input input.yaml --output_directory out --properties_file prop.yaml`   
+`python3 ya2ro.py -i input.yaml -o out -p prop.yaml`
