@@ -2,9 +2,11 @@ import yaml
 from yaml.loader import SafeLoader
 from pathlib import Path
 import os
+import sys
 import data_wrapper
 import req_orcid
 import req_doi
+import somef.cli
 
 def init(properties_file, input_yalm, output_directory_param):
     global properties, output_directory, data, style, type
@@ -41,7 +43,7 @@ def init(properties_file, input_yalm, output_directory_param):
     with open(Path(input_yalm)) as file:
         data = yaml.load(file, Loader=SafeLoader)
     
-    print(f"Parsing and fetching info from {input_yalm}...")
+    print(f"Parsing and fetching info from {input_yalm}...\n")
 
     # Style selector
     style = _safe(input_to_vocab["style"], data)
@@ -211,8 +213,26 @@ def populate_software(object, input_to_vocab, data):
     i = 0
     for software in data[input_to_vocab["software"]]:
         link = _safe(input_to_vocab["link"], software)
+        
         if link is not None:
             object.software[i].link = link
+
+            # SOMEF 
+            if link.startswith("https://github.com/"):
+
+                print(f"        + Using SOMEF for {link}")
+                header = {}
+                header['accept'] = 'application/vnd.github.v3+json'
+
+                blockPrint()
+                text, github_data = somef.cli.load_repository_metadata(link, header)
+                enablePrint()
+
+                #print("Text: ", text)
+                #print("Github_data: ", github_data.keys())
+                #print("Github_data: ", github_data)
+
+                object.software[i].name = github_data["name"]
         
         name = _safe(input_to_vocab["name"], software)
         if name is not None:
@@ -309,3 +329,10 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
         i += 1
     print("    - Authors: Done.")
 
+# Disable
+def blockPrint():
+    sys.stdout = open(os.devnull, 'w')
+
+# Restore
+def enablePrint():
+    sys.stdout = sys.__stdout__

@@ -50,6 +50,9 @@ _________________________________________________________
     import properties
 
     properties.init(properties_file, input_yalm, output_directory)
+    
+    # Just to improve the stdout
+    print("")
 
     from ro_html import ro_html
 
@@ -62,4 +65,7 @@ _________________________________________________________
     ro_jsonld = ro_jsonld()
     ro_jsonld.load_data()
     ro_jsonld.create_JSONLD_file()
+
+    # Just to improve the stdout
+    print("")
 

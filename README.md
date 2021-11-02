@@ -2,7 +2,7 @@
 
 ## Install dependencies
 
-* pip install -r requirements.txt 
+* pip install -r requirements.txt
 
 ## How to use 
 
@@ -12,7 +12,7 @@ Run the script as follows:
 ---
 
 ```
-Usage: main.py [-h] -i INPUT [-o OUTPUT_DIRECTORY] [-p PROPERTIES_FILE]
+Usage: ya2ro.py [-h] -i INPUT [-o OUTPUT_DIRECTORY] [-p PROPERTIES_FILE]
 
 Human and machine readeable input as a yalm file and create RO-Object in jsonld and/or HTML view.
 
