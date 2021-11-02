@@ -12,11 +12,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px; text-align: justify;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .w3-half img:hover{opacity:1}
-img {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-}
+img {display: block;margin-left: auto;margin-right: auto;}
+.column {float: left;width: 50%;padding: 5px;}
+.row::after {content: "";clear: both;display: table;}
+
+
 </style>
 
 <body>
@@ -32,9 +32,20 @@ img {
 	<div class="w3-bar-block">
 		<span id="sidebar"></span>
 	</div>
-	<a id="jsonld_svg" href="#">
-	<img alt="JSON-LD"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="width: 3em; position: absolute; bottom: 16px; left: auto;">
-	</a>
+
+	<div class="row" style="margin-top:4em;">
+	<div class="column">
+		<a href="ro-crate.json" id="jsonld_svg">
+			<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); margin-left:10px; width: 3em; "/>
+			</a>
+	</div>
+	<div class="column">
+		<a href="https://eelisa.eu/" id="eelisa_logo">
+			<img alt="JSON-LD" src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" style="width: 3em; width: fit-content;"/>
+			</a>
+	</div>
+
+</div>
 	
 </nav>
 

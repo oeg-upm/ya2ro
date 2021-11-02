@@ -12,11 +12,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
 body {font-size:16px; text-align: justify;}
 .w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
 .w3-half img:hover{opacity:1}
-img {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-}
+img {display: block;margin-left: auto;margin-right: auto;}
+.column {float: left;width: 50%;padding: 5px;}
+.row::after {content: "";clear: both;display: table;}
+
+
 
             h1,h1 b{color:#fff!important}
             .w3-light-grey{background-color:#ddd!important;color:#222831!important}
@@ -33,9 +33,18 @@ img {
 <div class="w3-bar-block">
 <span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#goal" onclick="w3_close()">Goal</a><a class="w3-bar-item w3-button w3-hover-white" href="#social_motivation" onclick="w3_close()">Social motivation</a><a class="w3-bar-item w3-button w3-hover-white" href="#sketch" onclick="w3_close()">Sketch</a><a class="w3-bar-item w3-button w3-hover-white" href="#areas" onclick="w3_close()">Areas</a><a class="w3-bar-item w3-button w3-hover-white" href="#demo" onclick="w3_close()">Demo</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
 </div>
+<div class="row" style="margin-top:4em;">
+<div class="column">
 <a href="ro-crate.json" id="jsonld_svg">
-<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="width: 3em; position: absolute; bottom: 16px; left: auto;"/>
+<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); margin-left:10px; width: 3em; "/>
 </a>
+</div>
+<div class="column">
+<a href="https://eelisa.eu/" id="eelisa_logo">
+<img alt="JSON-LD" src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" style="width: 3em; width: fit-content;"/>
+</a>
+</div>
+</div>
 </nav>
 <!-- Top menu on small screens -->
 <header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
@@ -111,7 +120,7 @@ img {
 <img alt="Daniel Garijo" src="images//default_author.jpg" style="width:90%;padding-top: 10px;"/>
 <div class="w3-container">
 <h3><a href="https://orcid.org/0000-0003-0454-7145">Daniel Garijo</a></h3>
-<p class="w3-opacity"> Universidad Politécnica de Madrid, University of Southern California</p>
+<p class="w3-opacity"> University of Southern California, Universidad Politécnica de Madrid</p>
 <a href="http://w3id.org/people/dgarijo">http://w3id.org/people/dgarijo</a>
 <p>I am a researcher at Universidad Politécnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.</p>
 </div>
@@ -130,7 +139,7 @@ img {
 </div>
 </div></div></span>
 </div>
-</body></html>
+
 
 
 
@@ -156,5 +165,5 @@ function onClick(element) {
 	captionText.innerHTML = element.alt;
 }
 </script>
-
-
+</body>
+</html>

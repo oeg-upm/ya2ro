@@ -26,6 +26,23 @@ if __name__ == "__main__":
     properties_file = "resources/properties.yaml" if args.properties_file is None else args.properties_file
     input_yalm = args.input
 
+    ###################################################################################
+    # LOGO
+
+    print("""
+                        ad888888b,                         
+                       d8"     "88                         
+                               a8P                         
+8b       d8 ,adPPYYba,      ,d8P"  8b,dPPYba,  ,adPPYba,   
+`8b     d8' ""     `Y8    a8P"     88P'   "Y8 a8"     "8a  
+ `8b   d8'  ,adPPPPP88  a8P'       88         8b       d8  
+  `8b,d8'   88,    ,88 d8"         88         "8a,   ,a8"  
+    Y88'    `"8bbdP"Y8 88888888888 88          `"YbbdP"'   
+    d8'                                                    
+   d8' 
+_________________________________________________________
+    """)
+
     #----------------------------------------------------------------------------------
     # Create RO objects and dump results
     #----------------------------------------------------------------------------------

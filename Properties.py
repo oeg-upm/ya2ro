@@ -7,7 +7,7 @@ import req_orcid
 import req_doi
 
 def init(properties_file, input_yalm, output_directory_param):
-    global properties, output_directory, data, style
+    global properties, output_directory, data, style, type
 
     # Make visible output directoty to all modules
     output_directory = output_directory_param
@@ -54,7 +54,7 @@ def init(properties_file, input_yalm, output_directory_param):
        type: "paper"
        type: "project" """)
         exit()
-
+    
     if type == "paper":
         data = init_paper(input_to_vocab, data)
         
@@ -77,6 +77,21 @@ def init_project(input_to_vocab, data):
         bibliography = _list_empty_instances(data_wrapper.Bibliography_entry, input_to_vocab["bibliography"], data),
         authors = _list_empty_instances(data_wrapper.Author, input_to_vocab["participants"], data),
     )
+
+    if project.title:
+        print("    - Title: Done.")
+
+    if project.goal:
+        print("    - Goal: Done.")
+
+    if project.social_motivation:
+        print("    - Social motivation: Done.")
+
+    if project.sketch:
+        print("    - Sketch: Done.")
+    
+    if project.areas:
+        print("    - Areas: Done.")
 
     # Demo
     populate_demo(project, input_to_vocab, data)
@@ -108,6 +123,12 @@ def init_paper(input_to_vocab, data):
         bibliography = _list_empty_instances(data_wrapper.Bibliography_entry, input_to_vocab["bibliography"], data),
         authors = _list_empty_instances(data_wrapper.Author, input_to_vocab["authors"], data),
     )
+
+    if paper.title:
+        print("    - Title: Done.")
+
+    if paper.summary:
+        print("    - Summary: Done.")
 
     # Datasets
     populate_datasets(paper, input_to_vocab, data)

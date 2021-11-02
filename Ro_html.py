@@ -34,7 +34,6 @@ class ro_html(object):
         jsonld_svg['href'] = ntpath.basename(p.properties["output_jsonld"])
 
         if p.style == "dark":
-
             # TODO: Make a function out of this 
             style_component = """
             h1,h1 b{color:#fff!important}
@@ -43,7 +42,20 @@ class ro_html(object):
             body{background-color:#222831!important;color:#fff!important}
             """
             self.__append_component("style", style_component)
-            
+        
+        # EELISA LOGO WORTH IT?
+        if p.type == "project":
+            requirements = ["goal","social_motivation","sketch","areas","authors"]
+            worth = True
+            for req in requirements:
+                val = getattr(p.data, req)
+                if val is None:
+                    print("WARNING: '{}' is not defined. Add it to be eligible for beeing an EELISA project.".format(req))
+                    worth = False
+            if not worth:
+                self.soup.find(id="eelisa_logo").decompose()
+
+
 
     def load_data(self):
 

@@ -1,7 +1,5 @@
 import properties as p
 import json
-import data_wrapper
-
 
 class ro_jsonld(object):
 
@@ -31,14 +29,14 @@ class ro_jsonld(object):
     def load_data(self):
 
         # Self creates the hardcoded structure for paper
-        if isinstance(p.data, data_wrapper.Paper):
+        if p.type == "paper":
             self.graph_add_description(p.data.summary)
             self.graph_add_authors(p.data.authors)
             self.graph_add_softwares(p.data.software)
             self.graph_add_datasets(p.data.datasets)
         
         # Self creates the hardcoded structure for project
-        if isinstance(p.data, data_wrapper.Project):
+        if p.type == "project":
             self.graph_add_description(p.data.goal)
             self.graph_add_authors(p.data.authors)
             self.graph_add_softwares(p.data.software)
