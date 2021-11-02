@@ -224,9 +224,8 @@ def populate_software(object, input_to_vocab, data):
                 header = {}
                 header['accept'] = 'application/vnd.github.v3+json'
 
-                blockPrint()
-                text, github_data = somef.cli.load_repository_metadata(link, header)
-                enablePrint()
+                with HiddenPrints():
+                    text, github_data = somef.cli.load_repository_metadata(link, header)
 
                 #print("Text: ", text)
                 #print("Github_data: ", github_data.keys())
@@ -329,10 +328,11 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
         i += 1
     print("    - Authors: Done.")
 
-# Disable
-def blockPrint():
-    sys.stdout = open(os.devnull, 'w')
+class HiddenPrints:
+    def __enter__(self):
+        self._original_stdout = sys.stdout
+        sys.stdout = open(os.devnull, 'w')
 
-# Restore
-def enablePrint():
-    sys.stdout = sys.__stdout__
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        sys.stdout.close()
+        sys.stdout = self._original_stdout
