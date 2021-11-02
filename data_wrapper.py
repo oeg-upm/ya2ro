@@ -37,6 +37,7 @@ class Author:
     position: str = None
     description: str = None
     web: str = None
+    role: str = None
 
 @dataclass(unsafe_hash=True)
 class Dataset:

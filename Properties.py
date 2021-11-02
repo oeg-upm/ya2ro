@@ -325,6 +325,12 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
         if web is not None:
             object.authors[i].web = web
         
+        role = _safe(input_to_vocab["role"], author)
+        if role is not None:
+            object.authors[i].role = role
+        else:
+            object.authors[i].role = "Author"
+        
         i += 1
     print("    - Authors: Done.")
 

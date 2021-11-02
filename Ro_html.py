@@ -245,10 +245,10 @@ class ro_html(object):
                 <img src="{author.photo}" alt="{author.name}" style="width:90%;padding-top: 10px;">
                 <div class="w3-container">
                     <h3><a href="{author.orcid if author.orcid is not None else author.web}">{author.name}</a></h3>
-                    <p class="w3-opacity"> {author.position}</p>
+                    <p class="w3-opacity">{author.role}</p>
+                    <p class="w3-opacity">{author.position}</p>
                     <a href="{author.web}">{author.web}</a>
                     <p>{author.description}</p>
-                    
                 </div>
                 </div>
             </div> 
