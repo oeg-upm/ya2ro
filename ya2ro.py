@@ -14,17 +14,12 @@ if __name__ == "__main__":
         help='Path of the required yalm input. Follow the documentation or the example given to see the structure of the file.')
 
     # Optional argument
-    parser.add_argument('-o', '--output_directory', type=str, help='Output diretory.')
+    parser.add_argument('-o', '--output_directory', type=str, help='Output diretory.', default="output")
     
     # Optional argument
-    parser.add_argument('-p', '--properties_file', type=str, help='Properties file name.')
+    parser.add_argument('-p', '--properties_file', type=str, help='Properties file name.', default="resources/properties.yaml")
 
     args = parser.parse_args()
-
-    # Default values and yalm_input
-    output_directory = "output" if args.output_directory is None else args.output_directory
-    properties_file = "resources/properties.yaml" if args.properties_file is None else args.properties_file
-    input_yalm = args.input
 
     ###################################################################################
     # LOGO
@@ -49,7 +44,7 @@ _________________________________________________________
     
     import properties
 
-    properties.init(properties_file, input_yalm, output_directory)
+    properties.init(args.properties_file, args.input, args.output_directory)
     
     # Just to improve the stdout
     print("")
