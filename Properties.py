@@ -217,7 +217,7 @@ def populate_software(object, input_to_vocab, data):
         if link is not None:
             object.software[i].link = link
 
-            # SOMEF 
+            # SOMEF: TODO: Extract more useful data
             if link.startswith("https://github.com/"):
 
                 print(f"        + Using SOMEF for {link}")

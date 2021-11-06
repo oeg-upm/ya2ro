@@ -37,9 +37,9 @@ software:
     link: "https://github.com/oeg-upm/EELISA-research-object" 
     #name: "EELISA-research-object"
     description: "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object."
-  #-
-    #link: "https://github.com/KnowledgeCaptureAndDiscovery/somef/"
-    #description: "A command line interface for automatically extracting relevant information from readme files."
+  -
+    link: "https://github.com/KnowledgeCaptureAndDiscovery/somef/"
+    description: "A command line interface for automatically extracting relevant information from readme files."
 
 bibliography: 
   - "Bibliography entry 1"
