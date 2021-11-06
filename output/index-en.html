@@ -14,7 +14,7 @@ body {font-size:16px; text-align: justify;}
 .w3-half img:hover{opacity:1}
 img {display: block;margin-left: auto;margin-right: auto;}
 .column {float: left;width: 50%;padding: 5px;}
-.row::after {content: "";clear: both;display: table;}
+.row::after {content: ""; clear: both; display: table;}
 
 
 
@@ -27,20 +27,27 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" id="mySidebar" style="z-index:3;width:300px;font-weight:bold;"><br/>
 <a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()" style="width:100%;font-size:22px">Close Menu</a>
+<!-- LOGO if recognized -->
 <div class="row" style="margin-bottom:2em;margin-top:2em;">
 <div class="column" id="eelisa_logo">
+<span id="recogn_logo"></span>
 <a href="https://eelisa.eu/" target="_blank">
-<img alt="JSON-LD" title="This project has the necessary characteristics to be recognized as an EELISA project." src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" target="_blank" style="width: 3em; width: fit-content;"/>
+<img alt="EELISA-logo" src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" style="width: 3em; width: fit-content;" title="This project has the necessary characteristics to be recognized as an EELISA project."/>
 </a>
 </div>
 <div class="column">
-<a href="ro-crate.json" id="jsonld_svg">
-<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 3em; "/>
-</a>
+<!-- Help button -->
 </div>
 </div>
 <div class="w3-bar-block">
 <span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#goal" onclick="w3_close()">Goal</a><a class="w3-bar-item w3-button w3-hover-white" href="#social_motivation" onclick="w3_close()">Social motivation</a><a class="w3-bar-item w3-button w3-hover-white" href="#sketch" onclick="w3_close()">Sketch</a><a class="w3-bar-item w3-button w3-hover-white" href="#areas" onclick="w3_close()">Areas</a><a class="w3-bar-item w3-button w3-hover-white" href="#demo" onclick="w3_close()">Demo</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
+</div>
+<div class="row" style="position: absolute; bottom: 25px; height: 50px;">
+<div class="column">
+<a href="ro-crate.json" id="jsonld_svg">
+<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 3em; " title="Retrieve the JSON-LD ro-crate representation of this web."/>
+</a>
+</div>
 </div>
 
 </nav>
