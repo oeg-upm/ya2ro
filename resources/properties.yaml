@@ -4,7 +4,9 @@
 #-----------------------------
   input_to_vocab_yaml: "resources/input_to_vocab.yaml"
   template_html: "resources/template.html"
+  template_help: "resources/help.html"
   output_html: "index-en.html"
+  output_html_help: "help.html"
   output_jsonld: "ro-crate.json"
   htaccess: "resources/.htaccess"
   default_author_img: /default_author.jpg

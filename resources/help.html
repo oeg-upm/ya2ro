@@ -20,7 +20,6 @@ img {display: block;margin-left: auto;margin-right: auto;}
 </style>
 
 <body>
-
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
 	<a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
@@ -29,8 +28,12 @@ img {display: block;margin-left: auto;margin-right: auto;}
 	<div class="row" style="margin-bottom:2em;margin-top:2em;">
 
 		<div class="column">
-			<!-- Requiremnts okay logo -->
-			<span id=recogn_logo></span>
+			<!-- back button -->
+			<a href="#" id="back-button">
+				<img title="Return to the main page."
+				alt="back-button" src="https://img.icons8.com/material/48/000000/arrow-pointing-left--v2.png"
+				style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0; padding-top: 1em;"/>
+			</a>
 		</div>
 
 	</div>
@@ -72,50 +75,21 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
+
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
 	<!-- Header -->
-	<div class="w3-container" style="margin-top:80px" id="showcase">
-		<h1><b> Title </b></h1>
-	</div>
+	<!-- <div class="w3-container" style="margin-top:80px" id="showcase">
+		<h1><b> Help </b></h1>
+	</div> -->
 
-	<!-- Summary -->
-	<span id=summary></span>
+	<!-- Icons_explanation -->
+	<span id=icons_explanation></span>
 
-	<!-- Goal -->
-	<span id=goal></span>
+	<!-- How the information was retrieved? -->
+	<span id=how_info></span>
 
-	<!-- Social Motivation -->
-	<span id=social_motivation></span>
-
-	<!-- Areas -->
-	<span id=areas></span>
-	
-	<!-- Sketch -->
-	<span id=sketch></span>
-
-	<!-- Demo -->
-	<span id=demo></span>
-	
-	<!-- datasets -->
-	<span id=datasets></span>
-
-	<!-- Software -->
-	<span id=software></span>
-
-	<!-- Bibliography -->
-	<span id=bibliography></span>
-
-	<!-- Authors -->
-	<span id=authors></span>
-
-
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
 
 <!-- End page content -->
 </div>
@@ -140,6 +114,5 @@ function onClick(element) {
 	captionText.innerHTML = element.alt;
 }
 </script>
-
 </body>
 </html>

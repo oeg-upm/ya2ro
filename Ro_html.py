@@ -11,12 +11,12 @@ class ro_html(object):
 
         # read and parse the template
         self.soup = BeautifulSoup(open(p.properties["template_html"]), 'html.parser')
+        self.soup_help = BeautifulSoup(open(p.properties["template_help"]), 'html.parser')
 
         self.func_attr_init = {
 
             "title": self.init_title,
             "summary": self.init_summary,
-            "doi_datasets": self.init_doi_datasets,
             "datasets": self.init_datasets,
             "software": self.init_software,
             "bibliography": self.init_bibliography,
@@ -30,22 +30,24 @@ class ro_html(object):
 
         }
 
+
+    def load_data(self):
+
         # HREF SVG JSONLD            
         jsonld_svg = self.soup.find(id="jsonld_svg")
         jsonld_svg['href'] = ntpath.basename(p.properties["output_jsonld"])
 
-        if p.style == "dark":
-            # TODO: Make a function out of this 
-            style_component = """
-            h1,h1 b{color:#fff!important}
-            .w3-light-grey{background-color:#ddd!important;color:#222831!important}
-            .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
-            body{background-color:#222831!important;color:#fff!important}
-            """
-            self.__append_component("style", style_component)
-        
+        # HREF Help button
+        help_button = self.soup.find(id="help-button")
+        help_button['href'] = ntpath.basename(p.properties["output_html_help"])
 
-    def load_data(self):
+        # HREF Back button from help
+        back_button = self.soup_help.find(id="back-button")
+        back_button['href'] = ntpath.basename(p.properties["output_html"])
+
+        self.init_styles()
+
+        self.init_help_page()
 
         # Iterate attr from data and call correct init function for that attr
         for attr_name in p.data:
@@ -54,6 +56,46 @@ class ro_html(object):
 
             if attr_val and attr_name in self.func_attr_init:
                 self.func_attr_init[attr_name](attr_val)
+
+    def init_help_page(self):
+
+        icons_explanation_text = "Icons description: [...]"
+
+        icons_explanation_component = f"""<div class="w3-container" style="margin-top:15px">
+		<h1 class="w3-xxxlarge w3-text-green"><b>Icons</b></h1>
+        <hr style="width:50px;border:5px solid green" class="w3-round">
+		<p>{icons_explanation_text}</p>
+	    </div>"""
+
+        self.__append_component_help("icons_explanation", icons_explanation_component)
+
+        ################################################
+
+        how_info_text = "How information was retrieved: [...]"
+
+        how_info_component = f"""<div class="w3-container" style="margin-top:15px">
+		<h1 class="w3-xxxlarge w3-text-green"><b>How was the information retrieved?</b></h1>
+        <hr style="width:50px;border:5px solid green" class="w3-round">
+		<p>{how_info_text}</p>
+	    </div>"""
+
+        self.__append_component_help("how_info", how_info_component)
+
+
+    def init_styles(self):
+
+        if p.style == "dark":
+
+            # TODO: Make a function out of this 
+            style_component = """
+            h1,h1 b{color:#fff!important}
+            .w3-light-grey{background-color:#ddd!important;color:#222831!important}
+            .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
+            body{background-color:#222831!important;color:#fff!important}
+            """
+            self.__append_component("style", style_component)
+            self.__append_component_help("style", style_component)
+            
 
     def init_requirements_recognition(self, requirements):
 
@@ -172,11 +214,6 @@ class ro_html(object):
 
         self.__append_component("summary", summary_component)
         self.__sidebar_append("summary", "Summary")
-    
-
-    def init_doi_datasets(self, doi_dataset):
-        pass
-    
 
     def init_datasets(self, datasets):
  
@@ -287,12 +324,21 @@ class ro_html(object):
         # dump changes into index.html
         with open(p.properties["output_html"], "w+") as file:
             file.write(str(self.soup))
-        
+
+        # dump changes into help.html
+        with open(p.properties["output_html_help"], "w+") as file:
+            file.write(str(self.soup_help))
+
         print(f"HTML website file created at {p.properties['output_html']}")   
 
 
     def __append_component(self, location_id, str_component):
         loc = self.soup.find(id=location_id)
+        html_component = BeautifulSoup(str_component, 'html.parser')
+        loc.append(html_component)
+
+    def __append_component_help(self, location_id, str_component):
+        loc = self.soup_help.find(id=location_id)
         html_component = BeautifulSoup(str_component, 'html.parser')
         loc.append(html_component)
     

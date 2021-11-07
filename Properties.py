@@ -18,6 +18,7 @@ def init(properties_file, input_yalm, output_directory_param):
     with open(Path(properties_file)) as file:
         properties = yaml.load(file, Loader=SafeLoader)
 
+    properties["output_html_help"] = Path(output_directory +"/"+ properties["output_html_help"])
     properties["output_html"] = Path(output_directory +"/"+ properties["output_html"])
     properties["output_jsonld"] = Path(output_directory +"/"+ properties["output_jsonld"])
 

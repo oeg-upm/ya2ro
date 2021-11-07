@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<title>Title</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+<style id="style">
+
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px; text-align: justify;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+img {display: block;margin-left: auto;margin-right: auto;}
+.column {float: left;width: 50%;padding: 5px;}
+.row::after {content: ""; clear: both; display: table;}
+
+
+</style>
+<body>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" id="mySidebar" style="z-index:3;width:300px;font-weight:bold;"><br/>
+<a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()" style="width:100%;font-size:22px">Close Menu</a>
+<!-- LOGO if recognized -->
+<div class="row" style="margin-bottom:2em;margin-top:2em;">
+<div class="column">
+<!-- back button -->
+<a href="index-en.html" id="back-button">
+<img alt="back-button" src="https://img.icons8.com/material/48/000000/arrow-pointing-left--v2.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0; padding-top: 1em;" title="Return to the main page."/>
+</a>
+</div>
+</div>
+<div class="w3-bar-block">
+<span id="sidebar"></span>
+</div>
+<div class="row" style="position: absolute; bottom: 25px; height: 50px;">
+<div class="column">
+<a href="ro-crate.json" id="jsonld_svg">
+<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0; " title="Retrieve the JSON-LD ro-crate representation of this web."/>
+</a>
+</div>
+<div class="column">
+<!-- Help button -->
+<a href="#" id="help-button">
+<img alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0;" title="Description of each element and how was this web created."/>
+</a>
+</div>
+</div>
+
+</nav>
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
+<a class="w3-button w3-green w3-margin-right" href="javascript:void(0)" onclick="w3_open()">☰</a>
+</header>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+<!-- Header -->
+<!-- <div class="w3-container" style="margin-top:80px" id="showcase">
+		<h1><b> Help </b></h1>
+	</div> -->
+<!-- Icons_explanation -->
+<span id="icons_explanation"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Icons</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<p>Icons description: [...]</p>
+</div></span>
+<!-- How the information was retrieved? -->
+<span id="how_info"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>How was the information retrieved?</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<p>How information was retrieved: [...]</p>
+</div></span>
+<!-- End page content -->
+</div>
+<script>
+// Script to open and close sidebar
+function w3_open() {
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+	document.getElementById("img01").src = element.src;
+	document.getElementById("modal01").style.display = "block";
+	var captionText = document.getElementById("caption");
+	captionText.innerHTML = element.alt;
+}
+</script>
+</body>
+</html>

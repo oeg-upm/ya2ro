@@ -34,9 +34,9 @@
    - "Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)"
 
  authors:  
-   -
-      orcid: "https://orcid.org/0000-0003-0454-7145"
-      description: "This is a description"
+   #-
+      #orcid: "https://orcid.org/0000-0003-0454-7145"
+      #description: "This is a description"
    -    
       name: "Name 1"
       position: "Position"
