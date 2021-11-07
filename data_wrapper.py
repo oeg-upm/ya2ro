@@ -6,6 +6,7 @@ class Iterable(object):
 
 @dataclass(unsafe_hash=True)
 class Project(Iterable):
+    requirements: list = ("goal","social_motivation","sketch","areas","authors")
     title: str = None
     goal: str = None
     social_motivation: str = None
@@ -20,6 +21,7 @@ class Project(Iterable):
 
 @dataclass(unsafe_hash=True)
 class Paper(Iterable):
+    requirements: list = ("title","summary","datasets","authors")
     doi_paper: str = None
     title: str = None
     summary: str = None

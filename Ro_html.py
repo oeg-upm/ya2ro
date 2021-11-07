@@ -25,7 +25,8 @@ class ro_html(object):
             "social_motivation": self.init_social_motivation,
             "sketch": self.init_sketch,
             "areas": self.init_areas,
-            "demo": self.init_demo
+            "demo": self.init_demo,
+            "requirements": self.init_requirements_recognition
 
         }
 
@@ -43,19 +44,6 @@ class ro_html(object):
             """
             self.__append_component("style", style_component)
         
-        # EELISA LOGO WORTH IT?
-        if p.type == "project":
-            requirements = ["goal","social_motivation","sketch","areas","authors"]
-            worth = True
-            for req in requirements:
-                val = getattr(p.data, req)
-                if val is None:
-                    print("WARNING: '{}' is not defined. Add it to be eligible for beeing an EELISA project.".format(req))
-                    worth = False
-            if not worth:
-                self.soup.find(id="eelisa_logo").decompose()
-
-
 
     def load_data(self):
 
@@ -66,6 +54,37 @@ class ro_html(object):
 
             if attr_val and attr_name in self.func_attr_init:
                 self.func_attr_init[attr_name](attr_val)
+
+    def init_requirements_recognition(self, requirements):
+
+        # LOGO WORTH IT?
+        worth = True
+        for req in requirements:
+            val = getattr(p.data, req)
+            if val is None:
+                print("WARNING: '{}' is not defined. Add it to be eligible for beeing an EELISA project.".format(req))
+                worth = False
+
+        if worth and p.type == "project":
+
+            elisa_logo_html = """<a href="https://eelisa.eu/" target="_blank" >
+				<img title="This project has the necessary characteristics to be recognized as an EELISA project."
+					alt="EELISA-logo" src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" style="width: 3em; width: fit-content;"/>
+			</a>"""
+            self.__append_component("recogn_logo", elisa_logo_html)
+
+        if worth and p.type == "paper":
+
+            # copy image to output/images directory
+            src = Path("images/complete_paper.png")
+            dst = Path(p.output_directory + "/" + "images/complete_paper.png")
+            copyfile(src, dst)
+
+            complete_logo_html = """<a href="#">
+				<img title="This paper has the necessary characteristics to be recognized as an complete paper."
+					alt="Complete-Paper" src="images/complete_paper.png" style="width: 8em;"/>
+			</a>"""
+            self.__append_component("recogn_logo", complete_logo_html)
     
     def init_social_motivation(self, social_motivation):
 
