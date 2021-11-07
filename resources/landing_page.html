@@ -15,7 +15,7 @@ body {font-size:16px; text-align: justify;}
 img {display: block;margin-left: auto;margin-right: auto;}
 .column {float: left;width: 50%;padding: 5px;}
 .row::after {content: ""; clear: both; display: table;}
-
+.vertical-center {margin: 0; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);}
 
 </style>
 
@@ -24,24 +24,58 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
 
+	<a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+
+	<!-- Header -->
+	<div class="w3-container" style="margin-top:40px" id="showcase">
+			<h1><b> Landing page </b></h1>
+	</div>
+
+	<div class="w3-bar-block vertical-center">
+		<span id="sidebar"></span>
+	</div>
+	
 </nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
+	<a href="javascript:void(0)" class="w3-button w3-green w3-margin-right" onclick="w3_open()">☰</a>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
 
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 
-	<!-- Header -->
-	<div class="w3-container" style="margin-top:80px" id="showcase">
-		<h1><b> Landing page </b></h1>
-	</div>
-
 	<!-- Content -->
-	<span id=content></span>
+	<div id=content style="margin-top:80px"></div>
 
 
 <!-- End page content -->
 </div>
-
+<script>
+	// Script to open and close sidebar
+	function w3_open() {
+		document.getElementById("mySidebar").style.display = "block";
+		document.getElementById("myOverlay").style.display = "block";
+	}
+	
+	function w3_close() {
+		document.getElementById("mySidebar").style.display = "none";
+		document.getElementById("myOverlay").style.display = "none";
+	}
+	
+	// Modal Image Gallery
+	function onClick(element) {
+		document.getElementById("img01").src = element.src;
+		document.getElementById("modal01").style.display = "block";
+		var captionText = document.getElementById("caption");
+		captionText.innerHTML = element.alt;
+	}
+	
+	</script>
 
 </body>
 </html>

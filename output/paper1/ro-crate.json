@@ -50,7 +50,7 @@
                     "@id": "#name_dataset_3"
                 }
             ],
-            "name": "PSM-Flow: Probabilistic Subgraph Mining for Discovering Reusable Fragments in Workflows"
+            "name": "PSM-FLOW"
         },
         {
             "@id": "#daniel_garijo",

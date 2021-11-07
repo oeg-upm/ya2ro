@@ -26,10 +26,10 @@
             "description": "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
             "hasPart": [
                 {
-                    "@id": "#none"
+                    "@id": "#eelisa-research-object"
                 },
                 {
-                    "@id": "#none"
+                    "@id": "#somef"
                 },
                 {
                     "@id": "#name_dataset_1"
@@ -60,16 +60,16 @@
             ]
         },
         {
-            "@id": "#none",
+            "@id": "#eelisa-research-object",
             "@type": "SoftwareApplication",
             "description": "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
-            "installUrl": "https://ggithub.com/oeg-upm/EELISA-research-object"
+            "installUrl": "https://github.com/oeg-upm/EELISA-research-object"
         },
         {
-            "@id": "#none",
+            "@id": "#somef",
             "@type": "SoftwareApplication",
             "description": "A command line interface for automatically extracting relevant information from readme files.",
-            "installUrl": "https://ggithub.com/KnowledgeCaptureAndDiscovery/somef/"
+            "installUrl": "https://github.com/KnowledgeCaptureAndDiscovery/somef/"
         },
         {
             "@id": "#name_dataset_1",

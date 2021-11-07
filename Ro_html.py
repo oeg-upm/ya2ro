@@ -136,7 +136,7 @@ class ro_html(object):
 	    </div>"""
 
         ro_html.__append_component(self.soup, "social_motivation", social_motivation_component)
-        self.__sidebar_append("social_motivation", "Social motivation")
+        ro_html.__sidebar_append(self.soup, "social_motivation", "Social motivation")
     
 
     def init_sketch(self, sketch):
@@ -148,7 +148,7 @@ class ro_html(object):
 	    </div>"""
 
         ro_html.__append_component(self.soup, "sketch", sketch_component)
-        self.__sidebar_append("sketch", "Sketch")
+        ro_html.__sidebar_append(self.soup, "sketch", "Sketch")
 
         # copy image to output/images directory
         src = Path(sketch)
@@ -167,7 +167,7 @@ class ro_html(object):
 	    </div>"""
 
         ro_html.__append_component(self.soup, "areas", areas_component)
-        self.__sidebar_append("areas", "Areas")
+        ro_html.__sidebar_append(self.soup, "areas", "Areas")
 
 
     def init_demo(self, demo):
@@ -181,7 +181,7 @@ class ro_html(object):
 	    </div>"""
 
         ro_html.__append_component(self.soup, "demo", demo_component)
-        self.__sidebar_append("demo", "Demo")
+        ro_html.__sidebar_append(self.soup, "demo", "Demo")
 
 
     def init_goal(self, goal):
@@ -193,7 +193,7 @@ class ro_html(object):
 	    </div>"""
 
         ro_html.__append_component(self.soup, "goal", goal_component)
-        self.__sidebar_append("goal", "Goal")
+        ro_html.__sidebar_append(self.soup, "goal", "Goal")
  
 
     def init_title(self, title):
@@ -212,7 +212,7 @@ class ro_html(object):
 	    </div>"""
 
         ro_html.__append_component(self.soup, "summary", summary_component)
-        self.__sidebar_append("summary", "Summary")
+        ro_html.__sidebar_append(self.soup, "summary", "Summary")
 
     def init_datasets(self, datasets):
  
@@ -229,7 +229,7 @@ class ro_html(object):
         {datasets_list_commponent}
 	    </div>"""
 
-        self.__sidebar_append("datasets", "Datasets")
+        ro_html.__sidebar_append(self.soup, "datasets", "Datasets")
         ro_html.__append_component(self.soup, "datasets", datasets_component)
     
 
@@ -244,7 +244,7 @@ class ro_html(object):
         {software_list_commponent}
 	    </div>"""
 
-        self.__sidebar_append("software", "Software")
+        ro_html.__sidebar_append(self.soup, "software", "Software")
         ro_html.__append_component(self.soup, "software", software_component)
     
 
@@ -258,7 +258,7 @@ class ro_html(object):
 		{bibliography_list}
 	    </div>"""
 
-        self.__sidebar_append("bibliography", "Bibliography")
+        ro_html.__sidebar_append(self.soup, "bibliography", "Bibliography")
         ro_html.__append_component(self.soup, "bibliography", bibliography_commponent)
 
 
@@ -270,7 +270,7 @@ class ro_html(object):
         <hr style="width:50px;border:5px solid green" class="w3-round">
         {authors_boxes}"""
 
-        self.__sidebar_append("authors", "About the authors")
+        ro_html.__sidebar_append(self.soup, "authors", "About the authors")
         ro_html.__append_component(self.soup, "authors", authors_commponent)
 
         # copy images to output/images directory
@@ -336,9 +336,10 @@ class ro_html(object):
         html_component = BeautifulSoup(str_component, 'html.parser')
         loc.append(html_component)
 
-    def __sidebar_append(self, location_id, item_name):
+
+    def __sidebar_append(soup, location_id, item_name):
         item_component = f"""<a href="#{location_id}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">{item_name}</a>"""
-        ro_html.__append_component(self.soup, "sidebar", item_component)
+        ro_html.__append_component(soup, "sidebar", item_component)
 
 
     def __ul_component(self, list):
@@ -368,13 +369,15 @@ class ro_html(object):
             if data.type == "project":
                 description = data.goal
 
-            web_entry_component = f"""<div class="w3-container" style="margin-top:15px">
+            web_entry_component = f"""<div class="w3-container" style="margin-top:15px" id="{data.title.replace(" ", "_")}">
             <a href="{data.file_name}"><h1 class="w3-text-green"><b>{data.title}</b></h1></a>
+            <p><b>Type: {data.type.capitalize()}</b></p>
             <hr style="width:50px;border:5px solid green" class="w3-round">
             <p>{description}</p>
             </div>"""
 
             ro_html.__append_component(soup_landing, "content", web_entry_component)
+            ro_html.__sidebar_append(soup_landing, data.title.replace(" ", "_"), data.title)
         
         # dump changes into output_html_landing
         with open(Path(output_directory, p.properties["output_html_landing"]), "w+") as file:
