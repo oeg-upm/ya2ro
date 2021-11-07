@@ -10,7 +10,7 @@ if __name__ == "__main__":
         description='Human and machine readeable input as a yalm file and create RO-Object in jsonld and/or HTML view.')
 
     # Required positional argument
-    parser.add_argument('-i','--input', type=str, required=True,
+    parser.add_argument('-i','--input', type=str, required=True, nargs='+',
         help='Path of the required yalm input. Follow the documentation or the example given to see the structure of the file.')
 
     # Optional argument
@@ -38,29 +38,39 @@ if __name__ == "__main__":
 _________________________________________________________
     """)
 
-    #----------------------------------------------------------------------------------
-    # Create RO objects and dump results
-    #----------------------------------------------------------------------------------
-    
     import properties
-
-    properties.init(args.properties_file, args.input, args.output_directory)
-    
-    # Just to improve the stdout
-    print("")
-
     from ro_html import ro_html
-
-    ro_html = ro_html()
-    ro_html.load_data()
-    ro_html.create_HTML_file()
-
     from ro_jsonld import ro_jsonld
+    from pathlib import Path
 
-    ro_jsonld = ro_jsonld()
-    ro_jsonld.load_data()
-    ro_jsonld.create_JSONLD_file()
 
-    # Just to improve the stdout
-    print("")
+    for input_yalm in args.input:
+
+        #----------------------------------------------------------------------------------
+        # Create RO objects and dump results
+        #----------------------------------------------------------------------------------
+        
+
+        properties.init(
+            properties_file = args.properties_file, 
+            input_yalm = input_yalm, 
+            output_directory_param = Path(args.output_directory, str(Path(input_yalm).stem))
+            )
+        
+        # Just to improve the stdout
+        print("")
+
+        rhtml = ro_html()
+        rhtml.load_data()
+        rhtml.create_HTML_file()
+
+        rjsonld = ro_jsonld()
+        rjsonld.load_data()
+        rjsonld.create_JSONLD_file()
+
+        # Just to improve the stdout
+        print("")
+    
+    if len(args.input) > 1:
+        ro_html.create_landing_page(args.input, args.output_directory)
 

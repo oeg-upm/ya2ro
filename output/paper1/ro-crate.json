@@ -1,0 +1,141 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "author": [
+                {
+                    "@id": "#daniel_garijo"
+                },
+                {
+                    "@id": "#name_1"
+                },
+                {
+                    "@id": "#name_2"
+                },
+                {
+                    "@id": "#name_3"
+                },
+                {
+                    "@id": "#name_4"
+                }
+            ],
+            "description": "Scientific workflows define computational processes needed for carrying out scientific experiments. Existing workflow repositories contain hundreds of scientific workflows, where scientists can find materials and knowledge to facilitate workflow design for running related experiments. Identifying reusable fragments in growing workflow repositories has become increasingly important. In this paper, we present PSM-Flow, a probabilistic subgraph mining algorithm designed to discover commonly occurring fragments in a workflow corpus using a modified version of the Latent Dirichlet Allocation algorithm. The proposed model encodes the geodesic distance between workflow steps into the model for implicitly modeling fragments. PSM-Flow captures variations of frequent fragments while maintaining its space complexity bounded polynomially, as it requires no candidate generation. We applied PSM-Flow to three real-world scientific workflow datasets containing more than 750 workflows for neuroimaging analysis. Our results show that PSM-Flow outperforms three state of the art frequent subgraph mining techniques. We also discuss other potential future improvements of the proposed method.",
+            "hasPart": [
+                {
+                    "@id": "#name_link_1"
+                },
+                {
+                    "@id": "#name_link_2"
+                },
+                {
+                    "@id": "#name_dataset_1"
+                },
+                {
+                    "@id": "#name_dataset_2"
+                },
+                {
+                    "@id": "#name_dataset_3"
+                }
+            ],
+            "name": "PSM-Flow: Probabilistic Subgraph Mining for Discovering Reusable Fragments in Workflows"
+        },
+        {
+            "@id": "#daniel_garijo",
+            "@type": "Person",
+            "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
+            "name": "Daniel Garijo",
+            "position": [
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
+            ]
+        },
+        {
+            "@id": "#name_1",
+            "@type": "Person",
+            "description": "Here it goes a more detailed description.",
+            "name": "Name 1",
+            "position": [
+                "Position"
+            ]
+        },
+        {
+            "@id": "#name_2",
+            "@type": "Person",
+            "description": "Here it goes a more detailed description.",
+            "name": "Name 2",
+            "position": [
+                "Position"
+            ]
+        },
+        {
+            "@id": "#name_3",
+            "@type": "Person",
+            "description": "Here it goes a more detailed description.",
+            "name": "Name 3",
+            "position": [
+                "Position"
+            ]
+        },
+        {
+            "@id": "#name_4",
+            "@type": "Person",
+            "description": "Here it goes a more detailed description.",
+            "name": "Name 4",
+            "position": [
+                "Position"
+            ]
+        },
+        {
+            "@id": "#name_link_1",
+            "@type": "SoftwareApplication",
+            "description": "description software 1",
+            "installUrl": "www.linkS1.com"
+        },
+        {
+            "@id": "#name_link_2",
+            "@type": "SoftwareApplication",
+            "description": "description software 2",
+            "installUrl": "www.linkS2.com"
+        },
+        {
+            "@id": "#name_dataset_1",
+            "@type": "Dataset",
+            "description": "description dataset 1",
+            "distribution": {
+                "@id": "www.linkD1.com"
+            },
+            "name": "name dataset 1"
+        },
+        {
+            "@id": "#name_dataset_2",
+            "@type": "Dataset",
+            "description": "description dataset 2",
+            "distribution": {
+                "@id": "www.linkD2.com"
+            },
+            "name": "name dataset 2"
+        },
+        {
+            "@id": "#name_dataset_3",
+            "@type": "Dataset",
+            "description": "description dataset 3",
+            "distribution": {
+                "@id": "www.linkD3.com"
+            },
+            "name": "name dataset 3"
+        }
+    ]
+}

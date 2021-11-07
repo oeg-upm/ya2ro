@@ -8,8 +8,10 @@ import req_orcid
 import req_doi
 import somef.cli
 
+data_list = []
+
 def init(properties_file, input_yalm, output_directory_param):
-    global properties, output_directory, data, style, type
+    global properties, output_directory, data, style, type, data_list
 
     # Make visible output directoty to all modules
     output_directory = output_directory_param
@@ -18,9 +20,9 @@ def init(properties_file, input_yalm, output_directory_param):
     with open(Path(properties_file)) as file:
         properties = yaml.load(file, Loader=SafeLoader)
 
-    properties["output_html_help"] = Path(output_directory +"/"+ properties["output_html_help"])
-    properties["output_html"] = Path(output_directory +"/"+ properties["output_html"])
-    properties["output_jsonld"] = Path(output_directory +"/"+ properties["output_jsonld"])
+    properties["output_html_help"] = Path(output_directory, properties["output_html_help"])
+    properties["output_html"] = Path(output_directory, properties["output_html"])
+    properties["output_jsonld"] = Path(output_directory, properties["output_jsonld"])
 
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
@@ -35,7 +37,7 @@ def init(properties_file, input_yalm, output_directory_param):
         input_to_vocab = yaml.load(file, Loader=SafeLoader)
 
     # Create images directory inside output folder
-    images_output_path = Path(output_directory + "/" + input_to_vocab["images"])
+    images_output_path = Path(output_directory, input_to_vocab["images"])
     if not os.path.exists(images_output_path):
         os.makedirs(images_output_path)
         print(f"Creating images diretory {output_directory}")
@@ -47,7 +49,7 @@ def init(properties_file, input_yalm, output_directory_param):
     print(f"Parsing and fetching info from {input_yalm}...\n")
 
     # Style selector
-    style = _safe(input_to_vocab["style"], data)
+    style = _safe(input_to_vocab["style"], properties)
     style = style if style else "default"
 
     type = _safe(input_to_vocab["type"], data)
@@ -63,6 +65,10 @@ def init(properties_file, input_yalm, output_directory_param):
         
     if type == "project":
         data = init_project(input_to_vocab, data)
+
+    data.file_name = str(Path(input_yalm).stem)
+    data.type = type
+    data_list.append(data)
 
 
 def init_project(input_to_vocab, data):

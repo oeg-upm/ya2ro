@@ -1,4 +1,3 @@
-import json
 import properties as p
 from bs4 import BeautifulSoup
 from shutil import copyfile
@@ -9,7 +8,7 @@ class ro_html(object):
 
     def __init__(self):
 
-        # read and parse the template
+        # read and parse the templates
         self.soup = BeautifulSoup(open(p.properties["template_html"]), 'html.parser')
         self.soup_help = BeautifulSoup(open(p.properties["template_help"]), 'html.parser')
 
@@ -67,7 +66,7 @@ class ro_html(object):
 		<p>{icons_explanation_text}</p>
 	    </div>"""
 
-        self.__append_component_help("icons_explanation", icons_explanation_component)
+        ro_html.__append_component(self.soup_help, "icons_explanation", icons_explanation_component)
 
         ################################################
 
@@ -79,7 +78,7 @@ class ro_html(object):
 		<p>{how_info_text}</p>
 	    </div>"""
 
-        self.__append_component_help("how_info", how_info_component)
+        ro_html.__append_component(self.soup_help, "how_info", how_info_component)
 
 
     def init_styles(self):
@@ -93,8 +92,8 @@ class ro_html(object):
             .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
             body{background-color:#222831!important;color:#fff!important}
             """
-            self.__append_component("style", style_component)
-            self.__append_component_help("style", style_component)
+            ro_html.__append_component(self.soup, "style", style_component)
+            ro_html.__append_component(self.soup_help, "style", style_component)
             
 
     def init_requirements_recognition(self, requirements):
@@ -113,20 +112,20 @@ class ro_html(object):
 				<img title="This project has the necessary characteristics to be recognized as an EELISA project."
 					alt="EELISA-logo" src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" style="width: 3em; width: fit-content;"/>
 			</a>"""
-            self.__append_component("recogn_logo", elisa_logo_html)
+            ro_html.__append_component(self.soup, "recogn_logo", elisa_logo_html)
 
         if worth and p.type == "paper":
 
             # copy image to output/images directory
-            src = Path("images/complete_paper.png")
-            dst = Path(p.output_directory + "/" + "images/complete_paper.png")
+            src = Path("images","complete_paper.png")
+            dst = Path(p.output_directory, "images","complete_paper.png")
             copyfile(src, dst)
 
             complete_logo_html = """<a href="#">
 				<img title="This paper has the necessary characteristics to be recognized as an complete paper."
 					alt="Complete-Paper" src="images/complete_paper.png" style="width: 8em;"/>
 			</a>"""
-            self.__append_component("recogn_logo", complete_logo_html)
+            ro_html.__append_component(self.soup, "recogn_logo", complete_logo_html)
     
     def init_social_motivation(self, social_motivation):
 
@@ -136,7 +135,7 @@ class ro_html(object):
 		<p>{social_motivation}</p>
 	    </div>"""
 
-        self.__append_component("social_motivation", social_motivation_component)
+        ro_html.__append_component(self.soup, "social_motivation", social_motivation_component)
         self.__sidebar_append("social_motivation", "Social motivation")
     
 
@@ -148,12 +147,12 @@ class ro_html(object):
 		<img src="{sketch}" alt="Sketch of the project">
 	    </div>"""
 
-        self.__append_component("sketch", sketch_component)
+        ro_html.__append_component(self.soup, "sketch", sketch_component)
         self.__sidebar_append("sketch", "Sketch")
 
         # copy image to output/images directory
         src = Path(sketch)
-        dst = Path(p.output_directory + "/" + sketch)
+        dst = Path(p.output_directory, sketch)
         copyfile(src, dst)
     
 
@@ -167,7 +166,7 @@ class ro_html(object):
 		{areas_list}
 	    </div>"""
 
-        self.__append_component("areas", areas_component)
+        ro_html.__append_component(self.soup, "areas", areas_component)
         self.__sidebar_append("areas", "Areas")
 
 
@@ -181,7 +180,7 @@ class ro_html(object):
         {demo_list_commponent}
 	    </div>"""
 
-        self.__append_component("demo", demo_component)
+        ro_html.__append_component(self.soup, "demo", demo_component)
         self.__sidebar_append("demo", "Demo")
 
 
@@ -193,7 +192,7 @@ class ro_html(object):
 		<p>{goal}</p>
 	    </div>"""
 
-        self.__append_component("goal", goal_component)
+        ro_html.__append_component(self.soup, "goal", goal_component)
         self.__sidebar_append("goal", "Goal")
  
 
@@ -212,7 +211,7 @@ class ro_html(object):
 		<p>{summary}</p>
 	    </div>"""
 
-        self.__append_component("summary", summary_component)
+        ro_html.__append_component(self.soup, "summary", summary_component)
         self.__sidebar_append("summary", "Summary")
 
     def init_datasets(self, datasets):
@@ -231,7 +230,7 @@ class ro_html(object):
 	    </div>"""
 
         self.__sidebar_append("datasets", "Datasets")
-        self.__append_component("datasets", datasets_component)
+        ro_html.__append_component(self.soup, "datasets", datasets_component)
     
 
     def init_software(self, software):
@@ -246,7 +245,7 @@ class ro_html(object):
 	    </div>"""
 
         self.__sidebar_append("software", "Software")
-        self.__append_component("software", software_component)
+        ro_html.__append_component(self.soup, "software", software_component)
     
 
     def init_bibliography(self, bibliography):
@@ -260,7 +259,7 @@ class ro_html(object):
 	    </div>"""
 
         self.__sidebar_append("bibliography", "Bibliography")
-        self.__append_component("bibliography", bibliography_commponent)
+        ro_html.__append_component(self.soup, "bibliography", bibliography_commponent)
 
 
     def init_authors(self, authors):
@@ -272,13 +271,13 @@ class ro_html(object):
         {authors_boxes}"""
 
         self.__sidebar_append("authors", "About the authors")
-        self.__append_component("authors", authors_commponent)
+        ro_html.__append_component(self.soup, "authors", authors_commponent)
 
         # copy images to output/images directory
         for author in authors:
 
             src = Path(author.photo)
-            dst = Path(p.output_directory + "/" + author.photo)
+            dst = Path(p.output_directory, author.photo)
             
             copyfile(src, dst)
 
@@ -332,20 +331,14 @@ class ro_html(object):
         print(f"HTML website file created at {p.properties['output_html']}")   
 
 
-    def __append_component(self, location_id, str_component):
-        loc = self.soup.find(id=location_id)
+    def __append_component(soup, location_id, str_component):
+        loc = soup.find(id=location_id)
         html_component = BeautifulSoup(str_component, 'html.parser')
         loc.append(html_component)
-
-    def __append_component_help(self, location_id, str_component):
-        loc = self.soup_help.find(id=location_id)
-        html_component = BeautifulSoup(str_component, 'html.parser')
-        loc.append(html_component)
-    
 
     def __sidebar_append(self, location_id, item_name):
         item_component = f"""<a href="#{location_id}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">{item_name}</a>"""
-        self.__append_component("sidebar", item_component)
+        ro_html.__append_component(self.soup, "sidebar", item_component)
 
 
     def __ul_component(self, list):
@@ -354,3 +347,48 @@ class ro_html(object):
             ul_list += f"""<li>{li}</li>"""
         ul_list += """</ul>"""
         return ul_list
+    
+    def create_landing_page(list_input_yalm, output_directory):
+
+        soup_landing = BeautifulSoup(open(p.properties["template_landing"]), 'html.parser')
+
+        if p.style == "dark":
+            style_component = """
+                h1,h1 b{color:#fff!important}
+                .w3-light-grey{background-color:#ddd!important;color:#222831!important}
+                .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
+                body{background-color:#222831!important;color:#fff!important}
+                """
+            ro_html.__append_component(soup_landing, "style", style_component)
+
+        for data in p.data_list:
+
+            if data.type == "paper":
+                description = data.summary
+            if data.type == "project":
+                description = data.goal
+
+            web_entry_component = f"""<div class="w3-container" style="margin-top:15px">
+            <a href="{data.file_name}"><h1 class="w3-text-green"><b>{data.title}</b></h1></a>
+            <hr style="width:50px;border:5px solid green" class="w3-round">
+            <p>{description}</p>
+            </div>"""
+
+            ro_html.__append_component(soup_landing, "content", web_entry_component)
+        
+        # dump changes into output_html_landing
+        with open(Path(output_directory, p.properties["output_html_landing"]), "w+") as file:
+            file.write(str(soup_landing))
+
+        # Create htaccess for landing page
+        import htaccess
+        htaccess.create_htaccess_landing(output_directory)
+
+        print(f"""Landing page created at {output_directory}/{p.properties["output_html_landing"]} \n""")
+            
+
+            
+
+
+            
+

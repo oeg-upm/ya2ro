@@ -1,0 +1,109 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "author": [
+                {
+                    "@id": "#daniel_garijo"
+                },
+                {
+                    "@id": "#antonia_pavel"
+                }
+            ],
+            "description": "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
+            "hasPart": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#name_dataset_1"
+                },
+                {
+                    "@id": "#name_dataset_2"
+                }
+            ],
+            "name": "EELISA Project - ya2ro"
+        },
+        {
+            "@id": "#daniel_garijo",
+            "@type": "Person",
+            "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
+            "name": "Daniel Garijo",
+            "position": [
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
+            ]
+        },
+        {
+            "@id": "#antonia_pavel",
+            "@type": "Person",
+            "description": "Student of the double major in Computer Engineering and Business Administration and Management from Universidad Polit\u00e9cnica de Madrid, Spain.",
+            "name": "Antonia Pavel",
+            "position": [
+                "Research Assistant at Universidad Polit\u00e9cnica de Madrid"
+            ]
+        },
+        {
+            "@id": "#none",
+            "@type": "SoftwareApplication",
+            "description": "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
+            "installUrl": "https://ggithub.com/oeg-upm/EELISA-research-object"
+        },
+        {
+            "@id": "#none",
+            "@type": "SoftwareApplication",
+            "description": "A command line interface for automatically extracting relevant information from readme files.",
+            "installUrl": "https://ggithub.com/KnowledgeCaptureAndDiscovery/somef/"
+        },
+        {
+            "@id": "#name_dataset_1",
+            "@type": "Dataset",
+            "description": "description dataset 1",
+            "distribution": {
+                "@id": "www.linkD1.com"
+            },
+            "name": "name dataset 1"
+        },
+        {
+            "@id": "#name_dataset_2",
+            "@type": "Dataset",
+            "description": "description dataset 2",
+            "distribution": {
+                "@id": "www.linkD2.com"
+            },
+            "name": "name dataset 2"
+        },
+        {
+            "workExample": [
+                {
+                    "@type": "Demo",
+                    "description": "This is a description for a demo for the ya2ro EELISA project.",
+                    "link": "https://oeg-upm.github.io/EELISA-research-object/output/index-en.html",
+                    "name": null
+                },
+                {
+                    "@type": "Demo",
+                    "description": "This is a SECOND description for a demo for the ya2ro EELISA project but with name.",
+                    "link": "https://oeg-upm.github.io/EELISA-research-object/output/index-en.html",
+                    "name": "GitHub Pages demo"
+                }
+            ]
+        }
+    ]
+}
