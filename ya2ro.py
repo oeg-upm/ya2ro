@@ -39,9 +39,9 @@ _________________________________________________________
     """)
 
     import properties
+    import data_wrapper
     from ro_html import ro_html
     from ro_jsonld import ro_jsonld
-    from pathlib import Path
 
     list_data = []
 
@@ -56,7 +56,7 @@ _________________________________________________________
         # Create RO objects and dump results
         #----------------------------------------------------------------------------------
 
-        data = properties.load_yaml(input_yalm)
+        data = data_wrapper.load_yaml(input_yalm)
         list_data.append(data)
         
         # Just to improve the stdout
