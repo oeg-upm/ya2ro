@@ -30,28 +30,30 @@ class ro_html(object):
         }
 
 
-    def load_data(self):
+    def load_data(self, data):
+
+        self.data = data
 
         # HREF SVG JSONLD            
         jsonld_svg = self.soup.find(id="jsonld_svg")
-        jsonld_svg['href'] = ntpath.basename(p.properties["output_jsonld"])
+        jsonld_svg['href'] = ntpath.basename(self.data.output_jsonld)
 
         # HREF Help button
         help_button = self.soup.find(id="help-button")
-        help_button['href'] = ntpath.basename(p.properties["output_html_help"])
+        help_button['href'] = ntpath.basename(self.data.output_html_help)
+
 
         # HREF Back button from help
         back_button = self.soup_help.find(id="back-button")
-        back_button['href'] = ntpath.basename(p.properties["output_html"])
+        back_button['href'] = ntpath.basename(self.data.output_html)
 
         self.init_styles()
-
         self.init_help_page()
 
         # Iterate attr from data and call correct init function for that attr
-        for attr_name in p.data:
+        for attr_name in self.data:
 
-            attr_val = getattr(p.data, attr_name)
+            attr_val = getattr(self.data, attr_name)
 
             if attr_val and attr_name in self.func_attr_init:
                 self.func_attr_init[attr_name](attr_val)
@@ -101,12 +103,12 @@ class ro_html(object):
         # LOGO WORTH IT?
         worth = True
         for req in requirements:
-            val = getattr(p.data, req)
+            val = getattr(self.data, req)
             if val is None:
                 print("WARNING: '{}' is not defined. Add it to be eligible for beeing an EELISA project.".format(req))
                 worth = False
 
-        if worth and p.type == "project":
+        if worth and self.data.type == "project":
 
             elisa_logo_html = """<a href="https://eelisa.eu/" target="_blank" >
 				<img title="This project has the necessary characteristics to be recognized as an EELISA project."
@@ -114,7 +116,7 @@ class ro_html(object):
 			</a>"""
             ro_html.__append_component(self.soup, "recogn_logo", elisa_logo_html)
 
-        if worth and p.type == "paper":
+        if worth and self.data.type == "paper":
 
             # copy image to output/images directory
             src = Path("images","complete_paper.png")
@@ -219,8 +221,8 @@ class ro_html(object):
         datasets_list_commponent = self.__ul_component([f"""<a href="{d.link}">{d.link if d.name is None else d.name}</a>: {d.description}""" for d in datasets])
 
         doi_datasets = ""
-        if p.data.doi_datasets is not None:
-            doi_datasets = f"""We used the following datasets for our data, available in Zenodo under DOI: <a href="{p.data.doi_datasets}">{p.data.doi_datasets}</a>"""
+        if self.data.doi_datasets is not None:
+            doi_datasets = f"""We used the following datasets for our data, available in Zenodo under DOI: <a href="{self.data.doi_datasets}">{self.data.doi_datasets}</a>"""
         
         datasets_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
@@ -321,14 +323,16 @@ class ro_html(object):
     def create_HTML_file(self):
         """Dupms index.html and dependencies into specified folder."""
         # dump changes into index.html
-        with open(p.properties["output_html"], "w+") as file:
+        with open(self.data.output_html, "w+") as file:
             file.write(str(self.soup))
 
         # dump changes into help.html
-        with open(p.properties["output_html_help"], "w+") as file:
+        with open(self.data.output_html_help, "w+") as file:
             file.write(str(self.soup_help))
 
-        print(f"HTML website file created at {p.properties['output_html']}")   
+        print(f"HTML website file created at {self.data.output_html}")   
+        print(f"HTML help website file created at {self.data.output_html_help}")   
+
 
 
     def __append_component(soup, location_id, str_component):
@@ -349,7 +353,7 @@ class ro_html(object):
         ul_list += """</ul>"""
         return ul_list
     
-    def create_landing_page(list_input_yalm, output_directory):
+    def create_landing_page(output_directory, list_data):
 
         soup_landing = BeautifulSoup(open(p.properties["template_landing"]), 'html.parser')
 
@@ -362,22 +366,26 @@ class ro_html(object):
                 """
             ro_html.__append_component(soup_landing, "style", style_component)
 
-        for data in p.data_list:
+        for data in list_data:
 
             if data.type == "paper":
                 description = data.summary
             if data.type == "project":
                 description = data.goal
 
-            web_entry_component = f"""<div class="w3-container" style="margin-top:15px" id="{data.title.replace(" ", "_")}">
-            <a href="{data.file_name}"><h1 class="w3-text-green"><b>{data.title}</b></h1></a>
+            id_component = data.title.replace(" ", "_")
+            # Remove first folder from path: "output" folder is deleted
+            folder_index = str(Path(*data.output_html.parts[1:]))
+
+            web_entry_component = f"""<div class="w3-container" style="margin-top:15px" id="{id_component}">
+            <a href="{folder_index}"><h1 class="w3-text-green"><b>{data.title}</b></h1></a>
             <p><b>Type: {data.type.capitalize()}</b></p>
             <hr style="width:50px;border:5px solid green" class="w3-round">
             <p>{description}</p>
             </div>"""
 
             ro_html.__append_component(soup_landing, "content", web_entry_component)
-            ro_html.__sidebar_append(soup_landing, data.title.replace(" ", "_"), data.title)
+            ro_html.__sidebar_append(soup_landing, id_component, data.title)
         
         # dump changes into output_html_landing
         with open(Path(output_directory, p.properties["output_html_landing"]), "w+") as file:

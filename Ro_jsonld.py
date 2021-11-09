@@ -18,7 +18,7 @@ class ro_jsonld(object):
             {
                 "@id": "./",
                 "@type": "Dataset",
-                "name": p.data.title,
+                "name": "",
                 "description": "",
                 "author": [],
                 "hasPart": []
@@ -26,22 +26,26 @@ class ro_jsonld(object):
         ]
 
 
-    def load_data(self):
+    def load_data(self, data):
+
+        self.data = data
+
+        self.graph_add_title(self.data.title)
 
         # Self creates the hardcoded structure for paper
-        if p.type == "paper":
-            self.graph_add_description(p.data.summary)
-            self.graph_add_authors(p.data.authors)
-            self.graph_add_softwares(p.data.software)
-            self.graph_add_datasets(p.data.datasets)
+        if self.data.type == "paper":
+            self.graph_add_description(self.data.summary)
+            self.graph_add_authors(self.data.authors)
+            self.graph_add_softwares(self.data.software)
+            self.graph_add_datasets(self.data.datasets)
         
         # Self creates the hardcoded structure for project
-        if p.type == "project":
-            self.graph_add_description(p.data.goal)
-            self.graph_add_authors(p.data.authors)
-            self.graph_add_softwares(p.data.software)
-            self.graph_add_datasets(p.data.datasets)
-            self.graph_add_demo(p.data.demo)
+        if self.data.type == "project":
+            self.graph_add_description(self.data.goal)
+            self.graph_add_authors(self.data.authors)
+            self.graph_add_softwares(self.data.software)
+            self.graph_add_datasets(self.data.datasets)
+            self.graph_add_demo(self.data.demo)
 
         # Adds graph to the final structure jsonld
         self.jsonld["@graph"] = self.graph
@@ -62,6 +66,12 @@ class ro_jsonld(object):
             "@id": id_normalized
         })
 
+    def graph_add_title(self, title):
+
+        if title is None:
+            return None
+        
+        self.graph[1]["name"] = title
 
     def graph_add_demo(self, demo):
 
@@ -144,8 +154,8 @@ class ro_jsonld(object):
 
     def create_JSONLD_file(self):
         # dump changes into output/ro-crate.json
-        with open(p.properties["output_jsonld"], "w+") as file:
+        with open(self.data.output_jsonld, "w+") as file:
             file.write(json.dumps(self.jsonld, indent=4, sort_keys=True))
-        print(f"JSON-LD file created at {p.properties['output_jsonld']}")
+        print(f"JSON-LD file created at {self.data.output_jsonld}")
         
 

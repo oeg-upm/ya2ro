@@ -43,6 +43,7 @@ _________________________________________________________
     from ro_jsonld import ro_jsonld
     from pathlib import Path
 
+    list_data = []
 
     for input_yalm in args.input:
 
@@ -51,26 +52,28 @@ _________________________________________________________
         #----------------------------------------------------------------------------------
         
 
-        properties.init(
+        data = properties.init(
             properties_file = args.properties_file, 
             input_yalm = input_yalm, 
             output_directory_param = Path(args.output_directory, str(Path(input_yalm).stem))
             )
+
+        list_data.append(data)
         
         # Just to improve the stdout
         print("")
 
         rhtml = ro_html()
-        rhtml.load_data()
+        rhtml.load_data(data)
         rhtml.create_HTML_file()
 
         rjsonld = ro_jsonld()
-        rjsonld.load_data()
+        rjsonld.load_data(data)
         rjsonld.create_JSONLD_file()
 
         # Just to improve the stdout
         print("")
     
-    if len(args.input) > 1:
-        ro_html.create_landing_page(args.input, args.output_directory)
+    if len(list_data) > 1:
+        ro_html.create_landing_page(args.output_directory, list_data)
 

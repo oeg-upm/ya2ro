@@ -8,10 +8,8 @@ import req_orcid
 import req_doi
 import somef.cli
 
-data_list = []
-
 def init(properties_file, input_yalm, output_directory_param):
-    global properties, output_directory, data, style, type, data_list
+    global properties, output_directory, style
 
     # Make visible output directoty to all modules
     output_directory = output_directory_param
@@ -19,10 +17,6 @@ def init(properties_file, input_yalm, output_directory_param):
     # Create paths for output files
     with open(Path(properties_file)) as file:
         properties = yaml.load(file, Loader=SafeLoader)
-
-    properties["output_html_help"] = Path(output_directory, properties["output_html_help"])
-    properties["output_html"] = Path(output_directory, properties["output_html"])
-    properties["output_jsonld"] = Path(output_directory, properties["output_jsonld"])
 
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
@@ -54,7 +48,7 @@ def init(properties_file, input_yalm, output_directory_param):
 
     type = _safe(input_to_vocab["type"], data)
      
-    if type is None:
+    if type not in ["paper", "project"]:
         print("""ERROR: Is required to specify a type field in the input yalm. Options: 'paper', 'project'.
        type: "paper"
        type: "project" """)
@@ -66,9 +60,13 @@ def init(properties_file, input_yalm, output_directory_param):
     if type == "project":
         data = init_project(input_to_vocab, data)
 
-    data.file_name = str(Path(input_yalm).stem)
+    # Init data meta properties
+    data.output_html = Path(output_directory, properties["output_html"])
+    data.output_html_help = Path(output_directory, properties["output_html_help"])
+    data.output_jsonld = Path(output_directory, properties["output_jsonld"])
     data.type = type
-    data_list.append(data)
+
+    return data
 
 
 def init_project(input_to_vocab, data):
