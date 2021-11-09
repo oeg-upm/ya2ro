@@ -42,13 +42,9 @@ class ro_html(object):
         help_button = self.soup.find(id="help-button")
         help_button['href'] = ntpath.basename(self.data.output_html_help)
 
-
         # HREF Back button from help
         back_button = self.soup_help.find(id="back-button")
         back_button['href'] = ntpath.basename(self.data.output_html)
-
-        self.init_styles()
-        self.init_help_page()
 
         # Iterate attr from data and call correct init function for that attr
         for attr_name in self.data:
@@ -57,6 +53,9 @@ class ro_html(object):
 
             if attr_val and attr_name in self.func_attr_init:
                 self.func_attr_init[attr_name](attr_val)
+
+        self.init_styles()
+        self.init_help_page()
 
     def init_help_page(self):
 
@@ -120,7 +119,7 @@ class ro_html(object):
 
             # copy image to output/images directory
             src = Path("images","complete_paper.png")
-            dst = Path(p.output_directory, "images","complete_paper.png")
+            dst = Path(self.data.output_directory_datafolder, "images","complete_paper.png")
             copyfile(src, dst)
 
             complete_logo_html = """<a href="#">
@@ -154,7 +153,7 @@ class ro_html(object):
 
         # copy image to output/images directory
         src = Path(sketch)
-        dst = Path(p.output_directory, sketch)
+        dst = Path(self.data.output_directory_datafolder, sketch)
         copyfile(src, dst)
     
 
@@ -279,7 +278,7 @@ class ro_html(object):
         for author in authors:
 
             src = Path(author.photo)
-            dst = Path(p.output_directory, author.photo)
+            dst = Path(self.data.output_directory_datafolder, author.photo)
             
             copyfile(src, dst)
 
@@ -353,10 +352,11 @@ class ro_html(object):
         ul_list += """</ul>"""
         return ul_list
     
-    def create_landing_page(output_directory, list_data):
+    def create_landing_page(list_data):
 
         soup_landing = BeautifulSoup(open(p.properties["template_landing"]), 'html.parser')
 
+        # Apply css style
         if p.style == "dark":
             style_component = """
                 h1,h1 b{color:#fff!important}
@@ -375,10 +375,10 @@ class ro_html(object):
 
             id_component = data.title.replace(" ", "_")
             # Remove first folder from path: "output" folder is deleted
-            folder_index = str(Path(*data.output_html.parts[1:]))
+            datafolder_indexhtml = str(Path(*data.output_html.parts[1:]))
 
             web_entry_component = f"""<div class="w3-container" style="margin-top:15px" id="{id_component}">
-            <a href="{folder_index}"><h1 class="w3-text-green"><b>{data.title}</b></h1></a>
+            <a href="{datafolder_indexhtml}"><h1 class="w3-text-green"><b>{data.title}</b></h1></a>
             <p><b>Type: {data.type.capitalize()}</b></p>
             <hr style="width:50px;border:5px solid green" class="w3-round">
             <p>{description}</p>
@@ -388,14 +388,14 @@ class ro_html(object):
             ro_html.__sidebar_append(soup_landing, id_component, data.title)
         
         # dump changes into output_html_landing
-        with open(Path(output_directory, p.properties["output_html_landing"]), "w+") as file:
+        with open(Path(p.output_directory, p.properties["output_html_landing"]), "w+") as file:
             file.write(str(soup_landing))
 
         # Create htaccess for landing page
         import htaccess
-        htaccess.create_htaccess_landing(output_directory)
+        htaccess.create_htaccess_landing(p.output_directory)
 
-        print(f"""Landing page created at {output_directory}/{p.properties["output_html_landing"]} \n""")
+        print(f"""Landing page created at {p.output_directory}/{p.properties["output_html_landing"]} \n""")
             
 
             

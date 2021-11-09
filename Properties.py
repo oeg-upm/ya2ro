@@ -14,13 +14,15 @@ def init(properties_file, input_yalm, output_directory_param):
     # Make visible output directoty to all modules
     output_directory = output_directory_param
 
+    output_directory_datafolder = Path(output_directory, str(Path(input_yalm).stem))
+
     # Create paths for output files
     with open(Path(properties_file)) as file:
         properties = yaml.load(file, Loader=SafeLoader)
 
-    if not os.path.exists(output_directory):
-        os.makedirs(output_directory)
-        print(f"Creating output diretory {output_directory}")
+    if not os.path.exists(output_directory_datafolder):
+        os.makedirs(output_directory_datafolder)
+        print(f"Creating output diretory {output_directory_datafolder}")
 
     # Create htaccess file
     import htaccess
@@ -31,10 +33,10 @@ def init(properties_file, input_yalm, output_directory_param):
         input_to_vocab = yaml.load(file, Loader=SafeLoader)
 
     # Create images directory inside output folder
-    images_output_path = Path(output_directory, input_to_vocab["images"])
+    images_output_path = Path(output_directory_datafolder, input_to_vocab["images"])
     if not os.path.exists(images_output_path):
         os.makedirs(images_output_path)
-        print(f"Creating images diretory {output_directory}")
+        print(f"Creating images diretory {output_directory_datafolder}/images")
 
     # Open input.yalm and parse it
     with open(Path(input_yalm)) as file:
@@ -61,9 +63,10 @@ def init(properties_file, input_yalm, output_directory_param):
         data = init_project(input_to_vocab, data)
 
     # Init data meta properties
-    data.output_html = Path(output_directory, properties["output_html"])
-    data.output_html_help = Path(output_directory, properties["output_html_help"])
-    data.output_jsonld = Path(output_directory, properties["output_jsonld"])
+    data.output_html = Path(output_directory_datafolder, properties["output_html"])
+    data.output_html_help = Path(output_directory_datafolder, properties["output_html_help"])
+    data.output_jsonld = Path(output_directory_datafolder, properties["output_jsonld"])
+    data.output_directory_datafolder = output_directory_datafolder
     data.type = type
 
     return data

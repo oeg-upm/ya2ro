@@ -9,11 +9,11 @@ areas:
   
 demo: 
   -
-    link: "https://oeg-upm.github.io/EELISA-research-object/output/index-en.html"
+    link: "https://oeg-upm.github.io/EELISA-research-object/output/landing_page.html"
     description: "This is a description for a demo for the ya2ro EELISA project."
   -
     name: "GitHub Pages demo"
-    link: "https://oeg-upm.github.io/EELISA-research-object/output/index-en.html"
+    link: "https://oeg-upm.github.io/EELISA-research-object/output/landing_page.html"
     description: "This is a SECOND description for a demo for the ya2ro EELISA project but with name."
 
 datasets: 

@@ -55,7 +55,8 @@ _________________________________________________________
         data = properties.init(
             properties_file = args.properties_file, 
             input_yalm = input_yalm, 
-            output_directory_param = Path(args.output_directory, str(Path(input_yalm).stem))
+            #output_directory_param = Path(args.output_directory, str(Path(input_yalm).stem))
+            output_directory_param = args.output_directory
             )
 
         list_data.append(data)
@@ -75,5 +76,5 @@ _________________________________________________________
         print("")
     
     if len(list_data) > 1:
-        ro_html.create_landing_page(args.output_directory, list_data)
+        ro_html.create_landing_page(list_data)
 
