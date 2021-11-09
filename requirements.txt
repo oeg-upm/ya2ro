@@ -2,3 +2,4 @@ pyyaml
 bs4
 requests
 bibtexparser
+pygments

@@ -74,7 +74,6 @@ from yaml.loader import SafeLoader
 from pathlib import Path
 import os
 import sys
-import data_wrapper
 import req_orcid
 import req_doi
 import somef.cli
@@ -124,24 +123,25 @@ def load_yaml(input_yalm):
     data.output_jsonld = Path(output_directory_datafolder, p.properties["output_jsonld"])
     data.output_directory_datafolder = output_directory_datafolder
     data.type = type
+    data.yaml_file = input_yalm
 
     return data
 
 
 def init_project(input_to_vocab, data):
 
-    project = data_wrapper.Project(
+    project = Project(
         title = _safe(input_to_vocab["title"], data),
         goal = _safe(input_to_vocab["goal"], data),
         social_motivation = _safe(input_to_vocab["social_motivation"], data),
         sketch = _safe(input_to_vocab["sketch"], data),
         areas = _safe(input_to_vocab["areas"], data),
-        demo = _list_empty_instances(data_wrapper.Demo, input_to_vocab["demo"], data),
-        datasets = _list_empty_instances(data_wrapper.Dataset, input_to_vocab["datasets_links"], _safe(input_to_vocab["datasets"], data)),
+        demo = _list_empty_instances(Demo, input_to_vocab["demo"], data),
+        datasets = _list_empty_instances(Dataset, input_to_vocab["datasets_links"], _safe(input_to_vocab["datasets"], data)),
         doi_datasets = _safe(input_to_vocab["doi_datasets"], _safe(input_to_vocab["datasets"], data)),
-        software = _list_empty_instances(data_wrapper.Software, input_to_vocab["software"], data),
-        bibliography = _list_empty_instances(data_wrapper.Bibliography_entry, input_to_vocab["bibliography"], data),
-        authors = _list_empty_instances(data_wrapper.Author, input_to_vocab["participants"], data),
+        software = _list_empty_instances(Software, input_to_vocab["software"], data),
+        bibliography = _list_empty_instances(Bibliography_entry, input_to_vocab["bibliography"], data),
+        authors = _list_empty_instances(Author, input_to_vocab["participants"], data),
     )
 
     if project.title:
@@ -180,14 +180,14 @@ def init_project(input_to_vocab, data):
 def init_paper(input_to_vocab, data):
 
     # Create paper object and pupulate the lists with empty instances
-    paper = data_wrapper.Paper(
+    paper = Paper(
         title = _safe(input_to_vocab["title"], data),
         summary = _safe(input_to_vocab["summary"], data),
-        datasets = _list_empty_instances(data_wrapper.Dataset, input_to_vocab["datasets_links"], _safe(input_to_vocab["datasets"], data)),
+        datasets = _list_empty_instances(Dataset, input_to_vocab["datasets_links"], _safe(input_to_vocab["datasets"], data)),
         doi_datasets = _safe(input_to_vocab["doi_datasets"], _safe(input_to_vocab["datasets"], data)),
-        software = _list_empty_instances(data_wrapper.Software, input_to_vocab["software"], data),
-        bibliography = _list_empty_instances(data_wrapper.Bibliography_entry, input_to_vocab["bibliography"], data),
-        authors = _list_empty_instances(data_wrapper.Author, input_to_vocab["authors"], data),
+        software = _list_empty_instances(Software, input_to_vocab["software"], data),
+        bibliography = _list_empty_instances(Bibliography_entry, input_to_vocab["bibliography"], data),
+        authors = _list_empty_instances(Author, input_to_vocab["authors"], data),
     )
 
     if paper.title:

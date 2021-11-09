@@ -59,24 +59,71 @@ class ro_html(object):
 
     def init_help_page(self):
 
-        icons_explanation_text = "Icons description: [...]"
 
-        icons_explanation_component = f"""<div class="w3-container" style="margin-top:15px">
+        logo_recognition_explained_component = ""
+
+        if self.worth:
+
+            if self.data.type == "paper":
+                logo_recognition_explained_component =f"""
+                <p>This icon showcase that this paper meets all the following requirements, so it is considered to be a complete Paper:</p>
+                {self.__ul_component([ req.replace("_", " ").capitalize() for req in self.data.requirements ])}
+                <img title="This paper has the necessary characteristics to be recognized as an complete paper."
+					alt="Complete-Paper" src="images/complete_paper.png" style="width: 8em;"/>
+                """
+
+            if self.data.type == "project":
+                logo_recognition_explained_component =f"""
+                <p>This EELISA logo showcase that this project meets all the following requirements, so it is consider to be a complete/elegible EELISA project:</p>
+                {self.__ul_component(req.replace("_", " ").capitalize() for req in self.data.requirements)}
+                <img title="This project has the necessary characteristics to be recognized as an EELISA project."
+					alt="EELISA-logo" src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" style="width: 3em; width: fit-content;"/>
+
+                """
+
+        help_button_exaplained = "It is a help button that redirects directly into this page, where you can find a more in-depth explanation of the website."
+
+        jsonld_button_exaplained = "It is a button that redirects you into a JSON-LD RO-Crate representation of the data of this web, wich is used to ease the understanding of the content to machines."
+
+        icons_explanation_component = f"""
+        <div class="w3-container" style="margin-top:15px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Icons</b></h1>
         <hr style="width:50px;border:5px solid green" class="w3-round">
-		<p>{icons_explanation_text}</p>
-	    </div>"""
+
+        <p>{help_button_exaplained}</p>
+        <img title="Description of each element and how was this web created."
+			alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" 
+			style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%);
+            width: 60px; margin: 0; display:block; margin-left:auto; margin-right:auto;"/>
+
+        <p>{jsonld_button_exaplained}</p>
+        <img title="Retrieve the JSON-LD ro-crate representation of this web."
+			alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" 
+			style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%);
+            width: 60px; margin: 0; display:block; margin-left:auto; margin-right:auto;"/>
+
+        {logo_recognition_explained_component}
+
+	    </div>
+        """
 
         ro_html.__append_component(self.soup_help, "icons_explanation", icons_explanation_component)
 
         ################################################
 
-        how_info_text = "How information was retrieved: [...]"
+        how_info_text = f"""This web was created using the tool ya2ro which takes as an input a yalm file with all the relevant information and pointers to the web. Then, it merges the information retrieved from the web pointers with the provided in the yalm file. And in this case the yalm file used was the following:
+        """
+
+        import hilite_me
+
+        with open(self.data.yaml_file, 'r') as f:
+            yaml = f.read()
 
         how_info_component = f"""<div class="w3-container" style="margin-top:15px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>How was the information retrieved?</b></h1>
         <hr style="width:50px;border:5px solid green" class="w3-round">
 		<p>{how_info_text}</p>
+        <div style="overflow-x: auto; background-color: whitesmoke; color: black;">{hilite_me.yaml_formatter(yaml)}</div>
 	    </div>"""
 
         ro_html.__append_component(self.soup_help, "how_info", how_info_component)
@@ -100,14 +147,14 @@ class ro_html(object):
     def init_requirements_recognition(self, requirements):
 
         # LOGO WORTH IT?
-        worth = True
+        self.worth = True
         for req in requirements:
             val = getattr(self.data, req)
             if val is None:
                 print("WARNING: '{}' is not defined. Add it to be eligible for beeing an EELISA project.".format(req))
-                worth = False
+                self.worth = False
 
-        if worth and self.data.type == "project":
+        if self.worth and self.data.type == "project":
 
             elisa_logo_html = """<a href="https://eelisa.eu/" target="_blank" >
 				<img title="This project has the necessary characteristics to be recognized as an EELISA project."
@@ -115,7 +162,7 @@ class ro_html(object):
 			</a>"""
             ro_html.__append_component(self.soup, "recogn_logo", elisa_logo_html)
 
-        if worth and self.data.type == "paper":
+        if self.worth and self.data.type == "paper":
 
             # copy image to output/images directory
             src = Path("images","complete_paper.png")
@@ -333,7 +380,6 @@ class ro_html(object):
         print(f"HTML help website file created at {self.data.output_html_help}")   
 
 
-
     def __append_component(soup, location_id, str_component):
         loc = soup.find(id=location_id)
         html_component = BeautifulSoup(str_component, 'html.parser')
@@ -370,6 +416,7 @@ class ro_html(object):
 
             if data.type == "paper":
                 description = data.summary
+                
             if data.type == "project":
                 description = data.goal
 
