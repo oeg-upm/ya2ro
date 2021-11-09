@@ -45,20 +45,18 @@ _________________________________________________________
 
     list_data = []
 
+    properties.init(
+        properties_file = args.properties_file, 
+        output_directory_param = args.output_directory
+        )
+
     for input_yalm in args.input:
 
         #----------------------------------------------------------------------------------
         # Create RO objects and dump results
         #----------------------------------------------------------------------------------
-        
 
-        data = properties.init(
-            properties_file = args.properties_file, 
-            input_yalm = input_yalm, 
-            #output_directory_param = Path(args.output_directory, str(Path(input_yalm).stem))
-            output_directory_param = args.output_directory
-            )
-
+        data = properties.load_yaml(input_yalm)
         list_data.append(data)
         
         # Just to improve the stdout

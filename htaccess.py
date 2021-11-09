@@ -1,8 +1,7 @@
 from pathlib import Path
 import properties as p
 
-
-def create_htaccess():
+def create_htaccess(output_datafolder):
 
     htaccess = """
     # Turn off MultiViews
@@ -12,7 +11,7 @@ def create_htaccess():
 
     RewriteEngine on
 
-    RewriteBase /""" + str(p.output_directory) + """
+    RewriteBase /""" + str(output_datafolder) + """
 
     # Rewrite rule to serve HTML
     RewriteCond %{HTTP_ACCEPT} !application/rdf\+xml.*(text/html|application/xhtml\+xml)
@@ -27,7 +26,7 @@ def create_htaccess():
     """
 
 
-    with open(Path(p.output_directory, ".htaccess"), "w") as text_file:
+    with open(Path(output_datafolder, ".htaccess"), "w") as text_file:
         text_file.write(htaccess)
 
 def create_htaccess_landing(output_directory):

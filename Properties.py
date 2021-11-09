@@ -8,17 +8,27 @@ import req_orcid
 import req_doi
 import somef.cli
 
-def init(properties_file, input_yalm, output_directory_param):
-    global properties, output_directory, style
-
+def init(properties_file, output_directory_param):
+    global output_directory, input_to_vocab, properties, style
+    
     # Make visible output directoty to all modules
     output_directory = output_directory_param
-
-    output_directory_datafolder = Path(output_directory, str(Path(input_yalm).stem))
 
     # Create paths for output files
     with open(Path(properties_file)) as file:
         properties = yaml.load(file, Loader=SafeLoader)
+    
+    # Load vocab used in the input.yalm
+    with open(Path(properties["input_to_vocab_yaml"])) as file:
+        input_to_vocab = yaml.load(file, Loader=SafeLoader)
+    
+    # Style selector
+    style = _safe(input_to_vocab["style"], properties)
+    style = style if style else "default"
+
+def load_yaml(input_yalm):
+
+    output_directory_datafolder = Path(output_directory, str(Path(input_yalm).stem))
 
     if not os.path.exists(output_directory_datafolder):
         os.makedirs(output_directory_datafolder)
@@ -26,11 +36,7 @@ def init(properties_file, input_yalm, output_directory_param):
 
     # Create htaccess file
     import htaccess
-    htaccess.create_htaccess()
-
-    # Load vocab used in the input.yalm
-    with open(Path(properties["input_to_vocab_yaml"])) as file:
-        input_to_vocab = yaml.load(file, Loader=SafeLoader)
+    htaccess.create_htaccess(output_directory_datafolder)
 
     # Create images directory inside output folder
     images_output_path = Path(output_directory_datafolder, input_to_vocab["images"])
@@ -43,10 +49,6 @@ def init(properties_file, input_yalm, output_directory_param):
         data = yaml.load(file, Loader=SafeLoader)
     
     print(f"Parsing and fetching info from {input_yalm}...\n")
-
-    # Style selector
-    style = _safe(input_to_vocab["style"], properties)
-    style = style if style else "default"
 
     type = _safe(input_to_vocab["type"], data)
      
