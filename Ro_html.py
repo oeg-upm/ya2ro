@@ -66,7 +66,7 @@ class ro_html(object):
 
             if self.data.type == "paper":
                 logo_recognition_explained_component =f"""
-                <p>This icon showcase that this paper meets all the following requirements, so it is considered to be a complete Paper:</p>
+                <p>This icon showcases that this paper meets all the following requirements, so it is considered to be a complete Paper:</p>
                 {self.__ul_component([ req.replace("_", " ").capitalize() for req in self.data.requirements ])}
                 <img title="This paper has the necessary characteristics to be recognized as an complete paper."
 					alt="Complete-Paper" src="images/complete_paper.png" style="width: 8em;"/>
@@ -74,16 +74,16 @@ class ro_html(object):
 
             if self.data.type == "project":
                 logo_recognition_explained_component =f"""
-                <p>This EELISA logo showcase that this project meets all the following requirements, so it is consider to be a complete/elegible EELISA project:</p>
+                <p>This EELISA logo showcases that this project meets all the following requirements, so it is considered to be a complete/elegible EELISA project:</p>
                 {self.__ul_component(req.replace("_", " ").capitalize() for req in self.data.requirements)}
                 <img title="This project has the necessary characteristics to be recognized as an EELISA project."
 					alt="EELISA-logo" src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" style="width: 3em; width: fit-content;"/>
 
                 """
 
-        help_button_exaplained = "It is a help button that redirects directly into this page, where you can find a more in-depth explanation of the website."
+        help_button_exaplained = "It is a help button that redirects to this page, where you can find a more in-depth explanation of the website."
 
-        jsonld_button_exaplained = "It is a button that redirects you into a JSON-LD RO-Crate representation of the data of this web, wich is used to ease the understanding of the content to machines."
+        jsonld_button_exaplained = "It is a button that redirects you to a JSON-LD RO-Crate representation of the data of this webpage, which is used to ease the understanding of the content to machines."
 
         icons_explanation_component = f"""
         <div class="w3-container" style="margin-top:15px">
@@ -91,13 +91,13 @@ class ro_html(object):
         <hr style="width:50px;border:5px solid green" class="w3-round">
 
         <p>{help_button_exaplained}</p>
-        <img title="Description of each element and how was this web created."
+        <img title="Description of each element and how was this webpage created."
 			alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" 
 			style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%);
             width: 60px; margin: 0; display:block; margin-left:auto; margin-right:auto;"/>
 
         <p>{jsonld_button_exaplained}</p>
-        <img title="Retrieve the JSON-LD ro-crate representation of this web."
+        <img title="Retrieve the JSON-LD ro-crate representation of this webpage."
 			alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" 
 			style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%);
             width: 60px; margin: 0; display:block; margin-left:auto; margin-right:auto;"/>
@@ -111,7 +111,7 @@ class ro_html(object):
 
         ################################################
 
-        how_info_text = f"""This web was created using the tool ya2ro which takes as an input a yalm file with all the relevant information and pointers to the web. Then, it merges the information retrieved from the web pointers with the provided in the yalm file. And in this case the yalm file used was the following:
+        how_info_text = f"""This webpage was created using the tool ya2ro which takes as an input a yalm file with all the relevant information and pointers to the webpage. Then, it merges the information retrieved from the webpage pointers with the provided information in the yalm file. In this case, the yalm file used was the following:
         """
 
         import hilite_me
