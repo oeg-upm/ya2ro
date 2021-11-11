@@ -6,7 +6,7 @@ import ntpath
 
 class ro_html(object):
 
-    def __init__(self):
+    def init(self):
 
         # read and parse the templates
         self.soup = BeautifulSoup(open(p.properties["template_html"]), 'html.parser')
@@ -67,7 +67,7 @@ class ro_html(object):
             if self.data.type == "paper":
                 logo_recognition_explained_component =f"""
                 <p>This icon showcases that this paper meets all the following requirements, so it is considered to be a complete Paper:</p>
-                {self.__ul_component([ req.replace("_", " ").capitalize() for req in self.data.requirements ])}
+                {self.ul_component([ req.replace("_", " ").capitalize() for req in self.data.requirements ])}
                 <img title="This paper has the necessary characteristics to be recognized as an complete paper."
 					alt="Complete-Paper" src="images/complete_paper.png" style="width: 8em;"/>
                 """
@@ -75,7 +75,7 @@ class ro_html(object):
             if self.data.type == "project":
                 logo_recognition_explained_component =f"""
                 <p>This EELISA logo showcases that this project meets all the following requirements, so it is considered to be a complete/elegible EELISA project:</p>
-                {self.__ul_component(req.replace("_", " ").capitalize() for req in self.data.requirements)}
+                {self.ul_component(req.replace("_", " ").capitalize() for req in self.data.requirements)}
                 <img title="This project has the necessary characteristics to be recognized as an EELISA project."
 					alt="EELISA-logo" src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" style="width: 3em; width: fit-content;"/>
 
@@ -107,7 +107,7 @@ class ro_html(object):
 	    </div>
         """
 
-        ro_html.__append_component(self.soup_help, "icons_explanation", icons_explanation_component)
+        ro_html.append_component(self.soup_help, "icons_explanation", icons_explanation_component)
 
         ################################################
 
@@ -126,7 +126,7 @@ class ro_html(object):
         <div style="overflow-x: auto; background-color: whitesmoke; color: black;">{hilite_me.yaml_formatter(yaml)}</div>
 	    </div>"""
 
-        ro_html.__append_component(self.soup_help, "how_info", how_info_component)
+        ro_html.append_component(self.soup_help, "how_info", how_info_component)
 
 
     def init_styles(self):
@@ -140,8 +140,8 @@ class ro_html(object):
             .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
             body{background-color:#222831!important;color:#fff!important}
             """
-            ro_html.__append_component(self.soup, "style", style_component)
-            ro_html.__append_component(self.soup_help, "style", style_component)
+            ro_html.append_component(self.soup, "style", style_component)
+            ro_html.append_component(self.soup_help, "style", style_component)
             
 
     def init_requirements_recognition(self, requirements):
@@ -160,7 +160,7 @@ class ro_html(object):
 				<img title="This project has the necessary characteristics to be recognized as an EELISA project."
 					alt="EELISA-logo" src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" style="width: 3em; width: fit-content;"/>
 			</a>"""
-            ro_html.__append_component(self.soup, "recogn_logo", elisa_logo_html)
+            ro_html.append_component(self.soup, "recogn_logo", elisa_logo_html)
 
         if self.worth and self.data.type == "paper":
 
@@ -173,7 +173,7 @@ class ro_html(object):
 				<img title="This paper has the necessary characteristics to be recognized as an complete paper."
 					alt="Complete-Paper" src="images/complete_paper.png" style="width: 8em;"/>
 			</a>"""
-            ro_html.__append_component(self.soup, "recogn_logo", complete_logo_html)
+            ro_html.append_component(self.soup, "recogn_logo", complete_logo_html)
     
     def init_social_motivation(self, social_motivation):
 
@@ -183,8 +183,8 @@ class ro_html(object):
 		<p>{social_motivation}</p>
 	    </div>"""
 
-        ro_html.__append_component(self.soup, "social_motivation", social_motivation_component)
-        ro_html.__sidebar_append(self.soup, "social_motivation", "Social motivation")
+        ro_html.append_component(self.soup, "social_motivation", social_motivation_component)
+        ro_html.sidebar_append(self.soup, "social_motivation", "Social motivation")
     
 
     def init_sketch(self, sketch):
@@ -195,8 +195,8 @@ class ro_html(object):
 		<img src="{sketch}" alt="Sketch of the project">
 	    </div>"""
 
-        ro_html.__append_component(self.soup, "sketch", sketch_component)
-        ro_html.__sidebar_append(self.soup, "sketch", "Sketch")
+        ro_html.append_component(self.soup, "sketch", sketch_component)
+        ro_html.sidebar_append(self.soup, "sketch", "Sketch")
 
         # copy image to output/images directory
         src = Path(sketch)
@@ -206,7 +206,7 @@ class ro_html(object):
 
     def init_areas(self, areas):
 
-        areas_list = self.__ul_component(areas)
+        areas_list = self.ul_component(areas)
 
         areas_component = f"""<div class="w3-container" style="margin-top:15px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Areas</b></h1>
@@ -214,13 +214,13 @@ class ro_html(object):
 		{areas_list}
 	    </div>"""
 
-        ro_html.__append_component(self.soup, "areas", areas_component)
-        ro_html.__sidebar_append(self.soup, "areas", "Areas")
+        ro_html.append_component(self.soup, "areas", areas_component)
+        ro_html.sidebar_append(self.soup, "areas", "Areas")
 
 
     def init_demo(self, demo):
 
-        demo_list_commponent = self.__ul_component([f"""<a href="{d.link}">{d.link if d.name is None else d.name}</a>: {d.description}""" for d in demo])
+        demo_list_commponent = self.ul_component([f"""<a href="{d.link}">{d.link if d.name is None else d.name}</a>: {d.description}""" for d in demo])
 
         demo_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Demo</b></h1>
@@ -228,8 +228,8 @@ class ro_html(object):
         {demo_list_commponent}
 	    </div>"""
 
-        ro_html.__append_component(self.soup, "demo", demo_component)
-        ro_html.__sidebar_append(self.soup, "demo", "Demo")
+        ro_html.append_component(self.soup, "demo", demo_component)
+        ro_html.sidebar_append(self.soup, "demo", "Demo")
 
 
     def init_goal(self, goal):
@@ -240,8 +240,8 @@ class ro_html(object):
 		<p>{goal}</p>
 	    </div>"""
 
-        ro_html.__append_component(self.soup, "goal", goal_component)
-        ro_html.__sidebar_append(self.soup, "goal", "Goal")
+        ro_html.append_component(self.soup, "goal", goal_component)
+        ro_html.sidebar_append(self.soup, "goal", "Goal")
  
 
     def init_title(self, title):
@@ -259,12 +259,12 @@ class ro_html(object):
 		<p>{summary}</p>
 	    </div>"""
 
-        ro_html.__append_component(self.soup, "summary", summary_component)
-        ro_html.__sidebar_append(self.soup, "summary", "Summary")
+        ro_html.append_component(self.soup, "summary", summary_component)
+        ro_html.sidebar_append(self.soup, "summary", "Summary")
 
     def init_datasets(self, datasets):
  
-        datasets_list_commponent = self.__ul_component([f"""<a href="{d.link}">{d.link if d.name is None else d.name}</a>: {d.description}""" for d in datasets])
+        datasets_list_commponent = self.ul_component([f"""<a href="{d.link}">{d.link if d.name is None else d.name}</a>: {d.description}""" for d in datasets])
 
         doi_datasets = ""
         if self.data.doi_datasets is not None:
@@ -277,13 +277,13 @@ class ro_html(object):
         {datasets_list_commponent}
 	    </div>"""
 
-        ro_html.__sidebar_append(self.soup, "datasets", "Datasets")
-        ro_html.__append_component(self.soup, "datasets", datasets_component)
+        ro_html.sidebar_append(self.soup, "datasets", "Datasets")
+        ro_html.append_component(self.soup, "datasets", datasets_component)
     
 
     def init_software(self, software):
 
-        software_list_commponent = self.__ul_component([f"""<a href="{s.link}">{s.link if s.name is None else s.name}</a>: {s.description}""" for s in software])
+        software_list_commponent = self.ul_component([f"""<a href="{s.link}">{s.link if s.name is None else s.name}</a>: {s.description}""" for s in software])
 
         software_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
@@ -292,13 +292,13 @@ class ro_html(object):
         {software_list_commponent}
 	    </div>"""
 
-        ro_html.__sidebar_append(self.soup, "software", "Software")
-        ro_html.__append_component(self.soup, "software", software_component)
+        ro_html.sidebar_append(self.soup, "software", "Software")
+        ro_html.append_component(self.soup, "software", software_component)
     
 
     def init_bibliography(self, bibliography):
  
-        bibliography_list = self.__ul_component([b.entry for b in bibliography])
+        bibliography_list = self.ul_component([b.entry for b in bibliography])
 
         bibliography_commponent = f"""<div class="w3-container" id="bib" style="margin-top:75px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
@@ -306,20 +306,20 @@ class ro_html(object):
 		{bibliography_list}
 	    </div>"""
 
-        ro_html.__sidebar_append(self.soup, "bibliography", "Bibliography")
-        ro_html.__append_component(self.soup, "bibliography", bibliography_commponent)
+        ro_html.sidebar_append(self.soup, "bibliography", "Bibliography")
+        ro_html.append_component(self.soup, "bibliography", bibliography_commponent)
 
 
     def init_authors(self, authors):
         # create authors
-        authors_boxes = self.__create_about_authors(authors)
+        authors_boxes = self.create_about_authors(authors)
         authors_commponent = f"""<div class="w3-container" id="authors" style="margin-top:75px">
         <h1 class="w3-xxxlarge w3-text-green"><b>About the authors</b></h1>
         <hr style="width:50px;border:5px solid green" class="w3-round">
         {authors_boxes}"""
 
-        ro_html.__sidebar_append(self.soup, "authors", "About the authors")
-        ro_html.__append_component(self.soup, "authors", authors_commponent)
+        ro_html.sidebar_append(self.soup, "authors", "About the authors")
+        ro_html.append_component(self.soup, "authors", authors_commponent)
 
         # copy images to output/images directory
         for author in authors:
@@ -330,7 +330,7 @@ class ro_html(object):
             copyfile(src, dst)
 
 
-    def __create_about_authors(self, authors):
+    def create_about_authors(self, authors):
 
         num_authors = 0
         html_author = ""
@@ -380,69 +380,25 @@ class ro_html(object):
         print(f"HTML help website file created at {self.data.output_html_help}")   
 
 
-    def __append_component(soup, location_id, str_component):
+    def append_component(soup, location_id, str_component):
         loc = soup.find(id=location_id)
         html_component = BeautifulSoup(str_component, 'html.parser')
         loc.append(html_component)
 
 
-    def __sidebar_append(soup, location_id, item_name):
+    def sidebar_append(soup, location_id, item_name):
         item_component = f"""<a href="#{location_id}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">{item_name}</a>"""
-        ro_html.__append_component(soup, "sidebar", item_component)
+        ro_html.append_component(soup, "sidebar", item_component)
 
 
-    def __ul_component(self, list):
+    def ul_component(self, list):
         ul_list = """<ul>"""
         for li in list:
             ul_list += f"""<li>{li}</li>"""
         ul_list += """</ul>"""
         return ul_list
     
-    def create_landing_page(list_data):
 
-        soup_landing = BeautifulSoup(open(p.properties["template_landing"]), 'html.parser')
-
-        # Apply css style
-        if p.style == "dark":
-            style_component = """
-                h1,h1 b{color:#fff!important}
-                .w3-light-grey{background-color:#ddd!important;color:#222831!important}
-                .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
-                body{background-color:#222831!important;color:#fff!important}
-                """
-            ro_html.__append_component(soup_landing, "style", style_component)
-
-        for data in list_data:
-
-            if data.type == "paper":
-                description = data.summary
-                
-            if data.type == "project":
-                description = data.goal
-
-            id_component = data.title.replace(" ", "_")
-            # Remove first folder from path: "output" folder is deleted
-            datafolder_indexhtml = str(Path(*data.output_html.parts[1:]))
-
-            web_entry_component = f"""<div class="w3-container" style="margin-top:15px" id="{id_component}">
-            <a href="{datafolder_indexhtml}"><h1 class="w3-text-green"><b>{data.title}</b></h1></a>
-            <p><b>Type: {data.type.capitalize()}</b></p>
-            <hr style="width:50px;border:5px solid green" class="w3-round">
-            <p>{description}</p>
-            </div>"""
-
-            ro_html.__append_component(soup_landing, "content", web_entry_component)
-            ro_html.__sidebar_append(soup_landing, id_component, data.title)
-        
-        # dump changes into output_html_landing
-        with open(Path(p.output_directory, p.properties["output_html_landing"]), "w+") as file:
-            file.write(str(soup_landing))
-
-        # Create htaccess for landing page
-        import htaccess
-        htaccess.create_htaccess_landing(p.output_directory)
-
-        print(f"""Landing page created at {p.output_directory}/{p.properties["output_html_landing"]} \n""")
             
 
             

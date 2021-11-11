@@ -15,6 +15,7 @@
         {
             "@id": "./",
             "@type": "Dataset",
+            "DataType": "paper",
             "author": [
                 {
                     "@id": "#daniel_garijo"
@@ -48,6 +49,9 @@
                 },
                 {
                     "@id": "#name_dataset_3"
+                },
+                {
+                    "@id": "index-en.html"
                 }
             ],
             "name": "PSM-FLOW"
@@ -58,8 +62,8 @@
             "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
-                "University of Southern California",
-                "Universidad Polit\u00e9cnica de Madrid"
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
             ]
         },
         {
@@ -136,6 +140,11 @@
                 "@id": "www.linkD3.com"
             },
             "name": "name dataset 3"
+        },
+        {
+            "@id": "index-en.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
         }
     ]
 }

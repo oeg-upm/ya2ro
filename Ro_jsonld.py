@@ -19,6 +19,7 @@ class ro_jsonld(object):
                 "@id": "./",
                 "@type": "Dataset",
                 "name": "",
+                "DataType": "",
                 "description": "",
                 "author": [],
                 "hasPart": []
@@ -34,37 +35,50 @@ class ro_jsonld(object):
 
         # Self creates the hardcoded structure for paper
         if self.data.type == "paper":
+            self.graph_add_data_type(self.data.type)
             self.graph_add_description(self.data.summary)
             self.graph_add_authors(self.data.authors)
             self.graph_add_softwares(self.data.software)
             self.graph_add_datasets(self.data.datasets)
+            self.graph_add_html_ref(p.properties["output_html"])
         
         # Self creates the hardcoded structure for project
         if self.data.type == "project":
+            self.graph_add_data_type(self.data.type)
             self.graph_add_description(self.data.goal)
             self.graph_add_authors(self.data.authors)
             self.graph_add_softwares(self.data.software)
             self.graph_add_datasets(self.data.datasets)
             self.graph_add_demo(self.data.demo)
+            self.graph_add_html_ref(p.properties["output_html"])
+
 
         # Adds graph to the final structure jsonld
         self.jsonld["@graph"] = self.graph
 
+    def graph_add_html_ref(self, html_ref):
 
-    def _normalize_name(self, name):
-        """Normalizes names in order to be used as an ID."""
-        return "#" + str(name).replace(' ', '_').lower()
+        if html_ref is None:
+            return None
 
-
-    def _add_id_to_list(self, name, list):
-        """Enters a name with blank spaces or not and appends
-        to the list a id normalized version of the name. List 
-        must be a list of dicts."""
-
-        id_normalized = self._normalize_name(name)
-        list.append({
-            "@id": id_normalized
+        self.graph[1]["hasPart"].append({
+            "@id": html_ref
         })
+
+        self.graph.append({ 
+            "@id": html_ref, 
+            "name": "HTML representation of this data.", 
+            "@type": "WebPage"
+            })
+        
+
+    def graph_add_data_type(self, type):
+
+        if type is None:
+            return None
+        
+        self.graph[1]["DataType"] = type
+    
 
     def graph_add_title(self, title):
 
@@ -159,3 +173,17 @@ class ro_jsonld(object):
         print(f"JSON-LD file created at {self.data.output_jsonld}")
         
 
+    def _normalize_name(self, name):
+        """Normalizes names in order to be used as an ID."""
+        return "#" + str(name).replace(' ', '_').lower()
+
+
+    def _add_id_to_list(self, name, list):
+        """Enters a name with blank spaces or not and appends
+        to the list a id normalized version of the name. List 
+        must be a list of dicts."""
+
+        id_normalized = self._normalize_name(name)
+        list.append({
+            "@id": id_normalized
+        })

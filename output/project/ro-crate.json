@@ -15,6 +15,7 @@
         {
             "@id": "./",
             "@type": "Dataset",
+            "DataType": "project",
             "author": [
                 {
                     "@id": "#daniel_garijo"
@@ -36,6 +37,9 @@
                 },
                 {
                     "@id": "#name_dataset_2"
+                },
+                {
+                    "@id": "index-en.html"
                 }
             ],
             "name": "EELISA Project - ya2ro"
@@ -46,8 +50,8 @@
             "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
-                "University of Southern California",
-                "Universidad Polit\u00e9cnica de Madrid"
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
             ]
         },
         {
@@ -104,6 +108,11 @@
                     "name": "GitHub Pages demo"
                 }
             ]
+        },
+        {
+            "@id": "index-en.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
         }
     ]
 }

@@ -78,6 +78,57 @@ import req_orcid
 import req_doi
 import somef.cli
 import properties as p
+import json
+
+
+def load_jsonld(input_jsonld):
+
+    # Parse jsonld
+    with open(Path(input_jsonld)) as file:
+        jsonld_str = file.read()
+
+    jsonld = json.loads(jsonld_str)
+
+    for entry in jsonld["@graph"]:
+        if entry["@id"] == "./":
+            root = entry
+            break
+    
+    for entry in root["hasPart"]:
+        if str(entry["@id"]).endswith(".html"):
+            index_html = entry["@id"]
+            break
+    
+    type = root["DataType"]
+
+    if type == "project":
+
+        project = Project(
+            title = root["name"],
+            goal = root["description"]
+        )
+
+        # Meta info
+        project.type = type
+        project.index_html = index_html
+
+        return project
+
+    if type == "paper":
+        paper = Paper(
+            title = root["name"],
+            summary = root["description"]
+        )
+
+        # Meta info
+        paper.type = type
+        paper.index_html = index_html
+
+        return paper
+    
+
+
+
 
 def load_yaml(input_yalm):
 
