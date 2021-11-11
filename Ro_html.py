@@ -6,7 +6,7 @@ import ntpath
 
 class ro_html(object):
 
-    def init(self):
+    def __init__(self):
 
         # read and parse the templates
         self.soup = BeautifulSoup(open(p.properties["template_html"]), 'html.parser')
@@ -56,7 +56,7 @@ class ro_html(object):
 
         self.init_styles()
         self.init_help_page()
-
+    
     def init_help_page(self):
 
 
@@ -65,21 +65,27 @@ class ro_html(object):
         if self.worth:
 
             if self.data.type == "paper":
-                logo_recognition_explained_component =f"""
+                logo_recognition_explained =f"""
                 <p>This icon showcases that this paper meets all the following requirements, so it is considered to be a complete Paper:</p>
                 {self.ul_component([ req.replace("_", " ").capitalize() for req in self.data.requirements ])}
+                """                
+                img_component =f"""
                 <img title="This paper has the necessary characteristics to be recognized as an complete paper."
 					alt="Complete-Paper" src="images/complete_paper.png" style="width: 8em;"/>
                 """
+                
+                logo_recognition_explained_component = ro_html.html_horizontal(img_component, logo_recognition_explained)
 
             if self.data.type == "project":
-                logo_recognition_explained_component =f"""
+                logo_recognition_explained =f"""
                 <p>This EELISA logo showcases that this project meets all the following requirements, so it is considered to be a complete/elegible EELISA project:</p>
                 {self.ul_component(req.replace("_", " ").capitalize() for req in self.data.requirements)}
+                """
+                img_component =f"""
                 <img title="This project has the necessary characteristics to be recognized as an EELISA project."
 					alt="EELISA-logo" src="https://eelisa.eu/wp-content/uploads/2020/11/logo-white-1.png" style="width: 3em; width: fit-content;"/>
-
                 """
+                logo_recognition_explained_component = ro_html.html_horizontal(img_component, logo_recognition_explained)
 
         help_button_exaplained = "It is a help button that redirects to this page, where you can find a more in-depth explanation of the website."
 
@@ -89,19 +95,19 @@ class ro_html(object):
         <div class="w3-container" style="margin-top:15px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Icons</b></h1>
         <hr style="width:50px;border:5px solid green" class="w3-round">
-
-        <p>{help_button_exaplained}</p>
-        <img title="Description of each element and how was this webpage created."
+        """ + ro_html.html_horizontal(
+            """<img title="Description of each element and how was this webpage created."
 			alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" 
 			style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%);
-            width: 60px; margin: 0; display:block; margin-left:auto; margin-right:auto;"/>
+            width: 60px; margin: 0; display:block; margin-left:auto; margin-right:auto;"/>""",
+            f"""<p>{help_button_exaplained}</p>""") + f"""
 
-        <p>{jsonld_button_exaplained}</p>
-        <img title="Retrieve the JSON-LD ro-crate representation of this webpage."
+        """ + ro_html.html_horizontal("""<img title="Retrieve the JSON-LD ro-crate representation of this webpage."
 			alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" 
 			style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%);
-            width: 60px; margin: 0; display:block; margin-left:auto; margin-right:auto;"/>
-
+            width: 60px; margin: 0; display:block; margin-left:auto; margin-right:auto;"/>""",
+            f"<p>{jsonld_button_exaplained}</p>") + f"""
+    
         {logo_recognition_explained_component}
 
 	    </div>
@@ -397,6 +403,16 @@ class ro_html(object):
             ul_list += f"""<li>{li}</li>"""
         ul_list += """</ul>"""
         return ul_list
+    
+    def html_horizontal(left_element, rigth_element):
+        return f"""	<div class="row" >
+		<div class="column" style="width:30%;">
+        {left_element}
+		</div>
+        <div class="column" style="width:70%;">
+        {rigth_element}
+		</div>
+	    </div>"""
     
 
             
