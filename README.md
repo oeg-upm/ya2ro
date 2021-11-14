@@ -48,8 +48,8 @@ optional arguments:
 
 Simple execution:
 
-`python3 ya2ro.py -i input.yaml`
-`python3 ya2ro.py -i directory_yamls`
+`python3 ya2ro.py -i input.yaml`   
+`python3 ya2ro.py -i directory_yamls`   
 
 
 With optional arguments:
