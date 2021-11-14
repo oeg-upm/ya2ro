@@ -10,7 +10,7 @@ class ro_landing_page(object):
     def __init__(self, landing_page_directory):
 
         if not Path(landing_page_directory).is_dir():
-            print("Error: '-l','--landing_page' argument incorrect. Directory does not exist or is a file.")
+            print("ERROR: '-l','--landing_page' argument incorrect. Directory does not exist or is a file.")
             exit()
         
         self.list_data = []

@@ -17,7 +17,7 @@ class bib(object):
         try:
             return self.bib["title"]
         except:
-            print(f"Error: fetching title from {self.doi_link}.")
+            print(f"ERROR: fetching title from {self.doi_link}.")
     
     def get_authors(self):
         try:
@@ -26,10 +26,10 @@ class bib(object):
                 authors.append(entry["given"] + " " + entry["family"])
             return authors
         except:
-            print(f"Error: fetching authors from {self.doi_link}.") 
+            print(f"ERROR: fetching authors from {self.doi_link}.") 
 
     def get_summary(self):
         try:
             return self.html.find("meta", property="og:description").get("content", None)
         except:
-            print(f"Error: Unable to retrieve the summary, check if {self.doi_link} is up.")
+            print(f"ERROR: Unable to retrieve the summary, check if {self.doi_link} is up.")
