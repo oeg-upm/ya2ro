@@ -366,6 +366,11 @@ def populate_software(object, input_to_vocab, data):
         description = _safe(input_to_vocab["description"], software)
         if description is not None:
             object.software[i].description = description
+        
+        license = _safe(input_to_vocab["license"], software)
+        if license is not None:
+            object.software[i].license = license
+
         i += 1
     print("    - Software: Done.")
     

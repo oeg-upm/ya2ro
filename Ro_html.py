@@ -327,10 +327,10 @@ class ro_html(object):
             software_attr = []
 
             if s.description:
-                software_attr.append(f"Description: {s.description}")
+                software_attr.append(f"<b>Description:</b> {s.description}")
             
             if s.license:
-                software_attr.append(f"Licence: {s.license}")
+                software_attr.append(f"<b>License:</b> {s.license}")
 
             return f"""<p><a href="{s.link}">{s.link if s.name is None else s.name}</a></p>
             {self.ul_component(software_attr)}"""

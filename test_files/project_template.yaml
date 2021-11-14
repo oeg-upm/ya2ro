@@ -50,7 +50,7 @@ software:
   -
     link: "http://software-2.com"
     description: "Description software 2"
-    license: "MIT-License"
+    license: "MIT-License"  
 
 bibliography: 
   - "Bibliography entry 1"
