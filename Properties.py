@@ -21,6 +21,9 @@ def init(properties_file, output_directory_param):
     style = _safe(input_to_vocab["style"], properties)
     style = style if style else "default"
 
+    print(f"{style} theme selected.")
+    print("Properties initialized...")
+
 
 def _safe(key, dic):
     """Safe call to a dictionary. Returns value or None if key or dictionary does not exist"""

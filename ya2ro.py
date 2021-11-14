@@ -15,18 +15,13 @@ print("""
 _________________________________________________________
     """)
 
-import argparse
-import properties
-import data_wrapper
-from ro_html import ro_html
-from ro_jsonld import ro_jsonld
-from ro_landing_page import ro_landing_page
-
 def main():
 
     #----------------------------------------------------------------------------------
     # Handle arguments
     #----------------------------------------------------------------------------------
+
+    import argparse
 
     parser = argparse.ArgumentParser(
         description='Human and machine readeable input as a yalm file and create RO-Object in jsonld and/or HTML view.')
@@ -34,7 +29,7 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
 
     # Required positional argument 
-    group.add_argument('-i','--input', type=str, nargs='+',
+    group.add_argument('-i','--input', type=str,
         help='Path of the required yalm input. Follow the documentation or the example given to see the structure of the file.')
 
     # Required positional argument
@@ -49,27 +44,53 @@ def main():
 
     args = parser.parse_args()
 
+    import properties
+
     properties.init(
         properties_file = args.properties_file, 
         output_directory_param = args.output_directory
         )
     
     if args.input:
-        process_input(args.input)
+        process_yaml(args.input)
 
     if args.landing_page:
         process_landing_page(args.landing_page)
 
 
-def process_input(input_list):
+def process_yaml(yalm_folder_or_file_str):
 
-    for input_yalm in input_list:
+    import os
+    from pathlib import Path
+
+    try:
+        yalm_folder_or_file = Path(yalm_folder_or_file_str)
+        yalm_list = []
+    
+        if yalm_folder_or_file.is_dir():
+
+            for file in os.scandir(yalm_folder_or_file):
+                if file.path.endswith(".yaml") and file.is_file():
+                    yalm_list.append(str(Path(file)))
+
+        else:
+
+            yalm_list.append(str(yalm_folder_or_file))
+    except:
+        print(f"ERROR: -i, --input {yalm_folder_or_file_str} is not valid file or directory.")
+        exit()
+
+    import data_wrapper
+    from ro_html import ro_html
+    from ro_jsonld import ro_jsonld
+
+    for yalm in yalm_list:
 
         #----------------------------------------------------------------------------------
         # Create RO objects and dump results
         #----------------------------------------------------------------------------------
 
-        data = data_wrapper.load_yaml(input_yalm)
+        data = data_wrapper.load_yaml(yalm)
         
         # Just to improve the stdout
         print("")
@@ -87,6 +108,8 @@ def process_input(input_list):
 
 
 def process_landing_page(landing_page_directory):
+
+    from ro_landing_page import ro_landing_page
 
     rlanding = ro_landing_page(landing_page_directory)
     rlanding.create_landing_page()

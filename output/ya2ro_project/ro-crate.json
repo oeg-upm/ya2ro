@@ -50,8 +50,8 @@
             "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
-                "University of Southern California",
-                "Universidad Polit\u00e9cnica de Madrid"
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
             ]
         },
         {
@@ -72,7 +72,7 @@
         {
             "@id": "#somef",
             "@type": "SoftwareApplication",
-            "description": "A command line interface for automatically extracting relevant information from readme files.",
+            "description": "SOftware Metadata Extraction Framework: A tool for automatically extracting relevant software information from readme files",
             "installUrl": "https://github.com/KnowledgeCaptureAndDiscovery/somef/"
         },
         {

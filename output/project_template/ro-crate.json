@@ -1,0 +1,129 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "project",
+            "author": [
+                {
+                    "@id": "#author"
+                },
+                {
+                    "@id": "#author"
+                },
+                {
+                    "@id": "#author"
+                }
+            ],
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus odio egestas neque porttitor sollicitudin. Sed fermentum placerat nisi quis congue. Fusce bibendum eros eu dui efficitur, sit amet lobortis ex imperdiet. Cras sagittis nibh facilisis viverra feugiat. Nullam dapibus vitae dui vel pulvinar. Phasellus imperdiet est a luctus mattis. Praesent nec dui sed augue pharetra ultricies vitae et magna. Nam cursus fringilla nulla, sit amet tempus elit fermentum eget. Sed tincidunt nulla vitae quam pulvinar, in varius turpis semper. Sed imperdiet, ex quis dignissim volutpat, ligula mi blandit dolor, nec lacinia mi mauris sit amet eros. In vitae enim a dolor porta mollis at quis turpis. Mauris pulvinar velit neque, eget tincidunt nisl vestibulum in. Praesent eu erat vitae est molestie volutpat. Nam ullamcorper ipsum sed auctor sagittis. Nunc et cursus lacus. Curabitur in metus egestas, cursus libero id, posuere purus. Nulla dignissim et neque et suscipit. Fusce porttitor mi quis cursus luctus. In hac habitasse platea dictumst. Maecenas a finibus neque. Maecenas arcu massa, tristique et nulla in, vehicula condimentum mi.",
+            "hasPart": [
+                {
+                    "@id": "#software_1"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#dataset_1"
+                },
+                {
+                    "@id": "#dataset_2"
+                },
+                {
+                    "@id": "index-en.html"
+                }
+            ],
+            "name": "Project - Template"
+        },
+        {
+            "@id": "#author",
+            "@type": "Person",
+            "description": "Author's description",
+            "name": "Author",
+            "position": [
+                "Author's position"
+            ]
+        },
+        {
+            "@id": "#author",
+            "@type": "Person",
+            "description": "Author's description",
+            "name": "Author",
+            "position": [
+                "Author's position"
+            ]
+        },
+        {
+            "@id": "#author",
+            "@type": "Person",
+            "description": "Author's description",
+            "name": "Author",
+            "position": [
+                "Author's position"
+            ]
+        },
+        {
+            "@id": "#software_1",
+            "@type": "SoftwareApplication",
+            "description": "Description software 1",
+            "installUrl": "http://software-1.com"
+        },
+        {
+            "@id": "#none",
+            "@type": "SoftwareApplication",
+            "description": "Description software 2",
+            "installUrl": "http://software-2.com"
+        },
+        {
+            "@id": "#dataset_1",
+            "@type": "Dataset",
+            "description": "Description dataset 1",
+            "distribution": {
+                "@id": "www.D1.com"
+            },
+            "name": "Dataset 1"
+        },
+        {
+            "@id": "#dataset_2",
+            "@type": "Dataset",
+            "description": "Description dataset 2",
+            "distribution": {
+                "@id": "www.D2.com"
+            },
+            "name": "Dataset 2"
+        },
+        {
+            "workExample": [
+                {
+                    "@type": "Demo",
+                    "description": "This is a description for a demo.",
+                    "link": "http://demo.com",
+                    "name": null
+                },
+                {
+                    "@type": "Demo",
+                    "description": "This is a description for a demo with name.",
+                    "link": "http://demo.com",
+                    "name": "Demo name"
+                }
+            ]
+        },
+        {
+            "@id": "index-en.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

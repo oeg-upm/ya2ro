@@ -1,8 +1,9 @@
 type: "project"
 title: "EELISA Project - ya2ro"
 goal: "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object."
-social_motivation: "[INSERT MOTIVATION] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis neque quam. Cras porttitor ipsum sit amet risus feugiat, ut cursus sapien suscipit. Sed vitae vehicula ante. Fusce luctus ornare risus, eget porta libero laoreet at. Etiam nec erat tellus. Duis convallis mauris erat, et pellentesque nunc ornare sed. Mauris feugiat lectus sit amet neque malesuada mollis. Aenean in felis posuere, aliquet odio sed, malesuada massa. Cras a sapien ac elit maximus condimentum eu et libero. Donec quis tincidunt mi. Praesent id odio at augue tincidunt hendrerit. Suspendisse neque mi, porta in efficitur eget, dictum vitae eros. Donec et erat non lorem lobortis pharetra. Maecenas euismod varius justo, sit amet elementum ipsum suscipit eu. Nunc bibendum nunc quis congue fermentum. Integer tincidunt sed enim nec elementum."
+social_motivation: "Suspendisse est justo, finibus a nisi eget, condimentum imperdiet mi. Mauris sagittis diam mi, sit amet blandit ipsum semper sed. Suspendisse sollicitudin sem sapien, quis volutpat nibh varius dictum. Integer at mauris imperdiet nunc ultrices consectetur vitae eu nulla. Phasellus sed dolor et diam dignissim blandit. Morbi sit amet ipsum laoreet, dignissim mi accumsan, tristique neque. Suspendisse potenti. Sed aliquam sagittis mauris, sed sollicitudin lectus laoreet ac. Ut porttitor ut leo eu facilisis. Phasellus finibus tincidunt congue. Nullam eget malesuada nibh. Vivamus in est vulputate, sagittis mauris in, molestie augue. Vestibulum dapibus vestibulum justo, hendrerit consectetur ex scelerisque ut."
 sketch: "images/sketch_ya2ro.jpg"
+
 areas: 
   - "Programming: Some description."
   - "Research: Some description."
@@ -37,7 +38,6 @@ software:
     description: "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object."
   -
     link: "https://github.com/KnowledgeCaptureAndDiscovery/somef/"
-    description: "A command line interface for automatically extracting relevant information from readme files."
 
 bibliography: 
   - "Bibliography entry 1"
@@ -53,6 +53,6 @@ participants:
     position: "Research Assistant at Universidad Politécnica de Madrid"
     description: "Student of the double major in Computer Engineering and Business Administration and Management from Universidad Politécnica de Madrid, Spain."
     web: "https://github.com/PavelAntonia"
-    photo: "AntoniaPavel.jpg"
+    photo: "images/AntoniaPavel.jpg"
 
 

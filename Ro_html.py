@@ -24,8 +24,10 @@ class ro_html(object):
             "social_motivation": self.init_social_motivation,
             "sketch": self.init_sketch,
             "areas": self.init_areas,
+            "activities": self.init_activities,
             "demo": self.init_demo,
-            "requirements": self.init_requirements_recognition
+            "requirements": self.init_requirements_recognition,
+            "contact": self.init_contact
 
         }
 
@@ -117,8 +119,7 @@ class ro_html(object):
 
         ################################################
 
-        how_info_text = f"""This webpage was created using the tool ya2ro which takes as an input a yalm file with all the relevant information and pointers to the webpage. Then, it merges the information retrieved from the webpage pointers with the provided information in the yalm file. In this case, the yalm file used was the following:
-        """
+        how_info_text = f"""This webpage was created using the tool ya2ro which takes as an input a yalm file with all the relevant information and pointers to the webpage. Then, it merges the information retrieved from the webpage pointers with the provided information in the yalm file. In this case, the yalm file used was the following:"""
 
         import hilite_me
 
@@ -224,6 +225,39 @@ class ro_html(object):
         ro_html.sidebar_append(self.soup, "areas", "Areas")
 
 
+    def init_contact(self, contact):
+
+        contact_elements = []
+        contact_elements.append(f"Email: {contact.email}")
+        contact_elements.append(f"Phone: {contact.phone}")
+
+        contact_list = self.ul_component(contact_elements)
+
+        contact_component = f"""<div class="w3-container" style="margin-top:15px">
+		<h1 class="w3-xxxlarge w3-text-green"><b>Contact</b></h1>
+        <hr style="width:50px;border:5px solid green" class="w3-round">
+		{contact_list}
+	    </div>"""
+
+        ro_html.append_component(self.soup, "contact", contact_component)
+        ro_html.sidebar_append(self.soup, "contact", "Contact")
+        
+
+
+    def init_activities(self, activities):
+
+        activities_list = self.ul_component(activities)
+
+        activities_component = f"""<div class="w3-container" style="margin-top:15px">
+		<h1 class="w3-xxxlarge w3-text-green"><b>Activities</b></h1>
+        <hr style="width:50px;border:5px solid green" class="w3-round">
+		{activities_list}
+	    </div>"""
+
+        ro_html.append_component(self.soup, "activities", activities_component)
+        ro_html.sidebar_append(self.soup, "activities", "Activities")
+
+
     def init_demo(self, demo):
 
         demo_list_commponent = self.ul_component([f"""<a href="{d.link}">{d.link if d.name is None else d.name}</a>: {d.description}""" for d in demo])
@@ -289,7 +323,20 @@ class ro_html(object):
 
     def init_software(self, software):
 
-        software_list_commponent = self.ul_component([f"""<a href="{s.link}">{s.link if s.name is None else s.name}</a>: {s.description}""" for s in software])
+        def html_entry_software(s):
+            software_attr = []
+
+            if s.description:
+                software_attr.append(f"Description: {s.description}")
+            
+            if s.license:
+                software_attr.append(f"Licence: {s.license}")
+
+            return f"""<p><a href="{s.link}">{s.link if s.name is None else s.name}</a></p>
+            {self.ul_component(software_attr)}"""
+
+        software_entries = [ html_entry_software(s) for s in software ]
+        software_list_commponent = self.ul_component(software_entries)
 
         software_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
@@ -413,12 +460,5 @@ class ro_html(object):
         {rigth_element}
 		</div>
 	    </div>"""
-    
 
-            
-
-            
-
-
-            
 

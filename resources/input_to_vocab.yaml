@@ -31,3 +31,7 @@
  areas: "areas"
  style: "style"
  role: "role"
+ activities: "activities"
+ contact: "contact"
+ phone: "phone"
+ email: "email"

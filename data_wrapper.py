@@ -1,10 +1,15 @@
 ################### SCHEMAS ###################################
 
-from dataclasses import asdict, dataclass, asdict
+from dataclasses import asdict, dataclass
 
 class Iterable(object):
     def __iter__(self):
         return iter(asdict(self))
+
+@dataclass(unsafe_hash=True)
+class Contact:
+    email: str = None
+    phone: str = None
 
 @dataclass(unsafe_hash=True)
 class Project(Iterable):
@@ -14,12 +19,14 @@ class Project(Iterable):
     social_motivation: str = None
     sketch: str = None
     areas: list = None
+    activities: list = None
     demo: str = None
     datasets: list = None
     doi_datasets: str = None
     software: list = None
     bibliography: list = None
     authors: list = None
+    contact: Contact = None
 
 @dataclass(unsafe_hash=True)
 class Paper(Iterable):
@@ -55,6 +62,7 @@ class Software:
     link: str = None
     name: str = None
     description: str = None
+    license: str = None
     
 @dataclass(unsafe_hash=True)
 class Demo:
@@ -65,6 +73,8 @@ class Demo:
 @dataclass(unsafe_hash=True)
 class Bibliography_entry:
     entry: str = None
+
+
 
 ######################## FUNCTIONS #################################
 
@@ -125,9 +135,6 @@ def load_jsonld(input_jsonld):
         paper.index_html = index_html
 
         return paper
-    
-
-
 
 
 def load_yaml(input_yalm):
@@ -187,6 +194,7 @@ def init_project(input_to_vocab, data):
         social_motivation = _safe(input_to_vocab["social_motivation"], data),
         sketch = _safe(input_to_vocab["sketch"], data),
         areas = _safe(input_to_vocab["areas"], data),
+        activities = _safe(input_to_vocab["activities"], data),
         demo = _list_empty_instances(Demo, input_to_vocab["demo"], data),
         datasets = _list_empty_instances(Dataset, input_to_vocab["datasets_links"], _safe(input_to_vocab["datasets"], data)),
         doi_datasets = _safe(input_to_vocab["doi_datasets"], _safe(input_to_vocab["datasets"], data)),
@@ -209,6 +217,9 @@ def init_project(input_to_vocab, data):
     
     if project.areas:
         print("    - Areas: Done.")
+    
+    if project.activities:
+        print("    - Activities: Done.")
 
     # Demo
     populate_demo(project, input_to_vocab, data)
@@ -224,6 +235,9 @@ def init_project(input_to_vocab, data):
 
     # Authors
     populate_authors(project, input_to_vocab, data, field_of_author = "participants")
+
+    # Contact
+    populate_contact(project, input_to_vocab, data)
 
     return project
 
@@ -332,7 +346,6 @@ def populate_software(object, input_to_vocab, data):
         if link is not None:
             object.software[i].link = link
 
-            # SOMEF: TODO: Extract more useful data
             if link.startswith("https://github.com/"):
 
                 print(f"        + Using SOMEF for {link}")
@@ -340,14 +353,12 @@ def populate_software(object, input_to_vocab, data):
                 header['accept'] = 'application/vnd.github.v3+json'
 
                 with HiddenPrints():
-                    text, github_data = somef.cli.load_repository_metadata(link, header)
+                    _, github_data = somef.cli.load_repository_metadata(link, header)
 
-                #print("Text: ", text)
-                #print("Github_data: ", github_data.keys())
-                #print("Github_data: ", github_data)
+                object.software[i].name = _safe("name", github_data)
+                object.software[i].description = _safe("description", github_data)
+                object.software[i].license = _safe("name",_safe("license", github_data))
 
-                object.software[i].name = github_data["name"]
-        
         name = _safe(input_to_vocab["name"], software)
         if name is not None:
             object.software[i].name = name
@@ -395,6 +406,24 @@ def populate_bibliography(object, input_to_vocab, data):
         i += 1
     print("    - Bibliography: Done.")
 
+def populate_contact(object, input_to_vocab, data):
+
+    contact = _safe(input_to_vocab["contact"], data)
+    if contact is None:
+        return None
+
+    phone = _safe(input_to_vocab["phone"], contact)
+    email = _safe(input_to_vocab["email"], contact)
+
+    if phone and email:
+        object.contact = Contact(email, phone)
+        print("    - Contact: Done.")
+
+    else:
+        print("ERROR: Contact phone and/or email are not decalred.")
+        exit()
+
+
 def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
 
     if object.authors is None:
@@ -423,7 +452,7 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
         
         photo = _safe(input_to_vocab["photo"], author)
         if photo is not None:
-            object.authors[i].photo = input_to_vocab["images"] + "/" + photo
+            object.authors[i].photo = photo
         else:
             print(f"        + Using default photo for {name}.")
             object.authors[i].photo = input_to_vocab["images"] + "/" + p.properties["default_author_img"]
