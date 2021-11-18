@@ -48,14 +48,14 @@ optional arguments:
 
 Simple execution:
 
-`python3 ya2ro.py -i input.yaml`   
-`python3 ya2ro.py -i directory_yamls`   
+`python3 ya2ro.py -i test_files`   
+`python3 ya2ro.py -i test_files/project_yemplate.yaml`   
 
 
 With optional arguments:
 
-`python3 ya2ro.py -input input.yaml --output_directory out --properties_file prop.yaml`   
-`python3 ya2ro.py -i input.yaml -o out -p prop.yaml`
+`python3 ya2ro.py -input test_files --output_directory out --properties_file custom_properties.yaml`   
+`python3 ya2ro.py -i test_files -o out -p custom_properties.yaml`
 
 ### Create landing page
 
