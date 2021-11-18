@@ -27,7 +27,7 @@
             "description": "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
             "hasPart": [
                 {
-                    "@id": "#eelisa-research-object"
+                    "@id": "#ya2ro"
                 },
                 {
                     "@id": "#somef"
@@ -50,8 +50,8 @@
             "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
-                "Universidad Polit\u00e9cnica de Madrid",
-                "University of Southern California"
+                "University of Southern California",
+                "Universidad Polit\u00e9cnica de Madrid"
             ]
         },
         {
@@ -64,7 +64,7 @@
             ]
         },
         {
-            "@id": "#eelisa-research-object",
+            "@id": "#ya2ro",
             "@type": "SoftwareApplication",
             "description": "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
             "installUrl": "https://github.com/oeg-upm/EELISA-research-object"
