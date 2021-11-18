@@ -137,9 +137,9 @@ def load_jsonld(input_jsonld):
         return paper
 
 
-def load_yaml(input_yalm):
+def load_yaml(input_yaml):
 
-    output_directory_datafolder = Path(p.output_directory, str(Path(input_yalm).stem))
+    output_directory_datafolder = Path(p.output_directory, str(Path(input_yaml).stem))
 
     if not os.path.exists(output_directory_datafolder):
         os.makedirs(output_directory_datafolder)
@@ -155,16 +155,16 @@ def load_yaml(input_yalm):
         os.makedirs(images_output_path)
         print(f"Creating images diretory {output_directory_datafolder}/images")
 
-    # Open input.yalm and parse it
-    with open(Path(input_yalm)) as file:
+    # Open input.yaml and parse it
+    with open(Path(input_yaml)) as file:
         data = yaml.load(file, Loader=SafeLoader)
     
-    print(f"Parsing and fetching info from {input_yalm}...\n")
+    print(f"Parsing and fetching info from {input_yaml}...\n")
 
     type = _safe(p.input_to_vocab["type"], data)
      
     if type not in ["paper", "project"]:
-        print("""ERROR: Is required to specify a type field in the input yalm. Options: 'paper', 'project'.
+        print("""ERROR: Is required to specify a type field in the input yaml. Options: 'paper', 'project'.
        type: "paper"
        type: "project" """)
         exit()
@@ -181,7 +181,7 @@ def load_yaml(input_yalm):
     data.output_jsonld = Path(output_directory_datafolder, p.properties["output_jsonld"])
     data.output_directory_datafolder = output_directory_datafolder
     data.type = type
-    data.yaml_file = input_yalm
+    data.yaml_file = input_yaml
 
     return data
 

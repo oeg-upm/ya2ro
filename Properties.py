@@ -13,7 +13,7 @@ def init(properties_file, output_directory_param):
     with open(Path(properties_file)) as file:
         properties = yaml.load(file, Loader=SafeLoader)
     
-    # Load vocab used in the input.yalm
+    # Load vocab used in the input.yaml
     with open(Path(properties["input_to_vocab_yaml"])) as file:
         input_to_vocab = yaml.load(file, Loader=SafeLoader)
     

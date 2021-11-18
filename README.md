@@ -26,12 +26,12 @@ _________________________________________________________
     
 usage: ya2ro.py [-h] (-i INPUT | -l LANDING_PAGE) [-o OUTPUT_DIRECTORY] [-p PROPERTIES_FILE]
 
-Human and machine readeable input as a yalm file and create RO-Object in jsonld and/or HTML view.
+Human and machine readeable input as a yaml file and create RO-Object in jsonld and/or HTML view.
 
 optional arguments:
   -h, --help            show this help message and exit
   -i INPUT, --input INPUT
-                        Path of the required yalm input. Follow the documentation or the example given to see the
+                        Path of the required yaml input. Follow the documentation or the example given to see the
                         structure of the file.
   -l LANDING_PAGE, --landing_page LANDING_PAGE
                         Path of a previous output folder using the ya2ro tool. This flag will make a landing page

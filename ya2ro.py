@@ -24,13 +24,13 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description='Human and machine readeable input as a yalm file and create RO-Object in jsonld and/or HTML view.')
+        description='Human and machine readeable input as a yaml file and create RO-Object in jsonld and/or HTML view.')
 
     group = parser.add_mutually_exclusive_group(required=True)
 
     # Required positional argument 
     group.add_argument('-i','--input', type=str,
-        help='Path of the required yalm input. Follow the documentation or the example given to see the structure of the file.')
+        help='Path of the required yaml input. Follow the documentation or the example given to see the structure of the file.')
 
     # Required positional argument
     group.add_argument('-l','--landing_page', type=str,
@@ -58,39 +58,39 @@ def main():
         process_landing_page(args.landing_page)
 
 
-def process_yaml(yalm_folder_or_file_str):
+def process_yaml(yaml_folder_or_file_str):
 
     import os
     from pathlib import Path
 
     try:
-        yalm_folder_or_file = Path(yalm_folder_or_file_str)
-        yalm_list = []
+        yaml_folder_or_file = Path(yaml_folder_or_file_str)
+        yaml_list = []
     
-        if yalm_folder_or_file.is_dir():
+        if yaml_folder_or_file.is_dir():
 
-            for file in os.scandir(yalm_folder_or_file):
+            for file in os.scandir(yaml_folder_or_file):
                 if file.path.endswith(".yaml") and file.is_file():
-                    yalm_list.append(str(Path(file)))
+                    yaml_list.append(str(Path(file)))
 
         else:
 
-            yalm_list.append(str(yalm_folder_or_file))
+            yaml_list.append(str(yaml_folder_or_file))
     except:
-        print(f"ERROR: -i, --input {yalm_folder_or_file_str} is not valid file or directory.")
+        print(f"ERROR: -i, --input {yaml_folder_or_file_str} is not valid file or directory.")
         exit()
 
     import data_wrapper
     from ro_html import ro_html
     from ro_jsonld import ro_jsonld
 
-    for yalm in yalm_list:
+    for yaml in yaml_list:
 
         #----------------------------------------------------------------------------------
         # Create RO objects and dump results
         #----------------------------------------------------------------------------------
 
-        data = data_wrapper.load_yaml(yalm)
+        data = data_wrapper.load_yaml(yaml)
         
         # Just to improve the stdout
         print("")

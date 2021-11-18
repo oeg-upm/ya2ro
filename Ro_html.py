@@ -120,7 +120,7 @@ class ro_html(object):
 
         ################################################
 
-        how_info_text = f"""This webpage was created using the tool ya2ro which takes as an input a yalm file with all the relevant information and pointers to the webpage. Then, it merges the information retrieved from the webpage pointers with the provided information in the yalm file. In this case, the yalm file used was the following:"""
+        how_info_text = f"""This webpage was created using the tool ya2ro which takes as an input a yaml file with all the relevant information and pointers to the webpage. Then, it merges the information retrieved from the webpage pointers with the provided information in the yaml file. In this case, the yaml file used was the following:"""
 
         import hilite_me
 
