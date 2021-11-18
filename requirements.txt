@@ -3,3 +3,4 @@ bs4
 requests
 bibtexparser
 pygments
+git+https://github.com/KnowledgeCaptureAndDiscovery/somef
