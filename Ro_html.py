@@ -59,6 +59,7 @@ class ro_html(object):
         self.init_styles()
         self.init_help_page()
     
+
     def init_help_page(self):
 
 
@@ -291,6 +292,7 @@ class ro_html(object):
         # create the title
         self.soup.find(id = "showcase").h1.string = title
     
+
     def init_summary(self, summary):
 
         summary_component = f"""<div class="w3-container" style="margin-top:15px">
@@ -301,6 +303,7 @@ class ro_html(object):
 
         ro_html.append_component(self.soup, "summary", summary_component)
         ro_html.sidebar_append(self.soup, "summary", "Summary")
+
 
     def init_datasets(self, datasets):
  
@@ -450,6 +453,7 @@ class ro_html(object):
             ul_list += f"""<li>{li}</li>"""
         ul_list += """</ul>"""
         return ul_list
+    
     
     def html_horizontal(left_element, rigth_element):
         return f"""	<div class="row" >

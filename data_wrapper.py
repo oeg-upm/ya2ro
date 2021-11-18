@@ -276,15 +276,15 @@ def init_paper(input_to_vocab, data):
     # DOI Paper, get bib
     doi_paper_link = _safe(input_to_vocab["doi_paper"], data)
     if doi_paper_link is not None:
-        print(f"    - Fetching data fom {doi_paper_link}.")
+        print(f"    - Fetching data from {doi_paper_link}.")
         paper_bib = req_doi.bib(doi_paper_link)
 
         if paper.title is None:
-            print(f"        + Fetching title fom {doi_paper_link}.")
+            print(f"        + Fetching title from {doi_paper_link}.")
             paper.title = paper_bib.get_title()
         
         if paper.summary is None:
-            print(f"        + Fetching summary fom {doi_paper_link}.")
+            print(f"        + Fetching summary from {doi_paper_link}.")
             paper.summary = paper_bib.get_summary()
 
         # TODO: Add authors with bib
@@ -300,6 +300,7 @@ def _list_empty_instances(class_to_insatnce, key, dict):
 
     return [class_to_insatnce() for _ in range(len(list_data))]
     
+
 def _safe(key, dic):
     """Safe call to a dictionary. Returns value or None if key or dictionary does not exist"""
     if dic is not None and key in dic:
@@ -307,6 +308,7 @@ def _safe(key, dic):
     else:
         return None
     
+
 def populate_datasets(object, input_to_vocab, data):
 
     if object.datasets is None:
@@ -333,6 +335,7 @@ def populate_datasets(object, input_to_vocab, data):
 
         i += 1
     print("    - Datasets: Done.")
+
 
 def populate_software(object, input_to_vocab, data):
 
@@ -373,7 +376,8 @@ def populate_software(object, input_to_vocab, data):
 
         i += 1
     print("    - Software: Done.")
-    
+
+
 def populate_demo(object, input_to_vocab, data):
 
     if object.demo is None:
@@ -398,6 +402,7 @@ def populate_demo(object, input_to_vocab, data):
         
     print("    - Demo: Done.")
 
+
 def populate_bibliography(object, input_to_vocab, data):
 
     if object.bibliography is None:
@@ -410,6 +415,7 @@ def populate_bibliography(object, input_to_vocab, data):
 
         i += 1
     print("    - Bibliography: Done.")
+
 
 def populate_contact(object, input_to_vocab, data):
 
@@ -441,7 +447,7 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
         # Orcid implementation
         orcid_link = _safe(input_to_vocab["orcid"], author)
         if orcid_link is not None:
-            print(f"        + Fetching author data fom {orcid_link}.")
+            print(f"        + Fetching author data from {orcid_link}.")
             orcid = req_orcid.orcid(orcid_link)
             object.authors[i].orcid = orcid_link
             name = orcid.get_full_name()
@@ -482,6 +488,7 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
         
         i += 1
     print("    - Authors: Done.")
+
 
 class HiddenPrints:
     def __enter__(self):
