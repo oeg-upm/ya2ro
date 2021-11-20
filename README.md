@@ -20,7 +20,7 @@ Please find a template for each type under the directory test_files
 ### Paper   
 Documentation for all supported fields for type paper.   
 
-`type:`This field is required and is use to indicate the type of the work.
+`type:`This field is required and is used to indicate the type of the work.
 ```yaml
 type: "paper"
 ```
@@ -30,12 +30,12 @@ type: "paper"
 title: "Paper - Template"
 ```
 
-`summary:`A brief summary of the paper also known as an abstract.
+`summary:`A brief summary of the paper, also known as an abstract.
 ```yaml
 summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus odio egestas neque porttitor sollicitudin. Sed fermentum placerat nisi quis congue."
 ```
 
-`datasets:` All the datasets used and created during the paper. This tool supports to define each dataset manually specifiying all fields or use a DOI and ya2ro will try to automatically fetch the data.
+`datasets:` All the datasets used and created during the paper. This tool supports to define each dataset manually specifying all fields or to use a DOI and ya2ro will try to automatically fetch the data.
 ```yaml
 datasets:
   - 
@@ -65,7 +65,7 @@ bibliography:
   - "Bibliography entry 2"
   - "Bibliography entry 3"
 ```
-`authors:`In this field is where credit to the creators, collaborators, authors, etc is given. If an ORCID is privided ya2ro will fetch relevant data automatically. If a photo is not provided a default one will be used.
+`authors:`In this field is where credit to the creators, collaborators, authors, etc is given. If an ORCID is privided, ya2ro will fetch relevant data automatically. If a photo is not provided, a default one will be used.
 ```yaml
 authors:
     -
@@ -83,7 +83,7 @@ authors:
 ### Project   
 Documentation for all supported fields for type project.   
 
-`type:`This field is required and is use to indicate the type of the work.
+`type:`This field is required and is used to indicate the type of the work.
 ```yaml
 type: "prpject"
 ```
@@ -96,11 +96,11 @@ title: "Project - Template"
 ```yaml
 goal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus odio egestas neque porttitor sollicitudin."
 ```
-`social_motivation:`In this field you should inlcude why this project will help in a social way.
+`social_motivation:`In this field you should include why this project will help in a social way.
 ```yaml
 social_motivation: "Suspendisse est justo, finibus a nisi eget, condimentum imperdiet mi. Mauris sagittis diam mi, sit amet blandit ipsum semper sed."
 ```
-`sketch:`Path to a image where a visual description/workflow is shown.
+`sketch:`Path to an image where a visual description/workflow is shown.
 ```yaml
 sketch: "images/sketch_ya2ro.jpg"
 ```
@@ -130,7 +130,7 @@ demo:
     description: "This is a description for a demo with name."
 ```
 
-`datasets:` All the datasets used and created during the project. This tool supports to define each dataset manually specifiying all fields or use a DOI and ya2ro will try to automatically fetch the data.
+`datasets:` All the datasets used and created during the project. This tool supports to define each dataset manually specifiying all fields or to use a DOI and ya2ro will try to automatically fetch the data.
 ```yaml
 datasets:
   - 
@@ -140,7 +140,7 @@ datasets:
     name: "Dataset 1"
     description: "Description dataset 1"
 ```
-`software:` All the relevant software used and created for the paper. If a GitHub Repo is provided ya2ro will use SOMEF to automatically fetch relevant data.
+`software:` All the relevant software used and created for the paper. If a GitHub Repo is provided, ya2ro will use SOMEF to automatically fetch relevant data.
 ```yaml
 software:
   -
@@ -160,7 +160,7 @@ bibliography:
   - "Bibliography entry 3"
 ```
 
-`authors:`In this field is where credit to the creators, collaborators, authors, etc is given. If an ORCID is privided ya2ro will fetch relevant data automatically. If a photo is not provided a default one will be used.
+`authors:`In this field is where credit to the creators, collaborators, authors, etc is given. If an ORCID is privided ya2ro will fetch relevant data automatically. If a photo is not provided, a default one will be used.
 ```yaml
 participatns:
     -
@@ -219,9 +219,9 @@ The first thing to do is create some input for ya2ro or use one of the yamls und
 
 Once you have a valid yalm (proyect or paper) is time to run ya2ro.
 
-### Create machine and human readeble content
+### Create machine and human readable content
 
-Is possible to process batches of yalms at the same time, to do that just specify as input a folder with all the yalms inside.
+It is possible to process batches of yalms at the same time, to do that just specify as input a folder with all the yalms inside.
 
 ##### Simple execution:
 
