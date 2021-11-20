@@ -2,7 +2,7 @@ type: "project"
 title: "Good Agricultural Practices and Damage and Loss Assessment for the Comprehensive Management of Disaster Risk and Climate-Adapted Sustainable Agriculture in the Dry Corridor of Central America."
 goal: "Determine if the work of the agricultural extension services are key in the search for development in the territories of Salvador and Guatemala; and from their learnings, recommendations for their potential replicability."
 areas: 
-  - "agronomy"
+  - "Agronomy"
   
 demo: 
   -
@@ -44,7 +44,7 @@ participants:
     role: "Coordinator"
   -
     name: "Sara Brinquis Fava"
-    position: "Research Assistant at Universidad PolitÃ©cnica de Madrid"
+    position: "Research Assistant at Universidad Politécnica de Madrid"
     description: "2nd year student in the Enabling Master's Degree in Agronomic Engineering at the Polytechnic University of Madrid"
     photo: "images/SaraBrinquisFava.jpg"
 

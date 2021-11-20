@@ -9,17 +9,20 @@ class orcid(object):
 
     def get_full_name(self):
         try:
-            return self.json["givenName"]+" "+self.json["familyName"]
+            return self.json["givenName"] + " " + self.json["familyName"]
         except:
             return None
-            
+
     def get_webs(self):
         """Get all webs separated in a list"""
         try:
             if self.json["url"] is None:
                 return None
             else:
-                return list(self.json['url'])
+                if isinstance(self.json['url'], str):
+                    return list([self.json['url']])
+                else :
+                    return list(self.json['url'])
         except:
             return None
 

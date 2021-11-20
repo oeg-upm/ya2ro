@@ -397,20 +397,26 @@ class ro_html(object):
 
             if((num_authors-1) %3 == 0):
                 html_author += """<div class="w3-row-padding">"""
+            
+            author_name_component = f"""<h3><a href="{author.orcid if author.orcid else author.web if author.web else "#"}">{author.name}</a></h3>""" if author.name else ""
+            author_role_component = f"""<p class="w3-opacity">{author.role}</p>""" if author.role else ""
+            author_position_component = f"""<p class="w3-opacity">{author.position}</p>""" if author.position else ""
+            author_web_component = f"""<a href="{author.web}">{author.web}</a>""" if author.web else ""
+            author_description_component = f"""<p>{author.description}</p>""" if author.description else ""
 
             html_author += f"""
             <div class="w3-col m4 w3-margin-bottom">
-                <div class="w3-light-grey">
-                <div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 10px; padding-bottom: 90%;
+                <div class="w3-light-grey" style="padding-bottom: 10px;">
+                <div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
                             margin: auto;">
-                    <img src="{author.photo}" alt="{author.name}" style="width:100%;">
+                    <img src="{author.photo}" alt="{author.name if author.name else ""}" style="width:100%;">
                 </div>
                 <div class="w3-container">
-                    <h3><a href="{author.orcid if author.orcid is not None else author.web}">{author.name}</a></h3>
-                    <p class="w3-opacity">{author.role}</p>
-                    <p class="w3-opacity">{author.position}</p>
-                    <a href="{author.web}">{author.web}</a>
-                    <p>{author.description}</p>
+                    {author_name_component}
+                    {author_role_component}
+                    {author_position_component}
+                    {author_web_component}
+                    {author_description_component}
                 </div>
                 </div>
             </div> 
