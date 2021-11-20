@@ -1,66 +1,58 @@
 # Mandatory field
-type: paper
-
-title: Paper - Template
-
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus odio egestas neque porttitor sollicitudin. Sed fermentum placerat nisi quis congue. Fusce bibendum eros eu dui efficitur, sit amet lobortis ex imperdiet. Cras sagittis nibh facilisis viverra feugiat. Nullam dapibus vitae dui vel pulvinar. Phasellus imperdiet est a luctus mattis. Praesent nec dui sed augue pharetra ultricies vitae et magna. Nam cursus fringilla nulla, sit amet tempus elit fermentum eget. Sed tincidunt nulla vitae quam pulvinar, in varius turpis semper. Sed imperdiet, ex quis dignissim volutpat, ligula mi blandit dolor, nec lacinia mi mauris sit amet eros. In vitae enim a dolor porta mollis at quis turpis. Mauris pulvinar velit neque, eget tincidunt nisl vestibulum in. Praesent eu erat vitae est molestie volutpat. Nam ullamcorper ipsum sed auctor sagittis. Nunc et cursus lacus. Curabitur in metus egestas, cursus libero id, posuere purus. Nulla dignissim et neque et suscipit. Fusce porttitor mi quis cursus luctus. In hac habitasse platea dictumst. Maecenas a finibus neque. Maecenas arcu massa, tristique et nulla in, vehicula condimentum mi.
-
-datasets: 
-  doi_datasets: www.doiDBS.com
-  datasets_links:   
-    - 
-      link: www.D1.com 
-      name: Dataset 1
-      description: Description dataset 1
-      doi_dataset: www.doi-DB1.com
-    - 
-      link: www.D2.com 
-      name: Dataset 2
-      description: Description dataset 2
-      doi_dataset: www.doi-DB2.com
+type: "paper"
+title: "Paper - Template"
+summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus odio egestas neque porttitor sollicitudin. Sed fermentum placerat nisi quis congue. Fusce bibendum eros eu dui efficitur, sit amet lobortis ex imperdiet. Cras sagittis nibh facilisis viverra feugiat. Nullam dapibus vitae dui vel pulvinar. Phasellus imperdiet est a luctus mattis. Praesent nec dui sed augue pharetra ultricies vitae et magna. Nam cursus fringilla nulla, sit amet tempus elit fermentum eget. Sed tincidunt nulla vitae quam pulvinar, in varius turpis semper. Sed imperdiet, ex quis dignissim volutpat, ligula mi blandit dolor, nec lacinia mi mauris sit amet eros. In vitae enim a dolor porta mollis at quis turpis. Mauris pulvinar velit neque, eget tincidunt nisl vestibulum in. Praesent eu erat vitae est molestie volutpat. Nam ullamcorper ipsum sed auctor sagittis. Nunc et cursus lacus. Curabitur in metus egestas, cursus libero id, posuere purus. Nulla dignissim et neque et suscipit. Fusce porttitor mi quis cursus luctus. In hac habitasse platea dictumst. Maecenas a finibus neque. Maecenas arcu massa, tristique et nulla in, vehicula condimentum mi."
+datasets:
+  - 
+    link: www.D1.com 
+    name: "Dataset 1"
+    description: "Description dataset 1"
+    doi_dataset: www.doi-DB1.com
+  - 
+    link: www.D2.com 
+    name: "Dataset 2"
+    description: "Description dataset 2"
+    doi_dataset: www.doi-DB2.com
 
 software: 
   - 
     link: http://software-1.com 
-    name: Software 1
-    description: Description software 1
-    license: MIT-License
+    name: "Software 1"
+    description: "Description software 1"
+    license: "MIT-License"
   -
     link: http://software-2.com
-    description: Description software 2
-    license: MIT-License  
+    description: "Description software 2"
+    license: "MIT-License"
 
 bibliography: 
-  - Bibliography entry 1
-  - Bibliography entry 2
-  - Bibliography entry 3
+  - "Bibliography entry 1"
+  - "Bibliography entry 2"
+  - "Bibliography entry 3"
 
 authors:  
   # Alternative way if participant has an ORCID
   #-
     #orcid: https://orcid.org/0000-0003-0454-7145
-    #role: Coordinator
+    #role: "Coordinator"
   -
-    name: Author
-    position: Author's position
-    description: Author's description
+    name: "Author"
+    position: "Author's position"
+    description: "Author's description"
     web: https://author-web.com/
-    #photo: author_photo.jpg
-    # If photo isn't provided a default one will be used
+    #photo: "author_photo.jpg"
+    # If photo isn't provided a default one will be used  
   -
-    name: Author
-    position: Author's position
-    description: Author's description
+    name: "Author"
+    position: "Author's position"
+    description: "Author's description"
     web: https://author-web.com/
-    #photo: author_photo.jpg
-    # If photo isn't provided a default one will be used
+    #photo: "author_photo.jpg"
+    # If photo isn't provided a default one will be used  
   -
-    name: Author
-    position: Author's position
-    description: Author's description
+    name: "Author"
+    position: "Author's position"
+    description: "Author's description"
     web: https://author-web.com/
-    #photo: author_photo.jpg
+    #photo: "author_photo.jpg"
     # If photo isn't provided a default one will be used
-
-
- 

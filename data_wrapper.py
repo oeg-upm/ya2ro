@@ -22,7 +22,6 @@ class Project(Iterable):
     activities: list = None
     demo: str = None
     datasets: list = None
-    doi_datasets: str = None
     software: list = None
     bibliography: list = None
     authors: list = None
@@ -34,7 +33,6 @@ class Paper(Iterable):
     doi_paper: str = None
     title: str = None
     summary: str = None
-    doi_datasets: str = None
     datasets: list = None
     software: list = None
     bibliography: list = None
@@ -196,8 +194,7 @@ def init_project(input_to_vocab, data):
         areas = _safe(input_to_vocab["areas"], data),
         activities = _safe(input_to_vocab["activities"], data),
         demo = _list_empty_instances(Demo, input_to_vocab["demo"], data),
-        datasets = _list_empty_instances(Dataset, input_to_vocab["datasets_links"], _safe(input_to_vocab["datasets"], data)),
-        doi_datasets = _safe(input_to_vocab["doi_datasets"], _safe(input_to_vocab["datasets"], data)),
+        datasets = _list_empty_instances(Dataset, input_to_vocab["datasets"], data),
         software = _list_empty_instances(Software, input_to_vocab["software"], data),
         bibliography = _list_empty_instances(Bibliography_entry, input_to_vocab["bibliography"], data),
         authors = _list_empty_instances(Author, input_to_vocab["participants"], data),
@@ -248,8 +245,7 @@ def init_paper(input_to_vocab, data):
     paper = Paper(
         title = _safe(input_to_vocab["title"], data),
         summary = _safe(input_to_vocab["summary"], data),
-        datasets = _list_empty_instances(Dataset, input_to_vocab["datasets_links"], _safe(input_to_vocab["datasets"], data)),
-        doi_datasets = _safe(input_to_vocab["doi_datasets"], _safe(input_to_vocab["datasets"], data)),
+        datasets = _list_empty_instances(Dataset, input_to_vocab["datasets"], data),
         software = _list_empty_instances(Software, input_to_vocab["software"], data),
         bibliography = _list_empty_instances(Bibliography_entry, input_to_vocab["bibliography"], data),
         authors = _list_empty_instances(Author, input_to_vocab["authors"], data),
@@ -315,7 +311,7 @@ def populate_datasets(object, input_to_vocab, data):
         return
 
     i = 0
-    for dataset in data[input_to_vocab["datasets"]][input_to_vocab["datasets_links"]]:
+    for dataset in data[input_to_vocab["datasets"]]:
 
         doi_dataset = _safe(input_to_vocab["doi_dataset"], dataset)
         if doi_dataset is not None:

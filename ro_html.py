@@ -244,7 +244,6 @@ class ro_html(object):
         ro_html.sidebar_append(self.soup, "contact", "Contact")
         
 
-
     def init_activities(self, activities):
 
         activities_list = self.ul_component(activities)
@@ -309,14 +308,9 @@ class ro_html(object):
  
         datasets_list_commponent = self.ul_component([f"""<a href="{d.link}">{d.link if d.name is None else d.name}</a>: {d.description}""" for d in datasets])
 
-        doi_datasets = ""
-        if self.data.doi_datasets is not None:
-            doi_datasets = f"""We used the following datasets for our data, available in Zenodo under DOI: <a href="{self.data.doi_datasets}">{self.data.doi_datasets}</a>"""
-        
         datasets_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
 		<hr style="width:50px;border:5px solid green" class="w3-round">
-        {doi_datasets}
         {datasets_list_commponent}
 	    </div>"""
 

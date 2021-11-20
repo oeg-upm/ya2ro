@@ -24,7 +24,7 @@
                     "@id": "#antonia_pavel"
                 }
             ],
-            "description": "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
+            "description": "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object. social_motivation: Suspendisse est justo, finibus a nisi eget, condimentum imperdiet mi. Mauris sagittis diam mi, sit amet blandit ipsum semper sed. Suspendisse sollicitudin sem sapien, quis volutpat nibh varius dictum. Integer at mauris imperdiet nunc ultrices consectetur vitae eu nulla. Phasellus sed dolor et diam dignissim blandit. Morbi sit amet ipsum laoreet, dignissim mi accumsan, tristique neque. Suspendisse potenti. Sed aliquam sagittis mauris, sed sollicitudin lectus laoreet ac. Ut porttitor ut leo eu facilisis. Phasellus finibus tincidunt congue. Nullam eget malesuada nibh. Vivamus in est vulputate, sagittis mauris in, molestie augue. Vestibulum dapibus vestibulum justo, hendrerit consectetur ex scelerisque ut.",
             "hasPart": [
                 {
                     "@id": "#ya2ro"
@@ -57,16 +57,17 @@
         {
             "@id": "#antonia_pavel",
             "@type": "Person",
-            "description": "Student of the double major in Computer Engineering and Business Administration and Management from Universidad Polit\u00e9cnica de Madrid, Spain.",
+            "description": null,
             "name": "Antonia Pavel",
             "position": [
-                "Research Assistant at Universidad Polit\u00e9cnica de Madrid"
+                "Research Assistant at Universidad Polit\u00e9cnica de Madrid description: Student of the double major in Computer Engineering and Business Administration and Management from Universidad Polit\u00e9cnica de Madrid",
+                "Spain."
             ]
         },
         {
             "@id": "#ya2ro",
             "@type": "SoftwareApplication",
-            "description": "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
+            "description": "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
             "installUrl": "https://github.com/oeg-upm/EELISA-research-object"
         },
         {

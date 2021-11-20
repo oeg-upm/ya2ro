@@ -1,57 +1,59 @@
-type: project
-title: EELISA Project - ya2ro
-goal: Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.
-social_motivation: Suspendisse est justo, finibus a nisi eget, condimentum imperdiet mi. Mauris sagittis diam mi, sit amet blandit ipsum semper sed. Suspendisse sollicitudin sem sapien, quis volutpat nibh varius dictum. Integer at mauris imperdiet nunc ultrices consectetur vitae eu nulla. Phasellus sed dolor et diam dignissim blandit. Morbi sit amet ipsum laoreet, dignissim mi accumsan, tristique neque. Suspendisse potenti. Sed aliquam sagittis mauris, sed sollicitudin lectus laoreet ac. Ut porttitor ut leo eu facilisis. Phasellus finibus tincidunt congue. Nullam eget malesuada nibh. Vivamus in est vulputate, sagittis mauris in, molestie augue. Vestibulum dapibus vestibulum justo, hendrerit consectetur ex scelerisque ut.
-sketch: images/sketch_ya2ro.jpg
+type: "project"
+
+title: "EELISA Project - ya2ro"
+
+goal: "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.
+social_motivation: Suspendisse est justo, finibus a nisi eget, condimentum imperdiet mi. Mauris sagittis diam mi, sit amet blandit ipsum semper sed. Suspendisse sollicitudin sem sapien, quis volutpat nibh varius dictum. Integer at mauris imperdiet nunc ultrices consectetur vitae eu nulla. Phasellus sed dolor et diam dignissim blandit. Morbi sit amet ipsum laoreet, dignissim mi accumsan, tristique neque. Suspendisse potenti. Sed aliquam sagittis mauris, sed sollicitudin lectus laoreet ac. Ut porttitor ut leo eu facilisis. Phasellus finibus tincidunt congue. Nullam eget malesuada nibh. Vivamus in est vulputate, sagittis mauris in, molestie augue. Vestibulum dapibus vestibulum justo, hendrerit consectetur ex scelerisque ut."
+
+social_motivation: "Suspendisse est justo, finibus a nisi eget, condimentum imperdiet mi. Mauris sagittis diam mi, sit amet blandit ipsum semper sed. Suspendisse sollicitudin sem sapien, quis volutpat nibh varius dictum. Integer at mauris imperdiet nunc ultrices consectetur vitae eu nulla. Phasellus sed dolor et diam dignissim blandit. Morbi sit amet ipsum laoreet, dignissim mi accumsan, tristique neque. Suspendisse potenti. Sed aliquam sagittis mauris, sed sollicitudin lectus laoreet ac. Ut porttitor ut leo eu facilisis. Phasellus finibus tincidunt congue. Nullam eget malesuada nibh. Vivamus in est vulputate, sagittis mauris in, molestie augue. Vestibulum dapibus vestibulum justo, hendrerit consectetur ex scelerisque ut."
+
+sketch: "images/sketch_ya2ro.jpg"
 
 areas: 
-  - Programming: Some description.
-  - Research: Some description.
+  - "Programming: Some description."
+  - "Research: Some description."
   
 demo: 
   -
     link: https://oeg-upm.github.io/EELISA-research-object/output/landing_page.html
-    description: This is a description for a demo for the ya2ro EELISA project.
+    description: "This is a description for a demo for the ya2ro EELISA project."
   -
-    name: GitHub Pages demo
+    name: "GitHub Pages demo"
     link: https://oeg-upm.github.io/EELISA-research-object/output/landing_page.html
-    description: This is a SECOND description for a demo for the ya2ro EELISA project but with name.
+    description: "This is a SECOND description for a demo for the ya2ro EELISA project but with name."
 
 datasets: 
-  doi_datasets: www.link-doi.com
-  datasets_links:   
-    - 
-      link: www.linkD1.com 
-      name: name dataset 1
-      description: description dataset 1
-      doi_dataset: www.link-doi-1.com
-    - 
-      link: www.linkD2.com 
-      name: name dataset 2
-      description: description dataset 2
-      doi_dataset: www.link-doi-2.com
-
+  - 
+    link: www.linkD1.com 
+    name: "name dataset 1"
+    description: "description dataset 1"
+    doi_dataset: www.link-doi-1.com
+  - 
+    link: www.linkD2.com 
+    name: "name dataset 2"
+    description: "description dataset 2"
+    doi_dataset: www.link-doi-2.com
 software: 
   - 
     link: https://github.com/oeg-upm/EELISA-research-object 
-    description: Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy ...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.
+    description: "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object."
   -
     link: https://github.com/KnowledgeCaptureAndDiscovery/somef/
 
 bibliography: 
-  - Bibliography entry 1
-  - Bibliography entry 2
-  - Bibliography entry 3
+  - "Bibliography entry 1"
+  - "Bibliography entry 2"
+  - "Bibliography entry 3"
 
 participants:  
   -
     orcid: https://orcid.org/0000-0003-0454-7145
-    role: Coordinator
+    role: "Coordinator"
   -
-    name: Antonia Pavel
-    position: Research Assistant at Universidad Politécnica de Madrid
-    description: Student of the double major in Computer Engineering and Business Administration and Management from Universidad Politécnica de Madrid, Spain.
+    name: "Antonia Pavel"
+    position: "Research Assistant at Universidad Politécnica de Madrid
+    description: Student of the double major in Computer Engineering and Business Administration and Management from Universidad Politécnica de Madrid, Spain."
     web: https://github.com/PavelAntonia
-    photo: images/AntoniaPavel.jpg
+    photo: "images/AntoniaPavel.jpg"
 
 

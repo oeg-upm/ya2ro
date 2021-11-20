@@ -62,11 +62,11 @@
         {
             "@id": "#bibliography",
             "@type": "Dataset",
-            "description": "project documentation",
+            "description": "Project documentation",
             "distribution": {
                 "@id": "https://drive.google.com/drive/folders/1S-JNn_FYfYJHnya_rIsQpCT9j_AinuzV"
             },
-            "name": "bibliography"
+            "name": "Bibliography"
         },
         {
             "@id": "#anonymous_interview",
