@@ -27,7 +27,7 @@ def main():
 
 
     parser = argparse.ArgumentParser(
-        description='Human and machine readeable input as a yaml file and create RO-Object in jsonld and/or HTML view.')
+        description='Human and machine readable input as a yaml file and create RO-Object in jsonld and/or HTML view.')
 
     group = parser.add_mutually_exclusive_group(required=True)
 
