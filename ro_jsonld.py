@@ -30,7 +30,6 @@ class ro_jsonld(object):
     def load_data(self, data):
 
         self.data = data
-
         self.graph_add_title(self.data.title)
 
         # Self creates the hardcoded structure for paper
