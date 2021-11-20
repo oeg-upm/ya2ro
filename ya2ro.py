@@ -1,3 +1,7 @@
+import argparse
+import os
+from pathlib import Path
+
 ###################################################################################
 # LOGO
 
@@ -21,7 +25,6 @@ def main():
     # Handle arguments
     #----------------------------------------------------------------------------------
 
-    import argparse
 
     parser = argparse.ArgumentParser(
         description='Human and machine readeable input as a yaml file and create RO-Object in jsonld and/or HTML view.')
@@ -59,9 +62,6 @@ def main():
 
 
 def process_yaml(yaml_folder_or_file_str):
-
-    import os
-    from pathlib import Path
 
     try:
         yaml_folder_or_file = Path(yaml_folder_or_file_str)
