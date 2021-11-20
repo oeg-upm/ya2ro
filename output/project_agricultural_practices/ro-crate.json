@@ -1,0 +1,111 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "project",
+            "author": [
+                {
+                    "@id": "#margarita_ruiz_ramos"
+                },
+                {
+                    "@id": "#sara_brinquis_fava"
+                }
+            ],
+            "description": "Determine if the work of the agricultural extension services are key in the search for development in the territories of Salvador and Guatemala; and from their learnings, recommendations for their potential replicability.",
+            "hasPart": [
+                {
+                    "@id": "#bibliography"
+                },
+                {
+                    "@id": "#anonymous_interview"
+                },
+                {
+                    "@id": "#interview_questions"
+                },
+                {
+                    "@id": "index-en.html"
+                }
+            ],
+            "name": "Good Agricultural Practices and Damage and Loss Assessment for the Comprehensive Management of Disaster Risk and Climate-Adapted Sustainable Agriculture in the Dry Corridor of Central America."
+        },
+        {
+            "@id": "#margarita_ruiz_ramos",
+            "@type": "Person",
+            "description": null,
+            "name": "MARGARITA RUIZ RAMOS",
+            "position": [
+                "Universidad Polit\u00e9cnica de Madrid - Technical University of Madrid"
+            ]
+        },
+        {
+            "@id": "#sara_brinquis_fava",
+            "@type": "Person",
+            "description": "2nd year student in the Enabling Master's Degree in Agronomic Engineering at the Polytechnic University of Madrid",
+            "name": "Sara Brinquis Fava",
+            "position": [
+                "Research Assistant at Universidad Polit\u00c3\u00a9cnica de Madrid"
+            ]
+        },
+        {
+            "@id": "#bibliography",
+            "@type": "Dataset",
+            "description": "project documentation",
+            "distribution": {
+                "@id": "https://drive.google.com/drive/folders/1S-JNn_FYfYJHnya_rIsQpCT9j_AinuzV"
+            },
+            "name": "bibliography"
+        },
+        {
+            "@id": "#anonymous_interview",
+            "@type": "Dataset",
+            "description": "Anonymous interview transcript",
+            "distribution": {
+                "@id": "https://drive.google.com/drive/folders/1LVmRdxz7xzL5xRsk05x14s3ilVR4HGsG"
+            },
+            "name": "Anonymous interview"
+        },
+        {
+            "@id": "#interview_questions",
+            "@type": "Dataset",
+            "description": "Interview questions",
+            "distribution": {
+                "@id": "https://drive.google.com/drive/folders/1I_KPjAKJ1zKPWqj2VVWj4uRLOxH2DCLk"
+            },
+            "name": "Interview questions"
+        },
+        {
+            "workExample": [
+                {
+                    "@type": "Demo",
+                    "description": "Anonymous interview transcript.",
+                    "link": "https://drive.google.com/drive/folders/1xKIWHDgsBjiRalMb5BM-pDHEbslLYJpr",
+                    "name": null
+                },
+                {
+                    "@type": "Demo",
+                    "description": "Interview questions.",
+                    "link": "https://drive.google.com/drive/folders/1I_KPjAKJ1zKPWqj2VVWj4uRLOxH2DCLk",
+                    "name": null
+                }
+            ]
+        },
+        {
+            "@id": "index-en.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}
