@@ -1,4 +1,15 @@
-# ya2ro
+```java
+                        ad888888b,                       
+                       d8"     "88                       
+                               a8P                       
+8b       d8 ,adPPYYba,      ,d8P"  8b,dPPYba,  ,adPPYba, 
+`8b     d8' ""     `Y8    a8P"     88P'   "Y8 a8"     "8a
+ `8b   d8'  ,adPPPPP88  a8P'       88         8b       d8
+  `8b,d8'   88,    ,88 d8"         88         "8a,   ,a8"
+    Y88'    `"8bbdP"Y8 88888888888 88          `"YbbdP"'
+    d8'                                                
+   d8' 
+```
 
 ## Install dependencies
 
@@ -12,9 +23,55 @@ Create a yalm file or use one of the templates. Currently ya2ro supports two for
 - paper
 - project
 
-Please find a template for each type under the directory test_files
+Please find a template for each type under the directory test_files.
+
+The first thing to do is create some input for ya2ro or use one of the yamls under the folder test_files. To create valid yalm you should follow the documentation bellow.   
+
+Once you have a valid yalm (proyect or paper) is time to run ya2ro.
+
+### Comand line arguments
+```
+usage: ya2ro.py [-h] (-i INPUT | -l LANDING_PAGE) [-o OUTPUT_DIRECTORY] [-p PROPERTIES_FILE]
+
+Human and machine readeable input as a yaml file and create RO-Object in jsonld and/or HTML view.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        Path of the required yaml input. Follow the documentation or the example given to see the
+                        structure of the file.
+  -l LANDING_PAGE, --landing_page LANDING_PAGE
+                        Path of a previous output folder using the ya2ro tool. This flag will make a landing page
+                        to make all the resources accesible.
+  -o OUTPUT_DIRECTORY, --output_directory OUTPUT_DIRECTORY
+                        Output diretory.
+  -p PROPERTIES_FILE, --properties_file PROPERTIES_FILE
+                        Properties file name.
+```
+
+### Create machine and human readable content
+
+It is possible to process batches of yalms at the same time, to do that just specify as input a folder with all the yalms inside.
+
+##### Simple execution:
+
+`python3 ya2ro.py -i test_files`   
+`python3 ya2ro.py -i test_files/project_yemplate.yaml`   
+
+##### With optional arguments:
+
+`python3 ya2ro.py -input test_files --output_directory out --properties_file custom_properties.yaml`   
+`python3 ya2ro.py -i test_files -o out -p custom_properties.yaml`
+
+### Create landing page
+
+ya2ro offers the option to create a landing page where all the resources produced are easilly accesible. Just indicate the folder where this resources are, for example:
+
+`python3 ya2ro.py -l output`
 
 ---
+
+
 ## Fields supported
 
 ### Paper   
@@ -180,64 +237,5 @@ contact:
   phone: +34 999 999 999
 ```
 
----
-
-```
-                        ad888888b,                         
-                       d8"     "88                         
-                               a8P                         
-8b       d8 ,adPPYYba,      ,d8P"  8b,dPPYba,  ,adPPYba,   
-`8b     d8' ""     `Y8    a8P"     88P'   "Y8 a8"     "8a  
- `8b   d8'  ,adPPPPP88  a8P'       88         8b       d8  
-  `8b,d8'   88,    ,88 d8"         88         "8a,   ,a8"  
-    Y88'    `"8bbdP"Y8 88888888888 88          `"YbbdP"'   
-    d8'                                                    
-   d8' 
-_________________________________________________________
-    
-usage: ya2ro.py [-h] (-i INPUT | -l LANDING_PAGE) [-o OUTPUT_DIRECTORY] [-p PROPERTIES_FILE]
-
-Human and machine readeable input as a yaml file and create RO-Object in jsonld and/or HTML view.
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -i INPUT, --input INPUT
-                        Path of the required yaml input. Follow the documentation or the example given to see the
-                        structure of the file.
-  -l LANDING_PAGE, --landing_page LANDING_PAGE
-                        Path of a previous output folder using the ya2ro tool. This flag will make a landing page
-                        to make all the resources accesible.
-  -o OUTPUT_DIRECTORY, --output_directory OUTPUT_DIRECTORY
-                        Output diretory.
-  -p PROPERTIES_FILE, --properties_file PROPERTIES_FILE
-                        Properties file name.
-```
-
-## How to use
-
-The first thing to do is create some input for ya2ro or use one of the yamls under the folder test_files. To create valid yalm you should follow the documentation above.   
-
-Once you have a valid yalm (proyect or paper) is time to run ya2ro.
-
-### Create machine and human readable content
-
-It is possible to process batches of yalms at the same time, to do that just specify as input a folder with all the yalms inside.
-
-##### Simple execution:
-
-`python3 ya2ro.py -i test_files`   
-`python3 ya2ro.py -i test_files/project_yemplate.yaml`   
-
-
-##### With optional arguments:
-
-`python3 ya2ro.py -input test_files --output_directory out --properties_file custom_properties.yaml`   
-`python3 ya2ro.py -i test_files -o out -p custom_properties.yaml`
-
-### Create landing page
-
-ya2ro offers the option to create a landing page where all the resources produced are easilly accesible. Just indicate the folder where this resources are, for example:
-
-`python3 ya2ro.py -l output`
 
 
