@@ -15,8 +15,9 @@ Create a yalm file or use one of the templates. Currently ya2ro supports two for
 Please find a template for each type under the directory test_files
 
 ---
+## Fields supported
 
-### Fields: Paper   
+### Paper   
 Documentation for all supported fields for type paper.   
 
 `type:`This field is required and is use to indicate the type of the work.
@@ -79,7 +80,7 @@ authors:
 ```
 ---
 
-### Fields: Project   
+### Project   
 Documentation for all supported fields for type project.   
 
 `type:`This field is required and is use to indicate the type of the work.
