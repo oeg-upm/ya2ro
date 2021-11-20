@@ -401,7 +401,10 @@ class ro_html(object):
             html_author += f"""
             <div class="w3-col m4 w3-margin-bottom">
                 <div class="w3-light-grey">
-                <img src="{author.photo}" alt="{author.name}" style="width:90%;padding-top: 10px;">
+                <div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 10px; padding-bottom: 90%;
+                            margin: auto;">
+                    <img src="{author.photo}" alt="{author.name}" style="width:100%;">
+                </div>
                 <div class="w3-container">
                     <h3><a href="{author.orcid if author.orcid is not None else author.web}">{author.name}</a></h3>
                     <p class="w3-opacity">{author.role}</p>
