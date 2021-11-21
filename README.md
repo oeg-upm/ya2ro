@@ -158,7 +158,7 @@ Documentation for all supported fields for type project.
 
 `type:`This field is required and is used to indicate the type of the work.
 ```yaml
-type: "prpject"
+type: "project"
 ```
 
 `title:`Title of the project.
