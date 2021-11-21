@@ -122,12 +122,17 @@ class ro_jsonld(object):
 
             self._add_id_to_list(author.name, self.graph[1]["author"])
 
+            if author.position:
+                position = author.position.split(", ")
+            else:
+                position = None
+
             self.graph.append({
-            "@id": self._normalize_name(author.name),
-            "@type": "Person",
-            "name": author.name,
-            "position": author.position.split(", "),
-            "description": author.description
+                "@id": self._normalize_name(author.name),
+                "@type": "Person",
+                "name": author.name,
+                "position": position,
+                "description": author.description
         })
 
     def graph_add_softwares(self, softwares):

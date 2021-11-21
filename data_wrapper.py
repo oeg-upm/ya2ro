@@ -37,6 +37,7 @@ class Paper(Iterable):
     software: list = None
     bibliography: list = None
     authors: list = None
+    bib: object = None
 
 @dataclass(unsafe_hash=True)
 class Author:
@@ -54,6 +55,8 @@ class Dataset:
     link: str = None
     name: str = None
     description: str = None
+    license: str = None
+    author: str = None
 
 @dataclass(unsafe_hash=True)
 class Software:
@@ -283,8 +286,41 @@ def init_paper(input_to_vocab, data):
             print(f"        + Fetching summary from {doi_paper_link}.")
             paper.summary = paper_bib.get_summary()
 
-        # TODO: Add authors with bib
-    
+        # Add bibtext
+        paper.bib = paper_bib.get_bibtext()
+
+        # Add citation
+        citation = paper_bib.get_citation()
+        if citation:
+
+            if not paper.bibliography:
+                paper.bibliography = []
+                
+            paper.bibliography.append(
+                Bibliography_entry(entry = citation)
+                )
+
+        # Add authors with DOI
+        doi_authors = paper_bib.get_authors()
+        paper_authors = [ a.name for a in paper.authors ]
+        if doi_authors:
+            for doi_author in doi_authors:
+                if doi_author not in paper_authors:
+
+                    print(f"        + Author: {doi_author} extracted from {doi_paper_link}.")
+                    print(f"        + Using default photo for {doi_author}.")
+
+                    # TODO: Add more data for new authors
+
+                    if not paper.authors:
+                        paper.authors = []
+
+                    paper.authors.append(Author(
+                        name = doi_author, 
+                        photo = input_to_vocab["images"] + "/" + p.properties["default_author_img"],
+                        role= "Author"
+                    ))
+                    
     return paper
     
 
@@ -315,7 +351,20 @@ def populate_datasets(object, input_to_vocab, data):
 
         doi_dataset = _safe(input_to_vocab["doi_dataset"], dataset)
         if doi_dataset is not None:
+
             object.datasets[i].doi_dataset = doi_dataset
+            object.datasets[i].link = doi_dataset
+
+            if str(doi_dataset).startswith("https://doi"):
+                print(f"        + Fetching dataset data from {doi_dataset}")
+                req_doi_dataset = req_doi.dataset(doi_dataset)
+                object.datasets[i].description = req_doi_dataset.get_description()
+                object.datasets[i].name = req_doi_dataset.get_name()
+                object.datasets[i].license = req_doi_dataset.get_license()
+                object.datasets[i].author = req_doi_dataset.get_author()
+
+            else:
+                print(f"ERROR: {doi_dataset} is not a DOI.")
             
         link = _safe(input_to_vocab["link"], dataset)
         if link is not None:
@@ -328,6 +377,15 @@ def populate_datasets(object, input_to_vocab, data):
         descripton = _safe(input_to_vocab["description"], dataset)
         if descripton is not None:
             object.datasets[i].description = descripton
+        
+        license = _safe(input_to_vocab["license"], dataset)
+        if license is not None:
+            object.dataset[i].license = license
+        
+        author = _safe(input_to_vocab["author"], dataset)
+        if author is not None:
+            object.dataset[i].author = author
+        
 
         i += 1
     print("    - Datasets: Done.")

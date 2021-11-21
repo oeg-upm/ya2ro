@@ -21,40 +21,31 @@
                     "@id": "#daniel_garijo"
                 },
                 {
-                    "@id": "#name_1"
+                    "@id": "#chin_wang_cheong"
                 },
                 {
-                    "@id": "#name_2"
+                    "@id": "#cheung_kwok_wai"
                 },
                 {
-                    "@id": "#name_3"
-                },
-                {
-                    "@id": "#name_4"
+                    "@id": "#yolanda_gil"
                 }
             ],
             "description": "Scientific workflows define computational processes needed for carrying out scientific experiments. Existing workflow repositories contain hundreds of scientific workflows, where scientists can find materials and knowledge to facilitate workflow design for running related experiments. Identifying reusable fragments in growing workflow repositories has become increasingly important. In this paper, we present PSM-Flow, a probabilistic subgraph mining algorithm designed to discover commonly occurring fragments in a workflow corpus using a modified version of the Latent Dirichlet Allocation algorithm. The proposed model encodes the geodesic distance between workflow steps into the model for implicitly modeling fragments. PSM-Flow captures variations of frequent fragments while maintaining its space complexity bounded polynomially, as it requires no candidate generation. We applied PSM-Flow to three real-world scientific workflow datasets containing more than 750 workflows for neuroimaging analysis. Our results show that PSM-Flow outperforms three state of the art frequent subgraph mining techniques. We also discuss other potential future improvements of the proposed method.",
             "hasPart": [
                 {
-                    "@id": "#name_link_1"
+                    "@id": "#kgtk"
                 },
                 {
-                    "@id": "#name_link_2"
+                    "@id": "#kgtk-at-2021-wikidata-workshop"
                 },
                 {
-                    "@id": "#name_dataset_1"
-                },
-                {
-                    "@id": "#name_dataset_2"
-                },
-                {
-                    "@id": "#name_dataset_3"
+                    "@id": "#datasets_for_creating_and_querying_personalized_versions_of_wikidata_in_a_laptop_(wikidata_workshop,_2021)"
                 },
                 {
                     "@id": "index-en.html"
                 }
             ],
-            "name": "PSM-FLOW"
+            "name": "PSM-Flow: Probabilistic Subgraph Mining for Discovering Reusable Fragments in Workflows"
         },
         {
             "@id": "#daniel_garijo",
@@ -62,84 +53,51 @@
             "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
-                "University of Southern California",
-                "Universidad Polit\u00e9cnica de Madrid"
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
             ]
         },
         {
-            "@id": "#name_1",
+            "@id": "#chin_wang_cheong",
             "@type": "Person",
-            "description": "Here it goes a more detailed description.",
-            "name": "Name 1",
-            "position": [
-                "Position"
-            ]
+            "description": null,
+            "name": "Chin Wang Cheong",
+            "position": null
         },
         {
-            "@id": "#name_2",
+            "@id": "#cheung_kwok_wai",
             "@type": "Person",
-            "description": "Here it goes a more detailed description.",
-            "name": "Name 2",
-            "position": [
-                "Position"
-            ]
+            "description": null,
+            "name": "Cheung Kwok Wai",
+            "position": null
         },
         {
-            "@id": "#name_3",
+            "@id": "#yolanda_gil",
             "@type": "Person",
-            "description": "Here it goes a more detailed description.",
-            "name": "Name 3",
-            "position": [
-                "Position"
-            ]
+            "description": null,
+            "name": "Yolanda Gil",
+            "position": null
         },
         {
-            "@id": "#name_4",
-            "@type": "Person",
-            "description": "Here it goes a more detailed description.",
-            "name": "Name 4",
-            "position": [
-                "Position"
-            ]
-        },
-        {
-            "@id": "#name_link_1",
+            "@id": "#kgtk",
             "@type": "SoftwareApplication",
-            "description": "description software 1",
-            "installUrl": "www.linkS1.com"
+            "description": "Knowledge Graph Toolkit ",
+            "installUrl": "https://github.com/usc-isi-i2/kgtk/"
         },
         {
-            "@id": "#name_link_2",
+            "@id": "#kgtk-at-2021-wikidata-workshop",
             "@type": "SoftwareApplication",
-            "description": "description software 2",
-            "installUrl": "www.linkS2.com"
+            "description": "Code and datasets for the KGTK demo at the 2021 Wikidata Workshop at ISWC",
+            "installUrl": "https://github.com/usc-isi-i2/kgtk-at-2021-wikidata-workshop"
         },
         {
-            "@id": "#name_dataset_1",
+            "@id": "#datasets_for_creating_and_querying_personalized_versions_of_wikidata_in_a_laptop_(wikidata_workshop,_2021)",
             "@type": "Dataset",
-            "description": "description dataset 1",
+            "description": "These datasets are used to support the results of the paper \"Datasets for Creating and Querying Personalized Versions of Wikidata in a Laptop\", submitted to the Wikidata workshop 2021 (https://wikidataworkshop.github.io/2021/) at the International Semantic Web Conference. The datasets have been derived from Wikidata dump 20210215. To help querying purposes, the dump is organized in different files: claims.time.tsv.gz: time-related assertions claims.wikibase-item.tsv-006.gz: item-related assertions derived.P279.tsv.gz: statements that are subclass of another statement derived.P279star.tsv.gz: statement that are subclass of another statement, including their chains. derived.P31.tsv.gz: instance of statements. labels.en.tsv-004.gz: labels in English claims.external-id.tsv-005.gz: External identifiers for each item. ulan.tsv: ULAN ids (used to link external identifiers to Wikidata identifiers) wikidata_infobox.tsv.gz: Information about dbpedia infoboxes. Upload by: Daniel Garijo",
             "distribution": {
-                "@id": "www.linkD1.com"
+                "@id": "https://doi.org/10.5281/zenodo.5139550"
             },
-            "name": "name dataset 1"
-        },
-        {
-            "@id": "#name_dataset_2",
-            "@type": "Dataset",
-            "description": "description dataset 2",
-            "distribution": {
-                "@id": "www.linkD2.com"
-            },
-            "name": "name dataset 2"
-        },
-        {
-            "@id": "#name_dataset_3",
-            "@type": "Dataset",
-            "description": "description dataset 3",
-            "distribution": {
-                "@id": "www.linkD3.com"
-            },
-            "name": "name dataset 3"
+            "name": "Datasets for Creating and Querying Personalized Versions of Wikidata in a Laptop (Wikidata workshop, 2021)"
         },
         {
             "@id": "index-en.html",

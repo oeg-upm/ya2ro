@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<title>PSM-FLOW</title>
+<title>PSM-Flow: Probabilistic Subgraph Mining for Discovering Reusable Fragments in Workflows</title>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
@@ -37,7 +37,7 @@ img {display: block;margin-left: auto;margin-right: auto;}
 </div>
 </div>
 <div class="w3-bar-block">
-<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#summary" onclick="w3_close()">Summary</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
+<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#summary" onclick="w3_close()">Summary</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibtext" onclick="w3_close()">Bibtext</a></span>
 </div>
 <div class="row" style="position: absolute; bottom: 25px; height: 50px;">
 <div class="column">
@@ -64,7 +64,7 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <div class="w3-main" style="margin-left:340px;margin-right:40px">
 <!-- Header -->
 <div class="w3-container" id="showcase" style="margin-top:80px">
-<h1>PSM-FLOW</h1>
+<h1>PSM-Flow: Probabilistic Subgraph Mining for Discovering Reusable Fragments in Workflows</h1>
 </div>
 <!-- Summary -->
 <span id="summary"><div class="w3-container" style="margin-top:15px">
@@ -88,14 +88,15 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <span id="datasets"><div class="w3-container" id="software" style="margin-top:75px">
 <h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ul><li><a href="www.linkD1.com">name dataset 1</a>: description dataset 1</li><li><a href="www.linkD2.com">name dataset 2</a>: description dataset 2</li><li><a href="www.linkD3.com">name dataset 3</a>: description dataset 3</li></ul>
+<ul><li><p><a href="https://doi.org/10.5281/zenodo.5139550">Datasets for Creating and Querying Personalized Versions of Wikidata in a Laptop (Wikidata workshop, 2021)</a></p>
+<ul><li><b>Description:</b> These datasets are used to support the results of the paper "Datasets for Creating and Querying Personalized Versions of Wikidata in a Laptop", submitted to the Wikidata workshop 2021 (https://wikidataworkshop.github.io/2021/) at the International Semantic Web Conference. The datasets have been derived from Wikidata dump 20210215. To help querying purposes, the dump is organized in different files: claims.time.tsv.gz: time-related assertions claims.wikibase-item.tsv-006.gz: item-related assertions derived.P279.tsv.gz: statements that are subclass of another statement derived.P279star.tsv.gz: statement that are subclass of another statement, including their chains. derived.P31.tsv.gz: instance of statements. labels.en.tsv-004.gz: labels in English claims.external-id.tsv-005.gz: External identifiers for each item. ulan.tsv: ULAN ids (used to link external identifiers to Wikidata identifiers) wikidata_infobox.tsv.gz: Information about dbpedia infoboxes. Upload by: Daniel Garijo</li><li><b>License:</b> 'https://creativecommons.org/licenses/by/4.0/legalcode' and 'info:eu-repo/semantics/openAccess'</li><li><b>Author:</b> Pedro Szekely</li></ul></li></ul>
 <div class="w3-container" id="software" style="margin-top:75px">
 <h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
         The pointers for the main software used can be found below:
-        <ul><li><p><a href="www.linkS1.com">name link 1</a></p>
-<ul><li><b>Description:</b> description software 1</li></ul></li><li><p><a href="www.linkS2.com">name link 2</a></p>
-<ul><li><b>Description:</b> description software 2</li></ul></li></ul>
+        <ul><li><p><a href="https://github.com/usc-isi-i2/kgtk/">kgtk</a></p>
+<ul><li><b>Description:</b> Knowledge Graph Toolkit </li><li><b>License:</b> MIT License</li></ul></li><li><p><a href="https://github.com/usc-isi-i2/kgtk-at-2021-wikidata-workshop">kgtk-at-2021-wikidata-workshop</a></p>
+<ul><li><b>Description:</b> Code and datasets for the KGTK demo at the 2021 Wikidata Workshop at ISWC</li><li><b>License:</b> MIT License</li></ul></li></ul>
 </div></div></span>
 <!-- Software -->
 <span id="software"></span>
@@ -103,7 +104,8 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <span id="bibliography"><div class="w3-container" id="bib" style="margin-top:75px">
 <h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ul><li>Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)</li></ul>
+<ul><li>Cheong, C. W., Garijo, D., Kwok Wai, C., &amp; Gil, Y. (2018). PSM-Flow: Probabilistic Subgraph Mining for Discovering Reusable Fragments in Workflows. 2018 IEEE/WIC/ACM International Conference on Web Intelligence (WI). doi:10.1109/wi.2018.00-93
+</li></ul>
 </div></span>
 <!-- Contact -->
 <span id="contact"></span>
@@ -121,7 +123,7 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <div class="w3-container">
 <h3><a href="https://orcid.org/0000-0003-0454-7145">Daniel Garijo</a></h3>
 <p class="w3-opacity">Author</p>
-<p class="w3-opacity">University of Southern California, Universidad Politécnica de Madrid</p>
+<p class="w3-opacity">Universidad Politécnica de Madrid, University of Southern California</p>
 <a href="http://w3id.org/people/dgarijo">http://w3id.org/people/dgarijo</a>
 <p>I am a researcher at Universidad Politécnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.</p>
 </div>
@@ -131,14 +133,11 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <div class="w3-light-grey" style="padding-bottom: 10px;">
 <div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
                             margin: auto;">
-<img alt="Name 1" src="images//default_author.jpg" style="width:100%;"/>
+<img alt="Chin Wang Cheong" src="images//default_author.jpg" style="width:100%;"/>
 </div>
 <div class="w3-container">
-<h3><a href="www.web_author1.com">Name 1</a></h3>
+<h3><a href="">Chin Wang Cheong</a></h3>
 <p class="w3-opacity">Author</p>
-<p class="w3-opacity">Position</p>
-<a href="www.web_author1.com">www.web_author1.com</a>
-<p>Here it goes a more detailed description.</p>
 </div>
 </div>
 </div>
@@ -146,14 +145,11 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <div class="w3-light-grey" style="padding-bottom: 10px;">
 <div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
                             margin: auto;">
-<img alt="Name 2" src="images//default_author.jpg" style="width:100%;"/>
+<img alt="Cheung Kwok Wai" src="images//default_author.jpg" style="width:100%;"/>
 </div>
 <div class="w3-container">
-<h3><a href="www.web_author2.com">Name 2</a></h3>
+<h3><a href="">Cheung Kwok Wai</a></h3>
 <p class="w3-opacity">Author</p>
-<p class="w3-opacity">Position</p>
-<a href="www.web_author2.com">www.web_author2.com</a>
-<p>Here it goes a more detailed description.</p>
 </div>
 </div>
 </div>
@@ -162,33 +158,141 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <div class="w3-light-grey" style="padding-bottom: 10px;">
 <div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
                             margin: auto;">
-<img alt="Name 3" src="images//default_author.jpg" style="width:100%;"/>
+<img alt="Yolanda Gil" src="images//default_author.jpg" style="width:100%;"/>
 </div>
 <div class="w3-container">
-<h3><a href="www.web_author3.com">Name 3</a></h3>
+<h3><a href="">Yolanda Gil</a></h3>
 <p class="w3-opacity">Author</p>
-<p class="w3-opacity">Position</p>
-<a href="www.web_author3.com">www.web_author3.com</a>
-<p>Here it goes a more detailed description.</p>
-</div>
-</div>
-</div>
-<div class="w3-col m4 w3-margin-bottom">
-<div class="w3-light-grey" style="padding-bottom: 10px;">
-<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
-                            margin: auto;">
-<img alt="Name 4" src="images//default_author.jpg" style="width:100%;"/>
-</div>
-<div class="w3-container">
-<h3><a href="www.web_author4.com">Name 4</a></h3>
-<p class="w3-opacity">Author</p>
-<p class="w3-opacity">Position</p>
-<a href="www.web_author4.com">www.web_author4.com</a>
-<p>Here it goes a more detailed description.</p>
 </div>
 </div>
 </div>
 </div></div></span>
+<!-- Bibtext -->
+<span id="bibtext"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Bibtext</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<div style="overflow-x: auto; background-color: whitesmoke; color: black;">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+<title></title>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f0f0f0; }
+body .c { color: #60a0b0; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #007020; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+body .cp { color: #007020 } /* Comment.Preproc */
+body .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+body .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #007020 } /* Keyword.Pseudo */
+body .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #902000 } /* Keyword.Type */
+body .m { color: #40a070 } /* Literal.Number */
+body .s { color: #4070a0 } /* Literal.String */
+body .na { color: #4070a0 } /* Name.Attribute */
+body .nb { color: #007020 } /* Name.Builtin */
+body .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+body .no { color: #60add5 } /* Name.Constant */
+body .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+body .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+body .ne { color: #007020 } /* Name.Exception */
+body .nf { color: #06287e } /* Name.Function */
+body .nl { color: #002070; font-weight: bold } /* Name.Label */
+body .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+body .nt { color: #062873; font-weight: bold } /* Name.Tag */
+body .nv { color: #bb60d5 } /* Name.Variable */
+body .ow { color: #007020; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #40a070 } /* Literal.Number.Bin */
+body .mf { color: #40a070 } /* Literal.Number.Float */
+body .mh { color: #40a070 } /* Literal.Number.Hex */
+body .mi { color: #40a070 } /* Literal.Number.Integer */
+body .mo { color: #40a070 } /* Literal.Number.Oct */
+body .sa { color: #4070a0 } /* Literal.String.Affix */
+body .sb { color: #4070a0 } /* Literal.String.Backtick */
+body .sc { color: #4070a0 } /* Literal.String.Char */
+body .dl { color: #4070a0 } /* Literal.String.Delimiter */
+body .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #4070a0 } /* Literal.String.Double */
+body .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #4070a0 } /* Literal.String.Heredoc */
+body .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+body .sx { color: #c65d09 } /* Literal.String.Other */
+body .sr { color: #235388 } /* Literal.String.Regex */
+body .s1 { color: #4070a0 } /* Literal.String.Single */
+body .ss { color: #517918 } /* Literal.String.Symbol */
+body .bp { color: #007020 } /* Name.Builtin.Pseudo */
+body .fm { color: #06287e } /* Name.Function.Magic */
+body .vc { color: #bb60d5 } /* Name.Variable.Class */
+body .vg { color: #bb60d5 } /* Name.Variable.Global */
+body .vi { color: #bb60d5 } /* Name.Variable.Instance */
+body .vm { color: #bb60d5 } /* Name.Variable.Magic */
+body .il { color: #40a070 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span>@inproceedings{Cheong_2018,
+	doi = {10.1109/wi.2018.00-93},
+	url = {https://doi.org/10.1109%2Fwi.2018.00-93},
+	year = 2018,
+	month = {dec},
+	publisher = {{IEEE}},
+	author = {Chin Wang Cheong and Daniel Garijo and Cheung Kwok Wai and Yolanda Gil},
+	title = {{PSM}-Flow: Probabilistic Subgraph Mining for Discovering Reusable Fragments in Workflows},
+	booktitle = {2018 {IEEE}/{WIC}/{ACM} International Conference on Web Intelligence ({WI})}
+}
+</pre></div>
+</td></tr></table></body>
+</html>
+</div>
+</div></span>
 </div>
 
 

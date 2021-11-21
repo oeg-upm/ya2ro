@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from shutil import copyfile
 from pathlib import Path
 import ntpath
+import hilite_me
 
 class ro_html(object):
 
@@ -27,7 +28,8 @@ class ro_html(object):
             "activities": self.init_activities,
             "demo": self.init_demo,
             "requirements": self.init_requirements_recognition,
-            "contact": self.init_contact
+            "contact": self.init_contact,
+            "bib": self.init_bib
 
         }
 
@@ -59,6 +61,18 @@ class ro_html(object):
         self.init_styles()
         self.init_help_page()
     
+    def init_bib(self, bib):
+
+        bib_component = f"""<div class="w3-container" style="margin-top:15px">
+		<h1 class="w3-xxxlarge w3-text-green"><b>Bibtext</b></h1>
+        <hr style="width:50px;border:5px solid green" class="w3-round">
+            <div style="overflow-x: auto; background-color: whitesmoke; color: black;">
+                {hilite_me.bib_formatter(bib)}
+            </div>
+	    </div>"""
+
+        ro_html.append_component(self.soup, "bibtext", bib_component)
+        ro_html.sidebar_append(self.soup, "bibtext", "Bibtext")
 
     def init_help_page(self):
 
@@ -122,8 +136,6 @@ class ro_html(object):
 
         how_info_text = f"""This webpage was created using the tool ya2ro which takes as an input a yaml file with all the relevant information and pointers to the webpage. Then, it merges the information retrieved from the webpage pointers with the provided information in the yaml file. In this case, the yaml file used was the following:"""
 
-        import hilite_me
-
         with open(self.data.yaml_file, 'r') as f:
             yaml = f.read()
 
@@ -131,7 +143,9 @@ class ro_html(object):
 		<h1 class="w3-xxxlarge w3-text-green"><b>How was the information retrieved?</b></h1>
         <hr style="width:50px;border:5px solid green" class="w3-round">
 		<p>{how_info_text}</p>
-        <div style="overflow-x: auto; background-color: whitesmoke; color: black;">{hilite_me.yaml_formatter(yaml)}</div>
+            <div style="overflow-x: auto; background-color: whitesmoke; color: black;">
+                {hilite_me.yaml_formatter(yaml)}
+            </div>
 	    </div>"""
 
         ro_html.append_component(self.soup_help, "how_info", how_info_component)
@@ -305,9 +319,25 @@ class ro_html(object):
 
 
     def init_datasets(self, datasets):
- 
-        datasets_list_commponent = self.ul_component([f"""<a href="{d.link}">{d.link if d.name is None else d.name}</a>: {d.description}""" for d in datasets])
 
+        def html_entry_datasets(d):
+            dataset_attr = []
+
+            if d.description:
+                dataset_attr.append(f"<b>Description:</b> {d.description}")
+            
+            if d.license:
+                dataset_attr.append(f"<b>License:</b> {d.license}")
+            
+            if d.author:
+                dataset_attr.append(f"<b>Author:</b> {d.author}")
+
+            return f"""<p><a href="{d.link}">{d.link if d.name is None else d.name}</a></p>
+            {self.ul_component(dataset_attr)}"""
+
+        dataset_entries = [ html_entry_datasets(d) for d in datasets ]
+        datasets_list_commponent = self.ul_component(dataset_entries)
+ 
         datasets_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
 		<hr style="width:50px;border:5px solid green" class="w3-round">
@@ -392,7 +422,7 @@ class ro_html(object):
             if((num_authors-1) %3 == 0):
                 html_author += """<div class="w3-row-padding">"""
             
-            author_name_component = f"""<h3><a href="{author.orcid if author.orcid else author.web if author.web else "#"}">{author.name}</a></h3>""" if author.name else ""
+            author_name_component = f"""<h3><a href="{author.orcid if author.orcid else author.web if author.web else ""}">{author.name}</a></h3>""" if author.name else ""
             author_role_component = f"""<p class="w3-opacity">{author.role}</p>""" if author.role else ""
             author_position_component = f"""<p class="w3-opacity">{author.position}</p>""" if author.position else ""
             author_web_component = f"""<a href="{author.web}">{author.web}</a>""" if author.web else ""

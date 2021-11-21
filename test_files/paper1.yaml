@@ -1,56 +1,21 @@
 type: "paper"
+
 doi_paper: https://doi.org/10.1109/WI.2018.00-93
-title: "PSM-FLOW"
+
 datasets: 
   - 
-     link: www.linkD1.com 
-     name: "name dataset 1"
-     description: "description dataset 1"
-     doi_dataset: www.link-doi-1.com
-  - 
-     link: www.linkD2.com 
-     name: "name dataset 2"
-     description: "description dataset 2"
-     doi_dataset: www.link-doi-2.com
-  - 
-     link: www.linkD3.com 
-     name: "name dataset 3"
-     description: "description dataset 3"
-     doi_dataset: www.link-doi-3.com
+     doi_dataset: https://doi.org/10.5281/zenodo.5139550
+
 software: 
   - 
-     link: www.linkS1.com 
-     name: "name link 1"
-     description: "description software 1"
+     link: https://github.com/usc-isi-i2/kgtk/
   - 
-     link: www.linkS2.com 
-     name: "name link 2"
-     description: "description software 2"
-bibliography: 
-  - "Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)"
+     link: https://github.com/usc-isi-i2/kgtk-at-2021-wikidata-workshop
+
 authors:  
   -
      orcid: https://orcid.org/0000-0003-0454-7145
-  -    
-     name: "Name 1"
-     position: "Position"
-     description: "Here it goes a more detailed description."
-     web: www.web_author1.com
-  - 
-     name: "Name 2"
-     position: "Position"
-     description: "Here it goes a more detailed description."
-     web: www.web_author2.com
-  -
-     name: "Name 3"
-     position: "Position"
-     description: "Here it goes a more detailed description."
-     web: www.web_author3.com
-  - 
-     name: "Name 4"
-     position: "Position"
-     description: "Here it goes a more detailed description."
-     web: www.web_author4.com
+
 
 
  
