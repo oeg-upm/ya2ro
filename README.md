@@ -83,6 +83,16 @@ Documentation for all supported fields for type paper.
 type: "paper"
 ```
 
+`doi_paper:`All the relevant information of the paper will be retrieved. Such as:
+- Title
+- Summary
+- Bibtext
+- Citation/Bibliography
+- Authors
+```yaml
+doi_paper: https://doi.org/xxxxxxxxx
+```
+
 `title:`Title of the paper.
 ```yaml
 title: "Paper - Template"
@@ -102,6 +112,8 @@ datasets:
     link: www.D1.com 
     name: "Dataset 1"
     description: "Description dataset 1"
+    license: "MIT-License"
+    author: "Author name"
 ```
 
 `software:` All the relevant software used and created for the paper. If a GitHub Repo is provided ya2ro will use SOMEF to automatically fetch relevant data.
@@ -188,7 +200,7 @@ demo:
     description: "This is a description for a demo with name."
 ```
 
-`datasets:` All the datasets used and created during the project. This tool supports to define each dataset manually specifiying all fields or to use a DOI and ya2ro will try to automatically fetch the data.
+`datasets:` All the datasets used and created during the paper. This tool supports to define each dataset manually specifying all fields or to use a DOI and ya2ro will try to automatically fetch the data.
 ```yaml
 datasets:
   - 
@@ -197,6 +209,8 @@ datasets:
     link: www.D1.com 
     name: "Dataset 1"
     description: "Description dataset 1"
+    license: "MIT-License"
+    author: "Author name"
 ```
 `software:` All the relevant software used and created for the paper. If a GitHub Repo is provided, ya2ro will use SOMEF to automatically fetch relevant data.
 ```yaml
