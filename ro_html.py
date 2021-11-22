@@ -276,7 +276,7 @@ class ro_html(object):
 
         demo_list_commponent = self.ul_component([f"""<a href="{d.link}">{d.link if d.name is None else d.name}</a>: {d.description}""" for d in demo])
 
-        demo_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
+        demo_component = f"""<div class="w3-container" id="demo" style="margin-top:75px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Demo</b></h1>
 		<hr style="width:50px;border:5px solid green" class="w3-round">
         {demo_list_commponent}
@@ -338,7 +338,7 @@ class ro_html(object):
         dataset_entries = [ html_entry_datasets(d) for d in datasets ]
         datasets_list_commponent = self.ul_component(dataset_entries)
  
-        datasets_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
+        datasets_component = f"""<div class="w3-container" id="datasets" style="margin-top:75px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
 		<hr style="width:50px;border:5px solid green" class="w3-round">
         {datasets_list_commponent}
