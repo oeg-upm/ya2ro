@@ -13,7 +13,7 @@ class Contact:
 
 @dataclass(unsafe_hash=True)
 class Project(Iterable):
-    requirements: list = ("goal","social_motivation","sketch","areas","authors")
+    requirements: list = ("title", "goal","areas", "activities" "datasets", "software", "bibliography", "authors")
     title: str = None
     goal: str = None
     social_motivation: str = None
@@ -29,7 +29,7 @@ class Project(Iterable):
 
 @dataclass(unsafe_hash=True)
 class Paper(Iterable):
-    requirements: list = ("title","summary","datasets","authors")
+    requirements: list = ("title","summary","datasets", "bibliography", "authors")
     doi_paper: str = None
     title: str = None
     summary: str = None
