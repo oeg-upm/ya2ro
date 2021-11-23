@@ -6,11 +6,12 @@ class orcid(object):
     def __init__(self, orcid_link):
         self.json = json.loads(req.get(orcid_link, headers={"Accept":"application/ld+json"}).text)
         self.json_bio = json.loads(req.get(orcid_link, headers={"Accept":"application/orcid+json"}).text)
-
+        self.orcid_link = orcid_link
     def get_full_name(self):
         try:
             return self.json["givenName"] + " " + self.json["familyName"]
         except:
+            print(f"ERROR: Unable to retrieve the author´s full name, check if {self.orcid_link} is up.")
             return None
 
     def get_webs(self):
@@ -24,6 +25,7 @@ class orcid(object):
                 else :
                     return list(self.json['url'])
         except:
+            print(f"ERROR: Unable to retrieve the author´s web, check if {self.orcid_link} is up.")
             return None
 
     def get_affiliation(self):
@@ -44,10 +46,12 @@ class orcid(object):
             return list(affiliations)
 
         except:
+            print(f"ERROR: Unable to retrieve the affiliations, check if {self.orcid_link} is up.")
             return None
         
     def get_bio(self):
         try:
             return self.json_bio['person']['biography']['content']
         except:
+            print(f"ERROR: Unable to retrieve the biography, check if {self.orcid_link} is up.")
             return None        
