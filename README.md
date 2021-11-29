@@ -26,9 +26,9 @@ Create a yalm file or use one of the templates. Currently ya2ro supports two for
 - paper
 - project
 
-Please find a template for each type under the directory test_files.
+Please find a template for each type under the directory templates.
 
-The first thing to do is create some input for ya2ro or use one of the yamls under the folder test_files. To create valid yalm you should follow the documentation bellow.   
+The first thing to do is create some input for ya2ro or use one of the yamls under the folder templates. To create valid yalm you should follow the documentation bellow.   
 
 Once you have a valid yalm (proyect or paper) is time to run ya2ro.
 
@@ -59,13 +59,13 @@ It is possible to process batches of yalms at the same time, to do that just spe
 
 ##### Simple execution:
 
-`python3 ya2ro.py -i test_files`   
-`python3 ya2ro.py -i test_files/project_yemplate.yaml`   
+`python3 ya2ro.py -i templates`   
+`python3 ya2ro.py -i templates/project_yemplate.yaml`   
 
 ##### With optional arguments:
 
-`python3 ya2ro.py -input test_files --output_directory out --properties_file custom_properties.yaml`   
-`python3 ya2ro.py -i test_files -o out -p custom_properties.yaml`
+`python3 ya2ro.py -input templates --output_directory out --properties_file custom_properties.yaml`   
+`python3 ya2ro.py -i templates -o out -p custom_properties.yaml`
 
 ### Create landing page
 
