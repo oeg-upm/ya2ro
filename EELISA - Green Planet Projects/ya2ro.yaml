@@ -1,0 +1,39 @@
+type: "project"
+
+title: "EELISA Project - ya2ro"
+
+goal: "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object."
+
+social_motivation: "This tool aims to make visible projects or papers that otherwise would be forgotten, since they do not have a visual or machine readable representation making it harder to be discovered or shared."
+
+sketch: "images/sketch_ya2ro.jpg"
+
+areas: 
+  - "Programming"
+  - "Research"
+  
+demo: 
+  -
+    name: "Demo Green Planet Projects"
+    link: https://oeg-upm.github.io/ya2ro/output/landing_page.html
+    description: "This is an output example using the 'Green Planet Projects' yalms as input and it is hosted on GitHub Pages."
+
+software: 
+  - 
+    link: https://github.com/oeg-upm/ya2ro
+    description: "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object."
+  -
+    link: https://github.com/KnowledgeCaptureAndDiscovery/somef/
+
+participants:  
+  -
+    orcid: https://orcid.org/0000-0003-0454-7145
+    role: "Coordinator"
+  -
+    name: "Antonia Pavel"
+    position: "Research Assistant at Universidad Politécnica de Madrid"
+    description: "Student of the double major in Computer Engineering and Business Administration and Management from Universidad Politécnica de Madrid, Spain."
+    web: https://github.com/PavelAntonia
+    photo: "images/AntoniaPavel.jpg"
+
+

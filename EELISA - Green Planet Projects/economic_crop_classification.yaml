@@ -1,0 +1,35 @@
+type: "project"
+title: "Economic crop classification"
+
+goal: "Generate a crop classification that supports the individual decision-making model of small farmers.  To identify the complex relationships among the determinants and motivations, behind the production of each crop we use agronomic, environmental, economic, social, and market variables."
+
+social_motivation: "Contribuir a reducir la brecha digital que existe entre pequeños y grandes productores agrícolas. Integrando, procesando y analizando información para que sea útil para agricultores, técnicos y legisladores."
+
+sketch: "images/crop_classification.jpg"
+
+datasets: 
+  - 
+    link: "https://smn.conagua.gob.mx/es/climatologia/informacion-climatologica/informacion-estadistica-climatologica" 
+    name: "Información climatológica nacional"
+    description: "Climatological information reported by the Basin Organizations and Local Directorates of CONAGUA. Daily records of rain and minimum and maximum temperature."
+  - 
+    link: "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CE166&locale=es" 
+    name: "Ingresos por remesas, distribución por municipio - (CE166)"
+    description: "Quarterly income of dollars from remittances"
+  - 
+    link: "https://www.gob.mx/siap/documentos/siacon-ng-161430" 
+    name: "Sistema de Información Agroalimentaria de Consulta"
+    description: "Information on all national monitoring crops, by season, and by water modality. The query variables are sown, harvested areas; production, yield, average rural price and monetary value of production."
+  - 
+    link: "https://patp-coneval.hub.arcgis.com/" 
+    name: "Análisis Territorial de la Pobreza"
+    description: "Geospatial information on the distribution of poverty by municipality in the state of Guanajuato."
+
+participants:  
+  -
+    role: "Coordinator"
+  -
+    name: "Rossana Tornel Vázquez"
+    position: "Research Assistant at Universidad PolitÃ©cnica de Madrid"
+    description: "Student of the PhD in Agro-Environmental Technology for sustainable agriculture from Universidad PolitÃ©cnica de Madrid, Spain."
+
