@@ -64,7 +64,7 @@ class ro_html(object):
     def init_bib(self, bib):
 
         bib_component = f"""<div class="w3-container" style="margin-top:15px">
-		<h1 class="w3-xxxlarge w3-text-green"><b>Bibtext</b></h1>
+		<h1 class="w3-xxxlarge w3-text-green"><b>Citation</b></h1>
         <hr style="width:50px;border:5px solid green" class="w3-round">
             <div style="overflow-x: auto; background-color: whitesmoke; color: black;">
                 {hilite_me.bib_formatter(bib)}
