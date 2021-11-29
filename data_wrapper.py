@@ -13,7 +13,7 @@ class Contact:
 
 @dataclass(unsafe_hash=True)
 class Project(Iterable):
-    requirements: list = ("title","goal","areas","activities","datasets","software","bibliography","authors")
+    requirements: list = ("title","goal","areas","datasets","software","bibliography","authors")
     title: str = None
     goal: str = None
     social_motivation: str = None
