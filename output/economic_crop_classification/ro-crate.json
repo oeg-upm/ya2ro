@@ -1,0 +1,105 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "project",
+            "author": [
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#rossana_tornel_v\u00e1zquez"
+                }
+            ],
+            "description": "Generate a crop classification that supports the individual decision-making model of small farmers.  To identify the complex relationships among the determinants and motivations, behind the production of each crop we use agronomic, environmental, economic, social, and market variables.",
+            "hasPart": [
+                {
+                    "@id": "#informaci\u00f3n_climatol\u00f3gica_nacional"
+                },
+                {
+                    "@id": "#ingresos_por_remesas,_distribuci\u00f3n_por_municipio_-_(ce166)"
+                },
+                {
+                    "@id": "#sistema_de_informaci\u00f3n_agroalimentaria_de_consulta"
+                },
+                {
+                    "@id": "#an\u00e1lisis_territorial_de_la_pobreza"
+                },
+                {
+                    "@id": "index-en.html"
+                }
+            ],
+            "name": "Economic crop classification"
+        },
+        {
+            "@id": "#none",
+            "@type": "Person",
+            "description": null,
+            "name": null,
+            "position": null
+        },
+        {
+            "@id": "#rossana_tornel_v\u00e1zquez",
+            "@type": "Person",
+            "description": "Student of the PhD in Agro-Environmental Technology for sustainable agriculture from Universidad Polit\u00c3\u00a9cnica de Madrid, Spain.",
+            "name": "Rossana Tornel V\u00e1zquez",
+            "position": [
+                "Research Assistant at Universidad Polit\u00c3\u00a9cnica de Madrid"
+            ]
+        },
+        {
+            "@id": "#informaci\u00f3n_climatol\u00f3gica_nacional",
+            "@type": "Dataset",
+            "description": "Climatological information reported by the Basin Organizations and Local Directorates of CONAGUA. Daily records of rain and minimum and maximum temperature.",
+            "distribution": {
+                "@id": "https://smn.conagua.gob.mx/es/climatologia/informacion-climatologica/informacion-estadistica-climatologica"
+            },
+            "name": "Informaci\u00f3n climatol\u00f3gica nacional"
+        },
+        {
+            "@id": "#ingresos_por_remesas,_distribuci\u00f3n_por_municipio_-_(ce166)",
+            "@type": "Dataset",
+            "description": "Quarterly income of dollars from remittances",
+            "distribution": {
+                "@id": "https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&idCuadro=CE166&locale=es"
+            },
+            "name": "Ingresos por remesas, distribuci\u00f3n por municipio - (CE166)"
+        },
+        {
+            "@id": "#sistema_de_informaci\u00f3n_agroalimentaria_de_consulta",
+            "@type": "Dataset",
+            "description": "Information on all national monitoring crops, by season, and by water modality. The query variables are sown, harvested areas; production, yield, average rural price and monetary value of production.",
+            "distribution": {
+                "@id": "https://www.gob.mx/siap/documentos/siacon-ng-161430"
+            },
+            "name": "Sistema de Informaci\u00f3n Agroalimentaria de Consulta"
+        },
+        {
+            "@id": "#an\u00e1lisis_territorial_de_la_pobreza",
+            "@type": "Dataset",
+            "description": "Geospatial information on the distribution of poverty by municipality in the state of Guanajuato.",
+            "distribution": {
+                "@id": "https://patp-coneval.hub.arcgis.com/"
+            },
+            "name": "An\u00e1lisis Territorial de la Pobreza"
+        },
+        {
+            "@id": "index-en.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

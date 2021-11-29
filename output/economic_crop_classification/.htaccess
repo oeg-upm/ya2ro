@@ -6,7 +6,7 @@
 
     RewriteEngine on
 
-    RewriteBase /output/paper1
+    RewriteBase /output/economic_crop_classification
 
     # Rewrite rule to serve HTML
     RewriteCond %{HTTP_ACCEPT} !application/rdf\+xml.*(text/html|application/xhtml\+xml)

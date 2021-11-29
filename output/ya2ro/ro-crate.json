@@ -33,12 +33,6 @@
                     "@id": "#somef"
                 },
                 {
-                    "@id": "#name_dataset_1"
-                },
-                {
-                    "@id": "#name_dataset_2"
-                },
-                {
                     "@id": "index-en.html"
                 }
             ],
@@ -67,7 +61,7 @@
             "@id": "#ya2ro",
             "@type": "SoftwareApplication",
             "description": "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
-            "installUrl": "https://github.com/oeg-upm/EELISA-research-object"
+            "installUrl": "https://github.com/oeg-upm/ya2ro"
         },
         {
             "@id": "#somef",
@@ -76,36 +70,12 @@
             "installUrl": "https://github.com/KnowledgeCaptureAndDiscovery/somef/"
         },
         {
-            "@id": "#name_dataset_1",
-            "@type": "Dataset",
-            "description": "description dataset 1",
-            "distribution": {
-                "@id": "www.linkD1.com"
-            },
-            "name": "name dataset 1"
-        },
-        {
-            "@id": "#name_dataset_2",
-            "@type": "Dataset",
-            "description": "description dataset 2",
-            "distribution": {
-                "@id": "www.linkD2.com"
-            },
-            "name": "name dataset 2"
-        },
-        {
             "workExample": [
                 {
                     "@type": "Demo",
-                    "description": "This is a description for a demo for the ya2ro EELISA project.",
+                    "description": "This is an output example using the 'Green Planet Projects' yalms as input and it is hosted on GitHub Pages.",
                     "link": "https://oeg-upm.github.io/ya2ro/output/landing_page.html",
-                    "name": null
-                },
-                {
-                    "@type": "Demo",
-                    "description": "This is a SECOND description for a demo for the ya2ro EELISA project but with name.",
-                    "link": "https://oeg-upm.github.io/ya2ro/output/landing_page.html",
-                    "name": "GitHub Pages demo"
+                    "name": "Demo Green Planet Projects"
                 }
             ]
         },

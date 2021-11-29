@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<title>Paper - Template</title>
+<title>Economic crop classification</title>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
@@ -31,13 +31,11 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <div class="row" style="margin-bottom:2em;margin-top:2em;">
 <div class="column">
 <!-- Requiremnts okay logo -->
-<span id="recogn_logo"><a href="#">
-<img alt="Complete-Paper" src="images/complete_paper.png" style="width: 8em;" title="This paper has the necessary characteristics to be recognized as an complete paper."/>
-</a></span>
+<span id="recogn_logo"></span>
 </div>
 </div>
 <div class="w3-bar-block">
-<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#summary" onclick="w3_close()">Summary</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
+<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#goal" onclick="w3_close()">Goal</a><a class="w3-bar-item w3-button w3-hover-white" href="#social_motivation" onclick="w3_close()">Social motivation</a><a class="w3-bar-item w3-button w3-hover-white" href="#sketch" onclick="w3_close()">Sketch</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
 </div>
 <div class="row" style="position: absolute; bottom: 25px; height: 50px;">
 <div class="column">
@@ -61,52 +59,51 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
 <!-- !PAGE CONTENT! -->
-<div class="w3-main" style="margin-left:340px;margin-right:40px">
+<div class="w3-main" style="margin:auto; padding-left: 340px; max-width: 1500px;">
 <!-- Header -->
 <div class="w3-container" id="showcase" style="margin-top:80px">
-<h1>Paper - Template</h1>
+<h1>Economic crop classification</h1>
 </div>
 <!-- Summary -->
-<span id="summary"><div class="w3-container" style="margin-top:15px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Summary</b></h1>
-<hr class="w3-round" style="width:50px;border:5px solid green"/>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus odio egestas neque porttitor sollicitudin. Sed fermentum placerat nisi quis congue. Fusce bibendum eros eu dui efficitur, sit amet lobortis ex imperdiet. Cras sagittis nibh facilisis viverra feugiat. Nullam dapibus vitae dui vel pulvinar. Phasellus imperdiet est a luctus mattis. Praesent nec dui sed augue pharetra ultricies vitae et magna. Nam cursus fringilla nulla, sit amet tempus elit fermentum eget. Sed tincidunt nulla vitae quam pulvinar, in varius turpis semper. Sed imperdiet, ex quis dignissim volutpat, ligula mi blandit dolor, nec lacinia mi mauris sit amet eros. In vitae enim a dolor porta mollis at quis turpis. Mauris pulvinar velit neque, eget tincidunt nisl vestibulum in. Praesent eu erat vitae est molestie volutpat. Nam ullamcorper ipsum sed auctor sagittis. Nunc et cursus lacus. Curabitur in metus egestas, cursus libero id, posuere purus. Nulla dignissim et neque et suscipit. Fusce porttitor mi quis cursus luctus. In hac habitasse platea dictumst. Maecenas a finibus neque. Maecenas arcu massa, tristique et nulla in, vehicula condimentum mi.</p>
-</div></span>
+<span id="summary"></span>
 <!-- Goal -->
-<span id="goal"></span>
+<span id="goal"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Goal</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<p>Generate a crop classification that supports the individual decision-making model of small farmers.  To identify the complex relationships among the determinants and motivations, behind the production of each crop we use agronomic, environmental, economic, social, and market variables.</p>
+</div></span>
 <!-- Social Motivation -->
-<span id="social_motivation"></span>
+<span id="social_motivation"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Social Motivation</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<p>Contribuir a reducir la brecha digital que existe entre pequeños y grandes productores agrícolas. Integrando, procesando y analizando información para que sea útil para agricultores, técnicos y legisladores.</p>
+</div></span>
 <!-- Areas -->
 <span id="areas"></span>
 <!-- Activities -->
 <span id="activities"></span>
 <!-- Sketch -->
-<span id="sketch"></span>
+<span id="sketch"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Sketch</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<img alt="Sketch of the project" src="images/crop_classification.jpg" style="width: -webkit-fill-available;"/>
+</div></span>
 <!-- Demo -->
 <span id="demo"></span>
 <!-- datasets -->
 <span id="datasets"><div class="w3-container" id="datasets" style="margin-top:75px">
 <h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
 <hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ul><li><p><a href="www.D1.com">Dataset 1</a></p>
-<ul><li><b>Description:</b> Description dataset 1</li></ul></li><li><p><a href="www.D2.com">Dataset 2</a></p>
-<ul><li><b>Description:</b> Description dataset 2</li></ul></li></ul>
+<ul><li><p><a href="https://smn.conagua.gob.mx/es/climatologia/informacion-climatologica/informacion-estadistica-climatologica">Información climatológica nacional</a></p>
+<ul><li><b>Description:</b> Climatological information reported by the Basin Organizations and Local Directorates of CONAGUA. Daily records of rain and minimum and maximum temperature.</li></ul></li><li><p><a href="https://www.banxico.org.mx/SieInternet/consultarDirectorioInternetAction.do?accion=consultarCuadro&amp;idCuadro=CE166&amp;locale=es">Ingresos por remesas, distribución por municipio - (CE166)</a></p>
+<ul><li><b>Description:</b> Quarterly income of dollars from remittances</li></ul></li><li><p><a href="https://www.gob.mx/siap/documentos/siacon-ng-161430">Sistema de Información Agroalimentaria de Consulta</a></p>
+<ul><li><b>Description:</b> Information on all national monitoring crops, by season, and by water modality. The query variables are sown, harvested areas; production, yield, average rural price and monetary value of production.</li></ul></li><li><p><a href="https://patp-coneval.hub.arcgis.com/">Análisis Territorial de la Pobreza</a></p>
+<ul><li><b>Description:</b> Geospatial information on the distribution of poverty by municipality in the state of Guanajuato.</li></ul></li></ul>
 </div></span>
 <!-- Software -->
-<span id="software"><div class="w3-container" id="software" style="margin-top:75px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
-<hr class="w3-round" style="width:50px;border:5px solid green"/>
-        The pointers for the main software used can be found below:
-        <ul><li><p><a href="http://software-1.com">Software 1</a></p>
-<ul><li><b>Description:</b> Description software 1</li><li><b>License:</b> MIT-License</li></ul></li><li><p><a href="http://software-2.com">http://software-2.com</a></p>
-<ul><li><b>Description:</b> Description software 2</li><li><b>License:</b> MIT-License</li></ul></li></ul>
-</div></span>
+<span id="software"></span>
 <!-- Bibliography -->
-<span id="bibliography"><div class="w3-container" id="bib" style="margin-top:75px">
-<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
-<hr class="w3-round" style="width:50px;border:5px solid green"/>
-<ul><li>Bibliography entry 1</li><li>Bibliography entry 2</li><li>Bibliography entry 3</li></ul>
-</div></span>
+<span id="bibliography"></span>
 <!-- Contact -->
 <span id="contact"></span>
 <!-- Authors -->
@@ -118,14 +115,10 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <div class="w3-light-grey" style="padding-bottom: 10px;">
 <div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
                             margin: auto;">
-<img alt="Author" src="images//default_author.jpg" style="width:100%;"/>
+<img alt="" src="images//default_author.jpg" style="width:100%;"/>
 </div>
 <div class="w3-container">
-<h3><a href="https://author-web.com/">Author</a></h3>
-<p class="w3-opacity">Author</p>
-<p class="w3-opacity">Author's position</p>
-<a href="https://author-web.com/">https://author-web.com/</a>
-<p>Author's description</p>
+<p class="w3-opacity">Coordinator</p>
 </div>
 </div>
 </div>
@@ -133,29 +126,13 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <div class="w3-light-grey" style="padding-bottom: 10px;">
 <div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
                             margin: auto;">
-<img alt="Author" src="images//default_author.jpg" style="width:100%;"/>
+<img alt="Rossana Tornel Vázquez" src="images//default_author.jpg" style="width:100%;"/>
 </div>
 <div class="w3-container">
-<h3><a href="https://author-web.com/">Author</a></h3>
+<h3><a href="">Rossana Tornel Vázquez</a></h3>
 <p class="w3-opacity">Author</p>
-<p class="w3-opacity">Author's position</p>
-<a href="https://author-web.com/">https://author-web.com/</a>
-<p>Author's description</p>
-</div>
-</div>
-</div>
-<div class="w3-col m4 w3-margin-bottom">
-<div class="w3-light-grey" style="padding-bottom: 10px;">
-<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
-                            margin: auto;">
-<img alt="Author" src="images//default_author.jpg" style="width:100%;"/>
-</div>
-<div class="w3-container">
-<h3><a href="https://author-web.com/">Author</a></h3>
-<p class="w3-opacity">Author</p>
-<p class="w3-opacity">Author's position</p>
-<a href="https://author-web.com/">https://author-web.com/</a>
-<p>Author's description</p>
+<p class="w3-opacity">Research Assistant at Universidad PolitÃ©cnica de Madrid</p>
+<p>Student of the PhD in Agro-Environmental Technology for sustainable agriculture from Universidad PolitÃ©cnica de Madrid, Spain.</p>
 </div>
 </div>
 </div>
