@@ -103,7 +103,7 @@ title: "Paper - Template"
 
 `summary:`A brief summary of the paper, also known as an abstract.
 ```yaml
-summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus odio egestas neque porttitor sollicitudin. Sed fermentum placerat nisi quis congue."
+summary: "This is a summary of the paper."
 ```
 
 `datasets:` All the datasets used and created during the paper. This tool supports to define each dataset manually specifying all fields or to use a DOI and ya2ro will try to automatically fetch the data.
@@ -171,7 +171,7 @@ goal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus odio
 ```
 `social_motivation:`In this field you should include why this project will help in a social way.
 ```yaml
-social_motivation: "Suspendisse est justo, finibus a nisi eget, condimentum imperdiet mi. Mauris sagittis diam mi, sit amet blandit ipsum semper sed."
+social_motivation: "This is the social motivation behind this project."
 ```
 `sketch:`Path to an image where a visual description/workflow is shown.
 ```yaml
