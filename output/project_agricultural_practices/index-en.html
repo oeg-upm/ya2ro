@@ -15,6 +15,7 @@ body {font-size:16px; text-align: justify;}
 img {display: block;margin-left: auto;margin-right: auto;}
 .column {float: left;width: 50%;padding: 5px;}
 .row::after {content: ""; clear: both; display: table;}
+.centered-element {margin: 0;position: absolute;top: 50%;transform: translateY(-50%);}
 
 
 
@@ -34,7 +35,7 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <span id="recogn_logo"></span>
 </div>
 </div>
-<div class="w3-bar-block">
+<div class="w3-bar-block centered-element">
 <span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#goal" onclick="w3_close()">Goal</a><a class="w3-bar-item w3-button w3-hover-white" href="#areas" onclick="w3_close()">Areas</a><a class="w3-bar-item w3-button w3-hover-white" href="#demo" onclick="w3_close()">Demo</a><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
 </div>
 <div class="row" style="position: absolute; bottom: 25px; height: 50px;">

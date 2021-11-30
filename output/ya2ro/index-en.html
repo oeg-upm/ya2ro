@@ -15,6 +15,7 @@ body {font-size:16px; text-align: justify;}
 img {display: block;margin-left: auto;margin-right: auto;}
 .column {float: left;width: 50%;padding: 5px;}
 .row::after {content: ""; clear: both; display: table;}
+.centered-element {margin: 0;position: absolute;top: 50%;transform: translateY(-50%);}
 
 
 
@@ -36,7 +37,7 @@ img {display: block;margin-left: auto;margin-right: auto;}
 </a></span>
 </div>
 </div>
-<div class="w3-bar-block">
+<div class="w3-bar-block centered-element">
 <span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#goal" onclick="w3_close()">Goal</a><a class="w3-bar-item w3-button w3-hover-white" href="#social_motivation" onclick="w3_close()">Social motivation</a><a class="w3-bar-item w3-button w3-hover-white" href="#sketch" onclick="w3_close()">Sketch</a><a class="w3-bar-item w3-button w3-hover-white" href="#areas" onclick="w3_close()">Areas</a><a class="w3-bar-item w3-button w3-hover-white" href="#demo" onclick="w3_close()">Demo</a><a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
 </div>
 <div class="row" style="position: absolute; bottom: 25px; height: 50px;">
@@ -129,7 +130,7 @@ img {display: block;margin-left: auto;margin-right: auto;}
 <div class="w3-container">
 <h3><a href="https://orcid.org/0000-0003-0454-7145">Daniel Garijo</a></h3>
 <p class="w3-opacity">Coordinator</p>
-<p class="w3-opacity">Universidad Politécnica de Madrid, University of Southern California</p>
+<p class="w3-opacity">University of Southern California, Universidad Politécnica de Madrid</p>
 <a href="http://w3id.org/people/dgarijo">http://w3id.org/people/dgarijo</a>
 <p>I am a researcher at Universidad Politécnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.</p>
 </div>
