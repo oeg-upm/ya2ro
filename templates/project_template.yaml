@@ -3,9 +3,9 @@ type: "project"
 
 title: "Project - Template"
 
-goal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus odio egestas neque porttitor sollicitudin. Sed fermentum placerat nisi quis congue. Fusce bibendum eros eu dui efficitur, sit amet lobortis ex imperdiet. Cras sagittis nibh facilisis viverra feugiat. Nullam dapibus vitae dui vel pulvinar. Phasellus imperdiet est a luctus mattis. Praesent nec dui sed augue pharetra ultricies vitae et magna. Nam cursus fringilla nulla, sit amet tempus elit fermentum eget. Sed tincidunt nulla vitae quam pulvinar, in varius turpis semper. Sed imperdiet, ex quis dignissim volutpat, ligula mi blandit dolor, nec lacinia mi mauris sit amet eros. In vitae enim a dolor porta mollis at quis turpis. Mauris pulvinar velit neque, eget tincidunt nisl vestibulum in. Praesent eu erat vitae est molestie volutpat. Nam ullamcorper ipsum sed auctor sagittis.Nunc et cursus lacus. Curabitur in metus egestas, cursus libero id, posuere purus. Nulla dignissim et neque et suscipit. Fusce porttitor mi quis cursus luctus. In hac habitasse platea dictumst. Maecenas a finibus neque. Maecenas arcu massa, tristique et nulla in, vehicula condimentum mi."
+goal: "Here is where a description of what is this project trying to achieve must be located."
 
-social_motivation: "Suspendisse est justo, finibus a nisi eget, condimentum imperdiet mi. Mauris sagittis diam mi, sit amet blandit ipsum semper sed. Suspendisse sollicitudin sem sapien, quis volutpat nibh varius dictum. Integer at mauris imperdiet nunc ultrices consectetur vitae eu nulla. Phasellus sed dolor et diam dignissim blandit. Morbi sit amet ipsum laoreet, dignissim mi accumsan, tristique neque. Suspendisse potenti. Sed aliquam sagittis mauris, sed sollicitudin lectus laoreet ac. Ut porttitor ut leo eu facilisis. Phasellus finibus tincidunt congue. Nullam eget malesuada nibh. Vivamus in est vulputate, sagittis mauris in, molestie augue. Vestibulum dapibus vestibulum justo, hendrerit consectetur ex scelerisque ut."
+social_motivation: "This is the social motivation behind this project."
 
 sketch: "images/sketch_ya2ro.jpg"
 

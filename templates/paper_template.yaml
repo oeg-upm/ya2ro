@@ -1,7 +1,10 @@
 # Mandatory field
 type: "paper"
+
 title: "Paper - Template"
-summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus odio egestas neque porttitor sollicitudin. Sed fermentum placerat nisi quis congue. Fusce bibendum eros eu dui efficitur, sit amet lobortis ex imperdiet. Cras sagittis nibh facilisis viverra feugiat. Nullam dapibus vitae dui vel pulvinar. Phasellus imperdiet est a luctus mattis. Praesent nec dui sed augue pharetra ultricies vitae et magna. Nam cursus fringilla nulla, sit amet tempus elit fermentum eget. Sed tincidunt nulla vitae quam pulvinar, in varius turpis semper. Sed imperdiet, ex quis dignissim volutpat, ligula mi blandit dolor, nec lacinia mi mauris sit amet eros. In vitae enim a dolor porta mollis at quis turpis. Mauris pulvinar velit neque, eget tincidunt nisl vestibulum in. Praesent eu erat vitae est molestie volutpat. Nam ullamcorper ipsum sed auctor sagittis. Nunc et cursus lacus. Curabitur in metus egestas, cursus libero id, posuere purus. Nulla dignissim et neque et suscipit. Fusce porttitor mi quis cursus luctus. In hac habitasse platea dictumst. Maecenas a finibus neque. Maecenas arcu massa, tristique et nulla in, vehicula condimentum mi."
+
+summary: "This is a summary of the paper."
+
 datasets:
   - 
     link: www.D1.com 

@@ -167,7 +167,7 @@ title: "Project - Template"
 ```
 `goal:`In this field you should inlcude the goal for the project.
 ```yaml
-goal: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed finibus odio egestas neque porttitor sollicitudin."
+goal: "Here is where a description of what is this project trying to achieve."
 ```
 `social_motivation:`In this field you should include why this project will help in a social way.
 ```yaml
