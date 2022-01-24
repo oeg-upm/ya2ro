@@ -12,6 +12,7 @@ bs4 = "^0.0.1"
 requests = "^2.27.1"
 bibtexparser = "^1.2.0"
 Pygments = "^2.11.2"
+somef = "^0.6.0"
 
 [tool.poetry.dev-dependencies]
 
