@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "ya2ro"
+version = "0.1.0"
+description = "Human and machine readable input as a yaml file and create RO-Object in jsonld and/or HTML"
+authors = ["view."]
+license = "Apache License"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+PyYAML = "^6.0"
+bs4 = "^0.0.1"
+requests = "^2.27.1"
+bibtexparser = "^1.2.0"
+Pygments = "^2.11.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
