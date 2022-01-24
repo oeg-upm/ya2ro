@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<title>Title</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+<style id="style">
+
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px; text-align: justify;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+img {display: block;margin-left: auto;margin-right: auto;}
+.column {float: left;width: 50%;padding: 5px;}
+.row::after {content: ""; clear: both; display: table;}
+
+
+
+            h1,h1 b{color:#fff!important}
+            .w3-light-grey{background-color:#ddd!important;color:#222831!important}
+            .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
+            body{background-color:#222831!important;color:#fff!important}
+            </style>
+<body>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" id="mySidebar" style="z-index:3;width:300px;font-weight:bold;"><br/>
+<a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()" style="width:100%;font-size:22px">Close Menu</a>
+<!-- LOGO if recognized -->
+<div class="row" style="margin-bottom:2em;margin-top:2em;">
+<div class="column">
+<!-- back button -->
+<a href="index-en.html" id="back-button">
+<img alt="back-button" src="https://img.icons8.com/material/48/000000/arrow-pointing-left--v2.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0; padding-top: 1em;" title="Return to the main page."/>
+</a>
+</div>
+</div>
+<div class="w3-bar-block">
+<span id="sidebar"></span>
+</div>
+<div class="row" style="position: absolute; bottom: 25px; height: 50px;">
+<div class="column">
+<a href="ro-crate.json" id="jsonld_svg">
+<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0; " title="Retrieve the JSON-LD ro-crate representation of this web."/>
+</a>
+</div>
+<div class="column">
+<!-- Help button -->
+<a href="#" id="help-button">
+<img alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0;" title="Description of each element and how was this web created."/>
+</a>
+</div>
+</div>
+
+</nav>
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
+<a class="w3-button w3-green w3-margin-right" href="javascript:void(0)" onclick="w3_open()">☰</a>
+</header>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin:auto; padding-left: 340px; max-width: 1500px;">
+<!-- Header -->
+<!-- <div class="w3-container" style="margin-top:80px" id="showcase">
+		<h1><b> Help </b></h1>
+	</div> -->
+<!-- Icons_explanation -->
+<span id="icons_explanation">
+<div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Icons</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<div class="row">
+<div class="column" style="width:30%;">
+<img alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%);
+            width: 60px; margin: 0; display:block; margin-left:auto; margin-right:auto;" title="Description of each element and how was this webpage created."/>
+</div>
+<div class="column" style="width:70%;">
+<p>It is a help button that redirects to this page, where you can find a more in-depth explanation of the website.</p>
+</div>
+</div>
+<div class="row">
+<div class="column" style="width:30%;">
+<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%);
+            width: 60px; margin: 0; display:block; margin-left:auto; margin-right:auto;" title="Retrieve the JSON-LD ro-crate representation of this webpage."/>
+</div>
+<div class="column" style="width:70%;">
+<p>It is a button that redirects you to a JSON-LD RO-Crate representation of the data of this webpage, which is used to ease the understanding of the content to machines.</p>
+</div>
+</div>
+</div>
+</span>
+<!-- How the information was retrieved? -->
+<span id="how_info"><div class="w3-container" style="margin-top:15px">
+<h1 class="w3-xxxlarge w3-text-green"><b>How was the information retrieved?</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<p>This webpage was created using the tool ya2ro which takes as an input a yaml file with all the relevant information and pointers to the webpage. Then, it merges the information retrieved from the webpage pointers with the provided information in the yaml file. In this case, the yaml file used was the following:</p>
+<div style="overflow-x: auto; background-color: whitesmoke; color: black;">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+-->
+<html>
+<head>
+<title></title>
+<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+<style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f0f0f0; }
+body .c { color: #60a0b0; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #007020; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+body .cp { color: #007020 } /* Comment.Preproc */
+body .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+body .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #007020 } /* Keyword.Pseudo */
+body .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #902000 } /* Keyword.Type */
+body .m { color: #40a070 } /* Literal.Number */
+body .s { color: #4070a0 } /* Literal.String */
+body .na { color: #4070a0 } /* Name.Attribute */
+body .nb { color: #007020 } /* Name.Builtin */
+body .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+body .no { color: #60add5 } /* Name.Constant */
+body .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+body .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+body .ne { color: #007020 } /* Name.Exception */
+body .nf { color: #06287e } /* Name.Function */
+body .nl { color: #002070; font-weight: bold } /* Name.Label */
+body .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+body .nt { color: #062873; font-weight: bold } /* Name.Tag */
+body .nv { color: #bb60d5 } /* Name.Variable */
+body .ow { color: #007020; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #40a070 } /* Literal.Number.Bin */
+body .mf { color: #40a070 } /* Literal.Number.Float */
+body .mh { color: #40a070 } /* Literal.Number.Hex */
+body .mi { color: #40a070 } /* Literal.Number.Integer */
+body .mo { color: #40a070 } /* Literal.Number.Oct */
+body .sa { color: #4070a0 } /* Literal.String.Affix */
+body .sb { color: #4070a0 } /* Literal.String.Backtick */
+body .sc { color: #4070a0 } /* Literal.String.Char */
+body .dl { color: #4070a0 } /* Literal.String.Delimiter */
+body .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #4070a0 } /* Literal.String.Double */
+body .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #4070a0 } /* Literal.String.Heredoc */
+body .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+body .sx { color: #c65d09 } /* Literal.String.Other */
+body .sr { color: #235388 } /* Literal.String.Regex */
+body .s1 { color: #4070a0 } /* Literal.String.Single */
+body .ss { color: #517918 } /* Literal.String.Symbol */
+body .bp { color: #007020 } /* Name.Builtin.Pseudo */
+body .fm { color: #06287e } /* Name.Function.Magic */
+body .vc { color: #bb60d5 } /* Name.Variable.Class */
+body .vg { color: #bb60d5 } /* Name.Variable.Global */
+body .vi { color: #bb60d5 } /* Name.Variable.Instance */
+body .vm { color: #bb60d5 } /* Name.Variable.Magic */
+body .il { color: #40a070 } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"project"</span><span class="w"></span>
+
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s">"Good</span><span class="nv"> </span><span class="s">Agricultural</span><span class="nv"> </span><span class="s">Practices</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">Damage</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">Loss</span><span class="nv"> </span><span class="s">Assessment</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Comprehensive</span><span class="nv"> </span><span class="s">Management</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Disaster</span><span class="nv"> </span><span class="s">Risk</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">Climate-Adapted</span><span class="nv"> </span><span class="s">Sustainable</span><span class="nv"> </span><span class="s">Agriculture</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Dry</span><span class="nv"> </span><span class="s">Corridor</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Central</span><span class="nv"> </span><span class="s">America."</span><span class="w"></span>
+
+<span class="nt">goal</span><span class="p">:</span><span class="w"> </span><span class="s">"Determine</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">work</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">agricultural</span><span class="nv"> </span><span class="s">extension</span><span class="nv"> </span><span class="s">services</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">key</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">search</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">development</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">territories</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Salvador</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">Guatemala;</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">their</span><span class="nv"> </span><span class="s">learnings,</span><span class="nv"> </span><span class="s">recommendations</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">their</span><span class="nv"> </span><span class="s">potential</span><span class="nv"> </span><span class="s">replicability."</span><span class="w"></span>
+
+<span class="nt">areas</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"Agronomy"</span><span class="w"></span>
+<span class="w">  </span>
+<span class="nt">demo</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"></span>
+<span class="w">    </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://drive.google.com/drive/folders/1xKIWHDgsBjiRalMb5BM-pDHEbslLYJpr</span><span class="w"></span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Anonymous</span><span class="nv"> </span><span class="s">interview</span><span class="nv"> </span><span class="s">transcript."</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"></span>
+<span class="w">    </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://drive.google.com/drive/folders/1I_KPjAKJ1zKPWqj2VVWj4uRLOxH2DCLk</span><span class="w"></span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Interview</span><span class="nv"> </span><span class="s">questions."</span><span class="w"></span>
+<span class="w"> </span>
+<span class="nt">datasets</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://drive.google.com/drive/folders/1S-JNn_FYfYJHnya_rIsQpCT9j_AinuzV</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Bibliography"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Project</span><span class="nv"> </span><span class="s">documentation"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">doi_dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://drive.google.com/drive/folders/1S-JNn_FYfYJHnya_rIsQpCT9j_AinuzV</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://drive.google.com/drive/folders/1LVmRdxz7xzL5xRsk05x14s3ilVR4HGsG</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Anonymous</span><span class="nv"> </span><span class="s">interview"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Anonymous</span><span class="nv"> </span><span class="s">interview</span><span class="nv"> </span><span class="s">transcript"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">doi_dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://drive.google.com/drive/folders/1LVmRdxz7xzL5xRsk05x14s3ilVR4HGsG</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://drive.google.com/drive/folders/1I_KPjAKJ1zKPWqj2VVWj4uRLOxH2DCLk</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Interview</span><span class="nv"> </span><span class="s">questions"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Interview</span><span class="nv"> </span><span class="s">questions"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">doi_dataset</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://drive.google.com/drive/folders/1I_KPjAKJ1zKPWqj2VVWj4uRLOxH2DCLk</span><span class="w"></span>
+
+<span class="nt">bibliography</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://drive.google.com/drive/folders/1H1MQTyS_C7ulMJ4cASh2hnhG1xNuAQWj</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://drive.google.com/drive/folders/1gwqgfdslm-s_ffzAwLXoJD9cR0xMSQ9f</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://drive.google.com/drive/folders/14AHEfGmjgTs7sCG-cbcogU8aVRax1vHp</span><span class="w"></span>
+
+<span class="nt">participants</span><span class="p">:</span><span class="w">  </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"></span>
+<span class="w">    </span><span class="nt">orcid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://orcid.org/0000-0003-0212-3381</span><span class="w"></span>
+<span class="w">    </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="s">"Coordinator"</span><span class="w"></span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"></span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Sara</span><span class="nv"> </span><span class="s">Brinquis</span><span class="nv"> </span><span class="s">Fava"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="s">"Research</span><span class="nv"> </span><span class="s">Assistant</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">Universidad</span><span class="nv"> </span><span class="s">Politécnica</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">Madrid"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"2nd</span><span class="nv"> </span><span class="s">year</span><span class="nv"> </span><span class="s">student</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Enabling</span><span class="nv"> </span><span class="s">Master's</span><span class="nv"> </span><span class="s">Degree</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">Agronomic</span><span class="nv"> </span><span class="s">Engineering</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Polytechnic</span><span class="nv"> </span><span class="s">University</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Madrid"</span><span class="w"></span>
+<span class="w">    </span><span class="nt">photo</span><span class="p">:</span><span class="w"> </span><span class="s">"images/SaraBrinquisFava.jpg"</span><span class="w"></span>
+</pre></div>
+</td></tr></table></body>
+</html>
+</div>
+</div></span>
+<!-- End page content -->
+</div>
+<script>
+// Script to open and close sidebar
+function w3_open() {
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+	document.getElementById("img01").src = element.src;
+	document.getElementById("modal01").style.display = "block";
+	var captionText = document.getElementById("caption");
+	captionText.innerHTML = element.alt;
+}
+
+</script>
+</body>
+</html>
