@@ -214,7 +214,7 @@ class ro_html(object):
         sketch_component = f"""<div class="w3-container" style="margin-top:15px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Sketch</b></h1>
         <hr style="width:50px;border:5px solid green" class="w3-round">
-		<img src="{sketch}" alt="Sketch of the project" style="width: -webkit-fill-available;">
+		<img src="{sketch}" alt="Sketch of the project" style="width: 100%;">
 	    </div>"""
 
         ro_html.append_component(self.soup, "sketch", sketch_component)

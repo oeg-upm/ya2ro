@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ya2ro"
-version = "0.1.0"
+version = "0.0.1"
 description = "Human and machine readable input as a yaml file and create RO-Object in jsonld and/or HTML"
 authors = ["view."]
 license = "Apache License"
