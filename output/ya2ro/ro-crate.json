@@ -60,7 +60,7 @@
         {
             "@id": "#ya2ro",
             "@type": "SoftwareApplication",
-            "description": "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
+            "description": "Tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliography...) and generates two files with structured information with the intention of easing the readability for machines and people. ",
             "installUrl": "https://github.com/oeg-upm/ya2ro"
         },
         {
