@@ -1,9 +1,9 @@
 import os
-import properties as p
+from . import properties as p
 from bs4 import BeautifulSoup
-import data_wrapper
+from . import data_wrapper
 from pathlib import Path
-from ro_html import ro_html
+from .ro_html import ro_html
 
 class ro_landing_page(object):
 
@@ -27,7 +27,7 @@ class ro_landing_page(object):
 
     def create_landing_page(self):
 
-        soup_landing = BeautifulSoup(open(p.properties["template_landing"]), 'html.parser')
+        soup_landing = BeautifulSoup(open(Path(p.base_dir, p.properties["template_landing"])), 'html.parser')
 
         # Apply css style
         if p.style == "dark":

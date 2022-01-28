@@ -47,7 +47,7 @@ def main():
 
     args = parser.parse_args()
 
-    import properties
+    from . import properties
 
     properties.init(
         properties_file = args.properties_file, 
@@ -80,9 +80,9 @@ def process_yaml(yaml_folder_or_file_str):
         print(f"ERROR: -i, --input {yaml_folder_or_file_str} is not valid file or directory.")
         exit()
 
-    import data_wrapper
-    from ro_html import ro_html
-    from ro_jsonld import ro_jsonld
+    from . import data_wrapper
+    from .ro_html import ro_html
+    from .ro_jsonld import ro_jsonld
 
     for yaml in yaml_list:
 
@@ -109,7 +109,7 @@ def process_yaml(yaml_folder_or_file_str):
 
 def process_landing_page(landing_page_directory):
 
-    from ro_landing_page import ro_landing_page
+    from .ro_landing_page import ro_landing_page
 
     rlanding = ro_landing_page(landing_page_directory)
     rlanding.create_landing_page()

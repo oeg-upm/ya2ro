@@ -1,5 +1,5 @@
 from pygments import highlight
-from pygments.lexers.data import YamlLexer, JsonLexer
+from pygments.lexers.data import YamlLexer
 from pygments.lexers.scdoc import ScdocLexer
 from pygments.formatters import HtmlFormatter
 

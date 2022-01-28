@@ -1,5 +1,5 @@
 from pathlib import Path
-import properties as p
+from . import properties as p
 
 def create_htaccess(output_datafolder):
 

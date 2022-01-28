@@ -85,10 +85,10 @@ from yaml.loader import SafeLoader
 from pathlib import Path
 import os
 import sys
-import req_orcid
-import req_doi
+from . import req_orcid
+from . import req_doi
 import somef.cli
-import properties as p
+from . import properties as p
 import json
 
 
@@ -147,7 +147,7 @@ def load_yaml(input_yaml):
         print(f"Creating output diretory {output_directory_datafolder}")
 
     # Create htaccess file
-    import htaccess
+    from . import htaccess
     htaccess.create_htaccess(output_directory_datafolder)
 
     # Create images directory inside output folder
@@ -317,7 +317,7 @@ def init_paper(input_to_vocab, data):
 
                     paper.authors.append(Author(
                         name = doi_author, 
-                        photo = input_to_vocab["images"] + "/" + p.properties["default_author_img"],
+                        photo = Path(p.base_dir, p.input_to_vocab["images"], p.properties["default_author_img"]),
                         role= "Author"
                     ))
                     
@@ -520,7 +520,7 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
             object.authors[i].photo = photo
         else:
             print(f"        + Using default photo for {name}.")
-            object.authors[i].photo = input_to_vocab["images"] + "/" + p.properties["default_author_img"]
+            object.authors[i].photo = Path(p.base_dir, input_to_vocab["images"], p.properties["default_author_img"])
         
         position = _safe(input_to_vocab["position"], author)
         if position is not None:

@@ -1,4 +1,4 @@
-import properties as p
+from . import properties as p
 import json
 
 class ro_jsonld(object):
