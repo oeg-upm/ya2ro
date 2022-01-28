@@ -404,14 +404,13 @@ class ro_html(object):
         # copy images to output/images directory
         for author in authors:
 
-            src_img = str(author.photo)
-            default_photo = str(Path(p.base_dir, p.input_to_vocab["images"], p.properties["default_author_img"]))
+            src = str(author.photo)
+            default_photo = str(Path(p.input_to_vocab["images"], p.properties["default_author_img"]))
             
-            if src_img == default_photo:
-                src_img = Path(p.input_to_vocab["images"], p.properties["default_author_img"])
-
-            src = Path(author.photo)
-            dst = Path(self.data.output_directory_datafolder, src_img)
+            if src == default_photo:
+                src = Path(p.base_dir, p.input_to_vocab["images"], p.properties["default_author_img"])
+                
+            dst = Path(self.data.output_directory_datafolder, author.photo)
 
             copyfile(src, dst)
 

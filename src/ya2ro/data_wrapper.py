@@ -317,7 +317,7 @@ def init_paper(input_to_vocab, data):
 
                     paper.authors.append(Author(
                         name = doi_author, 
-                        photo = Path(p.base_dir, p.input_to_vocab["images"], p.properties["default_author_img"]),
+                        photo = Path(input_to_vocab["images"], p.properties["default_author_img"]),
                         role= "Author"
                     ))
                     
@@ -520,7 +520,7 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
             object.authors[i].photo = photo
         else:
             print(f"        + Using default photo for {name}.")
-            object.authors[i].photo = Path(p.base_dir, input_to_vocab["images"], p.properties["default_author_img"])
+            object.authors[i].photo = Path(input_to_vocab["images"], p.properties["default_author_img"])
         
         position = _safe(input_to_vocab["position"], author)
         if position is not None:
