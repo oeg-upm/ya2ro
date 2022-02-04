@@ -60,6 +60,7 @@ class Dataset:
 
 @dataclass(unsafe_hash=True)
 class Software:
+    metadata: dict = None
     link: str = None
     name: str = None
     description: str = None
@@ -87,7 +88,7 @@ import os
 import sys
 from . import req_orcid
 from . import req_doi
-import somef.cli
+from somef.cli import cli_get_data
 from . import properties as p
 import json
 
@@ -406,15 +407,13 @@ def populate_software(object, input_to_vocab, data):
             if link.startswith("https://github.com/"):
 
                 print(f"        + Using SOMEF for {link}")
-                header = {}
-                header['accept'] = 'application/vnd.github.v3+json'
-
                 with HiddenPrints():
-                    _, github_data = somef.cli.load_repository_metadata(link, header)
-
-                object.software[i].name = _safe("name", github_data)
-                object.software[i].description = _safe("description", github_data)
-                object.software[i].license = _safe("name",_safe("license", github_data))
+                    metadata = cli_get_data(0.9, False, link)
+                    
+                object.software[i].metadata = metadata
+                object.software[i].name = _safe("excerpt",_safe("name", metadata))
+                object.software[i].description = _safe("excerpt",_safe("description", metadata))
+                object.software[i].license = _safe("excerpt",_safe("license", metadata))
 
         name = _safe(input_to_vocab["name"], software)
         if name is not None:

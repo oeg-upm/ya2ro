@@ -4,6 +4,7 @@ from shutil import copyfile
 from pathlib import Path
 import ntpath
 from . import hilite_me
+from scc.commands.software_catalog_portal.card import html_view as card_html_view
 
 class ro_html(object):
 
@@ -350,7 +351,7 @@ class ro_html(object):
 
     def init_software(self, software):
 
-        def html_entry_software(s):
+        '''def html_entry_software(s):
             software_attr = []
 
             if s.description:
@@ -370,6 +371,20 @@ class ro_html(object):
 		<hr style="width:50px;border:5px solid green" class="w3-round">
         The pointers for the main software used can be found below:
         {software_list_commponent}
+	    </div>"""
+        '''
+
+        software_cards = '\n'.join([card_html_view(s.metadata,embedded=True) for s in software])
+
+        software_cards_component = f"""
+            <div style="max-width: 1600px;display: flex; align-content: flex-start; flex-wrap: wrap; 
+            flex-direction: row;justify-content: center; margin-top: 3rem;">{software_cards}</div>"""
+
+        software_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
+		<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
+		<hr style="width:50px;border:5px solid green" class="w3-round">
+        The pointers for the main software used can be found below:
+        {software_cards_component}
 	    </div>"""
 
         ro_html.sidebar_append(self.soup, "software", "Software")
