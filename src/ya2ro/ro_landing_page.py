@@ -71,7 +71,7 @@ class ro_landing_page(object):
             file.write(str(soup_landing))
 
         # Create htaccess for landing page
-        import htaccess
+        from . import htaccess
         htaccess.create_htaccess_landing(p.output_directory)
 
         print(f"""Landing page created at {p.output_directory}/{p.properties["output_html_landing"]} \n""")
