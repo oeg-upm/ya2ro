@@ -169,13 +169,14 @@ software:
     license: "MIT-License"
 ```
 
-`bibliography:`In this field is where the bibliography can be added.
+`bibliography:`In this field is where the bibliography can be added. Also a doi can be used and the bibliography entry will be fetch automatically.
 
 ```yaml
 bibliography:
   - "Bibliography entry 1"
   - "Bibliography entry 2"
   - "Bibliography entry 3"
+  - https://doi.org/XXXXXXXXX
 ```
 
 `authors:`In this field is where credit to the creators, collaborators, authors, etc is given. If an ORCID is privided, ya2ro will fetch relevant data automatically. If a photo is not provided, a default one will be used.

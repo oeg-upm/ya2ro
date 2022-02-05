@@ -303,10 +303,9 @@ def init_paper(input_to_vocab, data):
 
         # Add authors with DOI
         doi_authors = paper_bib.get_authors()
-        paper_authors = [ a.name for a in paper.authors ]
         if doi_authors:
             for doi_author in doi_authors:
-                if doi_author not in paper_authors:
+                if not paper.authors or doi_author not in [ a.name for a in paper.authors ]:
 
                     print(f"        + Author: {doi_author} extracted from {doi_paper_link}.")
                     print(f"        + Using default photo for {doi_author}.")
@@ -356,15 +355,15 @@ def populate_datasets(object, input_to_vocab, data):
             object.datasets[i].doi = doi
             object.datasets[i].link = doi
 
-            if str(doi).startswith("https://doi"):
+            try:
+                req_d = req_doi.dataset(doi)
                 print(f"        + Fetching dataset data from {doi}")
-                req_doi = req_doi.dataset(doi)
-                object.datasets[i].description = req_doi.get_description()
-                object.datasets[i].name = req_doi.get_name()
-                object.datasets[i].license = req_doi.get_license()
-                object.datasets[i].author = req_doi.get_author()
+                object.datasets[i].description = req_d.get_description()
+                object.datasets[i].name = req_d.get_name()
+                object.datasets[i].license = req_d.get_license()
+                object.datasets[i].author = req_d.get_author()
 
-            else:
+            except:
                 print(f"ERROR: {doi} is not a DOI.")
             
         link = _safe(input_to_vocab["link"], dataset)
@@ -464,8 +463,12 @@ def populate_bibliography(object, input_to_vocab, data):
 
     i = 0
     for entry in data[input_to_vocab["bibliography"]]:
-
-        object.bibliography[i].entry = entry
+        try:
+            paper_bib = req_doi.bib(entry)
+            print(f"        + Fetching bibliography entry from {entry}.")
+            object.bibliography[i].entry = paper_bib.get_citation()
+        except:
+            object.bibliography[i].entry = entry
 
         i += 1
     print("    - Bibliography: Done.")

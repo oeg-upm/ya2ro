@@ -12,10 +12,10 @@ software:
 
 bibliography:
   - "A. Mao, D. Garijo and S. Fakhraei, SoMEF: A Framework for Capturing Scientific Software Metadata from its Documentation. 2019 IEEE International Conference on Big Data (Big Data), 2019, pp. 3032-3037, doi: 10.1109/BigData47090.2019.9006447."
+  - https://doi.org/10.1016/S0952-1976(03)00078-2
 
 authors:
   # Alternative way if participant has an ORCID
-
   -
     orcid: http://orcid.org/0000-0003-0454-7145
     role: "Supervisor"
