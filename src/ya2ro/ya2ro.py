@@ -28,7 +28,7 @@ def main():
 
     parser = argparse.ArgumentParser(
         description="""Human and machine readable input as a yaml file and create RO-Object in jsonld and/or HTML view.
-        Run 'ya2ro -configure [Github - Personal access token]' this the first time to configure ya2ro properly""")
+        Run 'ya2ro -configure GITHUB_PERSONAL_ACCESS_TOKEN' this the first time to configure ya2ro properly""")
 
     group = parser.add_mutually_exclusive_group(required=True)
 
