@@ -27,13 +27,18 @@ def main():
 
 
     parser = argparse.ArgumentParser(
-        description='Human and machine readable input as a yaml file and create RO-Object in jsonld and/or HTML view.')
+        description="""Human and machine readable input as a yaml file and create RO-Object in jsonld and/or HTML view.
+        Run 'ya2ro -configure [Github - Personal access token]' this the first time to configure ya2ro properly""")
 
     group = parser.add_mutually_exclusive_group(required=True)
 
     # Required positional argument 
     group.add_argument('-i','--input', type=str,
         help='Path of the required yaml input. Follow the documentation or the example given to see the structure of the file.')
+
+    # Required positional argument 
+    group.add_argument('-c','--configure', type=str,
+        help='Insert Github personal access token. Run this the first time to configure ya2ro properly.')
 
     # Required positional argument
     group.add_argument('-l','--landing_page', type=str,
@@ -49,6 +54,10 @@ def main():
     parser.add_argument('-ns', '--no_somef', action='store_true', help='Disable SOMEF for a faster execution (software cards will not work).')
 
     args = parser.parse_args()
+    
+    if args.configure:
+        configure_somef(args.configure)
+        return
 
     from . import properties
 
@@ -63,6 +72,8 @@ def main():
 
     if args.landing_page:
         process_landing_page(args.landing_page)
+
+
 
 
 def process_yaml(yaml_folder_or_file_str):
@@ -118,6 +129,10 @@ def process_landing_page(landing_page_directory):
     rlanding = ro_landing_page(landing_page_directory)
     rlanding.create_landing_page()
     
+def configure_somef(token):
+    from somef import configuration
+    print("Running initial configuration:")
+    configuration.configure(authorization=token)
 
 if __name__ == "__main__":
     main()
