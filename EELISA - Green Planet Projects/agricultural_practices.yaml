@@ -20,17 +20,17 @@ datasets:
     link: https://drive.google.com/drive/folders/1S-JNn_FYfYJHnya_rIsQpCT9j_AinuzV 
     name: "Bibliography"
     description: "Project documentation"
-    doi_dataset: https://drive.google.com/drive/folders/1S-JNn_FYfYJHnya_rIsQpCT9j_AinuzV
+    doi: https://drive.google.com/drive/folders/1S-JNn_FYfYJHnya_rIsQpCT9j_AinuzV
   - 
     link: https://drive.google.com/drive/folders/1LVmRdxz7xzL5xRsk05x14s3ilVR4HGsG 
     name: "Anonymous interview"
     description: "Anonymous interview transcript"
-    doi_dataset: https://drive.google.com/drive/folders/1LVmRdxz7xzL5xRsk05x14s3ilVR4HGsG
+    doi: https://drive.google.com/drive/folders/1LVmRdxz7xzL5xRsk05x14s3ilVR4HGsG
   - 
     link: https://drive.google.com/drive/folders/1I_KPjAKJ1zKPWqj2VVWj4uRLOxH2DCLk 
     name: "Interview questions"
     description: "Interview questions"
-    doi_dataset: https://drive.google.com/drive/folders/1I_KPjAKJ1zKPWqj2VVWj4uRLOxH2DCLk
+    doi: https://drive.google.com/drive/folders/1I_KPjAKJ1zKPWqj2VVWj4uRLOxH2DCLk
 
 bibliography: 
   - https://drive.google.com/drive/folders/1H1MQTyS_C7ulMJ4cASh2hnhG1xNuAQWj

@@ -15,7 +15,7 @@
  photo: "photo"
  position: "position"
  images: "images"
- doi_dataset: "doi_dataset"
+ doi: "doi"
  doi_paper: "doi_paper"
  citation: "citation"
  orcid: "orcid"

@@ -51,7 +51,7 @@ class Author:
 
 @dataclass(unsafe_hash=True)
 class Dataset:
-    doi_dataset: str = None
+    doi: str = None
     link: str = None
     name: str = None
     description: str = None
@@ -350,22 +350,22 @@ def populate_datasets(object, input_to_vocab, data):
     i = 0
     for dataset in data[input_to_vocab["datasets"]]:
 
-        doi_dataset = _safe(input_to_vocab["doi_dataset"], dataset)
-        if doi_dataset is not None:
+        doi = _safe(input_to_vocab["doi"], dataset)
+        if doi is not None:
 
-            object.datasets[i].doi_dataset = doi_dataset
-            object.datasets[i].link = doi_dataset
+            object.datasets[i].doi = doi
+            object.datasets[i].link = doi
 
-            if str(doi_dataset).startswith("https://doi"):
-                print(f"        + Fetching dataset data from {doi_dataset}")
-                req_doi_dataset = req_doi.dataset(doi_dataset)
-                object.datasets[i].description = req_doi_dataset.get_description()
-                object.datasets[i].name = req_doi_dataset.get_name()
-                object.datasets[i].license = req_doi_dataset.get_license()
-                object.datasets[i].author = req_doi_dataset.get_author()
+            if str(doi).startswith("https://doi"):
+                print(f"        + Fetching dataset data from {doi}")
+                req_doi = req_doi.dataset(doi)
+                object.datasets[i].description = req_doi.get_description()
+                object.datasets[i].name = req_doi.get_name()
+                object.datasets[i].license = req_doi.get_license()
+                object.datasets[i].author = req_doi.get_author()
 
             else:
-                print(f"ERROR: {doi_dataset} is not a DOI.")
+                print(f"ERROR: {doi} is not a DOI.")
             
         link = _safe(input_to_vocab["link"], dataset)
         if link is not None:

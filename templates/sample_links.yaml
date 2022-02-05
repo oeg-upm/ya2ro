@@ -4,8 +4,8 @@ type: "paper"
 title: "Work done in SOSEN"
 
 datasets:
-  - doi_dataset: https://doi.org/10.6084/m9.figshare.14916684.v1
-  - doi_dataset: https://doi.org/10.5281/zenodo.5139550
+  - doi: https://doi.org/10.6084/m9.figshare.14916684.v1
+  - doi: https://doi.org/10.5281/zenodo.5139550
 
 software:
   - link: https://github.com/KnowledgeCaptureAndDiscovery/somef

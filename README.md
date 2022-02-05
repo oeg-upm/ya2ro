@@ -147,7 +147,7 @@ summary: "This is a summary of the paper."
 ```yaml
 datasets:
   - 
-    doi_dataset: www.doiDB1.com
+    doi: www.doiDB1.com
   - 
     link: www.D1.com 
     name: "Dataset 1"
@@ -263,7 +263,7 @@ demo:
 ```yaml
 datasets:
   - 
-    doi_dataset: www.doiDB1.com
+    doi: www.doiDB1.com
   - 
     link: www.D1.com 
     name: "Dataset 1"
