@@ -407,6 +407,7 @@ def populate_software(object, input_to_vocab, data):
             if link.startswith("https://github.com/"):
 
                 print(f"        + Using SOMEF for {link}")
+                print("Downloading repository... This may take a while.")
                 with HiddenPrints():
                     metadata = cli_get_data(0.9, False, link)
                     
