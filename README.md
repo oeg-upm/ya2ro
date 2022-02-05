@@ -89,6 +89,15 @@ It is possible to process batches of yalms at the same time, to do that just spe
 
 `ya2ro -i templates -o out -p custom_properties.yaml`
 
+#### Faster execution?
+
+Use the flag --no_somef or -ns for disabling SOMEF which is the most time consuming process.
+
+`ya2ro -i templates -ns`
+
+WARNING: Software cards will no longer work on github links. Therefore you will need to manually insert the software data in the yaml file.
+
+
 ### Create landing page
 
 ya2ro offers the option to create a landing page where all the resources produced are easilly accesible. Just indicate the folder where this resources are, for example:

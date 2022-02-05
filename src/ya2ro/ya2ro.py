@@ -46,7 +46,7 @@ def main():
     parser.add_argument('-p', '--properties_file', type=str, help='Properties file name.', default="resources/properties.yaml")
 
     # Optional argument
-    parser.add_argument('-ns', '--no_somef', action='store_true', help='Disable SOMEF for a faster execution.')
+    parser.add_argument('-ns', '--no_somef', action='store_true', help='Disable SOMEF for a faster execution (software cards will not work).')
 
     args = parser.parse_args()
 
