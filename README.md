@@ -22,7 +22,7 @@ cd ya2ro
 pip install -e .
 ```
 
-## Installing through Docker
+### Installing through Docker
 
 We provide a Dockerfile with ya2ro already installed. To run through Docker, you may build the Dockerfile provided in the repository by running:
 
@@ -39,7 +39,7 @@ docker run -it ya2ro /bin/bash
 And you will be ready to use ya2ro (see section below). If you want to have access to the results we recommend [mounting a volume](https://docs.docker.com/storage/volumes/). For example, the following command will mount the current directory as the `out` folder in the Docker image:
 
 ```bash
-docker run -it --rm -v $PWD/:/out kcapd/somef /bin/bash
+docker run -it --rm -v $PWD/:/out ya2ro /bin/bash
 ```
 
 If you move any files produced by somef into `/out`, then you will be able to see them in your current directory.
