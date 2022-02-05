@@ -404,10 +404,10 @@ def populate_software(object, input_to_vocab, data):
         if link is not None:
             object.software[i].link = link
 
-            if link.startswith("https://github.com/"):
+            if link.startswith("https://github.com/") and not p.no_somef:
 
                 print(f"        + Using SOMEF for {link}")
-                print("Downloading repository... This may take a while.")
+                print("            - Downloading repository... This may take a while.")
                 with HiddenPrints():
                     metadata = cli_get_data(0.9, False, link)
                     

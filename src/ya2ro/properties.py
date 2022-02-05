@@ -3,9 +3,12 @@ from yaml.loader import SafeLoader
 from pathlib import Path
 
 
-def init(properties_file, output_directory_param):
-    global output_directory, input_to_vocab, properties, style, base_dir
+def init(properties_file, output_directory_param, n_somef):
+    global output_directory, input_to_vocab, properties, style, base_dir, no_somef
 
+    # Disable somef flag
+    no_somef = n_somef
+    
     # Project base path
     base_dir = str(Path(__file__).parent.resolve())
     

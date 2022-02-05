@@ -351,7 +351,7 @@ class ro_html(object):
 
     def init_software(self, software):
 
-        '''def html_entry_software(s):
+        def html_entry_software(s):
             software_attr = []
 
             if s.description:
@@ -363,29 +363,26 @@ class ro_html(object):
             return f"""<p><a href="{s.link}">{s.link if s.name is None else s.name}</a></p>
             {self.ul_component(software_attr)}"""
 
-        software_entries = [ html_entry_software(s) for s in software ]
-        software_list_commponent = self.ul_component(software_entries)
-
-        software_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
-		<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
-		<hr style="width:50px;border:5px solid green" class="w3-round">
-        The pointers for the main software used can be found below:
-        {software_list_commponent}
-	    </div>"""
-        '''
-
-        software_cards = '\n'.join([card_html_view(s.metadata,embedded=True) for s in software])
+        software_cards_scc = ''
+        software_cards_html = []
+        
+        for s in software:
+            if s.metadata and not p.no_somef:
+                software_cards_scc += card_html_view(s.metadata,embedded=True)
+            else:
+                software_cards_html.append(html_entry_software(s))
 
         software_cards_component = f"""
+            {self.ul_component(software_cards_html)}
             <div style="max-width: 1600px;display: flex; align-content: flex-start; flex-wrap: wrap; 
-            flex-direction: row;justify-content: center; margin-top: 3rem;">{software_cards}</div>"""
+            flex-direction: row;justify-content: center; margin-top: 3rem;">{software_cards_scc}</div>"""
 
         software_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
-		<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
-		<hr style="width:50px;border:5px solid green" class="w3-round">
+        <h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
+        <hr style="width:50px;border:5px solid green" class="w3-round">
         The pointers for the main software used can be found below:
         {software_cards_component}
-	    </div>"""
+        </div>"""
 
         ro_html.sidebar_append(self.soup, "software", "Software")
         ro_html.append_component(self.soup, "software", software_component)

@@ -45,13 +45,17 @@ def main():
     # Optional argument
     parser.add_argument('-p', '--properties_file', type=str, help='Properties file name.', default="resources/properties.yaml")
 
+    # Optional argument
+    parser.add_argument('-ns', '--no_somef', action='store_true', help='Disable SOMEF for a faster execution.')
+
     args = parser.parse_args()
 
     from . import properties
 
     properties.init(
         properties_file = args.properties_file, 
-        output_directory_param = args.output_directory
+        output_directory_param = args.output_directory,
+        n_somef = args.no_somef
         )
     
     if args.input:
