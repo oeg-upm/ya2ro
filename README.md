@@ -42,7 +42,7 @@ And you will be ready to use ya2ro (see section below). If you want to have acce
 docker run -it --rm -v $PWD/:/out ya2ro /bin/bash
 ```
 
-If you move any files produced by somef into `/out`, then you will be able to see them in your current directory.
+If you move any files produced by ya2ro into `/out`, then you will be able to see them in your current directory.
 
 ## Usage
 
