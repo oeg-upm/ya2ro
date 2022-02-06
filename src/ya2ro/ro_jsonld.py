@@ -119,8 +119,8 @@ class ro_jsonld(object):
             return
 
         for author in authors:
-
-            self._add_id_to_list(author.name, self.graph[1]["author"])
+            id = self._normalize_name(author.name) if not author.orcid else author.orcid
+            self._add_id_to_list(id, self.graph[1]["author"], normalize=False)
 
             if author.position:
                 position = author.position.split(", ")
@@ -128,7 +128,7 @@ class ro_jsonld(object):
                 position = None
 
             self.graph.append({
-                "@id": self._normalize_name(author.name),
+                "@id": id,
                 "@type": "Person",
                 "name": author.name,
                 "position": position,
@@ -182,12 +182,12 @@ class ro_jsonld(object):
         return "#" + str(name).replace(' ', '_').lower()
 
 
-    def _add_id_to_list(self, name, list):
+    def _add_id_to_list(self, name, list, normalize = True):
         """Enters a name with blank spaces or not and appends
         to the list a id normalized version of the name. List 
         must be a list of dicts."""
 
         id_normalized = self._normalize_name(name)
         list.append({
-            "@id": id_normalized
+            "@id": self._normalize_name(name) if normalize else name
         })
