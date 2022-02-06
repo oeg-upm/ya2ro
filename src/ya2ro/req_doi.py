@@ -6,12 +6,15 @@ class dataset(object):
 
     def __init__(self, doi_link):
         try:
-            bib_json = req.get(doi_link, headers={"Accept":"application/ld+json"}).text
+            try:
+                bib_json = req.get(doi_link, headers={"Accept":"application/ld+json"}).text
+            except:
+                bib_json = req.get("https://doi.org/"+doi_link, headers={"Accept":"application/ld+json"}).text
+                
+            self.doi_link = doi_link
+            self.json = json.loads(bib_json)
         except:
-            bib_json = req.get("https://doi.org/"+doi_link, headers={"Accept":"application/ld+json"}).text
-            
-        self.doi_link = doi_link
-        self.json = json.loads(bib_json)
+            ValueError('DOI is not valid')
 
     def get_name(self):
         try:

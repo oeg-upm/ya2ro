@@ -4,9 +4,13 @@ import json
 class orcid(object):
 
     def __init__(self, orcid_link):
-        self.json = json.loads(req.get(orcid_link, headers={"Accept":"application/ld+json"}).text)
-        self.json_bio = json.loads(req.get(orcid_link, headers={"Accept":"application/orcid+json"}).text)
-        self.orcid_link = orcid_link
+        try:
+            self.json = json.loads(req.get(orcid_link, headers={"Accept":"application/ld+json"}).text)
+            self.json_bio = json.loads(req.get(orcid_link, headers={"Accept":"application/orcid+json"}).text)
+            self.orcid_link = orcid_link
+        except:
+            raise ValueError('ORCID is not valid')
+
     def get_full_name(self):
         try:
             return self.json["givenName"] + " " + self.json["familyName"]

@@ -277,49 +277,53 @@ def init_paper(input_to_vocab, data):
     doi_paper_link = _safe(input_to_vocab["doi_paper"], data)
     if doi_paper_link is not None:
         print(f"    - Fetching data from {doi_paper_link}.")
-        paper_bib = req_doi.bib(doi_paper_link)
 
-        if paper.title is None:
-            print(f"        + Fetching title from {doi_paper_link}.")
-            paper.title = paper_bib.get_title()
-        
-        if paper.summary is None:
-            print(f"        + Fetching summary from {doi_paper_link}.")
-            paper.summary = paper_bib.get_summary()
+        try:
+            paper_bib = req_doi.bib(doi_paper_link)
 
-        # Add bibtext
-        paper.bib = paper_bib.get_bibtext()
+            if paper.title is None:
+                print(f"        + Fetching title from {doi_paper_link}.")
+                paper.title = paper_bib.get_title()
+            
+            if paper.summary is None:
+                print(f"        + Fetching summary from {doi_paper_link}.")
+                paper.summary = paper_bib.get_summary()
 
-        # Add citation
-        citation = paper_bib.get_citation()
-        if citation:
+            # Add bibtext
+            paper.bib = paper_bib.get_bibtext()
 
-            if not paper.bibliography:
-                paper.bibliography = []
-                
-            paper.bibliography.append(
-                Bibliography_entry(entry = citation)
-                )
+            # Add citation
+            citation = paper_bib.get_citation()
+            if citation:
 
-        # Add authors with DOI
-        doi_authors = paper_bib.get_authors()
-        if doi_authors:
-            for doi_author in doi_authors:
-                if not paper.authors or doi_author not in [ a.name for a in paper.authors ]:
+                if not paper.bibliography:
+                    paper.bibliography = []
+                    
+                paper.bibliography.append(
+                    Bibliography_entry(entry = citation)
+                    )
 
-                    print(f"        + Author: {doi_author} extracted from {doi_paper_link}.")
-                    print(f"        + Using default photo for {doi_author}.")
+            # Add authors with DOI
+            doi_authors = paper_bib.get_authors()
+            if doi_authors:
+                for doi_author in doi_authors:
+                    if not paper.authors or doi_author not in [ a.name for a in paper.authors ]:
 
-                    # TODO: Add more data for new authors
+                        print(f"        + Author: {doi_author} extracted from {doi_paper_link}.")
+                        print(f"        + Using default photo for {doi_author}.")
 
-                    if not paper.authors:
-                        paper.authors = []
+                        # TODO: Add more data for new authors
 
-                    paper.authors.append(Author(
-                        name = doi_author, 
-                        photo = Path(input_to_vocab["images"], p.properties["default_author_img"]),
-                        role= "Author"
-                    ))
+                        if not paper.authors:
+                            paper.authors = []
+
+                        paper.authors.append(Author(
+                            name = doi_author, 
+                            photo = Path(input_to_vocab["images"], p.properties["default_author_img"]),
+                            role= "Author"
+                        ))
+        except:
+            print(f"ERROR: doi_paper is not valid '{doi_paper_link}'")
                     
     return paper
     
@@ -504,15 +508,18 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
         # Orcid implementation
         orcid_link = _safe(input_to_vocab["orcid"], author)
         if orcid_link is not None:
-            print(f"        + Fetching author data from {orcid_link}.")
-            orcid = req_orcid.orcid(orcid_link)
-            object.authors[i].orcid = orcid_link
-            name = orcid.get_full_name()
-            object.authors[i].name = name
-            object.authors[i].position = ", ".join(orcid.get_affiliation())
-            object.authors[i].web = orcid.get_webs()[-1]
-            object.authors[i].description = orcid.get_bio()
-        
+            try:
+                orcid = req_orcid.orcid(orcid_link)
+                print(f"        + Fetching author data from {orcid_link}.")
+                object.authors[i].orcid = orcid_link
+                name = orcid.get_full_name()
+                object.authors[i].name = name
+                object.authors[i].position = ", ".join(orcid.get_affiliation())
+                object.authors[i].web = orcid.get_webs()[-1]
+                object.authors[i].description = orcid.get_bio()
+            except:
+                print(f"ERROR: ORCID is not valid or not up '{orcid_link}'")
+            
         aux = _safe(input_to_vocab["name"], author)
         name =  aux if aux is not None else name
         if name is not None:
