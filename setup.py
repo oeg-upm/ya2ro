@@ -19,7 +19,7 @@ setup(
         ],
     },
     install_requires=[
-        'PyYAML>=6.0',
+        'PyYAML>=5.0.0',
         'bs4>=0.0.1',
         'requests>=2.22.0',
         'bibtexparser>=1.2.0',

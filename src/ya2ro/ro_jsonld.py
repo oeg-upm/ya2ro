@@ -37,7 +37,7 @@ class ro_jsonld(object):
             self.graph_add_data_type(self.data.type)
             self.graph_add_description(self.data.summary)
             self.graph_add_authors(self.data.authors)
-            self.graph_add_softwares(self.data.software)
+            self.graph_add_software(self.data.software)
             self.graph_add_datasets(self.data.datasets)
             self.graph_add_html_ref(p.properties["output_html"])
         
@@ -46,7 +46,7 @@ class ro_jsonld(object):
             self.graph_add_data_type(self.data.type)
             self.graph_add_description(self.data.goal)
             self.graph_add_authors(self.data.authors)
-            self.graph_add_softwares(self.data.software)
+            self.graph_add_software(self.data.software)
             self.graph_add_datasets(self.data.datasets)
             self.graph_add_demo(self.data.demo)
             self.graph_add_html_ref(p.properties["output_html"])
@@ -135,7 +135,7 @@ class ro_jsonld(object):
                 "description": author.description
         })
 
-    def graph_add_softwares(self, softwares):
+    def graph_add_software(self, softwares):
 
         if softwares is None:
             return

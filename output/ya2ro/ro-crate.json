@@ -27,10 +27,10 @@
             "description": "Develop a tool to which you pass basic information of a project or a research article (such as the datasets, software, people who have been involved, bibliograpy...) and generates two files with structured information with the intention of easing the readability for machines and people. One file is a webpage with all the relevant information and the other one is a Research Object.",
             "hasPart": [
                 {
-                    "@id": "#none"
+                    "@id": "#ya2ro"
                 },
                 {
-                    "@id": "#none"
+                    "@id": "#somef"
                 },
                 {
                     "@id": "index-en.html"
@@ -44,8 +44,8 @@
             "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
-                "University of Southern California",
-                "Universidad Polit\u00e9cnica de Madrid"
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
             ]
         },
         {
@@ -58,15 +58,15 @@
             ]
         },
         {
-            "@id": "#none",
+            "@id": "#ya2ro",
             "@type": "SoftwareApplication",
-            "description": null,
+            "description": "Python package designed to create Research Objects out of simple YAML files. Given the dataset dois, source code links and author DOIs, ya2ro will generate an HTML representation of the aggregated contents, as well as an RO-Crate with the machine-readable representation of the Research Object",
             "installUrl": "https://github.com/oeg-upm/ya2ro"
         },
         {
-            "@id": "#none",
+            "@id": "#somef",
             "@type": "SoftwareApplication",
-            "description": null,
+            "description": "SOftware Metadata Extraction Framework: A tool for automatically extracting relevant software information from readme files",
             "installUrl": "https://github.com/KnowledgeCaptureAndDiscovery/somef/"
         },
         {

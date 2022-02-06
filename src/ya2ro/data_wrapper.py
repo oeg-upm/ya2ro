@@ -91,6 +91,8 @@ from . import req_doi
 from somef.cli import cli_get_data
 from . import properties as p
 import json
+from scc.commands.software_catalog_portal.metadata import metadata as scc_metadata    
+
 
 
 def load_jsonld(input_jsonld):
@@ -413,11 +415,15 @@ def populate_software(object, input_to_vocab, data):
                 print("            - Downloading repository... This may take a while.")
                 with HiddenPrints():
                     metadata = cli_get_data(0.9, False, link)
-                    
+                
+                scc_meta = scc_metadata(metadata)
                 object.software[i].metadata = metadata
-                object.software[i].name = _safe("excerpt",_safe("name", metadata))
-                object.software[i].description = _safe("excerpt",_safe("description", metadata))
-                object.software[i].license = _safe("excerpt",_safe("license", metadata))
+                object.software[i].name = scc_meta.title()
+                object.software[i].description = scc_meta.description()
+                license = scc_meta.license()
+                if license:
+                    license = license['name']
+                object.software[i].license = scc_meta.license()
 
         name = _safe(input_to_vocab["name"], software)
         if name is not None:
