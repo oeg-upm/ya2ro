@@ -18,7 +18,7 @@
             "DataType": "project",
             "author": [
                 {
-                    "@id": "#margarita_ruiz_ramos"
+                    "@id": "https://orcid.org/0000-0003-0212-3381"
                 },
                 {
                     "@id": "#sara_brinquis_fava"
@@ -42,7 +42,7 @@
             "name": "Good Agricultural Practices and Damage and Loss Assessment for the Comprehensive Management of Disaster Risk and Climate-Adapted Sustainable Agriculture in the Dry Corridor of Central America."
         },
         {
-            "@id": "#margarita_ruiz_ramos",
+            "@id": "https://orcid.org/0000-0003-0212-3381",
             "@type": "Person",
             "description": null,
             "name": "MARGARITA RUIZ RAMOS",
