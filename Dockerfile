@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.9
 
 RUN git clone https://github.com/oeg-upm/ya2ro
 
