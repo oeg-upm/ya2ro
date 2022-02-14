@@ -196,6 +196,11 @@ datasets:
     description: "Description dataset 1"
     license: "MIT-License"
     author: "Author name"
+-
+    path: templates/datasets
+    name: "Dataset name"
+    author: "Author name"
+    description: "Description of a local dataset"
 ```
 
 `software:` All the relevant software used and created for the paper. If a GitHub Repo is provided ya2ro will use SOMEF to automatically fetch relevant data.
@@ -313,6 +318,11 @@ datasets:
     description: "Description dataset 1"
     license: "MIT-License"
     author: "Author name"
+  -
+    path: templates/datasets
+    name: "Dataset name"
+    author: "Author name"
+    description: "Description of a local dataset"
 ```
 
 `software:` All the relevant software used and created for the paper. If a GitHub Repo is provided, ya2ro will use SOMEF to automatically fetch relevant data.

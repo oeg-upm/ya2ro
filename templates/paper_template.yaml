@@ -16,6 +16,11 @@ datasets:
     name: "Dataset 2"
     description: "Description dataset 2"
     doi: www.doi-DB2.com
+  -
+    path: templates/datasets
+    name: "Dataset name"
+    description: "Description of a local dataset"
+
 
 software: 
   - 

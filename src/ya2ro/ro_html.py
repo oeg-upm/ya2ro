@@ -5,6 +5,7 @@ from pathlib import Path
 import ntpath
 from . import hilite_me
 from scc.commands.software_catalog_portal.card import html_view as card_html_view
+import os
 
 class ro_html(object):
 
@@ -323,18 +324,35 @@ class ro_html(object):
 
         def html_entry_datasets(d):
             dataset_attr = []
+            if d.path:
+                if d.description:
+                    dataset_attr.append(f"<b>Description:</b> {d.description}")
+                
+                if d.license:
+                    dataset_attr.append(f"<b>License:</b> {d.license}")
+                
+                if d.author:
+                    dataset_attr.append(f"<b>Author:</b> {d.author}")
+                
+                if d.files:
+                    dataset_attr.append("<p>Pointers to download datasets:</p>" +
+                        self.ul_component([ f"""<a href="{ds}" download>{os.path.basename(Path(ds))}</a>""" for ds in d.files ])
+                        )
 
-            if d.description:
-                dataset_attr.append(f"<b>Description:</b> {d.description}")
-            
-            if d.license:
-                dataset_attr.append(f"<b>License:</b> {d.license}")
-            
-            if d.author:
-                dataset_attr.append(f"<b>Author:</b> {d.author}")
+                return f"""<p>{d.path if d.name is None else d.name}</p>
+                {self.ul_component(dataset_attr)}"""
+            else:
+                if d.description:
+                    dataset_attr.append(f"<b>Description:</b> {d.description}")
+                
+                if d.license:
+                    dataset_attr.append(f"<b>License:</b> {d.license}")
+                
+                if d.author:
+                    dataset_attr.append(f"<b>Author:</b> {d.author}")
 
-            return f"""<p><a href="{d.link}">{d.link if d.name is None else d.name}</a></p>
-            {self.ul_component(dataset_attr)}"""
+                return f"""<p><a href="{d.link}">{d.link if d.name is None else d.name}</a></p>
+                {self.ul_component(dataset_attr)}"""
 
         dataset_entries = [ html_entry_datasets(d) for d in datasets ]
         datasets_list_commponent = self.ul_component(dataset_entries)

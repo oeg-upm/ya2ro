@@ -57,6 +57,7 @@ class Dataset:
     description: str = None
     license: str = None
     author: str = None
+    path: str = None
 
 @dataclass(unsafe_hash=True)
 class Software:
@@ -91,6 +92,7 @@ from . import req_doi
 from somef.cli import cli_get_data
 from . import properties as p
 import json
+from shutil import copyfile
 from scc.commands.software_catalog_portal.metadata import metadata as scc_metadata    
 
 
@@ -143,11 +145,13 @@ def load_jsonld(input_jsonld):
 
 def load_yaml(input_yaml):
 
+    global output_directory_datafolder
+
     output_directory_datafolder = Path(p.output_directory, str(Path(input_yaml).stem))
 
     if not os.path.exists(output_directory_datafolder):
         os.makedirs(output_directory_datafolder)
-        print(f"Creating output diretory {output_directory_datafolder}")
+        print(f"Creating output directory {output_directory_datafolder}")
 
     # Create htaccess file
     from . import htaccess
@@ -157,7 +161,7 @@ def load_yaml(input_yaml):
     images_output_path = Path(output_directory_datafolder, p.input_to_vocab["images"])
     if not os.path.exists(images_output_path):
         os.makedirs(images_output_path)
-        print(f"Creating images diretory {output_directory_datafolder}/images")
+        print(f"Creating images directory {output_directory_datafolder}/images")
 
     # Open input.yaml and parse it
     with open(Path(input_yaml)) as file:
@@ -375,7 +379,7 @@ def populate_datasets(object, input_to_vocab, data):
     for dataset in data[input_to_vocab["datasets"]]:
 
         doi = _safe(input_to_vocab["doi"], dataset)
-        if doi is not None:
+        if doi:
 
             object.datasets[i].doi = doi
             object.datasets[i].link = doi
@@ -390,25 +394,56 @@ def populate_datasets(object, input_to_vocab, data):
 
             except:
                 print(f"ERROR: {doi} is not a DOI.")
-            
-        link = _safe(input_to_vocab["link"], dataset)
-        if link is not None:
-            object.datasets[i].link = link
 
+        path = _safe(input_to_vocab["path"], dataset)
+        link = _safe(input_to_vocab["link"], dataset)
+
+        if path:
+            object.datasets[i].path = path
+            object.datasets[i].files = []
+
+            # Create datasets directory inside output folder
+            datasets_output_path = Path(output_directory_datafolder, "datasets")
+            if not os.path.exists(datasets_output_path):
+                os.makedirs(datasets_output_path)
+                print(f"Creating datasets directory {datasets_output_path}")
+
+            if os.path.isdir(path):
+                directory = os.fsencode(path)
+                for file in os.listdir(directory):
+                    # copy dataset to output/images directory
+                    filename = os.fsdecode(file)
+                    src = Path(path,filename)
+                    dst = Path(datasets_output_path, filename)
+                    copyfile(src, dst)
+                    object.datasets[i].files.append(f"datasets/{filename}")
+            elif os.path.isfile(path):
+                # copy dataset to output/images directory
+                src = Path(path)
+                filename = os.path.basename(src)
+                dst = Path(datasets_output_path, filename)
+                copyfile(src, dst)
+                object.datasets[i].files.append(f"datasets/{filename}")
+            else:
+                print(f"ERROR: {path} does not exist.")
+
+        elif link:
+            object.datasets[i].link = link
+            
         name = _safe(input_to_vocab["name"], dataset)
-        if name is not None:
+        if name:
             object.datasets[i].name = name 
         
         descripton = _safe(input_to_vocab["description"], dataset)
-        if descripton is not None:
+        if descripton:
             object.datasets[i].description = descripton
         
         license = _safe(input_to_vocab["license"], dataset)
-        if license is not None:
+        if license:
             object.dataset[i].license = license
         
         author = _safe(input_to_vocab["author"], dataset)
-        if author is not None:
+        if author:
             object.dataset[i].author = author
         
 
