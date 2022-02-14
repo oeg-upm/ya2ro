@@ -76,7 +76,7 @@ class ro_jsonld(object):
         if type is None:
             return None
         
-        self.graph[1]["DataType"] = type
+        self.graph[1]["DataType"] = str(type).capitalize()
     
 
     def graph_add_title(self, title):

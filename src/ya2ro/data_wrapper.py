@@ -163,9 +163,11 @@ def load_yaml(input_yaml):
     with open(Path(input_yaml)) as file:
         data = yaml.load(file, Loader=SafeLoader)
     
-    print(f"Parsing and fetching info from {input_yaml}...\n")
+    print(f"Parsing and fetching info from {input_yaml}\n")
 
     type = _safe(p.input_to_vocab["type"], data)
+    if type:
+        del data["type"]
      
     if type not in ["paper", "project"]:
         print("""ERROR: Is required to specify a type field in the input yaml. Options: 'paper', 'project'.
@@ -174,20 +176,24 @@ def load_yaml(input_yaml):
         exit()
     
     if type == "paper":
-        data = init_paper(p.input_to_vocab, data)
+        init_data = init_paper(p.input_to_vocab, data)
         
     if type == "project":
-        data = init_project(p.input_to_vocab, data)
+        init_data = init_project(p.input_to_vocab, data)
 
     # Init data meta properties
-    data.output_html = Path(output_directory_datafolder, p.properties["output_html"])
-    data.output_html_help = Path(output_directory_datafolder, p.properties["output_html_help"])
-    data.output_jsonld = Path(output_directory_datafolder, p.properties["output_jsonld"])
-    data.output_directory_datafolder = output_directory_datafolder
-    data.type = type
-    data.yaml_file = input_yaml
+    init_data.output_html = Path(output_directory_datafolder, p.properties["output_html"])
+    init_data.output_html_help = Path(output_directory_datafolder, p.properties["output_html_help"])
+    init_data.output_jsonld = Path(output_directory_datafolder, p.properties["output_jsonld"])
+    init_data.output_directory_datafolder = output_directory_datafolder
+    init_data.type = type
+    init_data.yaml_file = input_yaml
 
-    return data
+    # Check for not supported fields
+    for uninit_data in data.keys():
+        print(f"\nERROR: The field '{uninit_data}' is not supported or is misspelled. Check out our documentation https://github.com/oeg-upm/ya2ro/blob/main/README.md#fields-supported")
+
+    return init_data
 
 
 def init_project(input_to_vocab, data):
@@ -208,21 +214,29 @@ def init_project(input_to_vocab, data):
 
     if project.title:
         print("    - Title: Done.")
+        del data["title"]
+
 
     if project.goal:
         print("    - Goal: Done.")
+        del data["goal"]
+        
 
     if project.social_motivation:
         print("    - Social motivation: Done.")
+        del data["social_motivation"]
 
     if project.sketch:
         print("    - Sketch: Done.")
-    
+        del data["sketch"]
+
     if project.areas:
         print("    - Areas: Done.")
+        del data["areas"]
     
     if project.activities:
         print("    - Activities: Done.")
+        del data["activities"]
 
     # Demo
     populate_demo(project, input_to_vocab, data)
@@ -259,9 +273,12 @@ def init_paper(input_to_vocab, data):
 
     if paper.title:
         print("    - Title: Done.")
+        del data["title"]
 
     if paper.summary:
         print("    - Summary: Done.")
+        del data["summary"]
+
 
     # Datasets
     populate_datasets(paper, input_to_vocab, data)
@@ -326,6 +343,8 @@ def init_paper(input_to_vocab, data):
                         ))
         except:
             print(f"ERROR: doi_paper is not valid '{doi_paper_link}'")
+
+        del data["doi_paper"]
                     
     return paper
     
@@ -395,6 +414,8 @@ def populate_datasets(object, input_to_vocab, data):
 
         i += 1
     print("    - Datasets: Done.")
+    del data["datasets"]
+
 
 
 def populate_software(object, input_to_vocab, data):
@@ -439,6 +460,7 @@ def populate_software(object, input_to_vocab, data):
 
         i += 1
     print("    - Software: Done.")
+    del data["software"]
 
 
 def populate_demo(object, input_to_vocab, data):
@@ -464,6 +486,7 @@ def populate_demo(object, input_to_vocab, data):
         i += 1
         
     print("    - Demo: Done.")
+    del data["demo"]
 
 
 def populate_bibliography(object, input_to_vocab, data):
@@ -482,6 +505,7 @@ def populate_bibliography(object, input_to_vocab, data):
 
         i += 1
     print("    - Bibliography: Done.")
+    del data["bibliography"]
 
 
 def populate_contact(object, input_to_vocab, data):
@@ -500,6 +524,9 @@ def populate_contact(object, input_to_vocab, data):
     else:
         print("ERROR: Contact phone and/or email are not decalred.")
         exit()
+
+    del data["contact"]
+    
 
 
 def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
@@ -558,13 +585,18 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
         
         i += 1
     print("    - Authors: Done.")
+    del data[field_of_author]
 
 
 class HiddenPrints:
     def __enter__(self):
         self._original_stdout = sys.stdout
+        self._original_stderr = sys.stderr
         sys.stdout = open(os.devnull, 'w')
+        sys.stderr = open(os.devnull, 'w')
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         sys.stdout.close()
+        sys.stderr.close()
         sys.stdout = self._original_stdout
+        sys.stderr = self._original_stderr

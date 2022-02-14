@@ -81,24 +81,25 @@ If everything goes fine, you should see:
    d8'
 _________________________________________________________
 
-usage: ya2ro [-h] (-i INPUT | -c CONFIGURE | -l LANDING_PAGE) [-o OUTPUT_DIRECTORY] [-p PROPERTIES_FILE] [-ns]
+usage: ya2ro [-h] (-i YALM_PATH | -c GITHUB_PERSONAL_ACCESS_TOKEN | -l YA2RO_PREV_OUTPUT) [-o OUTPUT_DIR] [-p PROPERTIES_FILE] [-ns]
 
 Human and machine readable input as a yaml file and create RO-Object in jsonld and/or HTML view. Run 'ya2ro -configure GITHUB_PERSONAL_ACCESS_TOKEN' this the first time to configure ya2ro
 properly
 
 options:
   -h, --help            show this help message and exit
-  -i INPUT, --input INPUT
+  -i YALM_PATH, --input YALM_PATH
                         Path of the required yaml input. Follow the documentation or the example given to see the structure of the file.
-  -c CONFIGURE, --configure CONFIGURE
+  -c GITHUB_PERSONAL_ACCESS_TOKEN, --configure GITHUB_PERSONAL_ACCESS_TOKEN
                         Insert Github personal access token. Run this the first time to configure ya2ro properly.
-  -l LANDING_PAGE, --landing_page LANDING_PAGE
+  -l YA2RO_PREV_OUTPUT, --landing_page YA2RO_PREV_OUTPUT
                         Path of a previous output folder using the ya2ro tool. This flag will make a landing page to make all the resources accesible.
-  -o OUTPUT_DIRECTORY, --output_directory OUTPUT_DIRECTORY
+  -o OUTPUT_DIR, --output_directory OUTPUT_DIR
                         Output diretory.
   -p PROPERTIES_FILE, --properties_file PROPERTIES_FILE
                         Properties file name.
   -ns, --no_somef       Disable SOMEF for a faster execution (software cards will not work).
+
 ```
 
 ---

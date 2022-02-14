@@ -33,25 +33,28 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
 
     # Required positional argument 
-    group.add_argument('-i','--input', type=str,
+    group.add_argument('-i','--input', type=str, metavar='YALM_PATH',
         help='Path of the required yaml input. Follow the documentation or the example given to see the structure of the file.')
 
     # Required positional argument 
-    group.add_argument('-c','--configure', type=str,
+    group.add_argument('-c','--configure', type=str, metavar='GITHUB_PERSONAL_ACCESS_TOKEN',
         help='Insert Github personal access token. Run this the first time to configure ya2ro properly.')
 
     # Required positional argument
-    group.add_argument('-l','--landing_page', type=str,
+    group.add_argument('-l','--landing_page', type=str, metavar='YA2RO_PREV_OUTPUT',
         help='Path of a previous output folder using the ya2ro tool. This flag will make a landing page to make all the resources accesible.')
 
     # Optional argument
-    parser.add_argument('-o', '--output_directory', type=str, help='Output diretory.', default="output")
+    parser.add_argument('-o', '--output_directory', type=str, metavar='OUTPUT_DIR',
+        help='Output diretory.', default="output")
     
     # Optional argument
-    parser.add_argument('-p', '--properties_file', type=str, help='Properties file name.', default="resources/properties.yaml")
+    parser.add_argument('-p', '--properties_file', type=str, metavar='PROPERTIES_FILE',
+        help='Properties file name.', default="resources/properties.yaml")
 
     # Optional argument
-    parser.add_argument('-ns', '--no_somef', action='store_true', help='Disable SOMEF for a faster execution (software cards will not work).')
+    parser.add_argument('-ns', '--no_somef', action='store_true',
+         help='Disable SOMEF for a faster execution (software cards will not work).')
 
     args = parser.parse_args()
     
