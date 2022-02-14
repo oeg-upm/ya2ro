@@ -81,6 +81,19 @@ class Bibliography_entry:
 
 ######################## FUNCTIONS #################################
 
+class HiddenPrints:
+    def __enter__(self):
+        self._original_stdout = sys.stdout
+        self._original_stderr = sys.stderr
+        sys.stdout = open(os.devnull, 'w')
+        sys.stderr = open(os.devnull, 'w')
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        sys.stdout.close()
+        sys.stderr.close()
+        sys.stdout = self._original_stdout
+        sys.stderr = self._original_stderr
+
 
 import yaml 
 from yaml.loader import SafeLoader
@@ -93,7 +106,10 @@ from somef.cli import cli_get_data
 from . import properties as p
 import json
 from shutil import copyfile
-from scc.commands.software_catalog_portal.metadata import metadata as scc_metadata    
+from scc.commands.software_catalog_portal.metadata import metadata as scc_metadata
+import warnings
+warnings.filterwarnings("ignore")
+import metadata_parser
 
 
 
@@ -379,6 +395,9 @@ def populate_datasets(object, input_to_vocab, data):
     for dataset in data[input_to_vocab["datasets"]]:
 
         doi = _safe(input_to_vocab["doi"], dataset)
+        path = _safe(input_to_vocab["path"], dataset)
+        link = _safe(input_to_vocab["link"], dataset)
+
         if doi:
 
             object.datasets[i].doi = doi
@@ -393,12 +412,9 @@ def populate_datasets(object, input_to_vocab, data):
                 object.datasets[i].author = req_d.get_author()
 
             except:
-                print(f"ERROR: {doi} is not a DOI.")
+                print(f"ERROR: {doi} is not a DOI. Use the field 'link' or 'path' instead.")
 
-        path = _safe(input_to_vocab["path"], dataset)
-        link = _safe(input_to_vocab["link"], dataset)
-
-        if path:
+        elif path:
             object.datasets[i].path = path
             object.datasets[i].files = []
 
@@ -429,6 +445,15 @@ def populate_datasets(object, input_to_vocab, data):
 
         elif link:
             object.datasets[i].link = link
+            try:
+                page = metadata_parser.MetadataParser(url=link)
+                print(f"        + Trying to extract metadata from {link}.")
+                object.datasets[i].description = page.get_metadata('description')
+                object.datasets[i].name = page.get_metadata('title')
+                object.datasets[i].license = page.get_metadata('license')
+            except:
+                print(f"WARNING: No metatada could be extracted from {link}")
+
             
         name = _safe(input_to_vocab["name"], dataset)
         if name:
@@ -445,8 +470,7 @@ def populate_datasets(object, input_to_vocab, data):
         author = _safe(input_to_vocab["author"], dataset)
         if author:
             object.dataset[i].author = author
-        
-
+    
         i += 1
     print("    - Datasets: Done.")
     del data["datasets"]
@@ -621,17 +645,3 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
         i += 1
     print("    - Authors: Done.")
     del data[field_of_author]
-
-
-class HiddenPrints:
-    def __enter__(self):
-        self._original_stdout = sys.stdout
-        self._original_stderr = sys.stderr
-        sys.stdout = open(os.devnull, 'w')
-        sys.stderr = open(os.devnull, 'w')
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        sys.stdout.close()
-        sys.stderr.close()
-        sys.stdout = self._original_stdout
-        sys.stderr = self._original_stderr

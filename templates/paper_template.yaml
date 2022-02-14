@@ -7,15 +7,11 @@ summary: "This is a summary of the paper."
 
 datasets:
   - 
-    link: www.D1.com 
-    name: "Dataset 1"
-    description: "Description dataset 1"
     doi: www.doi-DB1.com
   - 
     link: www.D2.com 
     name: "Dataset 2"
     description: "Description dataset 2"
-    doi: www.doi-DB2.com
   -
     path: templates/datasets
     name: "Dataset name"
