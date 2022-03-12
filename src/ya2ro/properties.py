@@ -47,7 +47,7 @@ def configure_somef(properties_file):
     else:
         print(
             f"""
-WARNING: GITHUB_PERSONAL_ACCESS_TOKEN is not configured. Please add your personal token in ya2ro configuration file.
+WARNING: GITHUB_PERSONAL_ACCESS_TOKEN is not configured. Please add your personal token in ya2ro properties file.
         --> {Path(base_dir, properties_file)} <--
 
         ADD a line like the following:
