@@ -48,17 +48,17 @@ If you move any files produced by ya2ro into `/out`, then you will be able to se
 
 ### Configure
 
-Before running ya2ro, you must configure it appropriately. Run:
+Before running ya2ro, you must configure it appropriately. Please add your personal token in ya2ro properties file.
+--> ~/ya2ro/src/ya2ro/resources/properties.yaml <--
 
-```bash
-ya2ro -configure GITHUB_PERSONAL_ACCESS_TOKEN
+Add a line like the following:
+
+```yaml
+# Add here your GitHub persnoal access token
+GITHUB_PERSONAL_ACCESS_TOKEN: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
 ```
 
-or
-
-```bash
-ya2ro -c GITHUB_PERSONAL_ACCESS_TOKEN
-```
+ya2ro will continue working if not configured, but is highly recommended to apply this setting.
 
 ### Test ya2ro installation
 
