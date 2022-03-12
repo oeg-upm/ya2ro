@@ -48,7 +48,7 @@ If you move any files produced by ya2ro into `/out`, then you will be able to se
 
 ### Configure
 
-Before running ya2ro, you must configure it appropriately. Please add your personal token in ya2ro properties file.
+Before running ya2ro, you must configure it appropriately. Please add your personal token in ya2ro properties file.  
 --> ~/ya2ro/src/ya2ro/resources/properties.yaml <--
 
 Add a line like the following:
