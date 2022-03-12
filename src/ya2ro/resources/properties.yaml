@@ -13,3 +13,4 @@
   htaccess: "resources/.htaccess"
   default_author_img: default_author.jpg
   style: "dark"
+  GITHUB_PERSONAL_ACCESS_TOKEN: # ADD here your GitHub persnoal access token
