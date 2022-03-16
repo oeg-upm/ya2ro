@@ -24,7 +24,7 @@ setup(
         'requests>=2.22.0',
         'bibtexparser>=1.2.0',
         'Pygments>=2.11.2',
-        'somef>=0.6.0',
+        'somef>=0.7.2',
         'scc @ git+https://github.com/dakixr/scc',
         'metadata-parser'
     ]
