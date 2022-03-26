@@ -394,10 +394,19 @@ def populate_datasets(object, input_to_vocab, data):
 
     i = 0
     for dataset in data[input_to_vocab["datasets"]]:
-
-        doi = _safe(input_to_vocab["doi"], dataset)
-        path = _safe(input_to_vocab["path"], dataset)
-        link = _safe(input_to_vocab["link"], dataset)
+        
+        if isinstance(dataset, dict):
+            doi = _safe(input_to_vocab["doi"], dataset)
+            path = _safe(input_to_vocab["path"], dataset)
+            link = _safe(input_to_vocab["link"], dataset)
+        elif isinstance(dataset, str):
+            if 'doi' in dataset:
+                doi = dataset
+            else:
+                link = dataset
+        else:
+            print(f"WARNING: {dataset} format is not supported, see documentation for further guidance.")
+            
 
         if doi:
 
@@ -485,7 +494,11 @@ def populate_software(object, input_to_vocab, data):
 
     i = 0
     for software in data[input_to_vocab["software"]]:
-        link = _safe(input_to_vocab["link"], software)
+
+        if isinstance(software, str) and 'http' in software:
+            link = software
+        else:
+            link = _safe(input_to_vocab["link"], software)
         
         if link is not None:
             object.software[i].link = link

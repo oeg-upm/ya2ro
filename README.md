@@ -199,6 +199,7 @@ datasets:
     name: "Dataset name"
     author: "Author name"
     description: "Description of a local dataset"
+- https://doi.org/xx.xxxx/xxxxxxxxxx # Or just a link and ya2ro will guess the type
 ```
 
 `software:` All the relevant software used and created for the paper. If a GitHub Repo is provided ya2ro will use SOMEF to automatically fetch relevant data.
@@ -212,6 +213,7 @@ software:
     name: "Software 1"
     description: "Description software 1"
     license: "MIT-License"
+  - https://sofware.web.com # Or just a link and ya2ro will guess the type
 ```
 
 `bibliography:`In this field is where the bibliography can be added. Also a doi can be used and the bibliography entry will be fetch automatically.
@@ -321,6 +323,7 @@ datasets:
     name: "Dataset name"
     author: "Author name"
     description: "Description of a local dataset"
+  - https://doi.org/xx.xxxx/xxxxxxxxxx # Or just a link and ya2ro will guess the type
 ```
 
 `software:` All the relevant software used and created for the paper. If a GitHub Repo is provided, ya2ro will use SOMEF to automatically fetch relevant data.
@@ -334,6 +337,7 @@ software:
     name: "Software 1"
     description: "Description software 1"
     license: "MIT-License"
+  - https://sofware.web.com # Or just a link and ya2ro will guess the type
 ```
 
 `bibliography:`In this field is where the bibliography can be added. Also a doi can be used and the bibliography entry will be fetch automatically.
