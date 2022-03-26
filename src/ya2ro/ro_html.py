@@ -411,7 +411,7 @@ class ro_html(object):
         
         def html_activate_links(text):
             return re.sub(
-                pattern=r'(http[^ 	]*)', 
+                pattern=r'(http[^ 	)(]*)', 
                 repl='<a href="\\1" target="_blank">\\1</a>', 
                 string=text
             )
