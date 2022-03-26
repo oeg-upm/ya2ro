@@ -15,7 +15,7 @@
         {
             "@id": "./",
             "@type": "Dataset",
-            "DataType": "project",
+            "DataType": "Project",
             "author": [
                 {
                     "@id": "#none"

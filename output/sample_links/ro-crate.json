@@ -1,0 +1,81 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "http://orcid.org/0000-0003-0454-7145"
+                }
+            ],
+            "description": "",
+            "hasPart": [
+                {
+                    "@id": "#somef"
+                },
+                {
+                    "@id": "#sosen-kg_dump"
+                },
+                {
+                    "@id": "#datasets_for_creating_and_querying_personalized_versions_of_wikidata_in_a_laptop_(wikidata_workshop,_2021)"
+                },
+                {
+                    "@id": "index-en.html"
+                }
+            ],
+            "name": "Work done in SOSEN"
+        },
+        {
+            "@id": "http://orcid.org/0000-0003-0454-7145",
+            "@type": "Person",
+            "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
+            "name": "Daniel Garijo",
+            "position": [
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
+            ]
+        },
+        {
+            "@id": "#somef",
+            "@type": "SoftwareApplication",
+            "description": "SOftware Metadata Extraction Framework: A tool for automatically extracting relevant software information from readme files",
+            "installUrl": "https://github.com/KnowledgeCaptureAndDiscovery/somef"
+        },
+        {
+            "@id": "#sosen-kg_dump",
+            "@type": "Dataset",
+            "description": "Dump of the current version of the SOSEN-KG, including automatically extracted metadata from &gt; 10.000 Zenodo entries, enriched by applying the Software Metadata Extraction Framework (SOMEF) on their GitHub README files.<br>Another separate file with the keywords extracted from descriptions, titles, etc., can be used for keyword search on top of the KG<br>",
+            "distribution": {
+                "@id": "https://doi.org/10.6084/m9.figshare.14916684.v1"
+            },
+            "name": "SOSEN-KG dump"
+        },
+        {
+            "@id": "#datasets_for_creating_and_querying_personalized_versions_of_wikidata_in_a_laptop_(wikidata_workshop,_2021)",
+            "@type": "Dataset",
+            "description": "These datasets are used to support the results of the paper \"Datasets for Creating and Querying Personalized Versions of Wikidata in a Laptop\", submitted to the Wikidata workshop 2021 (https://wikidataworkshop.github.io/2021/) at the International Semantic Web Conference. The datasets have been derived from Wikidata dump 20210215. To help querying purposes, the dump is organized in different files: claims.time.tsv.gz: time-related assertions claims.wikibase-item.tsv-006.gz: item-related assertions derived.P279.tsv.gz: statements that are subclass of another statement derived.P279star.tsv.gz: statement that are subclass of another statement, including their chains. derived.P31.tsv.gz: instance of statements. labels.en.tsv-004.gz: labels in English claims.external-id.tsv-005.gz: External identifiers for each item. ulan.tsv: ULAN ids (used to link external identifiers to Wikidata identifiers) wikidata_infobox.tsv.gz: Information about dbpedia infoboxes. Upload by: Daniel Garijo",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.5139550"
+            },
+            "name": "Datasets for Creating and Querying Personalized Versions of Wikidata in a Laptop (Wikidata workshop, 2021)"
+        },
+        {
+            "@id": "index-en.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}
