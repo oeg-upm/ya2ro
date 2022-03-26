@@ -131,7 +131,8 @@ def load_jsonld(input_jsonld):
             index_html = entry["@id"]
             break
     
-    type = root["DataType"]
+    type = str(root["DataType"]).lower()
+    
 
     if type == "project":
 
