@@ -6,6 +6,7 @@ import ntpath
 from . import hilite_me
 from scc.commands.software_catalog_portal.card import html_view as card_html_view
 import os
+import re
 
 class ro_html(object):
 
@@ -407,8 +408,14 @@ class ro_html(object):
     
 
     def init_bibliography(self, bibliography):
- 
-        bibliography_list = self.ul_component([b.entry for b in bibliography])
+        
+        def html_activate_links(text):
+            return re.sub(
+                pattern=r'(http[^ 	]*)', 
+                repl='<a href="\\1" target="_blank">\\1</a>', 
+                string=text
+            )
+        bibliography_list = self.ul_component([html_activate_links(b.entry) for b in bibliography])
 
         bibliography_commponent = f"""<div class="w3-container" id="bib" style="margin-top:75px">
 		<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
