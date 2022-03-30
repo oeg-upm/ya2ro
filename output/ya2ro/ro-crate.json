@@ -44,8 +44,8 @@
             "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
-                "Universidad Polit\u00e9cnica de Madrid",
-                "University of Southern California"
+                "University of Southern California",
+                "Universidad Polit\u00e9cnica de Madrid"
             ]
         },
         {
@@ -60,13 +60,13 @@
         {
             "@id": "#ya2ro",
             "@type": "SoftwareApplication",
-            "description": "Python package designed to create Research Objects out of simple YAML files. Given the dataset dois, source code links and author DOIs, ya2ro will generate an HTML representation of the aggregated contents, as well as an RO-Crate with the machine-readable representation of the Research Object",
+            "description": "<p>Python package designed to create Research Objects out of simple YAML files. Given the dataset dois, source code links and author DOIs, ya2ro will generate an HTML representation of the aggregated contents, as well as an RO-Crate with the machine-readable representation of the Research Object</p>\n",
             "installUrl": "https://github.com/oeg-upm/ya2ro"
         },
         {
             "@id": "#somef",
             "@type": "SoftwareApplication",
-            "description": "SOftware Metadata Extraction Framework: A tool for automatically extracting relevant software information from readme files",
+            "description": "<p>SOftware Metadata Extraction Framework: A tool for automatically extracting relevant software information from readme files</p>\n",
             "installUrl": "https://github.com/KnowledgeCaptureAndDiscovery/somef/"
         },
         {
