@@ -106,7 +106,7 @@ from somef.cli import cli_get_data
 from . import properties as p
 import json
 from shutil import copyfile
-from scc.commands.software_catalog_portal.metadata import metadata as scc_metadata
+from scc.commands.portal.metadata import metadata as scc_metadata
 import warnings
 warnings.filterwarnings("ignore")
 import metadata_parser

@@ -4,7 +4,7 @@ from shutil import copyfile
 from pathlib import Path
 import ntpath
 from . import hilite_me
-from scc.commands.software_catalog_portal.card import html_view as card_html_view
+from scc.commands.portal.card import html_view as card_html_view
 import os
 import re
 
