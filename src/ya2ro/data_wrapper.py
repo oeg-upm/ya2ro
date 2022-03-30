@@ -282,7 +282,7 @@ def init_project(input_to_vocab, data):
 
 def init_paper(input_to_vocab, data):
 
-    # Create paper object and pupulate the lists with empty instances
+    # Create paper object and populate the lists with empty instances
     paper = Paper(
         title = _safe(input_to_vocab["title"], data),
         summary = _safe(input_to_vocab["summary"], data),
@@ -462,7 +462,7 @@ def populate_datasets(object, input_to_vocab, data):
                 object.datasets[i].name = page.get_metadata('title')
                 object.datasets[i].license = page.get_metadata('license')
             except:
-                print(f"WARNING: No metatada could be extracted from {link}")
+                print(f"WARNING: No metadata could be extracted from {link}")
 
             
         name = _safe(input_to_vocab["name"], dataset)

@@ -98,7 +98,7 @@ class ro_html(object):
 
             if self.data.type == "project":
                 logo_recognition_explained =f"""
-                <p>This EELISA logo showcases that this project meets all the following requirements, so it is considered to be a complete/elegible EELISA project:</p>
+                <p>This EELISA logo showcases that this project meets all the following requirements, so it is considered to be a complete/eligible EELISA project:</p>
                 {self.ul_component(req.replace("_", " ").capitalize() for req in self.data.requirements)}
                 """
                 img_component =f"""

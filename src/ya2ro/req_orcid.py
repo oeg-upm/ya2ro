@@ -33,7 +33,7 @@ class orcid(object):
             return None
 
     def get_affiliation(self):
-        """Gets all the non repeated names afiliation in a list '"""
+        """Gets all the non repeated names affiliation in a list '"""
         try:
             affiliations = set()
 
