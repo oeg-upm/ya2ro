@@ -38,7 +38,7 @@ def main():
 
     # Required positional argument
     group.add_argument('-l','--landing_page', type=str, metavar='YA2RO_PREV_OUTPUT',
-        help='Path of a previous output folder using the ya2ro tool. This flag will make a landing page to make all the resources accesible.')
+        help='Path of a previous output folder using the ya2ro tool. This flag will make a landing page to make all the resources accessible.')
 
     # Optional argument
     parser.add_argument('-o', '--output_directory', type=str, metavar='OUTPUT_DIR',

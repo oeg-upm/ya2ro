@@ -212,7 +212,7 @@ def load_yaml(input_yaml):
 
     # Check for not supported fields
     for uninit_data in data.keys():
-        print(f"\nERROR: The field '{uninit_data}' is not supported or is misspelled. Check out our documentation https://github.com/oeg-upm/ya2ro/blob/main/README.md#fields-supported")
+        print(f"\nERROR: The field '{uninit_data}' is not supported or is misspelled. Check out our documentation https://github.com/oeg-upm/ya2ro/blob/main/doc.md")
 
     return init_data
 
