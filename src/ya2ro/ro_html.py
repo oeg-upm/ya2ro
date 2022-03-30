@@ -394,7 +394,7 @@ class ro_html(object):
         software_cards_component = f"""
             {self.ul_component(software_cards_html)}
             <div style="max-width: 1600px;display: flex; align-content: flex-start; flex-wrap: wrap; 
-            flex-direction: row;justify-content: center; margin-top: 3rem;">{software_cards_scc}</div>"""
+            flex-direction: row;justify-content: center; margin-top: 3rem;font-size: 15px;">{software_cards_scc}</div>"""
 
         software_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
         <h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
