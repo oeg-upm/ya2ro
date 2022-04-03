@@ -486,7 +486,6 @@ def populate_datasets(object, input_to_vocab, data):
     del data["datasets"]
 
 
-
 def populate_software(object, input_to_vocab, data):
 
     if object.software is None:
@@ -600,7 +599,6 @@ def populate_contact(object, input_to_vocab, data):
 
     del data["contact"]
     
-
 
 def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
 

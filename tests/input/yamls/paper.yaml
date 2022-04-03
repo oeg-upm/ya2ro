@@ -1,0 +1,46 @@
+# Mandatory field
+type: "paper"
+
+title: "Paper - test"
+
+summary: "This is a summary of the paper."
+
+datasets:
+  - 
+    doi: https://doi.org/10.5281/zenodo.5139550
+  - 
+    link: www.dataset2.com 
+    name: "Dataset 2"
+    description: "Description dataset 2"
+  -
+    path: datasets/
+    name: "Dataset name"
+    description: "Description of a local dataset"
+  - https://doi.org/10.5281/zenodo.5139550
+
+
+software:
+  -
+    link: https://github.com/KnowledgeCaptureAndDiscovery/somef
+  - 
+    link: http://software1.com 
+    name: "Software 1"
+    description: "Description software 1"
+    license: "MIT-License"
+  - https://sofware1.com
+  
+
+bibliography:
+  - "Bibliography entry 1"
+  - https://doi.org/10.1109/BigData47090.2019.9006447
+
+authors:
+    -
+      orcid: https://orcid.org/0000-0003-0454-7145
+      role: "Coordinator"
+    -
+      name: "Author's name"
+      position: "Author's position"
+      description: "Author's description"
+      web: https://author_web.com
+      photo: "photo.jpg"

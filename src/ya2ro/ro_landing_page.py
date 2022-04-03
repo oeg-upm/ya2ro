@@ -12,7 +12,8 @@ class ro_landing_page(object):
         if not Path(landing_page_directory).is_dir():
             print("ERROR: '-l','--landing_page' argument incorrect. Directory does not exist or is a file.")
             exit()
-        
+            
+        self.landing_page_directory = landing_page_directory
         self.list_data = []
 
         for data_folder in os.scandir(landing_page_directory):
@@ -67,11 +68,11 @@ class ro_landing_page(object):
             ro_html.sidebar_append(soup_landing, id_component, data_title_sidebar)
         
         # dump changes into output_html_landing
-        with open(Path(p.output_directory, p.properties["output_html_landing"]), "w+") as file:
+        with open(Path(self.landing_page_directory, p.properties["output_html_landing"]), "w+") as file:
             file.write(str(soup_landing))
 
         # Create htaccess for landing page
         from . import htaccess
-        htaccess.create_htaccess_landing(p.output_directory)
+        htaccess.create_htaccess_landing(self.landing_page_directory)
 
-        print(f"""Landing page created at {p.output_directory}/{p.properties["output_html_landing"]} \n""")
+        print(f"""Landing page created at {self.landing_page_directory}/{p.properties["output_html_landing"]} \n""")

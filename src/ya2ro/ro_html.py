@@ -153,7 +153,6 @@ class ro_html(object):
 
         ro_html.append_component(self.soup_help, "how_info", how_info_component)
 
-
     def init_styles(self):
 
         if p.style == "dark":
@@ -168,7 +167,6 @@ class ro_html(object):
             ro_html.append_component(self.soup, "style", style_component)
             ro_html.append_component(self.soup_help, "style", style_component)
             
-
     def init_requirements_recognition(self, requirements):
 
         # LOGO WORTH IT?
@@ -190,7 +188,7 @@ class ro_html(object):
         if self.worth and self.data.type == "paper":
 
             # copy image to output/images directory
-            src = Path("images","complete_paper.png")
+            src = Path(p.base_dir, p.input_to_vocab["images"],"complete_paper.png")
             dst = Path(self.data.output_directory_datafolder, "images","complete_paper.png")
             copyfile(src, dst)
 
@@ -211,7 +209,6 @@ class ro_html(object):
         ro_html.append_component(self.soup, "social_motivation", social_motivation_component)
         ro_html.sidebar_append(self.soup, "social_motivation", "Social motivation")
     
-
     def init_sketch(self, sketch):
         
         sketch_component = f"""<div class="w3-container" style="margin-top:15px">
@@ -227,7 +224,6 @@ class ro_html(object):
         src = Path(sketch)
         dst = Path(self.data.output_directory_datafolder, sketch)
         copyfile(src, dst)
-    
 
     def init_areas(self, areas):
 
@@ -241,7 +237,6 @@ class ro_html(object):
 
         ro_html.append_component(self.soup, "areas", areas_component)
         ro_html.sidebar_append(self.soup, "areas", "Areas")
-
 
     def init_contact(self, contact):
 
@@ -260,7 +255,6 @@ class ro_html(object):
         ro_html.append_component(self.soup, "contact", contact_component)
         ro_html.sidebar_append(self.soup, "contact", "Contact")
         
-
     def init_activities(self, activities):
 
         activities_list = self.ul_component(activities)
@@ -273,7 +267,6 @@ class ro_html(object):
 
         ro_html.append_component(self.soup, "activities", activities_component)
         ro_html.sidebar_append(self.soup, "activities", "Activities")
-
 
     def init_demo(self, demo):
 
@@ -288,7 +281,6 @@ class ro_html(object):
         ro_html.append_component(self.soup, "demo", demo_component)
         ro_html.sidebar_append(self.soup, "demo", "Demo")
 
-
     def init_goal(self, goal):
 
         goal_component = f"""<div class="w3-container" style="margin-top:15px">
@@ -300,7 +292,6 @@ class ro_html(object):
         ro_html.append_component(self.soup, "goal", goal_component)
         ro_html.sidebar_append(self.soup, "goal", "Goal")
  
-
     def init_title(self, title):
 
         # modify web title metadata
@@ -308,7 +299,6 @@ class ro_html(object):
         # create the title
         self.soup.find(id = "showcase").h1.string = title
     
-
     def init_summary(self, summary):
 
         summary_component = f"""<div class="w3-container" style="margin-top:15px">
@@ -319,7 +309,6 @@ class ro_html(object):
 
         ro_html.append_component(self.soup, "summary", summary_component)
         ro_html.sidebar_append(self.soup, "summary", "Summary")
-
 
     def init_datasets(self, datasets):
 
@@ -367,7 +356,6 @@ class ro_html(object):
         ro_html.sidebar_append(self.soup, "datasets", "Datasets")
         ro_html.append_component(self.soup, "datasets", datasets_component)
     
-
     def init_software(self, software):
 
         def html_entry_software(s):
@@ -406,7 +394,6 @@ class ro_html(object):
         ro_html.sidebar_append(self.soup, "software", "Software")
         ro_html.append_component(self.soup, "software", software_component)
     
-
     def init_bibliography(self, bibliography):
         
         def html_activate_links(text):
@@ -425,7 +412,6 @@ class ro_html(object):
 
         ro_html.sidebar_append(self.soup, "bibliography", "Bibliography")
         ro_html.append_component(self.soup, "bibliography", bibliography_commponent)
-
 
     def init_authors(self, authors):
         # create authors
@@ -450,7 +436,6 @@ class ro_html(object):
             dst = Path(self.data.output_directory_datafolder, author.photo)
 
             copyfile(src, dst)
-
 
     def create_about_authors(self, authors):
 
@@ -496,9 +481,8 @@ class ro_html(object):
 
         return html_author
 
-
     def create_HTML_file(self):
-        """Dupms index.html and dependencies into specified folder."""
+        """Dumps index.html and dependencies into specified folder"""
         # dump changes into index.html
         with open(self.data.output_html, "w+") as file:
             file.write(str(self.soup))
@@ -510,33 +494,29 @@ class ro_html(object):
         print(f"HTML website file created at {self.data.output_html}")   
         print(f"HTML help website file created at {self.data.output_html_help}")   
 
-
     def append_component(soup, location_id, str_component):
         loc = soup.find(id=location_id)
         html_component = BeautifulSoup(str_component, 'html.parser')
         loc.append(html_component)
 
-
     def sidebar_append(soup, location_id, item_name):
         item_component = f"""<a href="#{location_id}" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">{item_name}</a>"""
         ro_html.append_component(soup, "sidebar", item_component)
-
 
     def ul_component(self, list):
         ul_list = """<ul>"""
         for li in list:
             ul_list += f"""<li>{li}</li>"""
         ul_list += """</ul>"""
-        return ul_list
+        return ul_list 
     
-    
-    def html_horizontal(left_element, rigth_element):
+    def html_horizontal(left_element, right_element):
         return f"""	<div class="row" >
 		<div class="column" style="width:30%;">
         {left_element}
 		</div>
         <div class="column" style="width:70%;">
-        {rigth_element}
+        {right_element}
 		</div>
 	    </div>"""
 

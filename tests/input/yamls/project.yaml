@@ -1,0 +1,67 @@
+# Mandatory field
+type: "project"
+
+title: "Project - test"
+goal: "Here is where a description of what is this project trying to achieve."
+social_motivation: "This is the social motivation behind this project."
+sketch: "photo.jpg"
+
+areas: 
+  - "Area 1: Some description."
+  - "Area 2: Some description."
+
+activities:
+  - "Subtask 1: Some description."
+  - "Subtask 2: Some description."
+
+demo: 
+  -
+    link: https://oeg-upm.github.io/ya2ro/output/landing_page.html
+    description: "This is a description for a demo."
+  -
+    name: "Demo name"
+    link: https://oeg-upm.github.io/ya2ro/output/landing_page.html
+    description: "This is a description for a demo with name."
+
+datasets:
+  - 
+    doi: https://doi.org/10.5281/zenodo.5139550
+  - 
+    link: www.dataset2.com 
+    name: "Dataset 2"
+    description: "Description dataset 2"
+  -
+    path: datasets/
+    name: "Dataset name"
+    description: "Description of a local dataset"
+  - https://doi.org/10.5281/zenodo.5139550
+
+software:
+  -
+    link: https://github.com/oeg-upm/ya2ro
+  - 
+    link: http://software1.com 
+    name: "Software 1"
+    description: "Description software 1"
+    license: "MIT-License"
+  - https://sofware1.com
+
+bibliography:
+  - "Bibliography entry 1"
+  - https://doi.org/10.1109/BigData47090.2019.9006447
+
+participants:
+    -
+      orcid: https://orcid.org/0000-0003-0454-7145
+      role: "Coordinator"
+    -
+      name: "Author's name"
+      position: "Author's position"
+      description: "Author's description"
+      web: https://author_web.com
+      photo: "photo.jpg"
+
+contact:
+  email: contact@projectmail.com
+  phone: +34 999 999 999
+
