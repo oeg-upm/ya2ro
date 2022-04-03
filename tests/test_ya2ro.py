@@ -5,6 +5,8 @@ from unittest import mock
 from ya2ro import ya2ro
 import pathlib
 import os, shutil
+import yaml
+from yaml.loader import SafeLoader
 
 @mock.patch('ya2ro.data_wrapper.metadata_parser.MetadataParser')
 @mock.patch('ya2ro.data_wrapper.req_orcid.orcid')
@@ -40,51 +42,104 @@ class test_ya2ro(TestCase):
         apply_mock(doi_dataset, doi_bib, orcid, metadata_parser)
         os.chdir("input/")
         _set_args("-i","yamls/paper.yaml","-o","../out","-ns")
-        ya2ro.main()
+        with HiddenPrints():
+            ya2ro.main()
+
+        data = yaml.load("yamls/paper.yaml", Loader=SafeLoader)
+        with open("../out/paper/index-en.html") as f:
+            web = f.read()
+
+        self.assert_data_in_web(data, web)
+
+        self.assertEquals(True, True)
+
 
     def test_paper_doi(self, doi_dataset, doi_bib, orcid, metadata_parser):
         apply_mock(doi_dataset, doi_bib, orcid, metadata_parser)
         os.chdir("input/")
         _set_args("-i","yamls/paper_doi.yaml","-o","../out","-ns")
-        ya2ro.main()
-        
+        with HiddenPrints():
+            ya2ro.main()
 
     def test_project(self, doi_dataset, doi_bib, orcid, metadata_parser):
         apply_mock(doi_dataset, doi_bib, orcid, metadata_parser)
         os.chdir("input/")
         _set_args("-i","yamls/project.yaml","-o","../out")
-        ya2ro.main()
+        with HiddenPrints():
+            ya2ro.main()
+
+        data = yaml.load("yamls/project.yaml", Loader=SafeLoader)
+        with open("../out/project/index-en.html") as f:
+            web = f.read()
+
+        self.assert_data_in_web(data, web)
 
 
     def test_landing_page(self, doi_dataset, doi_bib, orcid, metadata_parser):
         apply_mock(doi_dataset, doi_bib, orcid, metadata_parser)
         os.chdir("input/")
         _set_args("-i","yamls/paper.yaml","-o","../out","-ns")
-        ya2ro.main()
+        with HiddenPrints():
+            ya2ro.main()
 
         _set_args("-i","yamls/paper_doi.yaml","-o","../out","-ns")
-        ya2ro.main()
+        with HiddenPrints():
+            ya2ro.main()
 
         _set_args("-i","yamls/project.yaml","-o","../out","-ns")
-        ya2ro.main()
+        with HiddenPrints():
+            ya2ro.main()
 
         global parent_dir
         os.chdir(parent_dir)
         _set_args("-l","out")
-        ya2ro.main()
+        with HiddenPrints():
+            ya2ro.main()
+
+        with open("out/landing_page.html") as landing:
+            web = landing.read()
+        
+        n_webs = web.count('</details>')
+        self.assertEquals(3, n_webs)
+
+        
+
+    def assert_data_in_web(self, data, web):
+        for attr in data:
+            if isinstance(attr, str):
+                self.assertIn(attr, web)
+            elif isinstance(attr, list):
+                for elem in attr:
+                    if isinstance(elem, str):
+                        self.assertIn(attr, web)
+                    elif isinstance(elem, dict):
+                        for elem_elem in elem:
+                            self.assertIn(elem_elem, web)
 
 # AUX
 ################################################
 
 def _set_args(*args):
     sys.argv = [sys.argv[0]]+list(args)
-    print(sys.argv)
 
 def apply_mock(doi_dataset, doi_bib, orcid, metadata_parser):
         doi_dataset.return_value = mock_doi_dataset()
         doi_bib.return_value = mock_doi_bib()
         orcid.return_value = mock_orcid()
         metadata_parser.return_value = mock_metadata_parser()
+
+class HiddenPrints:
+    def __enter__(self):
+        self._original_stdout = sys.stdout
+        self._original_stderr = sys.stderr
+        sys.stdout = open(os.devnull, 'w')
+        sys.stderr = open(os.devnull, 'w')
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        sys.stdout.close()
+        sys.stderr.close()
+        sys.stdout = self._original_stdout
+        sys.stderr = self._original_stderr
 
 # Mock classes
 ################################################
