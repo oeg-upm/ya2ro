@@ -1,0 +1,153 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "http://orcid.org/0000-0003-0454-7145"
+                },
+                {
+                    "@id": "#maximiliano_osorio"
+                },
+                {
+                    "@id": "#idafen_santana-p\u00e9rez"
+                },
+                {
+                    "@id": "#carlos_buil"
+                }
+            ],
+            "description": "",
+            "hasPart": [
+                {
+                    "@id": "#annotator"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#dockerpedia-web"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#dockerpedia_dataset_v1.0-beta.1"
+                },
+                {
+                    "@id": "#queries_used_to_illustrate_the_dockerpedia_kg"
+                },
+                {
+                    "@id": "index-en.html"
+                }
+            ],
+            "name": "DockerPedia: A Knowledge Graph of Software Images and their Metadata"
+        },
+        {
+            "@id": "http://orcid.org/0000-0003-0454-7145",
+            "@type": "Person",
+            "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
+            "name": "Daniel Garijo",
+            "position": [
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
+            ]
+        },
+        {
+            "@id": "#maximiliano_osorio",
+            "@type": "Person",
+            "description": "Computer Scientist at the Information Sciences Institute of the University of Southern California.",
+            "name": "Maximiliano Osorio",
+            "position": [
+                "Research Programmer"
+            ]
+        },
+        {
+            "@id": "#idafen_santana-p\u00e9rez",
+            "@type": "Person",
+            "description": "Lecturer at DSC department, at ULPGC on sensor data for light pollution and medical image processing. Idafen is also interested in topics related to Open Science and Linked Data in general.",
+            "name": "Idafen Santana-P\u00e9rez",
+            "position": [
+                "Lecturer"
+            ]
+        },
+        {
+            "@id": "#carlos_buil",
+            "@type": "Person",
+            "description": "Lecturer at the Universidad T\u00e9cnica Federico de Santa Mar\u00eda, In Chile. Carlos work focuses on (graph) databases, Semantic Web and Knowledge Graphs.",
+            "name": "Carlos Buil",
+            "position": [
+                "Lecturer"
+            ]
+        },
+        {
+            "@id": "#annotator",
+            "@type": "SoftwareApplication",
+            "description": "<span><p>No description available yet.</p>\n</span>",
+            "installUrl": "https://github.com/dockerpedia/annotator"
+        },
+        {
+            "@id": "#none",
+            "@type": "SoftwareApplication",
+            "description": null,
+            "installUrl": "https://dockerpedia.inf.utfsm.cl/visualization"
+        },
+        {
+            "@id": "#dockerpedia-web",
+            "@type": "SoftwareApplication",
+            "description": "<span><p>A Knowledge Graph of Docker images</p>\n</span>",
+            "installUrl": "https://github.com/dockerpedia/dockerpedia-web"
+        },
+        {
+            "@id": "#none",
+            "@type": "SoftwareApplication",
+            "description": null,
+            "installUrl": "https://dockerpedia.inf.utfsm.cl/query"
+        },
+        {
+            "@id": "#none",
+            "@type": "SoftwareApplication",
+            "description": null,
+            "installUrl": "https://hub.docker.com/u/dockerpedia"
+        },
+        {
+            "@id": "#dockerpedia_dataset_v1.0-beta.1",
+            "@type": "Dataset",
+            "description": "DockerPedia is a resource that allows user inspect Docker images before downloading and deploy the within a host. Normally Docker images are like a black box in which users do not really know what they are deploying. User only know the name of the image and the name of the main package within the image. With this resource now it is possible to inspect the Docker images stored at DockerHub before deploying them.",
+            "distribution": {
+                "@id": "https://doi.org/10.6084/m9.figshare.6260822.v1"
+            },
+            "name": "DockerPedia Dataset v1.0-beta.1"
+        },
+        {
+            "@id": "#queries_used_to_illustrate_the_dockerpedia_kg",
+            "@type": "Dataset",
+            "description": "Query results obtained when issuing the SPARQL queries in the listings of the paper to the SPARQL endpoint in https://dockerpedia.inf.utfsm.cl/<br>",
+            "distribution": {
+                "@id": "https://doi.org/10.6084/m9.figshare.14718450.v1"
+            },
+            "name": "Queries used to illustrate the DockerPedia KG"
+        },
+        {
+            "@id": "index-en.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

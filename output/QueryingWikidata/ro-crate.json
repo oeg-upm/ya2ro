@@ -1,0 +1,126 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "http://orcid.org/0000-0003-0454-7145"
+                },
+                {
+                    "@id": "#hans_chalupsky"
+                },
+                {
+                    "@id": "#pedro_szekely"
+                },
+                {
+                    "@id": "#filip_ilievski"
+                },
+                {
+                    "@id": "#kartik_shenoy"
+                }
+            ],
+            "description": "",
+            "hasPart": [
+                {
+                    "@id": "#kgtk"
+                },
+                {
+                    "@id": "#kgtk-at-2021-wikidata-workshop"
+                },
+                {
+                    "@id": "#datasets_for_creating_and_querying_personalized_versions_of_wikidata_in_a_laptop_(wikidata_workshop,_2021)"
+                },
+                {
+                    "@id": "index-en.html"
+                }
+            ],
+            "name": "Creating and Querying Personalized Versions of Wikidata on a Laptop"
+        },
+        {
+            "@id": "http://orcid.org/0000-0003-0454-7145",
+            "@type": "Person",
+            "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
+            "name": "Daniel Garijo",
+            "position": [
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
+            ]
+        },
+        {
+            "@id": "#hans_chalupsky",
+            "@type": "Person",
+            "description": "Research Lead at the Information Sciences Institute, University of Southern California.",
+            "name": "Hans Chalupsky",
+            "position": [
+                "Research Lead"
+            ]
+        },
+        {
+            "@id": "#pedro_szekely",
+            "@type": "Person",
+            "description": "Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California.",
+            "name": "Pedro Szekely",
+            "position": [
+                "Research Director"
+            ]
+        },
+        {
+            "@id": "#filip_ilievski",
+            "@type": "Person",
+            "description": "Researcher at the Information Sciences Institute, University of Southern California.",
+            "name": "Filip Ilievski",
+            "position": [
+                "Research Scientist"
+            ]
+        },
+        {
+            "@id": "#kartik_shenoy",
+            "@type": "Person",
+            "description": "Master student at the University of Southern California.",
+            "name": "Kartik Shenoy",
+            "position": [
+                "Student worker"
+            ]
+        },
+        {
+            "@id": "#kgtk",
+            "@type": "SoftwareApplication",
+            "description": "<span><p>Knowledge Graph Toolkit</p>\n</span>",
+            "installUrl": "https://github.com/usc-isi-i2/kgtk/"
+        },
+        {
+            "@id": "#kgtk-at-2021-wikidata-workshop",
+            "@type": "SoftwareApplication",
+            "description": "<span><p>Code and datasets for the KGTK demo at the 2021 Wikidata Workshop at ISWC</p>\n</span>",
+            "installUrl": "https://github.com/usc-isi-i2/kgtk-at-2021-wikidata-workshop"
+        },
+        {
+            "@id": "#datasets_for_creating_and_querying_personalized_versions_of_wikidata_in_a_laptop_(wikidata_workshop,_2021)",
+            "@type": "Dataset",
+            "description": "These datasets are used to support the results of the paper \"Datasets for Creating and Querying Personalized Versions of Wikidata in a Laptop\", submitted to the Wikidata workshop 2021 (https://wikidataworkshop.github.io/2021/) at the International Semantic Web Conference. The datasets have been derived from Wikidata dump 20210215. To help querying purposes, the dump is organized in different files: claims.time.tsv.gz: time-related assertions claims.wikibase-item.tsv-006.gz: item-related assertions derived.P279.tsv.gz: statements that are subclass of another statement derived.P279star.tsv.gz: statement that are subclass of another statement, including their chains. derived.P31.tsv.gz: instance of statements. labels.en.tsv-004.gz: labels in English claims.external-id.tsv-005.gz: External identifiers for each item. ulan.tsv: ULAN ids (used to link external identifiers to Wikidata identifiers) wikidata_infobox.tsv.gz: Information about dbpedia infoboxes. Upload by: Daniel Garijo",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.5139550"
+            },
+            "name": "Datasets for Creating and Querying Personalized Versions of Wikidata in a Laptop (Wikidata workshop, 2021)"
+        },
+        {
+            "@id": "index-en.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

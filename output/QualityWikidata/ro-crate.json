@@ -1,0 +1,207 @@
+{
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+        {
+            "@id": "ro-crate-metadata.json",
+            "@type": "CreativeWork",
+            "about": {
+                "@id": "./"
+            },
+            "conformsTo": {
+                "@id": "https://w3id.org/ro/crate/1.1"
+            },
+            "description": "RO-Crate Metadata File Descriptor (this file)"
+        },
+        {
+            "@id": "./",
+            "@type": "Dataset",
+            "DataType": "Paper",
+            "author": [
+                {
+                    "@id": "http://orcid.org/0000-0003-0454-7145"
+                },
+                {
+                    "@id": "#daniel_schwabe"
+                },
+                {
+                    "@id": "#pedro_szekely"
+                },
+                {
+                    "@id": "#filip_ilievski"
+                },
+                {
+                    "@id": "#kartik_shenoy"
+                }
+            ],
+            "description": "",
+            "hasPart": [
+                {
+                    "@id": "#kgtk"
+                },
+                {
+                    "@id": "#wd-quality"
+                },
+                {
+                    "@id": "#wd-quality"
+                },
+                {
+                    "@id": "#claims_file_-_wikidata_dump_of_dec_7,_2020."
+                },
+                {
+                    "@id": "#labels_file_-_wikidata_dump_of_dec_7,_2020"
+                },
+                {
+                    "@id": "#claim_and_qualifier_properties_file_-_wikidata_dump_of_dec_7,_2020"
+                },
+                {
+                    "@id": "#wikidata_removed_statements_from_oct_2014_-_jan_2021"
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "#wikidata_instanceof,_subclassof,_isa-relation_dumps_of_feb_15,_2021."
+                },
+                {
+                    "@id": "#none"
+                },
+                {
+                    "@id": "index-en.html"
+                }
+            ],
+            "name": "A Study of the Quality of Wikidata"
+        },
+        {
+            "@id": "http://orcid.org/0000-0003-0454-7145",
+            "@type": "Person",
+            "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
+            "name": "Daniel Garijo",
+            "position": [
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
+            ]
+        },
+        {
+            "@id": "#daniel_schwabe",
+            "@type": "Person",
+            "description": "Professor at Pontificia Universidade Cat\u00f3lica Rio de Janeiro and invited researcher at the Information Sciences Institute, University of Southern California.",
+            "name": "Daniel Schwabe",
+            "position": [
+                "Invited researcher"
+            ]
+        },
+        {
+            "@id": "#pedro_szekely",
+            "@type": "Person",
+            "description": "Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California.",
+            "name": "Pedro Szekely",
+            "position": [
+                "Research Director"
+            ]
+        },
+        {
+            "@id": "#filip_ilievski",
+            "@type": "Person",
+            "description": "Researcher at the Information Sciences Institute, University of Southern California.",
+            "name": "Filip Ilievski",
+            "position": [
+                "Research Scientist"
+            ]
+        },
+        {
+            "@id": "#kartik_shenoy",
+            "@type": "Person",
+            "description": "Master student at the University of Southern California.",
+            "name": "Kartik Shenoy",
+            "position": [
+                "Student worker"
+            ]
+        },
+        {
+            "@id": "#kgtk",
+            "@type": "SoftwareApplication",
+            "description": "<span><p>Knowledge Graph Toolkit</p>\n</span>",
+            "installUrl": "https://github.com/usc-isi-i2/kgtk/"
+        },
+        {
+            "@id": "#wd-quality",
+            "@type": "SoftwareApplication",
+            "description": "<span><p>Notebooks for generating and validating constraints in WIkidata</p>\n</span>",
+            "installUrl": "https://github.com/usc-isi-i2/wd-quality"
+        },
+        {
+            "@id": "#wd-quality",
+            "@type": "SoftwareApplication",
+            "description": "<span><p>Notebooks for generating and validating constraints in WIkidata</p>\n</span>",
+            "installUrl": "https://github.com/usc-isi-i2/wd-quality/tree/main/Scripts"
+        },
+        {
+            "@id": "#claims_file_-_wikidata_dump_of_dec_7,_2020.",
+            "@type": "Dataset",
+            "description": "Reference dump containing the claims.tsv.gz file with 1.15B statements, used for finding constraint violations. The dump is in KGTK format (https://kgtk.readthedocs.io/)",
+            "distribution": {
+                "@id": "http://doi.org/10.5281/zenodo.5120254"
+            },
+            "name": "Claims file - Wikidata dump of Dec 7, 2020."
+        },
+        {
+            "@id": "#labels_file_-_wikidata_dump_of_dec_7,_2020",
+            "@type": "Dataset",
+            "description": "File with all labels of nodes used in the analysis in KGTK format",
+            "distribution": {
+                "@id": "http://doi.org/10.5281/zenodo.5120231"
+            },
+            "name": "Labels file - Wikidata dump of Dec 7, 2020"
+        },
+        {
+            "@id": "#claim_and_qualifier_properties_file_-_wikidata_dump_of_dec_7,_2020",
+            "@type": "Dataset",
+            "description": "Both of these properties are crucial to calculate the constraints in our analysis. Claim properties file - Wikidata dump of Dec 7, 2020 File used to determine constraints. Qualifiers file - Wikidata dump of Dec 7, 2020. File used to fetch more details on the constraints for each property, such as exceptions.",
+            "distribution": {
+                "@id": "http://doi.org/10.5281/zenodo.5120200"
+            },
+            "name": "Claim and qualifier properties file - Wikidata dump of Dec 7, 2020"
+        },
+        {
+            "@id": "#wikidata_removed_statements_from_oct_2014_-_jan_2021",
+            "@type": "Dataset",
+            "description": "This dataset contains 76.5M statements that have been permanently removed (i.e., removed from a Wikidata dump and not added again) since the first available dump of Wikidata in October, 2014. The dataset was generated by downloading all available weekly JSON Wikidata dumps from the Internet Archive; converting them to the KGTK format; and extracting only those statements that had been removed between each pair of dumps (i.e., calculating the deltas). The dataset is in KGTK format (https://kgtk.readthedocs.io/en/latest/specification/), a tsv file",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.4686804"
+            },
+            "name": "Wikidata removed statements from Oct 2014 - Jan 2021"
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "description": null,
+            "distribution": {
+                "@id": "http://doi.org/10.5281/zenodo.5120117"
+            },
+            "name": null
+        },
+        {
+            "@id": "#wikidata_instanceof,_subclassof,_isa-relation_dumps_of_feb_15,_2021.",
+            "@type": "Dataset",
+            "description": "Wikidata instanceOf, subclassOf, isa-relation dumps of Feb 15, 2021. The combination of these files is used to determine the ancestors of each node at 1 or more levels above it. P279 (subclass of) P31 (instance of) isa (instance of or subclass of) P279 star (recursive subclass of)",
+            "distribution": {
+                "@id": "https://doi.org/10.5281/zenodo.5120050"
+            },
+            "name": "Wikidata instanceOf, subclassOf, isa-relation dumps of Feb 15, 2021."
+        },
+        {
+            "@id": "#none",
+            "@type": "Dataset",
+            "description": null,
+            "distribution": {
+                "@id": "http://doi.org/10.5281/zenodo.5121276"
+            },
+            "name": null
+        },
+        {
+            "@id": "index-en.html",
+            "@type": "WebPage",
+            "name": "HTML representation of this data."
+        }
+    ]
+}

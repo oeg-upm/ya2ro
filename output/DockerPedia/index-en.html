@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<title>DockerPedia: A Knowledge Graph of Software Images and their Metadata</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+<style id="style">
+
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px; text-align: justify;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+img {display: block;margin-left: auto;margin-right: auto;}
+.column {float: left;width: 50%;padding: 5px;}
+.row::after {content: ""; clear: both; display: table;}
+.centered-element {margin: 0;position: absolute;top: 50%;transform: translateY(-50%);}
+
+
+
+            h1,h1 b{color:#fff!important}
+            .w3-light-grey{background-color:#ddd!important;color:#222831!important}
+            .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
+            body{background-color:#222831!important;color:#fff!important}
+            </style>
+<body>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" id="mySidebar" style="z-index:3;width:300px;font-weight:bold;"><br/>
+<a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()" style="width:100%;font-size:22px">Close Menu</a>
+<!-- LOGO if recognized -->
+<div class="row" style="margin-bottom:2em;margin-top:2em;">
+<div class="column">
+<!-- Requiremnts okay logo -->
+<span id="recogn_logo"></span>
+</div>
+</div>
+<div class="w3-bar-block centered-element">
+<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
+</div>
+<div class="row" style="position: absolute; bottom: 25px; height: 50px;">
+<div class="column">
+<a href="ro-crate.json" id="jsonld_svg">
+<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0; " title="Retrieve the JSON-LD ro-crate representation of this web."/>
+</a>
+</div>
+<div class="column">
+<!-- Help button -->
+<a href="help.html" id="help-button">
+<img alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0;" title="Description of each element and how was this web created."/>
+</a>
+</div>
+</div>
+
+</nav>
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
+<a class="w3-button w3-green w3-margin-right" href="javascript:void(0)" onclick="w3_open()">☰</a>
+</header>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin:auto; padding-left: 340px; max-width: 1500px;">
+<!-- Header -->
+<div class="w3-container" id="showcase" style="margin-top:80px">
+<h1>DockerPedia: A Knowledge Graph of Software Images and their Metadata</h1>
+</div>
+<!-- Summary -->
+<span id="summary"></span>
+<!-- Goal -->
+<span id="goal"></span>
+<!-- Social Motivation -->
+<span id="social_motivation"></span>
+<!-- Areas -->
+<span id="areas"></span>
+<!-- Activities -->
+<span id="activities"></span>
+<!-- Sketch -->
+<span id="sketch"></span>
+<!-- Demo -->
+<span id="demo"></span>
+<!-- datasets -->
+<span id="datasets"><div class="w3-container" id="datasets" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<ul><li><p><a href="https://doi.org/10.6084/m9.figshare.6260822.v1">DockerPedia Dataset v1.0-beta.1</a></p>
+<ul><li><b>Description:</b> DockerPedia is a resource that allows user inspect Docker images before downloading and deploy the within a host. Normally Docker images are like a black box in which users do not really know what they are deploying. User only know the name of the image and the name of the main package within the image. With this resource now it is possible to inspect the Docker images stored at DockerHub before deploying them.</li><li><b>License:</b> https://creativecommons.org/licenses/by/4.0/legalcode</li></ul></li><li><p><a href="https://doi.org/10.6084/m9.figshare.14718450.v1">Queries used to illustrate the DockerPedia KG</a></p>
+<ul><li><b>Description:</b> Query results obtained when issuing the SPARQL queries in the listings of the paper to the SPARQL endpoint in https://dockerpedia.inf.utfsm.cl/<br/></li><li><b>License:</b> https://creativecommons.org/licenses/by/4.0/legalcode</li></ul></li></ul>
+</div></span>
+<!-- Software -->
+<span id="software"><div class="w3-container" id="software" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+        The pointers for the main software used can be found below:
+        
+            <ul><li><p><a href="https://dockerpedia.inf.utfsm.cl/visualization">https://dockerpedia.inf.utfsm.cl/visualization</a></p>
+<ul></ul></li><li><p><a href="https://dockerpedia.inf.utfsm.cl/query">https://dockerpedia.inf.utfsm.cl/query</a></p>
+<ul></ul></li><li><p><a href="https://hub.docker.com/u/dockerpedia">https://hub.docker.com/u/dockerpedia</a></p>
+<ul></ul></li></ul>
+<div style="max-width: 1600px;display: flex; align-content: flex-start; flex-wrap: wrap; 
+            flex-direction: row;justify-content: center; margin-top: 3rem;font-size: 15px;"><article class="scc-card" id="https://github.com/dockerpedia/annotator"><div class="card-row"><div class="card-col"><div class="flex-horizontal"><a href="https://github.com/dockerpedia/annotator" style="text-decoration: none;" target="_blank"><h4 class="title">annotator</h4></a><button class="copy-btn" data-placement="right" data-toggle="tooltip" style="background:url('https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/copy.svg')transparent;background-repeat:no-repeat;background-size:auto;" title="Copy card as embbeded HTML" value="https://github.com/dockerpedia/annotator"></button></div><div class="description"><span><p>No description available yet.</p></span><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">annotator</h2><div style="margin-bottom: 1rem; overflow: auto;"><p><span><p>No description available yet.</p></span></p></div></div></div></div></div><div><div style="min-height: 6rem;display: flex;align-items: center;justify-content: center;"><a href="https://github.com/dockerpedia/annotator" style="text-decoration: none;" target="_blank"><img alt="repo-logo" class="repo-logo" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/img/github-default.svg"/></a></div><div class="flex-horizontal float-right"><div class="recently-updated" data-placement="right" data-toggle="tooltip" style="background-color: #a86262;" title="Last updated on: 23-07-2019"></div></div><div alt="Stars" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" style="margin-top: 0.3rem;" title="Stars"><a class="flex-horizontal float-right" href="https://github.com/dockerpedia/annotator/stargazers" style="text-decoration: none;" target="_blank"><b>0</b><img alt="stars" class="repo-icon" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/star.png"/></a></div><div alt="Last release: thesis" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" title="Last release: thesis"><a class="flex-horizontal" href="https://github.com/dockerpedia/annotator/releases" style="text-decoration: none;" target="_blank"><b>1</b><img alt="releases" class="repo-icon" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/releases.png"/></a></div></div></div><div class="card-row"><div class="card-col"><div class="flex-horizontal ref-repo-icons"><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://github.com/dockerpedia/annotator/README.md" target="_blank"><img alt="Readme" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/readme.png" title="Readme"/></a></div></div><div class="ref-license" data-url="https://api.github.com/licenses/mit" style="cursor: pointer;"><div class="icon"><img alt="License: MIT License" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/license.png" title="License: MIT License"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">License</h2><div style="margin-bottom: 1rem; overflow: auto;"><h3 class="ref-name"></h3><span class="ref-description-aux"><h4>Description:</h4><p class="ref-description" style="text-align: justify;">Loading...</p><h4>Permissions:</h4><div class="ref-permissions"><ul><li>Loading...</li></ul></div><h4>Conditions:</h4><div class="ref-conditions"><ul><li>Loading...</li></ul></div><h4>Limitations:</h4><div class="ref-limitations"><ul><li>Loading...</li></ul></div></span></div></div></div></div><div style="cursor: pointer;"><div class="icon"><img alt="Docker" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/docker.png" title="Docker"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">Docker</h2><div style="margin-bottom: 1rem; overflow: auto;"><ul><li><a href="https://raw.githubusercontent.com/dockerpedia/annotator/master/Dockerfile">https://raw.githubusercontent.com/dockerpedia/annotator/master/Dockerfile</a></li><li><a href="https://raw.githubusercontent.com/dockerpedia/annotator/master/vendor/golang.org/x/net/http2/Dockerfile">https://raw.githubusercontent.com/dockerpedia/annotator/master/vendor/golang.org/x/net/http2/Dockerfile</a></li></ul></div></div></div></div><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://github.com/dockerpedia/annotator/releases" target="_blank"><img alt="Download" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/download.png" title="Download"/></a></div></div></div></div><div><div class="flex-horizontal float-right"><img alt="go" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/language_icons/go.svg" title="Go"/></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script><script>
+btns = document.getElementsByClassName('copy-btn');
+for (let index = 0; index < btns.length; index++) {
+    const element = btns[index];
+    element.addEventListener('click', function () {
+        console.log('copy btn!');
+        for (let index = 0; index < cards.length; index++) {
+            const card = cards[index];
+            if(card.id == $(this).val()){
+                navigator.clipboard.writeText(card.html_card_embedded);
+                break;
+            }
+        }
+    });
+}
+</script><script>function add_modals() {
+    cards_icons_list = document.getElementsByClassName('ref-repo-icons');
+    for(const cards_icons of cards_icons_list){
+        for(const card_icon of cards_icons.children){
+            const icon = card_icon.getElementsByClassName('icon')[0];
+            const modal = card_icon.getElementsByClassName('modal')[0];
+            const modal_content = card_icon.getElementsByClassName('modal-content')[0];
+            const span_close = card_icon.getElementsByClassName('close')[0];
+            
+            if (modal != undefined){
+                icon.addEventListener('click', () => { 
+                    modal.classList.add('modal-on');
+                });
+                span_close.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+                });
+                modal_content.addEventListener('click', (event) => { 
+                    event.stopPropagation();
+                });
+                modal.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+
+                });
+            }
+        }
+        
+        const license = cards_icons.getElementsByClassName('ref-license')[0];
+        if (license != undefined) {
+            license.addEventListener('click', () => { 
+                getGithub(license);
+            });
+        }
+        
+    }
+    const descriptions = document.getElementsByClassName('description');
+    [].forEach.call(descriptions, function (description) {
+        if (isOverflown(description)) {
+            description.style.cursor="pointer";
+            const modal = description.getElementsByClassName('modal')[0];
+            const modal_content = description.getElementsByClassName('modal-content')[0];
+            const span_close = description.getElementsByClassName('close')[0];
+            if (modal != undefined){
+                description.addEventListener('click', () => { 
+                    modal.classList.add('modal-on');
+                });
+                span_close.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+                });
+                modal_content.addEventListener('click', (event) => { 
+                    event.stopPropagation();
+                });
+                modal.addEventListener('click', (event) => { 
+                    modal.classList.remove('modal-on');
+                    event.stopPropagation();
+                });
+            }
+        }
+    });
+    
+}
+
+function isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+function addList(element, iterable){
+    var list = document.createElement("ol");
+        for (let i of iterable) {
+            let item = document.createElement("li");
+            item.innerHTML = i.charAt(0).toUpperCase() + i.slice(1);
+            list.appendChild(item);
+        }
+        element.innerHTML = '';
+        element.appendChild(list);
+}
+
+async function getGithub(license){
+    if (license.dataset.url != 'None'){
+        const response = await fetch(license.dataset.url);
+        const response_aux = response.clone();
+        try {
+            const data =  await response.json();
+
+            const name = license.getElementsByClassName('ref-name')[0];
+            const description = license.getElementsByClassName('ref-description')[0];
+            const permissions = license.getElementsByClassName('ref-permissions')[0];
+            const conditions = license.getElementsByClassName('ref-conditions')[0];
+            const limitations = license.getElementsByClassName('ref-limitations')[0];
+
+            name.innerHTML = await data.name;
+            description.innerHTML = await data.description;
+
+            addList(permissions, data.permissions);
+            addList(conditions, data.conditions);
+            addList(limitations, data.limitations);
+
+        } catch (error) {
+            const description = license.getElementsByClassName('ref-description-aux')[0];
+            description.innerHTML = '<pre style="font-family: monospace;">'+await response_aux.text()+'</pre>';
+        }
+    } else console.log('No license.');
+}add_modals();</script><style>.scc-card *{margin:0;box-sizing:border-box;color:#3e3e3e;font-family:Helvetica}
+.scc-card .copy-btn:active{position:relative;top:1px;background-color:#3e3e3e;color:#e0e0e0}
+.scc-card .copy-btn{margin-left: 0.3rem;border:none;height:1.1rem;width:1rem;cursor:pointer;}
+.scc-card .tooltip{position:absolute;z-index:1070;display:block;font-style:normal;font-weight:400;line-height:1.42857143;line-break:auto;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;word-wrap:normal;white-space:normal;font-size:12px;opacity:0}
+.scc-card .tooltip.in{opacity:.9}
+.scc-card .tooltip.top{padding:5px 0;margin-top:-3px}
+.scc-card .tooltip.right{padding:0 5px;margin-left:3px}
+.scc-card .tooltip.bottom{padding:5px 0;margin-top:3px}
+.scc-card .tooltip.left{padding:0 5px;margin-left:-3px}
+.scc-card .tooltip.top .tooltip-arrow{bottom:0;left:50%;margin-left:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.top-left .tooltip-arrow{right:5px;bottom:0;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.top-right .tooltip-arrow{bottom:0;left:5px;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.right .tooltip-arrow{top:50%;left:0;margin-top:-5px;border-width:5px 5px 5px 0;border-right-color:#3e3e3e}
+.scc-card .tooltip.left .tooltip-arrow{top:50%;right:0;margin-top:-5px;border-width:5px 0 5px 5px;border-left-color:#3e3e3e}
+.scc-card .tooltip.bottom .tooltip-arrow{top:0;left:50%;margin-left:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip.bottom-left .tooltip-arrow{top:0;right:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip.bottom-right .tooltip-arrow{top:0;left:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip-inner{max-width:200px;padding:3px 8px;color:#e0e0e0;text-align:center;background-color:#3e3e3e;border-radius:4px}
+.scc-card .tooltip-arrow{position:absolute;width:0;height:0;border-color:transparent;border-style:solid}
+.scc-card {display: flex; flex-direction: column; justify-content: space-between; line-height: 1.42857143; margin: 0.2rem; min-width: 28rem; max-width: 28rem; min-height: 15rem; max-height: 15rem; padding: 1.3rem; border-radius: 19px; background-color: #e0e0e0; box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;}
+.scc-card .repo-logo{width: 5.5rem;}
+.scc-card .description{text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; line-clamp: 6; -webkit-box-orient: vertical;}
+.scc-card .recently-updated{width: 1.4rem; height: 1.4rem; border-radius: 50%; margin-left: auto; margin-right: 0.1rem; background-color: #3e3e3e;}
+.scc-card .repo-icon{height: 1.1rem; margin-left: 0.2rem; margin-right: 0.2rem;}
+.scc-card .card-row{display: flex; flex-direction: row; justify-content: space-between;}
+.scc-card .card-col{width: 72%;}
+.scc-card .flex-horizontal{display: flex; align-items: center; flex-direction: row;}
+.scc-card .float-right{justify-content: flex-end;}
+.scc-card .grey-color-svg{filter: brightness(0) saturate(100%) invert(26%) sepia(0%) saturate(9%) hue-rotate(190deg) brightness(93%) contrast(100%);}
+.scc-card .title:hover{text-decoration: underline;}
+.highlight *{font-family: monospace; font-size: large;}
+.modal {display: none;position: fixed;z-index: 1;padding-top: 20vh;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);}
+.modal-content {background-color: #e0e0e0;margin: auto;padding: 20px;border: 0px;width: 90%;max-width: 40rem;border-radius: 1rem;}
+.modal-on{display: block;}
+.close {color: #3e3e3e;float: right;font-size: 28px;font-weight: bold;position: relative;bottom: 0.8rem;}
+.close:hover, .close:focus {  color: #000;  text-decoration: none;  cursor: pointer;}
+.scc-card .repo-type{height: 1.4rem; margin-left: 0.2rem; margin-right: 0.2rem;}</style></article><article class="scc-card" id="https://github.com/dockerpedia/dockerpedia-web"><div class="card-row"><div class="card-col"><div class="flex-horizontal"><a href="https://github.com/dockerpedia/dockerpedia-web" style="text-decoration: none;" target="_blank"><h4 class="title">dockerpedia-web</h4></a><button class="copy-btn" data-placement="right" data-toggle="tooltip" style="background:url('https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/copy.svg')transparent;background-repeat:no-repeat;background-size:auto;" title="Copy card as embbeded HTML" value="https://github.com/dockerpedia/dockerpedia-web"></button></div><div class="description"><span><p>A Knowledge Graph of Docker images</p></span><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">dockerpedia-web</h2><div style="margin-bottom: 1rem; overflow: auto;"><p><span><p>A Knowledge Graph of Docker images</p></span></p></div></div></div></div></div><div><div style="min-height: 6rem;display: flex;align-items: center;justify-content: center;"><a href="https://github.com/dockerpedia/dockerpedia-web" style="text-decoration: none;" target="_blank"><img alt="repo-logo" class="repo-logo" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/img/github-default.svg"/></a></div><div class="flex-horizontal float-right"><div class="recently-updated" data-placement="right" data-toggle="tooltip" style="background-color: #a86262;" title="Last updated on: 21-10-2021"></div></div><div alt="Stars" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" style="margin-top: 0.3rem;" title="Stars"><a class="flex-horizontal float-right" href="https://github.com/dockerpedia/dockerpedia-web/stargazers" style="text-decoration: none;" target="_blank"><b>2</b><img alt="stars" class="repo-icon" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/star.png"/></a></div><div alt="Last release: v1.0-beta.1" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" title="Last release: v1.0-beta.1"><a class="flex-horizontal" href="https://github.com/dockerpedia/dockerpedia-web/releases" style="text-decoration: none;" target="_blank"><b>1</b><img alt="releases" class="repo-icon" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/releases.png"/></a></div></div></div><div class="card-row"><div class="card-col"><div class="flex-horizontal ref-repo-icons"><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://github.com/dockerpedia/dockerpedia-web/README.md" target="_blank"><img alt="Readme" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/readme.png" title="Readme"/></a></div></div><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://github.com/dockerpedia/dockerpedia-web/releases" target="_blank"><img alt="Download" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/download.png" title="Download"/></a></div></div></div></div><div><div class="flex-horizontal float-right"><img alt="javascript" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/language_icons/javascript.svg" title="Javascript"/><img alt="html" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/language_icons/html.svg" title="Html"/><img alt="css" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/language_icons/css.svg" title="Css"/></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script><script>
+btns = document.getElementsByClassName('copy-btn');
+for (let index = 0; index < btns.length; index++) {
+    const element = btns[index];
+    element.addEventListener('click', function () {
+        console.log('copy btn!');
+        for (let index = 0; index < cards.length; index++) {
+            const card = cards[index];
+            if(card.id == $(this).val()){
+                navigator.clipboard.writeText(card.html_card_embedded);
+                break;
+            }
+        }
+    });
+}
+</script><script>function add_modals() {
+    cards_icons_list = document.getElementsByClassName('ref-repo-icons');
+    for(const cards_icons of cards_icons_list){
+        for(const card_icon of cards_icons.children){
+            const icon = card_icon.getElementsByClassName('icon')[0];
+            const modal = card_icon.getElementsByClassName('modal')[0];
+            const modal_content = card_icon.getElementsByClassName('modal-content')[0];
+            const span_close = card_icon.getElementsByClassName('close')[0];
+            
+            if (modal != undefined){
+                icon.addEventListener('click', () => { 
+                    modal.classList.add('modal-on');
+                });
+                span_close.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+                });
+                modal_content.addEventListener('click', (event) => { 
+                    event.stopPropagation();
+                });
+                modal.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+
+                });
+            }
+        }
+        
+        const license = cards_icons.getElementsByClassName('ref-license')[0];
+        if (license != undefined) {
+            license.addEventListener('click', () => { 
+                getGithub(license);
+            });
+        }
+        
+    }
+    const descriptions = document.getElementsByClassName('description');
+    [].forEach.call(descriptions, function (description) {
+        if (isOverflown(description)) {
+            description.style.cursor="pointer";
+            const modal = description.getElementsByClassName('modal')[0];
+            const modal_content = description.getElementsByClassName('modal-content')[0];
+            const span_close = description.getElementsByClassName('close')[0];
+            if (modal != undefined){
+                description.addEventListener('click', () => { 
+                    modal.classList.add('modal-on');
+                });
+                span_close.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+                });
+                modal_content.addEventListener('click', (event) => { 
+                    event.stopPropagation();
+                });
+                modal.addEventListener('click', (event) => { 
+                    modal.classList.remove('modal-on');
+                    event.stopPropagation();
+                });
+            }
+        }
+    });
+    
+}
+
+function isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+function addList(element, iterable){
+    var list = document.createElement("ol");
+        for (let i of iterable) {
+            let item = document.createElement("li");
+            item.innerHTML = i.charAt(0).toUpperCase() + i.slice(1);
+            list.appendChild(item);
+        }
+        element.innerHTML = '';
+        element.appendChild(list);
+}
+
+async function getGithub(license){
+    if (license.dataset.url != 'None'){
+        const response = await fetch(license.dataset.url);
+        const response_aux = response.clone();
+        try {
+            const data =  await response.json();
+
+            const name = license.getElementsByClassName('ref-name')[0];
+            const description = license.getElementsByClassName('ref-description')[0];
+            const permissions = license.getElementsByClassName('ref-permissions')[0];
+            const conditions = license.getElementsByClassName('ref-conditions')[0];
+            const limitations = license.getElementsByClassName('ref-limitations')[0];
+
+            name.innerHTML = await data.name;
+            description.innerHTML = await data.description;
+
+            addList(permissions, data.permissions);
+            addList(conditions, data.conditions);
+            addList(limitations, data.limitations);
+
+        } catch (error) {
+            const description = license.getElementsByClassName('ref-description-aux')[0];
+            description.innerHTML = '<pre style="font-family: monospace;">'+await response_aux.text()+'</pre>';
+        }
+    } else console.log('No license.');
+}add_modals();</script><style>.scc-card *{margin:0;box-sizing:border-box;color:#3e3e3e;font-family:Helvetica}
+.scc-card .copy-btn:active{position:relative;top:1px;background-color:#3e3e3e;color:#e0e0e0}
+.scc-card .copy-btn{margin-left: 0.3rem;border:none;height:1.1rem;width:1rem;cursor:pointer;}
+.scc-card .tooltip{position:absolute;z-index:1070;display:block;font-style:normal;font-weight:400;line-height:1.42857143;line-break:auto;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;word-wrap:normal;white-space:normal;font-size:12px;opacity:0}
+.scc-card .tooltip.in{opacity:.9}
+.scc-card .tooltip.top{padding:5px 0;margin-top:-3px}
+.scc-card .tooltip.right{padding:0 5px;margin-left:3px}
+.scc-card .tooltip.bottom{padding:5px 0;margin-top:3px}
+.scc-card .tooltip.left{padding:0 5px;margin-left:-3px}
+.scc-card .tooltip.top .tooltip-arrow{bottom:0;left:50%;margin-left:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.top-left .tooltip-arrow{right:5px;bottom:0;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.top-right .tooltip-arrow{bottom:0;left:5px;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.right .tooltip-arrow{top:50%;left:0;margin-top:-5px;border-width:5px 5px 5px 0;border-right-color:#3e3e3e}
+.scc-card .tooltip.left .tooltip-arrow{top:50%;right:0;margin-top:-5px;border-width:5px 0 5px 5px;border-left-color:#3e3e3e}
+.scc-card .tooltip.bottom .tooltip-arrow{top:0;left:50%;margin-left:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip.bottom-left .tooltip-arrow{top:0;right:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip.bottom-right .tooltip-arrow{top:0;left:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip-inner{max-width:200px;padding:3px 8px;color:#e0e0e0;text-align:center;background-color:#3e3e3e;border-radius:4px}
+.scc-card .tooltip-arrow{position:absolute;width:0;height:0;border-color:transparent;border-style:solid}
+.scc-card {display: flex; flex-direction: column; justify-content: space-between; line-height: 1.42857143; margin: 0.2rem; min-width: 28rem; max-width: 28rem; min-height: 15rem; max-height: 15rem; padding: 1.3rem; border-radius: 19px; background-color: #e0e0e0; box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;}
+.scc-card .repo-logo{width: 5.5rem;}
+.scc-card .description{text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; line-clamp: 6; -webkit-box-orient: vertical;}
+.scc-card .recently-updated{width: 1.4rem; height: 1.4rem; border-radius: 50%; margin-left: auto; margin-right: 0.1rem; background-color: #3e3e3e;}
+.scc-card .repo-icon{height: 1.1rem; margin-left: 0.2rem; margin-right: 0.2rem;}
+.scc-card .card-row{display: flex; flex-direction: row; justify-content: space-between;}
+.scc-card .card-col{width: 72%;}
+.scc-card .flex-horizontal{display: flex; align-items: center; flex-direction: row;}
+.scc-card .float-right{justify-content: flex-end;}
+.scc-card .grey-color-svg{filter: brightness(0) saturate(100%) invert(26%) sepia(0%) saturate(9%) hue-rotate(190deg) brightness(93%) contrast(100%);}
+.scc-card .title:hover{text-decoration: underline;}
+.highlight *{font-family: monospace; font-size: large;}
+.modal {display: none;position: fixed;z-index: 1;padding-top: 20vh;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);}
+.modal-content {background-color: #e0e0e0;margin: auto;padding: 20px;border: 0px;width: 90%;max-width: 40rem;border-radius: 1rem;}
+.modal-on{display: block;}
+.close {color: #3e3e3e;float: right;font-size: 28px;font-weight: bold;position: relative;bottom: 0.8rem;}
+.close:hover, .close:focus {  color: #000;  text-decoration: none;  cursor: pointer;}
+.scc-card .repo-type{height: 1.4rem; margin-left: 0.2rem; margin-right: 0.2rem;}</style></article></div>
+</div></span>
+<!-- Bibliography -->
+<span id="bibliography"></span>
+<!-- Contact -->
+<span id="contact"></span>
+<!-- Authors -->
+<span id="authors"><div class="w3-container" id="authors" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>About the authors</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Daniel Garijo" src="images/default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="http://orcid.org/0000-0003-0454-7145">Daniel Garijo</a></h3>
+<p class="w3-opacity">Researcher</p>
+<p class="w3-opacity">Universidad Politécnica de Madrid, University of Southern California</p>
+<a href="http://w3id.org/people/dgarijo">http://w3id.org/people/dgarijo</a>
+<p>I am a researcher at Universidad Politécnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Maximiliano Osorio" src="images/default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Maximiliano Osorio</a></h3>
+<p class="w3-opacity">Author</p>
+<p class="w3-opacity">Research Programmer</p>
+<p>Computer Scientist at the Information Sciences Institute of the University of Southern California.</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Idafen Santana-Pérez" src="images/default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="https://idafen.wordpress.com/">Idafen Santana-Pérez</a></h3>
+<p class="w3-opacity">Author</p>
+<p class="w3-opacity">Lecturer</p>
+<a href="https://idafen.wordpress.com/">https://idafen.wordpress.com/</a>
+<p>Lecturer at DSC department, at ULPGC on sensor data for light pollution and medical image processing. Idafen is also interested in topics related to Open Science and Linked Data in general.</p>
+</div>
+</div>
+</div>
+</div><div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Carlos Buil" src="images/default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="https://www.inf.utfsm.cl/quienes-somos/directorio-de-personas/academicos/15-carlos-buil">Carlos Buil</a></h3>
+<p class="w3-opacity">Author</p>
+<p class="w3-opacity">Lecturer</p>
+<a href="https://www.inf.utfsm.cl/quienes-somos/directorio-de-personas/academicos/15-carlos-buil">https://www.inf.utfsm.cl/quienes-somos/directorio-de-personas/academicos/15-carlos-buil</a>
+<p>Lecturer at the Universidad Técnica Federico de Santa María, In Chile. Carlos work focuses on (graph) databases, Semantic Web and Knowledge Graphs.</p>
+</div>
+</div>
+</div>
+</div></div></span>
+<!-- Bibtext -->
+<span id="bibtext"></span>
+</div>
+
+
+
+
+<!-- End page content -->
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+	document.getElementById("img01").src = element.src;
+	document.getElementById("modal01").style.display = "block";
+	var captionText = document.getElementById("caption");
+	captionText.innerHTML = element.alt;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<title>A Study of the Quality of Wikidata</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
+<style id="style">
+
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px; text-align: justify;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+img {display: block;margin-left: auto;margin-right: auto;}
+.column {float: left;width: 50%;padding: 5px;}
+.row::after {content: ""; clear: both; display: table;}
+.centered-element {margin: 0;position: absolute;top: 50%;transform: translateY(-50%);}
+
+
+
+            h1,h1 b{color:#fff!important}
+            .w3-light-grey{background-color:#ddd!important;color:#222831!important}
+            .w3-green{background-color:#30475e!important}.w3-round{border:5px solid #f05454!important}
+            body{background-color:#222831!important;color:#fff!important}
+            </style>
+<body>
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-green w3-collapse w3-top w3-large w3-padding" id="mySidebar" style="z-index:3;width:300px;font-weight:bold;"><br/>
+<a class="w3-button w3-hide-large w3-display-topleft" href="javascript:void(0)" onclick="w3_close()" style="width:100%;font-size:22px">Close Menu</a>
+<!-- LOGO if recognized -->
+<div class="row" style="margin-bottom:2em;margin-top:2em;">
+<div class="column">
+<!-- Requiremnts okay logo -->
+<span id="recogn_logo"></span>
+</div>
+</div>
+<div class="w3-bar-block centered-element">
+<span id="sidebar"><a class="w3-bar-item w3-button w3-hover-white" href="#datasets" onclick="w3_close()">Datasets</a><a class="w3-bar-item w3-button w3-hover-white" href="#software" onclick="w3_close()">Software</a><a class="w3-bar-item w3-button w3-hover-white" href="#bibliography" onclick="w3_close()">Bibliography</a><a class="w3-bar-item w3-button w3-hover-white" href="#authors" onclick="w3_close()">About the authors</a></span>
+</div>
+<div class="row" style="position: absolute; bottom: 25px; height: 50px;">
+<div class="column">
+<a href="ro-crate.json" id="jsonld_svg">
+<img alt="JSON-LD" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/JSON-LD.svg/512px-JSON-LD.svg.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0; " title="Retrieve the JSON-LD ro-crate representation of this web."/>
+</a>
+</div>
+<div class="column">
+<!-- Help button -->
+<a href="help.html" id="help-button">
+<img alt="help-button" src="https://img.icons8.com/material-outlined/48/000000/help.png" style="filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(57deg) brightness(101%) contrast(102%); width: 30px; margin: 0;" title="Description of each element and how was this web created."/>
+</a>
+</div>
+</div>
+
+</nav>
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-green w3-xlarge w3-padding">
+<a class="w3-button w3-green w3-margin-right" href="javascript:void(0)" onclick="w3_open()">☰</a>
+</header>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" id="myOverlay" onclick="w3_close()" style="cursor:pointer" title="close side menu"></div>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin:auto; padding-left: 340px; max-width: 1500px;">
+<!-- Header -->
+<div class="w3-container" id="showcase" style="margin-top:80px">
+<h1>A Study of the Quality of Wikidata</h1>
+</div>
+<!-- Summary -->
+<span id="summary"></span>
+<!-- Goal -->
+<span id="goal"></span>
+<!-- Social Motivation -->
+<span id="social_motivation"></span>
+<!-- Areas -->
+<span id="areas"></span>
+<!-- Activities -->
+<span id="activities"></span>
+<!-- Sketch -->
+<span id="sketch"></span>
+<!-- Demo -->
+<span id="demo"></span>
+<!-- datasets -->
+<span id="datasets"><div class="w3-container" id="datasets" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Datasets</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<ul><li><p><a href="http://doi.org/10.5281/zenodo.5120254">Claims file - Wikidata dump of Dec 7, 2020.</a></p>
+<ul><li><b>Description:</b> Reference dump containing the claims.tsv.gz file with 1.15B statements, used for finding constraint violations. The dump is in KGTK format (https://kgtk.readthedocs.io/)</li><li><b>License:</b> 'https://creativecommons.org/licenses/by/4.0/legalcode' and 'info:eu-repo/semantics/openAccess'</li></ul></li><li><p><a href="http://doi.org/10.5281/zenodo.5120231">Labels file - Wikidata dump of Dec 7, 2020</a></p>
+<ul><li><b>Description:</b> File with all labels of nodes used in the analysis in KGTK format</li><li><b>License:</b> 'https://creativecommons.org/licenses/by/4.0/legalcode' and 'info:eu-repo/semantics/openAccess'</li></ul></li><li><p><a href="http://doi.org/10.5281/zenodo.5120200">Claim and qualifier properties file - Wikidata dump of Dec 7, 2020</a></p>
+<ul><li><b>Description:</b> Both of these properties are crucial to calculate the constraints in our analysis. Claim properties file - Wikidata dump of Dec 7, 2020 File used to determine constraints. Qualifiers file - Wikidata dump of Dec 7, 2020. File used to fetch more details on the constraints for each property, such as exceptions.</li><li><b>License:</b> 'https://creativecommons.org/licenses/by/4.0/legalcode' and 'info:eu-repo/semantics/openAccess'</li></ul></li><li><p><a href="https://doi.org/10.5281/zenodo.4686804">Wikidata removed statements from Oct 2014 - Jan 2021</a></p>
+<ul><li><b>Description:</b> This dataset contains 76.5M statements that have been permanently removed (i.e., removed from a Wikidata dump and not added again) since the first available dump of Wikidata in October, 2014. The dataset was generated by downloading all available weekly JSON Wikidata dumps from the Internet Archive; converting them to the KGTK format; and extracting only those statements that had been removed between each pair of dumps (i.e., calculating the deltas). The dataset is in KGTK format (https://kgtk.readthedocs.io/en/latest/specification/), a tsv file</li><li><b>License:</b> 'https://creativecommons.org/licenses/by/4.0/legalcode' and 'info:eu-repo/semantics/openAccess'</li></ul></li><li><p><a href="http://doi.org/10.5281/zenodo.5120117">http://doi.org/10.5281/zenodo.5120117</a></p>
+<ul></ul></li><li><p><a href="https://doi.org/10.5281/zenodo.5120050">Wikidata instanceOf, subclassOf, isa-relation dumps of Feb 15, 2021.</a></p>
+<ul><li><b>Description:</b> Wikidata instanceOf, subclassOf, isa-relation dumps of Feb 15, 2021. The combination of these files is used to determine the ancestors of each node at 1 or more levels above it. P279 (subclass of) P31 (instance of) isa (instance of or subclass of) P279 star (recursive subclass of)</li><li><b>License:</b> 'https://creativecommons.org/licenses/by/4.0/legalcode' and 'info:eu-repo/semantics/openAccess'</li></ul></li><li><p><a href="http://doi.org/10.5281/zenodo.5121276">http://doi.org/10.5281/zenodo.5121276</a></p>
+<ul></ul></li></ul>
+</div></span>
+<!-- Software -->
+<span id="software"><div class="w3-container" id="software" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+        The pointers for the main software used can be found below:
+        
+            <ul></ul>
+<div style="max-width: 1600px;display: flex; align-content: flex-start; flex-wrap: wrap; 
+            flex-direction: row;justify-content: center; margin-top: 3rem;font-size: 15px;"><article class="scc-card" id="https://github.com/usc-isi-i2/kgtk"><div class="card-row"><div class="card-col"><div class="flex-horizontal"><a href="https://github.com/usc-isi-i2/kgtk" style="text-decoration: none;" target="_blank"><h4 class="title">kgtk</h4></a><button class="copy-btn" data-placement="right" data-toggle="tooltip" style="background:url('https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/copy.svg')transparent;background-repeat:no-repeat;background-size:auto;" title="Copy card as embbeded HTML" value="https://github.com/usc-isi-i2/kgtk"></button></div><div class="description"><span><p>Knowledge Graph Toolkit</p></span><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">kgtk</h2><div style="margin-bottom: 1rem; overflow: auto;"><p><span><p>Knowledge Graph Toolkit</p></span></p></div></div></div></div></div><div><div style="min-height: 6rem;display: flex;align-items: center;justify-content: center;"><a href="https://github.com/usc-isi-i2/kgtk" style="text-decoration: none;" target="_blank"><img alt="repo-logo" class="repo-logo" src="https://raw.githubusercontent.com/usc-isi-i2/kgtk/raw/master/docs/images/kgtk_logo_200x200.png"/></a></div><div class="flex-horizontal float-right"><div class="recently-updated" data-placement="right" data-toggle="tooltip" style="background-color: #6da862;" title="Last updated on: 19-04-2022"></div></div><div alt="Stars" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" style="margin-top: 0.3rem;" title="Stars"><a class="flex-horizontal float-right" href="https://github.com/usc-isi-i2/kgtk/stargazers" style="text-decoration: none;" target="_blank"><b>226</b><img alt="stars" class="repo-icon" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/star.png"/></a></div><div alt="Last release: v1.4.0" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" title="Last release: v1.4.0"><a class="flex-horizontal" href="https://github.com/usc-isi-i2/kgtk/releases" style="text-decoration: none;" target="_blank"><b>28</b><img alt="releases" class="repo-icon" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/releases.png"/></a></div></div></div><div class="card-row"><div class="card-col"><div class="flex-horizontal ref-repo-icons"><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://github.com/usc-isi-i2/kgtk/README.md" target="_blank"><img alt="Readme" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/readme.png" title="Readme"/></a></div></div><div class="ref-license" data-url="https://api.github.com/licenses/mit" style="cursor: pointer;"><div class="icon"><img alt="License: MIT License" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/license.png" title="License: MIT License"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">License</h2><div style="margin-bottom: 1rem; overflow: auto;"><h3 class="ref-name"></h3><span class="ref-description-aux"><h4>Description:</h4><p class="ref-description" style="text-align: justify;">Loading...</p><h4>Permissions:</h4><div class="ref-permissions"><ul><li>Loading...</li></ul></div><h4>Conditions:</h4><div class="ref-conditions"><ul><li>Loading...</li></ul></div><h4>Limitations:</h4><div class="ref-limitations"><ul><li>Loading...</li></ul></div></span></div></div></div></div><div style="cursor: pointer;"><div class="icon"><img alt="Notebook" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/notebook.png" title="Notebook"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">Notebook</h2><div style="margin-bottom: 1rem; overflow: auto;"><ul><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/kite_tutorial.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/kite_tutorial.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/augmentation/Add_Year-Qnode_edges.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/augmentation/Add_Year-Qnode_edges.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial/building-commonsense-knowledge-graph.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial/building-commonsense-knowledge-graph.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial/build-kg/add-derived-graphs.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial/build-kg/add-derived-graphs.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial/build-kg/build-tutorial-graph.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial/build-kg/build-tutorial-graph.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/4%20Generate%20Triples.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/4%20Generate%20Triples.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/5%20Embeddings.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/5%20Embeddings.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/1%20Introduction.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/1%20Introduction.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/KGTK%20Turorial-pedro.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/KGTK%20Turorial-pedro.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/3%20Enhance%20KG.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/3%20Enhance%20KG.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/2%20Construct%20KG.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/2%20Construct%20KG.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/KGTK%20Turorial-Copy1.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/KGTK%20Turorial-Copy1.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/Knowledge-Graph-Profiler.out.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/Knowledge-Graph-Profiler.out.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/KGTK%20Turorial%20Intro.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/KGTK%20Turorial%20Intro.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/save/KGTK%20Turorial.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/tutorial-old/save/KGTK%20Turorial.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Wikidata%20Useful%20Files-Copy1.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Wikidata%20Useful%20Files-Copy1.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Wikidata%20Subsets.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Wikidata%20Subsets.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Wikidata%20Useful%20Files.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Wikidata%20Useful%20Files.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Knowledge-Graph-Profiler.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Knowledge-Graph-Profiler.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Generate-Triples-And-Load-Blazegraph.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Generate-Triples-And-Load-Blazegraph.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Table-Linker-Files.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Table-Linker-Files.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/geography.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/geography.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/import-wikidata.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/import-wikidata.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Wikidata%20Subsets-Copy1.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Wikidata%20Subsets-Copy1.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Embeddings-Elasticsearch-%26-Triples.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/use-cases/Embeddings-Elasticsearch-%26-Triples.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Scratch-2.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Scratch-2.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Wikidata%20Useful%20Files-Copy1.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Wikidata%20Useful%20Files-Copy1.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/count-wikidata-entities-and-properties.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/count-wikidata-entities-and-properties.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/combine-with-qualifiers.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/combine-with-qualifiers.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/tutorial%20schwarzenegger.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/tutorial%20schwarzenegger.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/CSKG%20Analysis.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/CSKG%20Analysis.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/CSKG%20Use%20Case.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/CSKG%20Use%20Case.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/DBPedia_links.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/DBPedia_links.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Scratch.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Scratch.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Untitled.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Untitled.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Saved%20Example7%20-%20Wikidata%20Outputs.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Saved%20Example7%20-%20Wikidata%20Outputs.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/medium%20data%20augmentation%20example.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/medium%20data%20augmentation%20example.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example3%20-%20Reachability.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example3%20-%20Reachability.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/partition-wikidata.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/partition-wikidata.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example-9-Find-Labels-Aliases-and-Descriptions-for-a-KGTK-edge-file.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example-9-Find-Labels-Aliases-and-Descriptions-for-a-KGTK-edge-file.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example7%20-%20Wikidata%20Outputs.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example7%20-%20Wikidata%20Outputs.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example%2011%20-%20Find%20Ambiguous%20Items.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example%2011%20-%20Find%20Ambiguous%20Items.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example2%20-%20Curation%20and%20Statistics.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example2%20-%20Curation%20and%20Statistics.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example4%20-%20Wikidata%20Pagerank.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example4%20-%20Wikidata%20Pagerank.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/path-similarity.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/path-similarity.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example12%20-%20CSKG%20Analysis.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example12%20-%20CSKG%20Analysis.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/generate_wikitable_anchors.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/generate_wikitable_anchors.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example8%20-%20Wikidata%20Subset.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example8%20-%20Wikidata%20Subset.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example1%20-%20Embeddings.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example1%20-%20Embeddings.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example6%20-%20Wikipedia%20Tables.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example6%20-%20Wikipedia%20Tables.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/abbreviate_human_labels.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/abbreviate_human_labels.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example5%20-%20AIDA%20AIF.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/Example5%20-%20AIDA%20AIF.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/commands/text_embeddings.ipynb">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/examples/commands/text_embeddings.ipynb</a></li></ul></div></div></div></div><div style="cursor: pointer;"><div class="icon"><img alt="Docker" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/docker.png" title="Docker"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">Docker</h2><div style="margin-bottom: 1rem; overflow: auto;"><ul><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/docker/Dockerfile">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/docker/Dockerfile</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/docker/dev/Dockerfile">https://raw.githubusercontent.com/usc-isi-i2/kgtk/master/docker/dev/Dockerfile</a></li></ul></div></div></div></div><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://arxiv.org/pdf/2006.00088.pdf" target="_blank"><img alt="{KGTK}: A Toolkit for Large Knowledge Graph Manipulation and Analysis}" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/paper.png" title="{KGTK}: A Toolkit for Large Knowledge Graph Manipulation and Analysis}"/></a></div></div><div style="cursor: pointer;"><div class="icon"><img alt="Citation" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/citation.png" title="Citation"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">Citation</h2><div style="margin-bottom: 1rem; overflow: auto;"><div style="font-family: monospace;"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+--><html><head><title></title><meta content="text/html; charset=utf-8" http-equiv="content-type"/><style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f0f0f0; }
+body .c { color: #60a0b0; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #007020; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+body .cp { color: #007020 } /* Comment.Preproc */
+body .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+body .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #007020 } /* Keyword.Pseudo */
+body .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #902000 } /* Keyword.Type */
+body .m { color: #40a070 } /* Literal.Number */
+body .s { color: #4070a0 } /* Literal.String */
+body .na { color: #4070a0 } /* Name.Attribute */
+body .nb { color: #007020 } /* Name.Builtin */
+body .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+body .no { color: #60add5 } /* Name.Constant */
+body .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+body .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+body .ne { color: #007020 } /* Name.Exception */
+body .nf { color: #06287e } /* Name.Function */
+body .nl { color: #002070; font-weight: bold } /* Name.Label */
+body .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+body .nt { color: #062873; font-weight: bold } /* Name.Tag */
+body .nv { color: #bb60d5 } /* Name.Variable */
+body .ow { color: #007020; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #40a070 } /* Literal.Number.Bin */
+body .mf { color: #40a070 } /* Literal.Number.Float */
+body .mh { color: #40a070 } /* Literal.Number.Hex */
+body .mi { color: #40a070 } /* Literal.Number.Integer */
+body .mo { color: #40a070 } /* Literal.Number.Oct */
+body .sa { color: #4070a0 } /* Literal.String.Affix */
+body .sb { color: #4070a0 } /* Literal.String.Backtick */
+body .sc { color: #4070a0 } /* Literal.String.Char */
+body .dl { color: #4070a0 } /* Literal.String.Delimiter */
+body .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #4070a0 } /* Literal.String.Double */
+body .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #4070a0 } /* Literal.String.Heredoc */
+body .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+body .sx { color: #c65d09 } /* Literal.String.Other */
+body .sr { color: #235388 } /* Literal.String.Regex */
+body .s1 { color: #4070a0 } /* Literal.String.Single */
+body .ss { color: #517918 } /* Literal.String.Symbol */
+body .bp { color: #007020 } /* Name.Builtin.Pseudo */
+body .fm { color: #06287e } /* Name.Function.Magic */
+body .vc { color: #bb60d5 } /* Name.Variable.Class */
+body .vg { color: #bb60d5 } /* Name.Variable.Global */
+body .vi { color: #bb60d5 } /* Name.Variable.Instance */
+body .vm { color: #bb60d5 } /* Name.Variable.Magic */
+body .il { color: #40a070 } /* Literal.Number.Integer.Long */
+
+  </style></head><body><h2></h2><div class="highlight"><pre><span></span>@inproceedings{ilievski2020kgtk,
+  title={{KGTK}: A Toolkit for Large Knowledge Graph Manipulation and Analysis}},
+  author={Ilievski, Filip and Garijo, Daniel and Chalupsky, Hans and Divvala, Naren Teja and Yao, Yixiang and Rogers, Craig and Li, Ronpeng and Liu, Jun and Singh, Amandeep and Schwabe, Daniel and Szekely, Pedro},
+  booktitle={International Semantic Web Conference},
+  pages={278--293},
+  year={2020},
+  organization={Springer}
+  url={https://arxiv.org/pdf/2006.00088.pdf}
+}
+</pre></div></body></html></div></div></div></div></div><div style="cursor: pointer;"><div class="icon"><img alt="Installation" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/installation.png" title="Installation"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">Installation</h2><div style="margin-bottom: 1rem; overflow: auto;"><p>Please refer to <a href="docs/install-with-docker.md">this document</a> for installing KGTK with Docker</p></div></div></div></div><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://github.com/usc-isi-i2/kgtk/tree/master/docs" target="_blank"><img alt="Documentation" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/documentation.png" title="Documentation"/></a></div></div><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://github.com/usc-isi-i2/kgtk/releases" target="_blank"><img alt="Download" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/download.png" title="Download"/></a></div></div></div></div><div><div class="flex-horizontal float-right"><img alt="python" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/language_icons/python.svg" title="Python"/><img alt="html" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/language_icons/html.svg" title="Html"/><img alt="shell" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/language_icons/shell.svg" title="Shell"/></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script><script>
+btns = document.getElementsByClassName('copy-btn');
+for (let index = 0; index < btns.length; index++) {
+    const element = btns[index];
+    element.addEventListener('click', function () {
+        console.log('copy btn!');
+        for (let index = 0; index < cards.length; index++) {
+            const card = cards[index];
+            if(card.id == $(this).val()){
+                navigator.clipboard.writeText(card.html_card_embedded);
+                break;
+            }
+        }
+    });
+}
+</script><script>function add_modals() {
+    cards_icons_list = document.getElementsByClassName('ref-repo-icons');
+    for(const cards_icons of cards_icons_list){
+        for(const card_icon of cards_icons.children){
+            const icon = card_icon.getElementsByClassName('icon')[0];
+            const modal = card_icon.getElementsByClassName('modal')[0];
+            const modal_content = card_icon.getElementsByClassName('modal-content')[0];
+            const span_close = card_icon.getElementsByClassName('close')[0];
+            
+            if (modal != undefined){
+                icon.addEventListener('click', () => { 
+                    modal.classList.add('modal-on');
+                });
+                span_close.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+                });
+                modal_content.addEventListener('click', (event) => { 
+                    event.stopPropagation();
+                });
+                modal.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+
+                });
+            }
+        }
+        
+        const license = cards_icons.getElementsByClassName('ref-license')[0];
+        if (license != undefined) {
+            license.addEventListener('click', () => { 
+                getGithub(license);
+            });
+        }
+        
+    }
+    const descriptions = document.getElementsByClassName('description');
+    [].forEach.call(descriptions, function (description) {
+        if (isOverflown(description)) {
+            description.style.cursor="pointer";
+            const modal = description.getElementsByClassName('modal')[0];
+            const modal_content = description.getElementsByClassName('modal-content')[0];
+            const span_close = description.getElementsByClassName('close')[0];
+            if (modal != undefined){
+                description.addEventListener('click', () => { 
+                    modal.classList.add('modal-on');
+                });
+                span_close.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+                });
+                modal_content.addEventListener('click', (event) => { 
+                    event.stopPropagation();
+                });
+                modal.addEventListener('click', (event) => { 
+                    modal.classList.remove('modal-on');
+                    event.stopPropagation();
+                });
+            }
+        }
+    });
+    
+}
+
+function isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+function addList(element, iterable){
+    var list = document.createElement("ol");
+        for (let i of iterable) {
+            let item = document.createElement("li");
+            item.innerHTML = i.charAt(0).toUpperCase() + i.slice(1);
+            list.appendChild(item);
+        }
+        element.innerHTML = '';
+        element.appendChild(list);
+}
+
+async function getGithub(license){
+    if (license.dataset.url != 'None'){
+        const response = await fetch(license.dataset.url);
+        const response_aux = response.clone();
+        try {
+            const data =  await response.json();
+
+            const name = license.getElementsByClassName('ref-name')[0];
+            const description = license.getElementsByClassName('ref-description')[0];
+            const permissions = license.getElementsByClassName('ref-permissions')[0];
+            const conditions = license.getElementsByClassName('ref-conditions')[0];
+            const limitations = license.getElementsByClassName('ref-limitations')[0];
+
+            name.innerHTML = await data.name;
+            description.innerHTML = await data.description;
+
+            addList(permissions, data.permissions);
+            addList(conditions, data.conditions);
+            addList(limitations, data.limitations);
+
+        } catch (error) {
+            const description = license.getElementsByClassName('ref-description-aux')[0];
+            description.innerHTML = '<pre style="font-family: monospace;">'+await response_aux.text()+'</pre>';
+        }
+    } else console.log('No license.');
+}add_modals();</script><style>.scc-card *{margin:0;box-sizing:border-box;color:#3e3e3e;font-family:Helvetica}
+.scc-card .copy-btn:active{position:relative;top:1px;background-color:#3e3e3e;color:#e0e0e0}
+.scc-card .copy-btn{margin-left: 0.3rem;border:none;height:1.1rem;width:1rem;cursor:pointer;}
+.scc-card .tooltip{position:absolute;z-index:1070;display:block;font-style:normal;font-weight:400;line-height:1.42857143;line-break:auto;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;word-wrap:normal;white-space:normal;font-size:12px;opacity:0}
+.scc-card .tooltip.in{opacity:.9}
+.scc-card .tooltip.top{padding:5px 0;margin-top:-3px}
+.scc-card .tooltip.right{padding:0 5px;margin-left:3px}
+.scc-card .tooltip.bottom{padding:5px 0;margin-top:3px}
+.scc-card .tooltip.left{padding:0 5px;margin-left:-3px}
+.scc-card .tooltip.top .tooltip-arrow{bottom:0;left:50%;margin-left:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.top-left .tooltip-arrow{right:5px;bottom:0;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.top-right .tooltip-arrow{bottom:0;left:5px;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.right .tooltip-arrow{top:50%;left:0;margin-top:-5px;border-width:5px 5px 5px 0;border-right-color:#3e3e3e}
+.scc-card .tooltip.left .tooltip-arrow{top:50%;right:0;margin-top:-5px;border-width:5px 0 5px 5px;border-left-color:#3e3e3e}
+.scc-card .tooltip.bottom .tooltip-arrow{top:0;left:50%;margin-left:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip.bottom-left .tooltip-arrow{top:0;right:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip.bottom-right .tooltip-arrow{top:0;left:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip-inner{max-width:200px;padding:3px 8px;color:#e0e0e0;text-align:center;background-color:#3e3e3e;border-radius:4px}
+.scc-card .tooltip-arrow{position:absolute;width:0;height:0;border-color:transparent;border-style:solid}
+.scc-card {display: flex; flex-direction: column; justify-content: space-between; line-height: 1.42857143; margin: 0.2rem; min-width: 28rem; max-width: 28rem; min-height: 15rem; max-height: 15rem; padding: 1.3rem; border-radius: 19px; background-color: #e0e0e0; box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;}
+.scc-card .repo-logo{width: 5.5rem;}
+.scc-card .description{text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; line-clamp: 6; -webkit-box-orient: vertical;}
+.scc-card .recently-updated{width: 1.4rem; height: 1.4rem; border-radius: 50%; margin-left: auto; margin-right: 0.1rem; background-color: #3e3e3e;}
+.scc-card .repo-icon{height: 1.1rem; margin-left: 0.2rem; margin-right: 0.2rem;}
+.scc-card .card-row{display: flex; flex-direction: row; justify-content: space-between;}
+.scc-card .card-col{width: 72%;}
+.scc-card .flex-horizontal{display: flex; align-items: center; flex-direction: row;}
+.scc-card .float-right{justify-content: flex-end;}
+.scc-card .grey-color-svg{filter: brightness(0) saturate(100%) invert(26%) sepia(0%) saturate(9%) hue-rotate(190deg) brightness(93%) contrast(100%);}
+.scc-card .title:hover{text-decoration: underline;}
+.highlight *{font-family: monospace; font-size: large;}
+.modal {display: none;position: fixed;z-index: 1;padding-top: 20vh;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);}
+.modal-content {background-color: #e0e0e0;margin: auto;padding: 20px;border: 0px;width: 90%;max-width: 40rem;border-radius: 1rem;}
+.modal-on{display: block;}
+.close {color: #3e3e3e;float: right;font-size: 28px;font-weight: bold;position: relative;bottom: 0.8rem;}
+.close:hover, .close:focus {  color: #000;  text-decoration: none;  cursor: pointer;}
+.scc-card .repo-type{height: 1.4rem; margin-left: 0.2rem; margin-right: 0.2rem;}</style></article><article class="scc-card" id="https://github.com/usc-isi-i2/wd-quality"><div class="card-row"><div class="card-col"><div class="flex-horizontal"><a href="https://github.com/usc-isi-i2/wd-quality" style="text-decoration: none;" target="_blank"><h4 class="title">wd-quality</h4></a><button class="copy-btn" data-placement="right" data-toggle="tooltip" style="background:url('https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/copy.svg')transparent;background-repeat:no-repeat;background-size:auto;" title="Copy card as embbeded HTML" value="https://github.com/usc-isi-i2/wd-quality"></button></div><div class="description"><span><p>Notebooks for generating and validating constraints in WIkidata</p></span><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">wd-quality</h2><div style="margin-bottom: 1rem; overflow: auto;"><p><span><p>Notebooks for generating and validating constraints in WIkidata</p></span></p></div></div></div></div></div><div><div style="min-height: 6rem;display: flex;align-items: center;justify-content: center;"><a href="https://github.com/usc-isi-i2/wd-quality" style="text-decoration: none;" target="_blank"><img alt="repo-logo" class="repo-logo" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/img/github-default.svg"/></a></div><div class="flex-horizontal float-right"><div class="recently-updated" data-placement="right" data-toggle="tooltip" style="background-color: #a88d62;" title="Last updated on: 23-02-2022"></div></div><div alt="Stars" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" style="margin-top: 0.3rem;" title="Stars"><a class="flex-horizontal float-right" href="https://github.com/usc-isi-i2/wd-quality/stargazers" style="text-decoration: none;" target="_blank"><b>3</b><img alt="stars" class="repo-icon" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/star.png"/></a></div><div alt="Last release: v1.0.0" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" title="Last release: v1.0.0"><a class="flex-horizontal" href="https://github.com/usc-isi-i2/wd-quality/releases" style="text-decoration: none;" target="_blank"><b>1</b><img alt="releases" class="repo-icon" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/releases.png"/></a></div></div></div><div class="card-row"><div class="card-col"><div class="flex-horizontal ref-repo-icons"><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://github.com/usc-isi-i2/wd-quality/README.md" target="_blank"><img alt="Readme" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/readme.png" title="Readme"/></a></div></div><div style="cursor: pointer;"><div class="icon"><img alt="Notebook" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/notebook.png" title="Notebook"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">Notebook</h2><div style="margin-bottom: 1rem; overflow: auto;"><ul><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Deprecated%20Statements%20Analysis.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Deprecated%20Statements%20Analysis.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements%20-%20Final.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements%20-%20Final.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Comprehensive%20Constraints%20Analysis%20-%20Final.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Comprehensive%20Constraints%20Analysis%20-%20Final.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Removed%20Statements%20Analysis.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Removed%20Statements%20Analysis.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis-Copy1-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis-Copy1-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Finalized%20Queries%20-%20Constraints%20-%20item%20requires%20statement%20constraint%20-%20Q21503247-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Finalized%20Queries%20-%20Constraints%20-%20item%20requires%20statement%20constraint%20-%20Q21503247-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements%20-%20Final-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements%20-%20Final-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20Final-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20Final-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Fix%20My%20Notebook-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Fix%20My%20Notebook-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Removed%20Statements%20Analysis-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Removed%20Statements%20Analysis-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Finalized%20Queries-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Finalized%20Queries-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Finalized%20Queries%20-%20Type%20Constraint%20-%20Q21503250-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Finalized%20Queries%20-%20Type%20Constraint%20-%20Q21503250-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Finalized%20Queries%20-%20Value%20Type%20Constraint%20-%20Q21510865-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/.ipynb_checkpoints/Finalized%20Queries%20-%20Value%20Type%20Constraint%20-%20Q21510865-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Comprehensive%20Constraints%20Analysis.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Comprehensive%20Constraints%20Analysis.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Comprehensive%20Constraints%20Analysis-Copy1.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Comprehensive%20Constraints%20Analysis-Copy1.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Finalized%20Queries.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Finalized%20Queries.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Finalized%20Queries%20-%20Constraints%20-%20item%20requires%20statement%20constraint%20-%20Q21503247.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Finalized%20Queries%20-%20Constraints%20-%20item%20requires%20statement%20constraint%20-%20Q21503247.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Finalized%20Queries%20-%20Value%20Type%20Constraint%20-%20Q21510865.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Finalized%20Queries%20-%20Value%20Type%20Constraint%20-%20Q21510865.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Fix%20My%20Notebook.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Fix%20My%20Notebook.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Finalized%20Queries%20-%20Type%20Constraint%20-%20Q21503250.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/Finalized%20Queries%20-%20Type%20Constraint%20-%20Q21503250.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/.ipynb_checkpoints/Deprecated%20Statements%20Analysis-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/.ipynb_checkpoints/Deprecated%20Statements%20Analysis-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/.ipynb_checkpoints/Finalized%20Queries-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Archived/.ipynb_checkpoints/Finalized%20Queries-checkpoint.ipynb</a></li></ul></div></div></div></div><div style="cursor: pointer;"><div class="icon"><img alt="Citation" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/citation.png" title="Citation"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">Citation</h2><div style="margin-bottom: 1rem; overflow: auto;"><div style="font-family: monospace;"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+--><html><head><title></title><meta content="text/html; charset=utf-8" http-equiv="content-type"/><style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f0f0f0; }
+body .c { color: #60a0b0; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #007020; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+body .cp { color: #007020 } /* Comment.Preproc */
+body .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+body .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #007020 } /* Keyword.Pseudo */
+body .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #902000 } /* Keyword.Type */
+body .m { color: #40a070 } /* Literal.Number */
+body .s { color: #4070a0 } /* Literal.String */
+body .na { color: #4070a0 } /* Name.Attribute */
+body .nb { color: #007020 } /* Name.Builtin */
+body .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+body .no { color: #60add5 } /* Name.Constant */
+body .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+body .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+body .ne { color: #007020 } /* Name.Exception */
+body .nf { color: #06287e } /* Name.Function */
+body .nl { color: #002070; font-weight: bold } /* Name.Label */
+body .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+body .nt { color: #062873; font-weight: bold } /* Name.Tag */
+body .nv { color: #bb60d5 } /* Name.Variable */
+body .ow { color: #007020; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #40a070 } /* Literal.Number.Bin */
+body .mf { color: #40a070 } /* Literal.Number.Float */
+body .mh { color: #40a070 } /* Literal.Number.Hex */
+body .mi { color: #40a070 } /* Literal.Number.Integer */
+body .mo { color: #40a070 } /* Literal.Number.Oct */
+body .sa { color: #4070a0 } /* Literal.String.Affix */
+body .sb { color: #4070a0 } /* Literal.String.Backtick */
+body .sc { color: #4070a0 } /* Literal.String.Char */
+body .dl { color: #4070a0 } /* Literal.String.Delimiter */
+body .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #4070a0 } /* Literal.String.Double */
+body .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #4070a0 } /* Literal.String.Heredoc */
+body .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+body .sx { color: #c65d09 } /* Literal.String.Other */
+body .sr { color: #235388 } /* Literal.String.Regex */
+body .s1 { color: #4070a0 } /* Literal.String.Single */
+body .ss { color: #517918 } /* Literal.String.Symbol */
+body .bp { color: #007020 } /* Name.Builtin.Pseudo */
+body .fm { color: #06287e } /* Name.Function.Magic */
+body .vc { color: #bb60d5 } /* Name.Variable.Class */
+body .vg { color: #bb60d5 } /* Name.Variable.Global */
+body .vi { color: #bb60d5 } /* Name.Variable.Instance */
+body .vm { color: #bb60d5 } /* Name.Variable.Magic */
+body .il { color: #40a070 } /* Literal.Number.Integer.Long */
+
+  </style></head><body><h2></h2><div class="highlight"><pre><span></span>@misc{shenoy2021study,
+      title={A Study of the Quality of Wikidata}, 
+      author={Kartik Shenoy and Filip Ilievski and Daniel Garijo and Daniel Schwabe and Pedro Szekely},
+      year={2021},
+      eprint={2107.00156},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI}
+}
+</pre></div></body></html></div></div></div></div></div><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://github.com/usc-isi-i2/wd-quality/releases" target="_blank"><img alt="Download" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/download.png" title="Download"/></a></div></div></div></div><div><div class="flex-horizontal float-right"><img alt="shell" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/language_icons/shell.svg" title="Shell"/></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script><script>
+btns = document.getElementsByClassName('copy-btn');
+for (let index = 0; index < btns.length; index++) {
+    const element = btns[index];
+    element.addEventListener('click', function () {
+        console.log('copy btn!');
+        for (let index = 0; index < cards.length; index++) {
+            const card = cards[index];
+            if(card.id == $(this).val()){
+                navigator.clipboard.writeText(card.html_card_embedded);
+                break;
+            }
+        }
+    });
+}
+</script><script>function add_modals() {
+    cards_icons_list = document.getElementsByClassName('ref-repo-icons');
+    for(const cards_icons of cards_icons_list){
+        for(const card_icon of cards_icons.children){
+            const icon = card_icon.getElementsByClassName('icon')[0];
+            const modal = card_icon.getElementsByClassName('modal')[0];
+            const modal_content = card_icon.getElementsByClassName('modal-content')[0];
+            const span_close = card_icon.getElementsByClassName('close')[0];
+            
+            if (modal != undefined){
+                icon.addEventListener('click', () => { 
+                    modal.classList.add('modal-on');
+                });
+                span_close.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+                });
+                modal_content.addEventListener('click', (event) => { 
+                    event.stopPropagation();
+                });
+                modal.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+
+                });
+            }
+        }
+        
+        const license = cards_icons.getElementsByClassName('ref-license')[0];
+        if (license != undefined) {
+            license.addEventListener('click', () => { 
+                getGithub(license);
+            });
+        }
+        
+    }
+    const descriptions = document.getElementsByClassName('description');
+    [].forEach.call(descriptions, function (description) {
+        if (isOverflown(description)) {
+            description.style.cursor="pointer";
+            const modal = description.getElementsByClassName('modal')[0];
+            const modal_content = description.getElementsByClassName('modal-content')[0];
+            const span_close = description.getElementsByClassName('close')[0];
+            if (modal != undefined){
+                description.addEventListener('click', () => { 
+                    modal.classList.add('modal-on');
+                });
+                span_close.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+                });
+                modal_content.addEventListener('click', (event) => { 
+                    event.stopPropagation();
+                });
+                modal.addEventListener('click', (event) => { 
+                    modal.classList.remove('modal-on');
+                    event.stopPropagation();
+                });
+            }
+        }
+    });
+    
+}
+
+function isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+function addList(element, iterable){
+    var list = document.createElement("ol");
+        for (let i of iterable) {
+            let item = document.createElement("li");
+            item.innerHTML = i.charAt(0).toUpperCase() + i.slice(1);
+            list.appendChild(item);
+        }
+        element.innerHTML = '';
+        element.appendChild(list);
+}
+
+async function getGithub(license){
+    if (license.dataset.url != 'None'){
+        const response = await fetch(license.dataset.url);
+        const response_aux = response.clone();
+        try {
+            const data =  await response.json();
+
+            const name = license.getElementsByClassName('ref-name')[0];
+            const description = license.getElementsByClassName('ref-description')[0];
+            const permissions = license.getElementsByClassName('ref-permissions')[0];
+            const conditions = license.getElementsByClassName('ref-conditions')[0];
+            const limitations = license.getElementsByClassName('ref-limitations')[0];
+
+            name.innerHTML = await data.name;
+            description.innerHTML = await data.description;
+
+            addList(permissions, data.permissions);
+            addList(conditions, data.conditions);
+            addList(limitations, data.limitations);
+
+        } catch (error) {
+            const description = license.getElementsByClassName('ref-description-aux')[0];
+            description.innerHTML = '<pre style="font-family: monospace;">'+await response_aux.text()+'</pre>';
+        }
+    } else console.log('No license.');
+}add_modals();</script><style>.scc-card *{margin:0;box-sizing:border-box;color:#3e3e3e;font-family:Helvetica}
+.scc-card .copy-btn:active{position:relative;top:1px;background-color:#3e3e3e;color:#e0e0e0}
+.scc-card .copy-btn{margin-left: 0.3rem;border:none;height:1.1rem;width:1rem;cursor:pointer;}
+.scc-card .tooltip{position:absolute;z-index:1070;display:block;font-style:normal;font-weight:400;line-height:1.42857143;line-break:auto;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;word-wrap:normal;white-space:normal;font-size:12px;opacity:0}
+.scc-card .tooltip.in{opacity:.9}
+.scc-card .tooltip.top{padding:5px 0;margin-top:-3px}
+.scc-card .tooltip.right{padding:0 5px;margin-left:3px}
+.scc-card .tooltip.bottom{padding:5px 0;margin-top:3px}
+.scc-card .tooltip.left{padding:0 5px;margin-left:-3px}
+.scc-card .tooltip.top .tooltip-arrow{bottom:0;left:50%;margin-left:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.top-left .tooltip-arrow{right:5px;bottom:0;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.top-right .tooltip-arrow{bottom:0;left:5px;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.right .tooltip-arrow{top:50%;left:0;margin-top:-5px;border-width:5px 5px 5px 0;border-right-color:#3e3e3e}
+.scc-card .tooltip.left .tooltip-arrow{top:50%;right:0;margin-top:-5px;border-width:5px 0 5px 5px;border-left-color:#3e3e3e}
+.scc-card .tooltip.bottom .tooltip-arrow{top:0;left:50%;margin-left:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip.bottom-left .tooltip-arrow{top:0;right:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip.bottom-right .tooltip-arrow{top:0;left:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip-inner{max-width:200px;padding:3px 8px;color:#e0e0e0;text-align:center;background-color:#3e3e3e;border-radius:4px}
+.scc-card .tooltip-arrow{position:absolute;width:0;height:0;border-color:transparent;border-style:solid}
+.scc-card {display: flex; flex-direction: column; justify-content: space-between; line-height: 1.42857143; margin: 0.2rem; min-width: 28rem; max-width: 28rem; min-height: 15rem; max-height: 15rem; padding: 1.3rem; border-radius: 19px; background-color: #e0e0e0; box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;}
+.scc-card .repo-logo{width: 5.5rem;}
+.scc-card .description{text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; line-clamp: 6; -webkit-box-orient: vertical;}
+.scc-card .recently-updated{width: 1.4rem; height: 1.4rem; border-radius: 50%; margin-left: auto; margin-right: 0.1rem; background-color: #3e3e3e;}
+.scc-card .repo-icon{height: 1.1rem; margin-left: 0.2rem; margin-right: 0.2rem;}
+.scc-card .card-row{display: flex; flex-direction: row; justify-content: space-between;}
+.scc-card .card-col{width: 72%;}
+.scc-card .flex-horizontal{display: flex; align-items: center; flex-direction: row;}
+.scc-card .float-right{justify-content: flex-end;}
+.scc-card .grey-color-svg{filter: brightness(0) saturate(100%) invert(26%) sepia(0%) saturate(9%) hue-rotate(190deg) brightness(93%) contrast(100%);}
+.scc-card .title:hover{text-decoration: underline;}
+.highlight *{font-family: monospace; font-size: large;}
+.modal {display: none;position: fixed;z-index: 1;padding-top: 20vh;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);}
+.modal-content {background-color: #e0e0e0;margin: auto;padding: 20px;border: 0px;width: 90%;max-width: 40rem;border-radius: 1rem;}
+.modal-on{display: block;}
+.close {color: #3e3e3e;float: right;font-size: 28px;font-weight: bold;position: relative;bottom: 0.8rem;}
+.close:hover, .close:focus {  color: #000;  text-decoration: none;  cursor: pointer;}
+.scc-card .repo-type{height: 1.4rem; margin-left: 0.2rem; margin-right: 0.2rem;}</style></article><article class="scc-card" id="https://github.com/usc-isi-i2/wd-quality"><div class="card-row"><div class="card-col"><div class="flex-horizontal"><a href="https://github.com/usc-isi-i2/wd-quality" style="text-decoration: none;" target="_blank"><h4 class="title">wd-quality</h4></a><button class="copy-btn" data-placement="right" data-toggle="tooltip" style="background:url('https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/copy.svg')transparent;background-repeat:no-repeat;background-size:auto;" title="Copy card as embbeded HTML" value="https://github.com/usc-isi-i2/wd-quality"></button></div><div class="description"><span><p>Notebooks for generating and validating constraints in WIkidata</p></span><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">wd-quality</h2><div style="margin-bottom: 1rem; overflow: auto;"><p><span><p>Notebooks for generating and validating constraints in WIkidata</p></span></p></div></div></div></div></div><div><div style="min-height: 6rem;display: flex;align-items: center;justify-content: center;"><a href="https://github.com/usc-isi-i2/wd-quality" style="text-decoration: none;" target="_blank"><img alt="repo-logo" class="repo-logo" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/img/github-default.svg"/></a></div><div class="flex-horizontal float-right"><div class="recently-updated" data-placement="right" data-toggle="tooltip" style="background-color: #a88d62;" title="Last updated on: 23-02-2022"></div></div><div alt="Stars" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" style="margin-top: 0.3rem;" title="Stars"><a class="flex-horizontal float-right" href="https://github.com/usc-isi-i2/wd-quality/stargazers" style="text-decoration: none;" target="_blank"><b>3</b><img alt="stars" class="repo-icon" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/star.png"/></a></div><div alt="Last release: v1.0.0" class="flex-horizontal float-right" data-placement="right" data-toggle="tooltip" title="Last release: v1.0.0"><a class="flex-horizontal" href="https://github.com/usc-isi-i2/wd-quality/releases" style="text-decoration: none;" target="_blank"><b>1</b><img alt="releases" class="repo-icon" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/releases.png"/></a></div></div></div><div class="card-row"><div class="card-col"><div class="flex-horizontal ref-repo-icons"><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://github.com/usc-isi-i2/wd-quality/tree/main/Scripts/README.md" target="_blank"><img alt="Readme" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/readme.png" title="Readme"/></a></div></div><div style="cursor: pointer;"><div class="icon"><img alt="Notebook" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/notebook.png" title="Notebook"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">Notebook</h2><div style="margin-bottom: 1rem; overflow: auto;"><ul><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Deprecated%20Statements%20Analysis.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Deprecated%20Statements%20Analysis.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements%20-%20Final.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements%20-%20Final.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Comprehensive%20Constraints%20Analysis%20-%20Final.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Comprehensive%20Constraints%20Analysis%20-%20Final.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Removed%20Statements%20Analysis.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Removed%20Statements%20Analysis.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis-Copy1-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis-Copy1-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Finalized%20Queries%20-%20Constraints%20-%20item%20requires%20statement%20constraint%20-%20Q21503247-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Finalized%20Queries%20-%20Constraints%20-%20item%20requires%20statement%20constraint%20-%20Q21503247-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements%20-%20Final-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements%20-%20Final-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20Final-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20Final-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Fix%20My%20Notebook-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Fix%20My%20Notebook-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Removed%20Statements%20Analysis-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Removed%20Statements%20Analysis-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Finalized%20Queries-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Finalized%20Queries-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Comprehensive%20Constraints%20Analysis-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Finalized%20Queries%20-%20Type%20Constraint%20-%20Q21503250-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Finalized%20Queries%20-%20Type%20Constraint%20-%20Q21503250-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Finalized%20Queries%20-%20Value%20Type%20Constraint%20-%20Q21510865-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/.ipynb_checkpoints/Finalized%20Queries%20-%20Value%20Type%20Constraint%20-%20Q21510865-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Comprehensive%20Constraints%20Analysis.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Comprehensive%20Constraints%20Analysis.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Comprehensive%20Constraints%20Analysis%20-%20With%20Removed%20Statements.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Comprehensive%20Constraints%20Analysis-Copy1.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Comprehensive%20Constraints%20Analysis-Copy1.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Finalized%20Queries.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Finalized%20Queries.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Finalized%20Queries%20-%20Constraints%20-%20item%20requires%20statement%20constraint%20-%20Q21503247.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Finalized%20Queries%20-%20Constraints%20-%20item%20requires%20statement%20constraint%20-%20Q21503247.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Finalized%20Queries%20-%20Value%20Type%20Constraint%20-%20Q21510865.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Finalized%20Queries%20-%20Value%20Type%20Constraint%20-%20Q21510865.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Fix%20My%20Notebook.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Fix%20My%20Notebook.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Finalized%20Queries%20-%20Type%20Constraint%20-%20Q21503250.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/Finalized%20Queries%20-%20Type%20Constraint%20-%20Q21503250.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/.ipynb_checkpoints/Deprecated%20Statements%20Analysis-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/.ipynb_checkpoints/Deprecated%20Statements%20Analysis-checkpoint.ipynb</a></li><li><a href="https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/.ipynb_checkpoints/Finalized%20Queries-checkpoint.ipynb">https://raw.githubusercontent.com/usc-isi-i2/wd-quality/main/Scripts/Archived/.ipynb_checkpoints/Finalized%20Queries-checkpoint.ipynb</a></li></ul></div></div></div></div><div style="cursor: pointer;"><div class="icon"><img alt="Citation" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/citation.png" title="Citation"/></div><div class="modal"><div class="modal-content"><span class="close">×</span><h2 style="margin-bottom: 1rem;">Citation</h2><div style="margin-bottom: 1rem; overflow: auto;"><div style="font-family: monospace;"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+--><html><head><title></title><meta content="text/html; charset=utf-8" http-equiv="content-type"/><style type="text/css">
+/*
+generated by Pygments <https://pygments.org/>
+Copyright 2006-2021 by the Pygments team.
+Licensed under the BSD license, see LICENSE for details.
+*/
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+body .hll { background-color: #ffffcc }
+body { background: #f0f0f0; }
+body .c { color: #60a0b0; font-style: italic } /* Comment */
+body .err { border: 1px solid #FF0000 } /* Error */
+body .k { color: #007020; font-weight: bold } /* Keyword */
+body .o { color: #666666 } /* Operator */
+body .ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
+body .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+body .cp { color: #007020 } /* Comment.Preproc */
+body .cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
+body .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+body .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+body .gd { color: #A00000 } /* Generic.Deleted */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gr { color: #FF0000 } /* Generic.Error */
+body .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+body .gi { color: #00A000 } /* Generic.Inserted */
+body .go { color: #888888 } /* Generic.Output */
+body .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+body .gt { color: #0044DD } /* Generic.Traceback */
+body .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+body .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+body .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+body .kp { color: #007020 } /* Keyword.Pseudo */
+body .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+body .kt { color: #902000 } /* Keyword.Type */
+body .m { color: #40a070 } /* Literal.Number */
+body .s { color: #4070a0 } /* Literal.String */
+body .na { color: #4070a0 } /* Name.Attribute */
+body .nb { color: #007020 } /* Name.Builtin */
+body .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+body .no { color: #60add5 } /* Name.Constant */
+body .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+body .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+body .ne { color: #007020 } /* Name.Exception */
+body .nf { color: #06287e } /* Name.Function */
+body .nl { color: #002070; font-weight: bold } /* Name.Label */
+body .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+body .nt { color: #062873; font-weight: bold } /* Name.Tag */
+body .nv { color: #bb60d5 } /* Name.Variable */
+body .ow { color: #007020; font-weight: bold } /* Operator.Word */
+body .w { color: #bbbbbb } /* Text.Whitespace */
+body .mb { color: #40a070 } /* Literal.Number.Bin */
+body .mf { color: #40a070 } /* Literal.Number.Float */
+body .mh { color: #40a070 } /* Literal.Number.Hex */
+body .mi { color: #40a070 } /* Literal.Number.Integer */
+body .mo { color: #40a070 } /* Literal.Number.Oct */
+body .sa { color: #4070a0 } /* Literal.String.Affix */
+body .sb { color: #4070a0 } /* Literal.String.Backtick */
+body .sc { color: #4070a0 } /* Literal.String.Char */
+body .dl { color: #4070a0 } /* Literal.String.Delimiter */
+body .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+body .s2 { color: #4070a0 } /* Literal.String.Double */
+body .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+body .sh { color: #4070a0 } /* Literal.String.Heredoc */
+body .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+body .sx { color: #c65d09 } /* Literal.String.Other */
+body .sr { color: #235388 } /* Literal.String.Regex */
+body .s1 { color: #4070a0 } /* Literal.String.Single */
+body .ss { color: #517918 } /* Literal.String.Symbol */
+body .bp { color: #007020 } /* Name.Builtin.Pseudo */
+body .fm { color: #06287e } /* Name.Function.Magic */
+body .vc { color: #bb60d5 } /* Name.Variable.Class */
+body .vg { color: #bb60d5 } /* Name.Variable.Global */
+body .vi { color: #bb60d5 } /* Name.Variable.Instance */
+body .vm { color: #bb60d5 } /* Name.Variable.Magic */
+body .il { color: #40a070 } /* Literal.Number.Integer.Long */
+
+  </style></head><body><h2></h2><div class="highlight"><pre><span></span>@misc{shenoy2021study,
+      title={A Study of the Quality of Wikidata}, 
+      author={Kartik Shenoy and Filip Ilievski and Daniel Garijo and Daniel Schwabe and Pedro Szekely},
+      year={2021},
+      eprint={2107.00156},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI}
+}
+</pre></div></body></html></div></div></div></div></div><div style="cursor: pointer;"><div class="icon"><a class="repo-icon" href="https://github.com/usc-isi-i2/wd-quality/releases" target="_blank"><img alt="Download" class="repo-icon" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/repo_icons/download.png" title="Download"/></a></div></div></div></div><div><div class="flex-horizontal float-right"><img alt="shell" class="repo-icon grey-color-svg" data-placement="bottom" data-toggle="tooltip" src="https://github.com/dakixr/scc/raw/main/src/scc/assets/language_icons/shell.svg" title="Shell"/></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script><script>
+btns = document.getElementsByClassName('copy-btn');
+for (let index = 0; index < btns.length; index++) {
+    const element = btns[index];
+    element.addEventListener('click', function () {
+        console.log('copy btn!');
+        for (let index = 0; index < cards.length; index++) {
+            const card = cards[index];
+            if(card.id == $(this).val()){
+                navigator.clipboard.writeText(card.html_card_embedded);
+                break;
+            }
+        }
+    });
+}
+</script><script>function add_modals() {
+    cards_icons_list = document.getElementsByClassName('ref-repo-icons');
+    for(const cards_icons of cards_icons_list){
+        for(const card_icon of cards_icons.children){
+            const icon = card_icon.getElementsByClassName('icon')[0];
+            const modal = card_icon.getElementsByClassName('modal')[0];
+            const modal_content = card_icon.getElementsByClassName('modal-content')[0];
+            const span_close = card_icon.getElementsByClassName('close')[0];
+            
+            if (modal != undefined){
+                icon.addEventListener('click', () => { 
+                    modal.classList.add('modal-on');
+                });
+                span_close.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+                });
+                modal_content.addEventListener('click', (event) => { 
+                    event.stopPropagation();
+                });
+                modal.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+
+                });
+            }
+        }
+        
+        const license = cards_icons.getElementsByClassName('ref-license')[0];
+        if (license != undefined) {
+            license.addEventListener('click', () => { 
+                getGithub(license);
+            });
+        }
+        
+    }
+    const descriptions = document.getElementsByClassName('description');
+    [].forEach.call(descriptions, function (description) {
+        if (isOverflown(description)) {
+            description.style.cursor="pointer";
+            const modal = description.getElementsByClassName('modal')[0];
+            const modal_content = description.getElementsByClassName('modal-content')[0];
+            const span_close = description.getElementsByClassName('close')[0];
+            if (modal != undefined){
+                description.addEventListener('click', () => { 
+                    modal.classList.add('modal-on');
+                });
+                span_close.addEventListener('click', () => { 
+                    modal.classList.remove('modal-on');
+                });
+                modal_content.addEventListener('click', (event) => { 
+                    event.stopPropagation();
+                });
+                modal.addEventListener('click', (event) => { 
+                    modal.classList.remove('modal-on');
+                    event.stopPropagation();
+                });
+            }
+        }
+    });
+    
+}
+
+function isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+function addList(element, iterable){
+    var list = document.createElement("ol");
+        for (let i of iterable) {
+            let item = document.createElement("li");
+            item.innerHTML = i.charAt(0).toUpperCase() + i.slice(1);
+            list.appendChild(item);
+        }
+        element.innerHTML = '';
+        element.appendChild(list);
+}
+
+async function getGithub(license){
+    if (license.dataset.url != 'None'){
+        const response = await fetch(license.dataset.url);
+        const response_aux = response.clone();
+        try {
+            const data =  await response.json();
+
+            const name = license.getElementsByClassName('ref-name')[0];
+            const description = license.getElementsByClassName('ref-description')[0];
+            const permissions = license.getElementsByClassName('ref-permissions')[0];
+            const conditions = license.getElementsByClassName('ref-conditions')[0];
+            const limitations = license.getElementsByClassName('ref-limitations')[0];
+
+            name.innerHTML = await data.name;
+            description.innerHTML = await data.description;
+
+            addList(permissions, data.permissions);
+            addList(conditions, data.conditions);
+            addList(limitations, data.limitations);
+
+        } catch (error) {
+            const description = license.getElementsByClassName('ref-description-aux')[0];
+            description.innerHTML = '<pre style="font-family: monospace;">'+await response_aux.text()+'</pre>';
+        }
+    } else console.log('No license.');
+}add_modals();</script><style>.scc-card *{margin:0;box-sizing:border-box;color:#3e3e3e;font-family:Helvetica}
+.scc-card .copy-btn:active{position:relative;top:1px;background-color:#3e3e3e;color:#e0e0e0}
+.scc-card .copy-btn{margin-left: 0.3rem;border:none;height:1.1rem;width:1rem;cursor:pointer;}
+.scc-card .tooltip{position:absolute;z-index:1070;display:block;font-style:normal;font-weight:400;line-height:1.42857143;line-break:auto;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;word-wrap:normal;white-space:normal;font-size:12px;opacity:0}
+.scc-card .tooltip.in{opacity:.9}
+.scc-card .tooltip.top{padding:5px 0;margin-top:-3px}
+.scc-card .tooltip.right{padding:0 5px;margin-left:3px}
+.scc-card .tooltip.bottom{padding:5px 0;margin-top:3px}
+.scc-card .tooltip.left{padding:0 5px;margin-left:-3px}
+.scc-card .tooltip.top .tooltip-arrow{bottom:0;left:50%;margin-left:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.top-left .tooltip-arrow{right:5px;bottom:0;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.top-right .tooltip-arrow{bottom:0;left:5px;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#3e3e3e}
+.scc-card .tooltip.right .tooltip-arrow{top:50%;left:0;margin-top:-5px;border-width:5px 5px 5px 0;border-right-color:#3e3e3e}
+.scc-card .tooltip.left .tooltip-arrow{top:50%;right:0;margin-top:-5px;border-width:5px 0 5px 5px;border-left-color:#3e3e3e}
+.scc-card .tooltip.bottom .tooltip-arrow{top:0;left:50%;margin-left:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip.bottom-left .tooltip-arrow{top:0;right:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip.bottom-right .tooltip-arrow{top:0;left:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#3e3e3e}
+.scc-card .tooltip-inner{max-width:200px;padding:3px 8px;color:#e0e0e0;text-align:center;background-color:#3e3e3e;border-radius:4px}
+.scc-card .tooltip-arrow{position:absolute;width:0;height:0;border-color:transparent;border-style:solid}
+.scc-card {display: flex; flex-direction: column; justify-content: space-between; line-height: 1.42857143; margin: 0.2rem; min-width: 28rem; max-width: 28rem; min-height: 15rem; max-height: 15rem; padding: 1.3rem; border-radius: 19px; background-color: #e0e0e0; box-shadow: inset 5px 5px 10px #bebebe, inset -5px -5px 10px #ffffff;}
+.scc-card .repo-logo{width: 5.5rem;}
+.scc-card .description{text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 6; line-clamp: 6; -webkit-box-orient: vertical;}
+.scc-card .recently-updated{width: 1.4rem; height: 1.4rem; border-radius: 50%; margin-left: auto; margin-right: 0.1rem; background-color: #3e3e3e;}
+.scc-card .repo-icon{height: 1.1rem; margin-left: 0.2rem; margin-right: 0.2rem;}
+.scc-card .card-row{display: flex; flex-direction: row; justify-content: space-between;}
+.scc-card .card-col{width: 72%;}
+.scc-card .flex-horizontal{display: flex; align-items: center; flex-direction: row;}
+.scc-card .float-right{justify-content: flex-end;}
+.scc-card .grey-color-svg{filter: brightness(0) saturate(100%) invert(26%) sepia(0%) saturate(9%) hue-rotate(190deg) brightness(93%) contrast(100%);}
+.scc-card .title:hover{text-decoration: underline;}
+.highlight *{font-family: monospace; font-size: large;}
+.modal {display: none;position: fixed;z-index: 1;padding-top: 20vh;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);}
+.modal-content {background-color: #e0e0e0;margin: auto;padding: 20px;border: 0px;width: 90%;max-width: 40rem;border-radius: 1rem;}
+.modal-on{display: block;}
+.close {color: #3e3e3e;float: right;font-size: 28px;font-weight: bold;position: relative;bottom: 0.8rem;}
+.close:hover, .close:focus {  color: #000;  text-decoration: none;  cursor: pointer;}
+.scc-card .repo-type{height: 1.4rem; margin-left: 0.2rem; margin-right: 0.2rem;}</style></article></div>
+</div></span>
+<!-- Bibliography -->
+<span id="bibliography"><div class="w3-container" id="bib" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>Bibliography</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<ul><li>Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)</li></ul>
+</div></span>
+<!-- Contact -->
+<span id="contact"></span>
+<!-- Authors -->
+<span id="authors"><div class="w3-container" id="authors" style="margin-top:75px">
+<h1 class="w3-xxxlarge w3-text-green"><b>About the authors</b></h1>
+<hr class="w3-round" style="width:50px;border:5px solid green"/>
+<div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Daniel Garijo" src="images/default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="http://orcid.org/0000-0003-0454-7145">Daniel Garijo</a></h3>
+<p class="w3-opacity">Distinguished Researcher</p>
+<p class="w3-opacity">Universidad Politécnica de Madrid, University of Southern California</p>
+<a href="http://w3id.org/people/dgarijo">http://w3id.org/people/dgarijo</a>
+<p>I am a researcher at Universidad Politécnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Daniel Schwabe" src="images/default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Daniel Schwabe</a></h3>
+<p class="w3-opacity">Author</p>
+<p class="w3-opacity">Invited researcher</p>
+<p>Professor at Pontificia Universidade Católica Rio de Janeiro and invited researcher at the Information Sciences Institute, University of Southern California.</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Pedro Szekely" src="images/default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Pedro Szekely</a></h3>
+<p class="w3-opacity">Author</p>
+<p class="w3-opacity">Research Director</p>
+<p>Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California.</p>
+</div>
+</div>
+</div>
+</div><div class="w3-row-padding">
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Filip Ilievski" src="images/default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Filip Ilievski</a></h3>
+<p class="w3-opacity">Author</p>
+<p class="w3-opacity">Research Scientist</p>
+<p>Researcher at the Information Sciences Institute, University of Southern California.</p>
+</div>
+</div>
+</div>
+<div class="w3-col m4 w3-margin-bottom">
+<div class="w3-light-grey" style="padding-bottom: 10px;">
+<div style="width:90%; height:0; overflow:hidden; height:0; padding-top: 12px; padding-bottom: 90%;
+                            margin: auto;">
+<img alt="Kartik Shenoy" src="images/default_author.jpg" style="width:100%;"/>
+</div>
+<div class="w3-container">
+<h3><a href="">Kartik Shenoy</a></h3>
+<p class="w3-opacity">Author</p>
+<p class="w3-opacity">Student worker</p>
+<p>Master student at the University of Southern California.</p>
+</div>
+</div>
+</div>
+</div></div></span>
+<!-- Bibtext -->
+<span id="bibtext"></span>
+</div>
+
+
+
+
+<!-- End page content -->
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+	document.getElementById("mySidebar").style.display = "block";
+	document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+	document.getElementById("mySidebar").style.display = "none";
+	document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+	document.getElementById("img01").src = element.src;
+	document.getElementById("modal01").style.display = "block";
+	var captionText = document.getElementById("caption");
+	captionText.innerHTML = element.alt;
+}
+</script>
+</body>
+</html>

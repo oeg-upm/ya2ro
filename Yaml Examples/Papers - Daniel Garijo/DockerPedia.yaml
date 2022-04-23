@@ -1,0 +1,35 @@
+# Mandatory field
+type: "paper"
+
+title: "DockerPedia: A Knowledge Graph of Software Images and their Metadata"
+
+datasets:
+  - https://doi.org/10.6084/m9.figshare.6260822.v1
+  - https://doi.org/10.6084/m9.figshare.14718450.v1
+
+
+software:
+  - https://github.com/dockerpedia/annotator
+  - https://dockerpedia.inf.utfsm.cl/visualization
+  - https://github.com/dockerpedia/dockerpedia-web
+  - https://dockerpedia.inf.utfsm.cl/query
+  - https://hub.docker.com/u/dockerpedia
+
+authors:
+  - # Daniel Garijo
+    orcid: http://orcid.org/0000-0003-0454-7145
+    role: "Researcher"
+  -
+    name: "Maximiliano Osorio"
+    position: "Research Programmer"
+    description: "Computer Scientist at the Information Sciences Institute of the University of Southern California."
+  -
+    name: "Idafen Santana-Pérez"
+    position: "Lecturer"
+    description: "Lecturer at DSC department, at ULPGC on sensor data for light pollution and medical image processing. Idafen is also interested in topics related to Open Science and Linked Data in general."
+    web: https://idafen.wordpress.com/
+  -
+    name: "Carlos Buil"
+    position: "Lecturer"
+    description: "Lecturer at the Universidad Técnica Federico de Santa María, In Chile. Carlos work focuses on (graph) databases, Semantic Web and Knowledge Graphs."
+    web: https://www.inf.utfsm.cl/quienes-somos/directorio-de-personas/academicos/15-carlos-buil

@@ -1,0 +1,35 @@
+# Mandatory field
+type: "paper"
+
+title: "Creating and Querying Personalized Versions of Wikidata on a Laptop"
+
+datasets:
+  - https://doi.org/10.5281/zenodo.5139550
+
+software:
+  - https://github.com/usc-isi-i2/kgtk/
+  - https://github.com/usc-isi-i2/kgtk-at-2021-wikidata-workshop
+
+bibliography:
+  - "Vrandecic, D., Krotzsch, M.: Wikidata: a free collaborative knowledgebase. Com-munications of the ACM57(10), 78–85 (2014)"
+
+authors:
+  - # Daniel Garijo
+    orcid: http://orcid.org/0000-0003-0454-7145
+    role: "Distinguished Researcher"
+  -
+    name: "Hans Chalupsky"
+    position: "Research Lead"
+    description: "Research Lead at the Information Sciences Institute, University of Southern California."
+  -
+    name: "Pedro Szekely"
+    position: "Research Director"
+    description: "Research Director at the center on Knowledge Graphs, Information Sciences Institute, University of Southern California."
+  -
+    name: "Filip Ilievski"
+    position: "Research Scientist"
+    description: "Researcher at the Information Sciences Institute, University of Southern California."
+  -
+    name: "Kartik Shenoy"
+    position: "Student worker"
+    description: "Master student at the University of Southern California."
