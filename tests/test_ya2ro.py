@@ -39,6 +39,9 @@ class test_ya2ro(TestCase):
     ################################################
 
     def test_paper(self, doi_dataset, doi_bib, orcid, metadata_parser):
+        """
+        Test all supported fields of Paper.
+        """
         apply_mock(doi_dataset, doi_bib, orcid, metadata_parser)
         os.chdir("input/")
         _set_args("-i","yamls/paper.yaml","-o","../out","-ns")
@@ -55,6 +58,9 @@ class test_ya2ro(TestCase):
 
 
     def test_paper_doi(self, doi_dataset, doi_bib, orcid, metadata_parser):
+        """
+        Test all supported fields of Paper with DOI.
+        """
         apply_mock(doi_dataset, doi_bib, orcid, metadata_parser)
         os.chdir("input/")
         _set_args("-i","yamls/paper_doi.yaml","-o","../out","-ns")
@@ -62,6 +68,9 @@ class test_ya2ro(TestCase):
             ya2ro.main()
 
     def test_project(self, doi_dataset, doi_bib, orcid, metadata_parser):
+        """
+        Test all supported fields of Project.
+        """
         apply_mock(doi_dataset, doi_bib, orcid, metadata_parser)
         os.chdir("input/")
         _set_args("-i","yamls/project.yaml","-o","../out")
@@ -76,6 +85,9 @@ class test_ya2ro(TestCase):
 
 
     def test_landing_page(self, doi_dataset, doi_bib, orcid, metadata_parser):
+        """
+        Test landing page creation.
+        """
         apply_mock(doi_dataset, doi_bib, orcid, metadata_parser)
         os.chdir("input/")
         _set_args("-i","yamls/paper.yaml","-o","../out","-ns")
