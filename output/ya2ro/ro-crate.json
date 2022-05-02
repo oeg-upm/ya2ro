@@ -60,13 +60,13 @@
         {
             "@id": "#ya2ro",
             "@type": "SoftwareApplication",
-            "description": "<p>Python package designed to create Research Objects out of simple YAML files. Given the dataset dois, source code links and author DOIs, ya2ro will generate an HTML representation of the aggregated contents, as well as an RO-Crate with the machine-readable representation of the Research Object</p>\n",
+            "description": "<span><p>Python package designed to create Research Objects out of simple YAML files. Given the dataset dois, source code links and author DOIs, ya2ro will generate an HTML representation of the aggregated contents, as well as an RO-Crate with the machine-readable representation of the Research Object</p>\n</span>",
             "installUrl": "https://github.com/oeg-upm/ya2ro"
         },
         {
             "@id": "#somef",
             "@type": "SoftwareApplication",
-            "description": "<p>SOftware Metadata Extraction Framework: A tool for automatically extracting relevant software information from readme files</p>\n",
+            "description": "<span><p>SOftware Metadata Extraction Framework: A tool for automatically extracting relevant software information from readme files</p>\n</span>",
             "installUrl": "https://github.com/KnowledgeCaptureAndDiscovery/somef/"
         },
         {

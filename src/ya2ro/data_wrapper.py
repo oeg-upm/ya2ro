@@ -509,7 +509,7 @@ def populate_software(object, input_to_vocab, data):
                 with HiddenPrints():
                     metadata = cli_get_data(0.9, False, link)
                 
-                scc_meta = scc_metadata(metadata)
+                scc_meta = scc_metadata(output_directory_datafolder, metadata)
                 object.software[i].metadata = metadata
                 object.software[i].name = scc_meta.title()
                 object.software[i].description = scc_meta.description()

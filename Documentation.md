@@ -204,7 +204,7 @@ bibliography:
   - https://doi.org/XXXXXXXXX
 ```
 
-`authors:`In this field is where credit to the creators, collaborators, authors, etc is given. If an ORCID is provided ya2ro will fetch relevant data automatically. If a photo is not provided, a default one will be used.
+`participants:`In this field is where credit to the creators, collaborators, authors, etc is given. If an ORCID is provided ya2ro will fetch relevant data automatically. If a photo is not provided, a default one will be used.
 
 ```yaml
 participants:

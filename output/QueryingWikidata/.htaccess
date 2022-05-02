@@ -6,7 +6,7 @@
 
     RewriteEngine on
 
-    RewriteBase /out/QueryingWikidata
+    RewriteBase /../output/QueryingWikidata
 
     # Rewrite rule to serve HTML
     RewriteCond %{HTTP_ACCEPT} !application/rdf\+xml.*(text/html|application/xhtml\+xml)

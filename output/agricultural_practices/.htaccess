@@ -6,7 +6,7 @@
 
     RewriteEngine on
 
-    RewriteBase /output/agricultural_practices
+    RewriteBase /../output/agricultural_practices
 
     # Rewrite rule to serve HTML
     RewriteCond %{HTTP_ACCEPT} !application/rdf\+xml.*(text/html|application/xhtml\+xml)

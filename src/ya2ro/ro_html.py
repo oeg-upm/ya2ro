@@ -375,7 +375,7 @@ class ro_html(object):
         
         for s in software:
             if s.metadata and not p.no_somef:
-                software_cards_scc += card_html_view(s.metadata,embedded=True)
+                software_cards_scc += card_html_view(self.data.output_directory_datafolder ,s.metadata,embedded=True)
             else:
                 software_cards_html.append(html_entry_software(s))
 

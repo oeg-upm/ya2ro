@@ -65,8 +65,8 @@
             "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
-                "Universidad Polit\u00e9cnica de Madrid",
-                "University of Southern California"
+                "University of Southern California",
+                "Universidad Polit\u00e9cnica de Madrid"
             ]
         },
         {
@@ -99,7 +99,7 @@
         {
             "@id": "#annotator",
             "@type": "SoftwareApplication",
-            "description": "<span><p>No description available yet.</p>\n</span>",
+            "description": "<span><p>Experiment reproducibility is the ability to run an experiment with the introduction of changes to it. To allow reproducibility, the scientific community encourages researchers to publish descriptions of the these experiments. However, these recommendations do not include an automated way for creating such descriptions: normally scientists have to annotate their experiments in a semi automated way. In this paper we propose a system to automatically describe computational environments used in in-silico experiments. We propose to use Operating System (OS) virtualization (containerization) for distributing software experiments throughout software images and an annotation system that will allow to describe these software images. The images are a minimal version of an OS (container) that allow the deployment of multiple isolated software packages within it.</p>\n</span>",
             "installUrl": "https://github.com/dockerpedia/annotator"
         },
         {

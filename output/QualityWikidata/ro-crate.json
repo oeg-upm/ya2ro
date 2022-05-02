@@ -57,13 +57,13 @@
                     "@id": "#wikidata_removed_statements_from_oct_2014_-_jan_2021"
                 },
                 {
-                    "@id": "#none"
+                    "@id": "#wikidata_deprecated_statements_by_jan_2021."
                 },
                 {
                     "@id": "#wikidata_instanceof,_subclassof,_isa-relation_dumps_of_feb_15,_2021."
                 },
                 {
-                    "@id": "#none"
+                    "@id": "#constraint_violation_summaries_(dump:_dec_7th,_2020)"
                 },
                 {
                     "@id": "index-en.html"
@@ -77,8 +77,8 @@
             "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
-                "Universidad Polit\u00e9cnica de Madrid",
-                "University of Southern California"
+                "University of Southern California",
+                "Universidad Polit\u00e9cnica de Madrid"
             ]
         },
         {
@@ -172,13 +172,13 @@
             "name": "Wikidata removed statements from Oct 2014 - Jan 2021"
         },
         {
-            "@id": "#none",
+            "@id": "#wikidata_deprecated_statements_by_jan_2021.",
             "@type": "Dataset",
-            "description": null,
+            "description": "Wikidata deprecated statements by Jan 2021. All statements tagged as deprecated in the Knowledge Graph.",
             "distribution": {
                 "@id": "http://doi.org/10.5281/zenodo.5120117"
             },
-            "name": null
+            "name": "Wikidata deprecated statements by Jan 2021."
         },
         {
             "@id": "#wikidata_instanceof,_subclassof,_isa-relation_dumps_of_feb_15,_2021.",
@@ -190,13 +190,13 @@
             "name": "Wikidata instanceOf, subclassOf, isa-relation dumps of Feb 15, 2021."
         },
         {
-            "@id": "#none",
+            "@id": "#constraint_violation_summaries_(dump:_dec_7th,_2020)",
             "@type": "Dataset",
-            "description": null,
+            "description": "Wikidata constraint violation summary files (dumps from 7 Dec, 2020), calculated from running the notebooks in https://doi.org/10.5281/zenodo.5119983 and the scripts in https://github.com/usc-isi-i2/wd-quality/tree/main/Scripts. Item requires statement constraint: codepConstDFAnalysis.csv Inverse constraint: invConstDFAnalysis.csv Symmetric constraint: symmConstDFAnalysis.csv Type constraint (domain): typeConstDFAnalysis.csv Value type (range): valueTypeConstDFAnalysis.csv<br> <br> <br>",
             "distribution": {
                 "@id": "http://doi.org/10.5281/zenodo.5121276"
             },
-            "name": null
+            "name": "Constraint violation summaries (Dump: Dec 7th, 2020)"
         },
         {
             "@id": "index-en.html",

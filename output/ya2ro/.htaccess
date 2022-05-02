@@ -6,7 +6,7 @@
 
     RewriteEngine on
 
-    RewriteBase /output/ya2ro
+    RewriteBase /../output/ya2ro
 
     # Rewrite rule to serve HTML
     RewriteCond %{HTTP_ACCEPT} !application/rdf\+xml.*(text/html|application/xhtml\+xml)
