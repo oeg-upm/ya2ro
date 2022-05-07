@@ -1,4 +1,3 @@
-from pandas import notnull
 from . import properties as p
 import json
 

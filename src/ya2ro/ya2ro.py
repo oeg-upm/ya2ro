@@ -33,7 +33,7 @@ def main():
     group = parser.add_mutually_exclusive_group(required=True)
 
     # Required positional argument 
-    group.add_argument('-i','--input', type=str, metavar='YALM_PATH',
+    group.add_argument('-i','--input', type=str, metavar='YAML_PATH',
         help='Path of the required yaml input. Follow the documentation or the example given to see the structure of the file.')
 
     # Required positional argument

@@ -16,7 +16,7 @@ demo:
   -
     name: "Demo Green Planet Projects"
     link: https://oeg-upm.github.io/ya2ro/output/landing_page.html
-    description: "This is an output example using the 'Green Planet Projects' yalms as input and it is hosted on GitHub Pages."
+    description: "This is an output example using the 'Green Planet Projects' yamls as input and it is hosted on GitHub Pages."
 
 software: 
   - 

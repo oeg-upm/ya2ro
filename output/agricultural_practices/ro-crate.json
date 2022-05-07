@@ -44,7 +44,6 @@
         {
             "@id": "https://orcid.org/0000-0003-0212-3381",
             "@type": "Person",
-            "description": null,
             "name": "MARGARITA RUIZ RAMOS",
             "position": [
                 "Universidad Polit\u00e9cnica de Madrid - Technical University of Madrid"
@@ -91,14 +90,12 @@
                 {
                     "@type": "Demo",
                     "description": "Anonymous interview transcript.",
-                    "link": "https://drive.google.com/drive/folders/1xKIWHDgsBjiRalMb5BM-pDHEbslLYJpr",
-                    "name": null
+                    "link": "https://drive.google.com/drive/folders/1xKIWHDgsBjiRalMb5BM-pDHEbslLYJpr"
                 },
                 {
                     "@type": "Demo",
                     "description": "Interview questions.",
-                    "link": "https://drive.google.com/drive/folders/1I_KPjAKJ1zKPWqj2VVWj4uRLOxH2DCLk",
-                    "name": null
+                    "link": "https://drive.google.com/drive/folders/1I_KPjAKJ1zKPWqj2VVWj4uRLOxH2DCLk"
                 }
             ]
         },

@@ -81,14 +81,14 @@ If everything goes fine, you should see:
    d8'
 _________________________________________________________
 
-usage: ya2ro [-h] (-i YALM_PATH | -l YA2RO_PREV_OUTPUT) [-o OUTPUT_DIR] [-p PROPERTIES_FILE] [-ns]
+usage: ya2ro [-h] (-i YAML_PATH | -l YA2RO_PREV_OUTPUT) [-o OUTPUT_DIR] [-p PROPERTIES_FILE] [-ns]
 
 Human and machine readable input as a yaml file and create RO-Object in jsonld and/or HTML view. Run 'ya2ro -configure GITHUB_PERSONAL_ACCESS_TOKEN' this the first time to configure ya2ro
 properly
 
 options:
   -h, --help            show this help message and exit
-  -i YALM_PATH, --input YALM_PATH
+  -i YAML_PATH, --input YAML_PATH
                         Path of the required yaml input. Follow the documentation or the example given to see the structure of the file.
   -l YA2RO_PREV_OUTPUT, --landing_page YA2RO_PREV_OUTPUT
                         Path of a previous output folder using the ya2ro tool. This flag will make a landing page to make all the resources accessible.
@@ -104,19 +104,19 @@ options:
 
 ### How to use  
 
-The first thing to do is create some input for ya2ro. To create valid a yalm you should follow the documentation bellow.
+The first thing to do is create some input for ya2ro. To create valid a yaml you should follow the documentation bellow.
 
-Create a yalm from scratch or use one of the supplied templates. Currently ya2ro supports two formats:
+Create a yaml from scratch or use one of the supplied templates. Currently ya2ro supports two formats:
 
 * paper
 * project
 
 Please find a template for each type under the directory templates.
-Once you have a valid yalm (proyect or paper) is time to run ya2ro.
+Once you have a valid yaml (project or paper) is time to run ya2ro.
 
 #### Create machine and human readable content
 
-It is possible to process batches of yalms at the same time, to do that just specify as input a folder with all the yalms inside.
+It is possible to process batches of yamls at the same time, to do that just specify as input a folder with all the yamls inside.
 
 ##### Simple execution
 
