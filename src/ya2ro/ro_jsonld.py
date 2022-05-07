@@ -1,3 +1,4 @@
+from pandas import notnull
 from . import properties as p
 import json
 
@@ -172,22 +173,42 @@ class ro_jsonld(object):
 
     def create_JSONLD_file(self):
         # dump changes into output/ro-crate.json
+        self.jsonld = clean_nones(self.jsonld)
         with open(self.data.output_jsonld, "w+") as file:
             file.write(json.dumps(self.jsonld, indent=4, sort_keys=True))
         print(f"JSON-LD file created at {self.data.output_jsonld}")
         
 
     def _normalize_name(self, name):
-        """Normalizes names in order to be used as an ID."""
+        """
+        Normalizes names in order to be used as an ID.
+        """
         return "#" + str(name).replace(' ', '_').lower()
 
 
     def _add_id_to_list(self, name, list, normalize = True):
-        """Enters a name with blank spaces or not and appends
+        """
+        Enters a name with blank spaces or not and appends
         to the list a id normalized version of the name. List 
-        must be a list of dicts."""
+        must be a list of dicts.
+        """
 
-        id_normalized = self._normalize_name(name)
         list.append({
             "@id": self._normalize_name(name) if normalize else name
         })
+
+def clean_nones(value):
+    """
+    Recursively remove all None values from dictionaries and lists, and returns
+    the result as a new dictionary or list.
+    """
+    if isinstance(value, list):
+        return [clean_nones(x) for x in value if x is not None]
+    elif isinstance(value, dict):
+        return {
+            key: clean_nones(val)
+            for key, val in value.items()
+            if val is not None
+        }
+    else:
+        return value
