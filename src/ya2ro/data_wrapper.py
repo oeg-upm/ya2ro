@@ -404,6 +404,7 @@ def populate_datasets(object, input_to_vocab, data):
                 doi = dataset
             else:
                 link = dataset
+                doi = None
         else:
             print(f"WARNING: {dataset} format is not supported, see documentation for further guidance.")
             
@@ -469,9 +470,9 @@ def populate_datasets(object, input_to_vocab, data):
         if name:
             object.datasets[i].name = name 
         
-        descripton = _safe(input_to_vocab["description"], dataset)
-        if descripton:
-            object.datasets[i].description = descripton
+        description = _safe(input_to_vocab["description"], dataset)
+        if description:
+            object.datasets[i].description = description
         
         license = _safe(input_to_vocab["license"], dataset)
         if license:
@@ -618,8 +619,12 @@ def populate_authors(object, input_to_vocab, data, field_of_author = "authors"):
                 object.authors[i].orcid = orcid_link
                 name = orcid.get_full_name()
                 object.authors[i].name = name
-                object.authors[i].position = ", ".join(orcid.get_affiliation())
-                object.authors[i].web = orcid.get_webs()[-1]
+                aff = orcid.get_affiliation()
+                if aff:
+                    object.authors[i].position = ", ".join(aff)
+                webs = orcid.get_webs()
+                if webs:
+                    object.authors[i].web = webs[-1]
                 object.authors[i].description = orcid.get_bio()
             except:
                 print(f"ERROR: ORCID is not valid or not up '{orcid_link}'")
