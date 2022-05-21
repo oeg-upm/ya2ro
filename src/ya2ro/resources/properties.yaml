@@ -9,7 +9,7 @@
   output_html: "index-en.html"
   output_html_help: "help.html"
   output_html_landing: "landing_page.html"
-  output_jsonld: "ro-crate.json"
+  output_jsonld: "ro-crate-metadata.json"
   htaccess: "resources/.htaccess"
   default_author_img: default_author.jpg
   style: "dark"
