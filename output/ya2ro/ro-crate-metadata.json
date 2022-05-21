@@ -60,20 +60,20 @@
         {
             "@id": "#ya2ro",
             "@type": "SoftwareApplication",
-            "description": "<span><p>Python package designed to create Research Objects out of simple YAML files. Given the dataset dois, source code links and author DOIs, ya2ro will generate an HTML representation of the aggregated contents, as well as an RO-Crate with the machine-readable representation of the Research Object</p>\n</span>",
+            "description": "Python package designed to create Research Objects out of simple YAML files. Given the dataset dois, source code links and author DOIs, ya2ro will generate an HTML representation of the aggregated contents, as well as an RO-Crate with the machine-readable representation of the Research Object",
             "installUrl": "https://github.com/oeg-upm/ya2ro"
         },
         {
             "@id": "#somef",
             "@type": "SoftwareApplication",
-            "description": "<span><p>SOftware Metadata Extraction Framework: A tool for automatically extracting relevant software information from readme files</p>\n</span>",
+            "description": "SOftware Metadata Extraction Framework: A tool for automatically extracting relevant software information from readme files",
             "installUrl": "https://github.com/KnowledgeCaptureAndDiscovery/somef/"
         },
         {
             "workExample": [
                 {
                     "@type": "Demo",
-                    "description": "This is an output example using the 'Green Planet Projects' yalms as input and it is hosted on GitHub Pages.",
+                    "description": "This is an output example using the 'Green Planet Projects' yamls as input and it is hosted on GitHub Pages.",
                     "link": "https://oeg-upm.github.io/ya2ro/output/landing_page.html",
                     "name": "Demo Green Planet Projects"
                 }

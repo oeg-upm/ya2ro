@@ -46,10 +46,7 @@
         },
         {
             "@id": "#none",
-            "@type": "Person",
-            "description": null,
-            "name": null,
-            "position": null
+            "@type": "Person"
         },
         {
             "@id": "#rossana_tornel_v\u00e1zquez",

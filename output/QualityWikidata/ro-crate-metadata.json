@@ -77,8 +77,8 @@
             "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
-                "University of Southern California",
-                "Universidad Polit\u00e9cnica de Madrid"
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
             ]
         },
         {
@@ -120,19 +120,19 @@
         {
             "@id": "#kgtk",
             "@type": "SoftwareApplication",
-            "description": "<span><p>Knowledge Graph Toolkit</p>\n</span>",
+            "description": "Knowledge Graph Toolkit ",
             "installUrl": "https://github.com/usc-isi-i2/kgtk/"
         },
         {
             "@id": "#wd-quality",
             "@type": "SoftwareApplication",
-            "description": "<span><p>Notebooks for generating and validating constraints in WIkidata</p>\n</span>",
+            "description": "Notebooks for generating and validating constraints in WIkidata",
             "installUrl": "https://github.com/usc-isi-i2/wd-quality"
         },
         {
             "@id": "#wd-quality",
             "@type": "SoftwareApplication",
-            "description": "<span><p>Notebooks for generating and validating constraints in WIkidata</p>\n</span>",
+            "description": "Notebooks for generating and validating constraints in WIkidata",
             "installUrl": "https://github.com/usc-isi-i2/wd-quality/tree/main/Scripts"
         },
         {

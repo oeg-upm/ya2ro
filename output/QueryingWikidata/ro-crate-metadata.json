@@ -56,8 +56,8 @@
             "description": "I am a researcher at Universidad Polit\u00e9cnica de Madrid. My research activities focus on e-Science and the Semantic Web, specifically on how to increase the ease of use of software and scientific workflows using provenance, metadata, intermediate results and Linked Data.",
             "name": "Daniel Garijo",
             "position": [
-                "University of Southern California",
-                "Universidad Polit\u00e9cnica de Madrid"
+                "Universidad Polit\u00e9cnica de Madrid",
+                "University of Southern California"
             ]
         },
         {
@@ -99,13 +99,13 @@
         {
             "@id": "#kgtk",
             "@type": "SoftwareApplication",
-            "description": "<span><p>Knowledge Graph Toolkit</p>\n</span>",
+            "description": "Knowledge Graph Toolkit ",
             "installUrl": "https://github.com/usc-isi-i2/kgtk/"
         },
         {
             "@id": "#kgtk-at-2021-wikidata-workshop",
             "@type": "SoftwareApplication",
-            "description": "<span><p>Code and datasets for the KGTK demo at the 2021 Wikidata Workshop at ISWC</p>\n</span>",
+            "description": "Code and datasets for the KGTK demo at the 2021 Wikidata Workshop at ISWC",
             "installUrl": "https://github.com/usc-isi-i2/kgtk-at-2021-wikidata-workshop"
         },
         {
