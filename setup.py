@@ -26,7 +26,7 @@ setup(
         'bibtexparser>=1.2.0',
         'Pygments>=2.11.2',
         'somef>=0.8.0',
-        'scc @ git+https://github.com/oeg-upm/scc',
+        'scc @ git+https://github.com/oeg-upm/soca',
         'metadata-parser'
     ]
 )
