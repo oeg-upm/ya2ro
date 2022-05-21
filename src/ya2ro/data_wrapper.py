@@ -509,10 +509,12 @@ def populate_software(object, input_to_vocab, data):
 
                 print(f"        + Using SOMEF for {link}")
                 print("            - Downloading repository... This may take a while.")
+
                 with HiddenPrints():
                     metadata = cli_get_data(0.9, False, link)
                 
                 scc_meta = scc_metadata(output_directory_datafolder, metadata)
+
                 object.software[i].metadata = metadata
                 object.software[i].name = scc_meta.title()
                 object.software[i].description = scc_meta.description()
@@ -524,6 +526,10 @@ def populate_software(object, input_to_vocab, data):
         name = _safe(input_to_vocab["name"], software)
         if name is not None:
             object.software[i].name = name
+        
+        if not object.software[i].name:
+            object.software[i].name = link
+            print(f'WARNING: No name given to software "{link}", using pointer as name.')
         
         description = _safe(input_to_vocab["description"], software)
         if description is not None:
