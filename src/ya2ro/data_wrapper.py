@@ -394,6 +394,10 @@ def populate_datasets(object, input_to_vocab, data):
 
     i = 0
     for dataset in data[input_to_vocab["datasets"]]:
+
+        doi = None
+        path = None
+        link = None
         
         if isinstance(dataset, dict):
             doi = _safe(input_to_vocab["doi"], dataset)
@@ -404,10 +408,8 @@ def populate_datasets(object, input_to_vocab, data):
                 doi = dataset
             else:
                 link = dataset
-                doi = None
         else:
             print(f"WARNING: {dataset} format is not supported, see documentation for further guidance.")
-            
 
         if doi:
 
