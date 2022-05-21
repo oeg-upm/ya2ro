@@ -2,6 +2,8 @@ import argparse
 import os
 from pathlib import Path
 
+__version__ = '0.0.2'
+
 ###################################################################################
 # LOGO
 
@@ -29,6 +31,9 @@ def main():
     parser = argparse.ArgumentParser(
         description="""Human and machine readable input as a yaml file and create RO-Object in jsonld and/or HTML view.
         Run 'ya2ro -configure GITHUB_PERSONAL_ACCESS_TOKEN' this the first time to configure ya2ro properly""")
+
+    parser.add_argument('--version', action='version',
+                    version='%(prog)s {version}'.format(version=__version__))
 
     group = parser.add_mutually_exclusive_group(required=True)
 
