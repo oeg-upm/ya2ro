@@ -4,7 +4,7 @@ from shutil import copyfile
 from pathlib import Path
 import ntpath
 from . import hilite_me
-from scc.commands.portal.card import html_view as card_html_view
+from soca.commands.portal.card import html_view as card_html_view
 import os
 import re
 
@@ -370,19 +370,19 @@ class ro_html(object):
             return f"""<p><a href="{s.link}">{s.link if s.name is None else s.name}</a></p>
             {self.ul_component(software_attr)}"""
 
-        software_cards_scc = ''
+        software_cards_soca = ''
         software_cards_html = []
         
         for s in software:
             if s.metadata and not p.no_somef:
-                software_cards_scc += card_html_view(self.data.output_directory_datafolder ,s.metadata,embedded=True)
+                software_cards_soca += card_html_view(self.data.output_directory_datafolder ,s.metadata,embedded=True)
             else:
                 software_cards_html.append(html_entry_software(s))
 
         software_cards_component = f"""
             {self.ul_component(software_cards_html)}
             <div style="max-width: 1600px;display: flex; align-content: flex-start; flex-wrap: wrap; 
-            flex-direction: row;justify-content: center; margin-top: 3rem;font-size: 15px;">{software_cards_scc}</div>"""
+            flex-direction: row;justify-content: center; margin-top: 3rem;font-size: 15px;">{software_cards_soca}</div>"""
 
         software_component = f"""<div class="w3-container" id="software" style="margin-top:75px">
         <h1 class="w3-xxxlarge w3-text-green"><b>Software</b></h1>
