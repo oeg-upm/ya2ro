@@ -174,7 +174,7 @@ class ro_html(object):
         for req in requirements:
             val = getattr(self.data, req)
             if val is None:
-                print("WARNING: '{}' is not defined. Add it to be eligible for beeing an EELISA project.".format(req))
+                print("WARNING: '{}' is not defined. Add it to be eligible for being an EELISA project.".format(req))
                 self.worth = False
 
         if self.worth and self.data.type == "project":
