@@ -102,7 +102,7 @@ import os
 import sys
 from . import req_orcid
 from . import req_doi
-from somef.cli import cli_get_data
+from somef.somef_cli import cli_get_data
 from . import properties as p
 import json
 from shutil import copyfile
@@ -513,9 +513,9 @@ def populate_software(object, input_to_vocab, data):
                 with HiddenPrints():
                     metadata = cli_get_data(0.9, False, link)
                 
-                soca_meta = soca_metadata(output_directory_datafolder, metadata)
+                soca_meta = soca_metadata(output_directory_datafolder, metadata.results)
 
-                object.software[i].metadata = metadata
+                object.software[i].metadata = metadata.results
                 object.software[i].name = soca_meta.title()
                 object.software[i].description = soca_meta.description()
                 license = soca_meta.license()
