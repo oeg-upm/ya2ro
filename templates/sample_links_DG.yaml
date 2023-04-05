@@ -1,0 +1,20 @@
+# Mandatory field
+type: "paper"
+
+title: "Work done in SOSEN"
+
+datasets:
+  - doi: https://doi.org/10.6084/m9.figshare.14916684.v1
+  - doi: https://doi.org/10.5281/zenodo.5139550
+
+software:
+  - link: https://github.com/KnowledgeCaptureAndDiscovery/somef
+
+bibliography:
+  - https://dx.doi.org/10.1109/BigData47090.2019.9006447
+
+authors:
+  # Alternative way if participant has an ORCID
+  -
+    orcid: http://orcid.org/0000-0003-0454-7145
+    role: "Supervisor"

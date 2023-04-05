@@ -2,9 +2,13 @@
 
 [![DOI](https://zenodo.org/badge/407588137.svg)](https://zenodo.org/badge/latestdoi/407588137) [![Project Status: Active: The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
-## Demo
+## Example
 
+Ya2ro generates Research Objects (ROs) like the following: [https://w3id.org/dgarijo/ro/sepln2022](https://w3id.org/dgarijo/ro/sepln2022). Given a few ROs, `ya2ro` can also create a landing page:
 <https://oeg-upm.github.io/ya2ro/output/landing_page.html>
+
+## Requirements
+The latest version of ya2ro works in Python 3.10.
 
 ## Installation
 
@@ -50,8 +54,9 @@ If you move any files produced by ya2ro into `/out`, then you will be able to se
 
 ### Configure
 
-Before running ya2ro, you must configure it appropriately. Please add your personal token in ya2ro properties file.  
---> ~/ya2ro/src/ya2ro/resources/properties.yaml <--
+Before running ya2ro, you must configure it appropriately. Please add your GitHub personal token in ya2ro properties file. This needed if you want `ya2ro` to extract your software metadata automatically. The file can be found at:
+
+`--> ~/ya2ro/src/ya2ro/resources/properties.yaml <--`
 
 Add a line like the following:
 
@@ -60,7 +65,7 @@ Add a line like the following:
 GITHUB_PERSONAL_ACCESS_TOKEN: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
 ```
 
-ya2ro will continue working if not configured, but is highly recommended to apply this setting.
+ya2ro will work if this is not configured, but is highly recommended to apply this setting, as the GitHub API has restricted access.
 
 ### Test ya2ro installation
 
@@ -145,3 +150,6 @@ WARNING: Software cards will no longer work on github links. Therefore you will 
 ya2ro offers the option to create a landing page where all the resources produced are easily accessible. Just indicate the folder where this resources are, for example:
 
 `ya2ro -l output`
+
+## Documentation
+Please have a look at our [documentation](Documentation.md) to know which metadata fields are supported by `ya2ro`.

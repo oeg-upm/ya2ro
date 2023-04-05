@@ -3,6 +3,9 @@ __pycache__/
 env_3.9/*
 /.htaccess
 dist/*
+output/*
+requirements.txt.old
+Yaml Examples/*
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
