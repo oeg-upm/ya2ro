@@ -1,6 +1,6 @@
 # ya2ro
 
-[![DOI](https://zenodo.org/badge/407588137.svg)](https://zenodo.org/badge/latestdoi/407588137) [![Project Status: Active: The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![DOI](https://zenodo.org/badge/407588137.svg)](https://zenodo.org/badge/latestdoi/407588137) [![PyPI](https://badge.fury.io/py/ya2ro.svg)](https://badge.fury.io/py/ya2ro) [![Project Status: Active: The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 ## Example
 
