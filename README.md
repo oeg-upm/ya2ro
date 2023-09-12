@@ -153,3 +153,6 @@ ya2ro offers the option to create a landing page where all the resources produce
 
 ## Documentation
 Please have a look at our [documentation](Documentation.md) to know which metadata fields are supported by `ya2ro`.
+
+## Funding
+This work has been funded by the EELISA European University network (https://eelisa.eu/), by the European Commission within the H2020 Programme in the context of the project RELIANCE under grant agreement no. 101017501 and by the Madrid Government (Comunidad de Madrid-Spain) under the Multiannual Agreement with Universidad Polit ́ecnica de Madrid in the line Support for R&D projects for Beatriz Galindo researchers, in the context of the V PRICIT (Regional Programme of Research and Technological Innovation) and the call Research Grants for Young Investigators from Universidad Politécnica de Madrid.
